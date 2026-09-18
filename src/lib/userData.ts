@@ -28,6 +28,27 @@ const LAST_USER_KEY = 'flashcards-last-user-id-v1'
 const USER_DOC_PREFIX = 'flashcards-user-doc-v1:'
 const LEGACY_PROGRESS_KEY = 'olympics-flashcards-progress-v1'
 
+/** Stored in LAST_USER_KEY when the user chose “Continuar sin ID”. */
+export const GUEST_SESSION_ID = '__guest__'
+
+/** userId inside the guest JSON document (not a roster member). */
+export const GUEST_DOCUMENT_USER_ID = 'guest-anonymous'
+
+export const GUEST_DISPLAY_NAME = 'Invitado (sin ID)'
+
+export const guestRosterUser: RosterUser = {
+  id: GUEST_DOCUMENT_USER_ID,
+  displayName: GUEST_DISPLAY_NAME,
+}
+
+export function isGuestSessionId(sessionId: string | null): boolean {
+  return sessionId === GUEST_SESSION_ID
+}
+
+export function isGuestDocument(doc: UserDocument | null): boolean {
+  return doc?.userId === GUEST_DOCUMENT_USER_ID
+}
+
 export function userDocStorageKey(userId: string) {
   return `${USER_DOC_PREFIX}${userId}`
 }
@@ -68,6 +89,21 @@ export function createEmptyUserDocument(user: RosterUser): UserDocument {
 
 function touch(doc: UserDocument): UserDocument {
   return { ...doc, updatedAt: new Date().toISOString() }
+}
+
+export function loadGuestDocument(): UserDocument {
+  try {
+    const raw = localStorage.getItem(userDocStorageKey(GUEST_DOCUMENT_USER_ID))
+    if (!raw) return createEmptyUserDocument(guestRosterUser)
+    const parsed = JSON.parse(raw) as UserDocument
+    return normalizeUserDocument(parsed, guestRosterUser)
+  } catch {
+    return createEmptyUserDocument(guestRosterUser)
+  }
+}
+
+export function saveGuestSession() {
+  saveLastUserId(GUEST_SESSION_ID)
 }
 
 export function loadUserDocument(user: RosterUser): UserDocument {
@@ -200,6 +236,22 @@ export function parseImportedUserDocument(
   } catch {
     return { ok: false, message: 'El archivo no es un JSON válido.' }
   }
+}
+
+export function resetDocumentProgress(doc: UserDocument): UserDocument {
+  return touch({ ...doc, progress: {} })
+}
+
+export function resetDocumentConfig(doc: UserDocument): UserDocument {
+  return touch({ ...doc, config: defaultUserConfig() })
+}
+
+export function resetDocumentAll(doc: UserDocument): UserDocument {
+  return touch({
+    ...doc,
+    progress: {},
+    config: defaultUserConfig(),
+  })
 }
 
 export function downloadUserDocument(doc: UserDocument) {

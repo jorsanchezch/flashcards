@@ -1,12 +1,12 @@
 import { useMemo, useState } from 'react'
 import { Download, Loader2, RefreshCw, Users } from 'lucide-react'
 import { useTeamProgress } from '@/hooks/useTeamProgress'
-import type { UserDocument } from '@/lib/userData'
+import { isGuestDocument, type UserDocument } from '@/lib/userData'
 import {
-  applyLiveUserToTeamFile,
   buildTeamRows,
+  computeStatsFromUserDoc,
   downloadTeamProgressFile,
-  mergeTeamProgressWithRoster,
+  mergePublishedTeamExport,
 } from '@/lib/teamProgress'
 import type { RosterUser } from '@/lib/userData'
 import { Badge } from '@/components/ui/badge'
@@ -24,6 +24,7 @@ type TeamSummaryViewProps = {
   roster: RosterUser[]
   totalCards: number
   userDoc: UserDocument | null
+  isGuest?: boolean
   currentUserDisplayName?: string | null
 }
 
@@ -36,6 +37,7 @@ export function TeamSummaryView({
   roster,
   totalCards,
   userDoc,
+  isGuest = false,
   currentUserDisplayName,
 }: TeamSummaryViewProps) {
   const { state, reload } = useTeamProgress()
@@ -57,23 +59,33 @@ export function TeamSummaryView({
     )
   }, [rows])
 
+  const guestStats =
+    isGuest && userDoc
+      ? computeStatsFromUserDoc(userDoc, totalCards)
+      : null
+
   const handleExportTeam = () => {
     if (state.status !== 'ready') return
-    let file = mergeTeamProgressWithRoster(state.data, roster, totalCards)
-    if (userDoc) {
-      file = applyLiveUserToTeamFile(file, userDoc, totalCards)
-    }
-    file = {
-      ...file,
-      updatedAt: new Date().toISOString(),
+    const file = mergePublishedTeamExport(
+      state.data,
+      roster,
       totalCards,
-    }
-    downloadTeamProgressFile(file)
-    setExportHint(
-      userDoc
-        ? `Se descargó team-progress.json con tu avance (${currentUserDisplayName}). Sustituye public/data/team-progress.json en el repositorio y haz commit para que todos lo vean.`
-        : 'Se descargó team-progress.json. Sustituye public/data/team-progress.json en el repositorio y haz commit.',
+      userDoc,
     )
+    downloadTeamProgressFile(file)
+    if (isGuest) {
+      setExportHint(
+        'Se descargó team-progress.json sin datos de invitado. El modo sin ID no se publica en el equipo.',
+      )
+    } else if (userDoc && !isGuestDocument(userDoc)) {
+      setExportHint(
+        `Se descargó team-progress.json con tu avance (${currentUserDisplayName}). Sustituye public/data/team-progress.json en el repositorio y haz commit para que todos lo vean.`,
+      )
+    } else {
+      setExportHint(
+        'Se descargó team-progress.json. Sustituye public/data/team-progress.json en el repositorio y haz commit.',
+      )
+    }
   }
 
   if (state.status === 'loading') {
@@ -117,7 +129,13 @@ export function TeamSummaryView({
             {roster.length} integrantes · {totalCards} tarjetas por persona ·
             datos compartidos desde el repositorio
           </p>
-          {userDoc && (
+          {isGuest && userDoc && (
+            <p className="mt-1 text-xs text-muted-foreground">
+              Estás sin ID: tu avance aparece abajo solo en este dispositivo y no
+              se incluye en el JSON del equipo.
+            </p>
+          )}
+          {userDoc && !isGuest && (
             <p className="mt-1 text-xs text-muted-foreground">
               Tu fila muestra el progreso en vivo de este dispositivo; el resto
               refleja el último JSON publicado en GitHub Pages.
@@ -142,6 +160,37 @@ export function TeamSummaryView({
             <CardTitle className="text-sm">Siguiente paso</CardTitle>
             <CardDescription className="text-xs">{exportHint}</CardDescription>
           </CardHeader>
+        </Card>
+      )}
+
+      {guestStats && (
+        <Card className="mb-6 border-dashed">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-base">Tu sesión sin ID (local)</CardTitle>
+            <CardDescription className="text-xs">
+              No forma parte de las 13 personas del roster publicado.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-2 text-sm">
+            <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
+              <span>
+                Conocidas:{' '}
+                <strong className="text-foreground">{guestStats.known}</strong>
+              </span>
+              <span>
+                Repasar:{' '}
+                <strong className="text-foreground">{guestStats.unknown}</strong>
+              </span>
+              <span>
+                Sin marcar:{' '}
+                <strong className="text-foreground">{guestStats.unseen}</strong>
+              </span>
+            </div>
+            <Progress
+              value={percent(guestStats.known, guestStats.total)}
+              className="h-2"
+            />
+          </CardContent>
         </Card>
       )}
 

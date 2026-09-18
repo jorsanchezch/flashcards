@@ -1,19 +1,18 @@
 import { useRef, useState } from 'react'
-import { Download, LogOut, Upload, UserRound } from 'lucide-react'
+import { ChevronDown, ChevronUp, Download, LogOut, Upload, UserRound } from 'lucide-react'
 import { useUser } from '@/context/UserContext'
+import { UserDataPanel } from '@/components/UserDataPanel'
 import { Button } from '@/components/ui/button'
 
 export function UserMenu() {
-  const {
-    currentUser,
-    signOut,
-    exportDocument,
-    importDocument,
-  } = useUser()
+  const { userDoc, isGuest, signOut, exportDocument, importDocument } = useUser()
   const fileRef = useRef<HTMLInputElement>(null)
   const [importMessage, setImportMessage] = useState<string | null>(null)
+  const [showDataPanel, setShowDataPanel] = useState(false)
 
-  if (!currentUser) return null
+  if (!userDoc) return null
+
+  const label = userDoc.displayName
 
   const handleImport = async (file: File | undefined) => {
     if (!file) return
@@ -28,14 +27,14 @@ export function UserMenu() {
   }
 
   return (
-    <div className="flex flex-col items-end gap-1">
+    <div className="flex w-full flex-col items-end gap-1 sm:w-auto">
       <div className="flex flex-wrap items-center justify-end gap-2">
         <span className="hidden text-xs text-muted-foreground sm:inline">
-          Estudiando como
+          {isGuest ? 'Modo' : 'Estudiando como'}
         </span>
         <Button variant="secondary" size="sm" className="max-w-[12rem] truncate">
           <UserRound className="size-4 shrink-0" />
-          <span className="truncate">{currentUser.displayName}</span>
+          <span className="truncate">{label}</span>
         </Button>
         <Button
           variant="outline"
@@ -62,6 +61,19 @@ export function UserMenu() {
           className="hidden"
           onChange={(e) => void handleImport(e.target.files?.[0])}
         />
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => setShowDataPanel((v) => !v)}
+          aria-expanded={showDataPanel}
+        >
+          {showDataPanel ? (
+            <ChevronUp className="size-4" />
+          ) : (
+            <ChevronDown className="size-4" />
+          )}
+          <span className="hidden sm:inline">Mis datos</span>
+        </Button>
         <Button variant="ghost" size="sm" onClick={signOut}>
           <LogOut className="size-4" />
           Cambiar
@@ -72,6 +84,7 @@ export function UserMenu() {
           {importMessage}
         </p>
       )}
+      {showDataPanel && <UserDataPanel />}
     </div>
   )
 }

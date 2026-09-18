@@ -10,11 +10,19 @@ import {
 import {
   clearLastUserId,
   downloadUserDocument,
+  guestRosterUser,
+  isGuestDocument,
+  isGuestSessionId,
+  loadGuestDocument,
   loadLastUserId,
   loadUserDocument,
   parseImportedUserDocument,
+  saveGuestSession,
   saveLastUserId,
   saveUserDocument,
+  resetDocumentAll,
+  resetDocumentConfig,
+  resetDocumentProgress,
   updateUserConfig,
   type RosterUser,
   type UserConfig,
@@ -26,6 +34,9 @@ type UserContextValue = {
   roster: RosterUser[]
   currentUser: RosterUser | null
   userDoc: UserDocument | null
+  isGuest: boolean
+  hasSession: boolean
+  continueAsGuest: () => void
   selectUser: (user: RosterUser) => void
   signOut: () => void
   setCardStatus: (cardId: string, status: CardStatus | null) => void
@@ -35,6 +46,9 @@ type UserContextValue = {
   importDocument: (
     file: File,
   ) => Promise<{ ok: true } | { ok: false; message: string }>
+  resetProgress: () => void
+  resetConfig: () => void
+  resetAllLocalData: () => void
 }
 
 const UserContext = createContext<UserContextValue | null>(null)
@@ -57,11 +71,22 @@ export function UserProvider({ roster, children }: UserProviderProps) {
     if (!roster.length) return
     const lastId = loadLastUserId()
     if (!lastId) return
+    if (isGuestSessionId(lastId)) {
+      setCurrentUser(null)
+      setUserDoc(loadGuestDocument())
+      return
+    }
     const user = rosterById.get(lastId)
     if (!user) return
     setCurrentUser(user)
     setUserDoc(loadUserDocument(user))
   }, [roster.length, rosterById])
+
+  const continueAsGuest = useCallback(() => {
+    saveGuestSession()
+    setCurrentUser(null)
+    setUserDoc(loadGuestDocument())
+  }, [])
 
   const selectUser = useCallback((user: RosterUser) => {
     saveLastUserId(user.id)
@@ -104,25 +129,56 @@ export function UserProvider({ roster, children }: UserProviderProps) {
     downloadUserDocument(userDoc)
   }, [userDoc])
 
+  const applyReset = useCallback((fn: (doc: UserDocument) => UserDocument) => {
+    setUserDoc((doc) => {
+      if (!doc) return doc
+      const next = fn(doc)
+      saveUserDocument(next)
+      return next
+    })
+  }, [])
+
+  const resetProgress = useCallback(() => {
+    applyReset(resetDocumentProgress)
+  }, [applyReset])
+
+  const resetConfig = useCallback(() => {
+    applyReset(resetDocumentConfig)
+  }, [applyReset])
+
+  const resetAllLocalData = useCallback(() => {
+    applyReset(resetDocumentAll)
+  }, [applyReset])
+
   const importDocument = useCallback(
     async (file: File) => {
-      if (!currentUser) {
-        return { ok: false as const, message: 'Selecciona un usuario primero.' }
+      if (!userDoc) {
+        return {
+          ok: false as const,
+          message: 'Elige continuar sin ID o identifícate primero.',
+        }
       }
+      const expected = currentUser ?? guestRosterUser
       const text = await file.text()
-      const result = parseImportedUserDocument(text, currentUser)
+      const result = parseImportedUserDocument(text, expected)
       if (!result.ok) return result
       replaceDocument(result.doc)
       return { ok: true as const }
     },
-    [currentUser, replaceDocument],
+    [currentUser, userDoc, replaceDocument],
   )
+
+  const isGuest = isGuestDocument(userDoc)
+  const hasSession = userDoc !== null
 
   const value = useMemo(
     () => ({
       roster,
       currentUser,
       userDoc,
+      isGuest,
+      hasSession,
+      continueAsGuest,
       selectUser,
       signOut,
       setCardStatus,
@@ -130,11 +186,17 @@ export function UserProvider({ roster, children }: UserProviderProps) {
       replaceDocument,
       exportDocument,
       importDocument,
+      resetProgress,
+      resetConfig,
+      resetAllLocalData,
     }),
     [
       roster,
       currentUser,
       userDoc,
+      isGuest,
+      hasSession,
+      continueAsGuest,
       selectUser,
       signOut,
       setCardStatus,
@@ -142,6 +204,9 @@ export function UserProvider({ roster, children }: UserProviderProps) {
       replaceDocument,
       exportDocument,
       importDocument,
+      resetProgress,
+      resetConfig,
+      resetAllLocalData,
     ],
   )
 

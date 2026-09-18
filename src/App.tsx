@@ -2,22 +2,28 @@ import { useState } from 'react'
 import { BookOpen, Loader2, RefreshCw } from 'lucide-react'
 import { BrowseView } from '@/components/BrowseView'
 import { StudyView } from '@/components/StudyView'
+import { StudySessionGate } from '@/components/StudySessionGate'
 import { TeamSummaryView } from '@/components/TeamSummaryView'
 import { UserMenu } from '@/components/UserMenu'
-import { UserPickerView } from '@/components/UserPickerView'
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { UserProvider, useUser } from '@/context/UserContext'
 import { useFlashcards } from '@/hooks/useFlashcards'
 import { useUsersRoster } from '@/hooks/useUsersRoster'
-import { loadLastUserId } from '@/lib/userData'
-import type { RosterUser } from '@/lib/userData'
+import { isGuestSessionId, loadLastUserId } from '@/lib/userData'
 
 type Tab = 'study' | 'browse' | 'team'
 
 function FlashcardsApp() {
   const { state, reload } = useFlashcards()
-  const { roster, currentUser, userDoc, selectUser } = useUser()
+  const {
+    roster,
+    userDoc,
+    hasSession,
+    isGuest,
+    selectUser,
+    continueAsGuest,
+  } = useUser()
   const [tab, setTab] = useState<Tab>('study')
   const [studyCardId, setStudyCardId] = useState<string | null>(null)
 
@@ -29,10 +35,16 @@ function FlashcardsApp() {
   const cardsReady =
     state.status === 'ready' && state.cards.length > 0
   const totalCards = cardsReady ? state.cards.length : 0
+
+  const lastId = loadLastUserId()
+  const suggestedUserId = isGuestSessionId(lastId) ? null : lastId
+
+  const sessionKey = userDoc?.userId ?? 'none'
+
   return (
     <div className="min-h-svh bg-background">
       <header className="border-b bg-card/60 backdrop-blur">
-        <div className="mx-auto flex max-w-3xl flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto flex max-w-3xl flex-col gap-3 px-4 py-4 sm:flex-row sm:items-start sm:justify-between">
           <div className="flex items-center gap-3 text-left">
             <div className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
               <BookOpen className="size-5" />
@@ -46,7 +58,7 @@ function FlashcardsApp() {
               </p>
             </div>
           </div>
-          {currentUser && <UserMenu />}
+          {hasSession && <UserMenu />}
         </div>
       </header>
 
@@ -97,11 +109,16 @@ function FlashcardsApp() {
             </div>
 
             <TabsContent value="study">
-              {!currentUser || !userDoc ? (
-                <UserPickerGate users={roster} onSelect={selectUser} />
+              {!hasSession || !userDoc ? (
+                <StudySessionGate
+                  users={roster}
+                  suggestedUserId={suggestedUserId}
+                  onContinueAsGuest={continueAsGuest}
+                  onSelectUser={selectUser}
+                />
               ) : (
                 <StudyView
-                  key={`${currentUser.id}-${studyCardId ?? 'deck'}`}
+                  key={`${sessionKey}-${studyCardId ?? 'deck'}`}
                   cards={state.cards}
                   initialCardId={studyCardId}
                   onExitToBrowse={() => setTab('browse')}
@@ -110,10 +127,16 @@ function FlashcardsApp() {
             </TabsContent>
 
             <TabsContent value="browse">
-              {!currentUser || !userDoc ? (
-                <UserPickerGate users={roster} onSelect={selectUser} />
+              {!hasSession || !userDoc ? (
+                <StudySessionGate
+                  users={roster}
+                  suggestedUserId={suggestedUserId}
+                  onContinueAsGuest={continueAsGuest}
+                  onSelectUser={selectUser}
+                />
               ) : (
                 <BrowseView
+                  key={`${sessionKey}-${userDoc.updatedAt}`}
                   cards={state.cards}
                   onSelectCard={openCardInStudy}
                 />
@@ -125,30 +148,14 @@ function FlashcardsApp() {
                 roster={roster}
                 totalCards={totalCards}
                 userDoc={userDoc}
-                currentUserDisplayName={currentUser?.displayName ?? null}
+                isGuest={isGuest}
+                currentUserDisplayName={userDoc?.displayName ?? null}
               />
             </TabsContent>
           </Tabs>
         )}
       </main>
     </div>
-  )
-}
-
-function UserPickerGate({
-  users,
-  onSelect,
-}: {
-  users: RosterUser[]
-  onSelect: (user: RosterUser) => void
-}) {
-  const lastId = loadLastUserId()
-  return (
-    <UserPickerView
-      users={users}
-      suggestedUserId={lastId}
-      onSelect={onSelect}
-    />
   )
 }
 

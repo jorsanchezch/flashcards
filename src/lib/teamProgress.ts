@@ -1,4 +1,4 @@
-import type { RosterUser, UserDocument } from '@/lib/userData'
+import { isGuestDocument, type RosterUser, type UserDocument } from '@/lib/userData'
 
 export type MemberProgressStats = {
   known: number
@@ -100,6 +100,15 @@ export function applyLiveUserToTeamFile(
   }
 }
 
+function liveDocForPublishedTeam(
+  liveUserDoc: UserDocument | null,
+  roster: RosterUser[],
+): UserDocument | null {
+  if (!liveUserDoc || isGuestDocument(liveUserDoc)) return null
+  if (!roster.some((u) => u.id === liveUserDoc.userId)) return null
+  return liveUserDoc
+}
+
 export function buildTeamRows(
   file: TeamProgressFile,
   roster: RosterUser[],
@@ -112,8 +121,9 @@ export function buildTeamRows(
   updatedAt: string | null
   isLive: boolean
 }[] {
-  const merged = liveUserDoc
-    ? applyLiveUserToTeamFile(file, liveUserDoc, totalCards)
+  const liveForTeam = liveDocForPublishedTeam(liveUserDoc, roster)
+  const merged = liveForTeam
+    ? applyLiveUserToTeamFile(file, liveForTeam, totalCards)
     : mergeTeamProgressWithRoster(file, roster, totalCards)
 
   return roster
@@ -137,12 +147,30 @@ export function buildTeamRows(
         displayName: user.displayName,
         stats,
         updatedAt: entry?.updatedAt ?? null,
-        isLive: liveUserDoc?.userId === user.id,
+        isLive: liveForTeam?.userId === user.id,
       }
     })
     .sort((a, b) =>
       a.displayName.localeCompare(b.displayName, 'es', { sensitivity: 'base' }),
     )
+}
+
+export function mergePublishedTeamExport(
+  file: TeamProgressFile,
+  roster: RosterUser[],
+  totalCards: number,
+  liveUserDoc: UserDocument | null,
+): TeamProgressFile {
+  let result = mergeTeamProgressWithRoster(file, roster, totalCards)
+  const live = liveDocForPublishedTeam(liveUserDoc, roster)
+  if (live) {
+    result = applyLiveUserToTeamFile(result, live, totalCards)
+  }
+  return {
+    ...result,
+    updatedAt: new Date().toISOString(),
+    totalCards,
+  }
 }
 
 export function downloadTeamProgressFile(file: TeamProgressFile) {

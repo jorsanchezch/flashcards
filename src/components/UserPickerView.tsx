@@ -12,12 +12,16 @@ type UserPickerViewProps = {
   users: RosterUser[]
   suggestedUserId?: string | null
   onSelect: (user: RosterUser) => void
+  title?: string
+  description?: string
 }
 
 export function UserPickerView({
   users,
   suggestedUserId,
   onSelect,
+  title = '¿Quién estudia hoy?',
+  description = 'Elige tu nombre para guardar tu progreso en este dispositivo. Cada persona tiene su propio archivo de avance.',
 }: UserPickerViewProps) {
   return (
     <div className="mx-auto flex max-w-lg flex-col gap-6 px-4 py-12">
@@ -25,13 +29,8 @@ export function UserPickerView({
         <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
           <User className="size-7" />
         </div>
-        <h2 className="text-2xl font-semibold tracking-tight">
-          ¿Quién estudia hoy?
-        </h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Elige tu nombre para guardar tu progreso en este dispositivo. Cada
-          persona tiene su propio archivo de avance.
-        </p>
+        <h2 className="text-2xl font-semibold tracking-tight">{title}</h2>
+        <p className="mt-2 text-sm text-muted-foreground">{description}</p>
       </div>
 
       <ul className="flex flex-col gap-2">
