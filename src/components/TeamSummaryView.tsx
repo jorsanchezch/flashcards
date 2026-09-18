@@ -1,4 +1,6 @@
 import { useMemo, useState } from 'react'
+import { matchesNameSearch } from '@/lib/nameSearch'
+import { NameSearchField } from '@/components/NameSearchField'
 import { Download, Loader2, RefreshCw, Users } from 'lucide-react'
 import { useTeamProgress } from '@/hooks/useTeamProgress'
 import { isGuestDocument, type UserDocument } from '@/lib/userData'
@@ -42,14 +44,21 @@ export function TeamSummaryView({
 }: TeamSummaryViewProps) {
   const { state, reload } = useTeamProgress()
   const [exportHint, setExportHint] = useState<string | null>(null)
+  const [nameQuery, setNameQuery] = useState('')
 
   const rows = useMemo(() => {
     if (state.status !== 'ready') return []
     return buildTeamRows(state.data, roster, totalCards, userDoc)
   }, [state, roster, totalCards, userDoc])
 
+  const filteredRows = useMemo(
+    () =>
+      rows.filter((row) => matchesNameSearch(row.displayName, nameQuery)),
+    [rows, nameQuery],
+  )
+
   const teamTotals = useMemo(() => {
-    return rows.reduce(
+    return filteredRows.reduce(
       (acc, row) => {
         acc.known += row.stats.known
         acc.unknown += row.stats.unknown
@@ -57,7 +66,7 @@ export function TeamSummaryView({
       },
       { known: 0, unknown: 0 },
     )
-  }, [rows])
+  }, [filteredRows])
 
   const guestStats =
     isGuest && userDoc
@@ -217,8 +226,28 @@ export function TeamSummaryView({
         </CardContent>
       </Card>
 
+      <div className="mb-4">
+        <NameSearchField
+          value={nameQuery}
+          onChange={setNameQuery}
+          placeholder="Buscar integrante…"
+          ariaLabel="Buscar integrante del equipo"
+        />
+      </div>
+
+      {filteredRows.length === 0 ? (
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base">Sin coincidencias</CardTitle>
+            <CardDescription>
+              Ningún integrante coincide con «{nameQuery.trim()}». Prueba con
+              otro nombre.
+            </CardDescription>
+          </CardHeader>
+        </Card>
+      ) : (
       <ul className="flex flex-col gap-3">
-        {rows.map((row) => {
+        {filteredRows.map((row) => {
           const pct = percent(row.stats.known, row.stats.total)
           return (
             <li key={row.userId}>
@@ -285,6 +314,7 @@ export function TeamSummaryView({
           )
         })}
       </ul>
+      )}
     </div>
   )
 }
