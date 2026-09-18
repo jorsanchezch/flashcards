@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { BookOpen, Loader2, RefreshCw } from 'lucide-react'
 import { BrowseView } from '@/components/BrowseView'
 import { StudyView } from '@/components/StudyView'
+import { TeamSummaryView } from '@/components/TeamSummaryView'
 import { UserMenu } from '@/components/UserMenu'
 import { UserPickerView } from '@/components/UserPickerView'
 import { Button } from '@/components/ui/button'
@@ -12,7 +13,7 @@ import { useUsersRoster } from '@/hooks/useUsersRoster'
 import { loadLastUserId } from '@/lib/userData'
 import type { RosterUser } from '@/lib/userData'
 
-type Tab = 'study' | 'browse'
+type Tab = 'study' | 'browse' | 'team'
 
 function FlashcardsApp() {
   const { state, reload } = useFlashcards()
@@ -25,12 +26,9 @@ function FlashcardsApp() {
     setTab('study')
   }
 
-  const showMain =
-    state.status === 'ready' &&
-    state.cards.length > 0 &&
-    currentUser &&
-    userDoc
-
+  const cardsReady =
+    state.status === 'ready' && state.cards.length > 0
+  const totalCards = cardsReady ? state.cards.length : 0
   return (
     <div className="min-h-svh bg-background">
       <header className="border-b bg-card/60 backdrop-blur">
@@ -84,34 +82,50 @@ function FlashcardsApp() {
           </p>
         )}
 
-        {state.status === 'ready' && state.cards.length > 0 && !currentUser && (
-          <UserPickerGate users={roster} onSelect={selectUser} />
-        )}
-
-        {showMain && (
+        {cardsReady && (
           <Tabs
             value={tab}
             onValueChange={(v) => setTab(v as Tab)}
             className="mx-auto max-w-3xl"
           >
             <div className="px-4 pt-4">
-              <TabsList className="grid w-full grid-cols-2">
+              <TabsList className="grid w-full grid-cols-3">
                 <TabsTrigger value="study">Estudiar</TabsTrigger>
                 <TabsTrigger value="browse">Explorar</TabsTrigger>
+                <TabsTrigger value="team">Equipo</TabsTrigger>
               </TabsList>
             </div>
+
             <TabsContent value="study">
-              <StudyView
-                key={`${currentUser.id}-${studyCardId ?? 'deck'}`}
-                cards={state.cards}
-                initialCardId={studyCardId}
-                onExitToBrowse={() => setTab('browse')}
-              />
+              {!currentUser || !userDoc ? (
+                <UserPickerGate users={roster} onSelect={selectUser} />
+              ) : (
+                <StudyView
+                  key={`${currentUser.id}-${studyCardId ?? 'deck'}`}
+                  cards={state.cards}
+                  initialCardId={studyCardId}
+                  onExitToBrowse={() => setTab('browse')}
+                />
+              )}
             </TabsContent>
+
             <TabsContent value="browse">
-              <BrowseView
-                cards={state.cards}
-                onSelectCard={openCardInStudy}
+              {!currentUser || !userDoc ? (
+                <UserPickerGate users={roster} onSelect={selectUser} />
+              ) : (
+                <BrowseView
+                  cards={state.cards}
+                  onSelectCard={openCardInStudy}
+                />
+              )}
+            </TabsContent>
+
+            <TabsContent value="team">
+              <TeamSummaryView
+                roster={roster}
+                totalCards={totalCards}
+                userDoc={userDoc}
+                currentUserDisplayName={currentUser?.displayName ?? null}
               />
             </TabsContent>
           </Tabs>

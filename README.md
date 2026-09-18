@@ -61,6 +61,7 @@ Si prefieres publicar sin Actions, puedes construir localmente y subir `dist` a 
 - **Progreso por usuario**: cada persona tiene un documento JSON en `localStorage` (misma forma que un archivo `data/progress/<slug>.json`). Exportar/importar desde la cabecera.
 - **Estudiar**: tarjetas grandes con volteo (clic / toque / Espacio), anterior/siguiente, mezclar, marcar conocida/repasar.
 - **Explorar**: búsqueda, filtro por libro y capítulo (se guardan en la config del usuario), abrir una tarjeta en modo estudio.
+- **Equipo**: resumen de las 13 personas leyendo [`public/data/team-progress.json`](public/data/team-progress.json). Tu fila usa el progreso en vivo de este navegador; **Actualizar resumen del equipo** descarga un JSON para reemplazar ese archivo en el repo y publicar el avance de todos.
 - Atajos de teclado, barra de progreso de sesión, estados vacío/carga/error.
 
 ## Stack
