@@ -57,8 +57,10 @@ Si prefieres publicar sin Actions, puedes construir localmente y subir `dist` a 
 
 ## Funciones
 
-- **Estudiar**: tarjetas grandes con volteo (clic / toque / Espacio), anterior/siguiente, mezclar, marcar conocida/repasar (`localStorage`).
-- **Explorar**: búsqueda, filtro por capítulo, abrir una tarjeta en modo estudio.
+- **Usuarios**: lista en [`public/data/users.json`](public/data/users.json). Hay que elegir nombre antes de estudiar; se recuerda el último en este dispositivo.
+- **Progreso por usuario**: cada persona tiene un documento JSON en `localStorage` (misma forma que un archivo `data/progress/<slug>.json`). Exportar/importar desde la cabecera.
+- **Estudiar**: tarjetas grandes con volteo (clic / toque / Espacio), anterior/siguiente, mezclar, marcar conocida/repasar.
+- **Explorar**: búsqueda, filtro por libro y capítulo (se guardan en la config del usuario), abrir una tarjeta en modo estudio.
 - Atajos de teclado, barra de progreso de sesión, estados vacío/carga/error.
 
 ## Stack

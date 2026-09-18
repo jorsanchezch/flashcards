@@ -7,7 +7,8 @@ import {
   ThumbsUp,
 } from 'lucide-react'
 import type { Flashcard } from '@/lib/parseFlashcard'
-import { loadProgress, setCardStatus, type CardStatus } from '@/lib/progress'
+import { useUser } from '@/context/UserContext'
+import { getCardStatus, type CardStatus } from '@/lib/progress'
 import { FlipCard } from '@/components/FlipCard'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -33,6 +34,7 @@ export function StudyView({
   initialCardId,
   onExitToBrowse,
 }: StudyViewProps) {
+  const { userDoc, setCardStatus, patchConfig } = useUser()
   const cardMap = useMemo(
     () => new Map(cards.map((c) => [c.id, c])),
     [cards],
@@ -42,8 +44,18 @@ export function StudyView({
   const [order, setOrder] = useState<string[]>(defaultOrder)
   const [index, setIndex] = useState(0)
   const [flipped, setFlipped] = useState(false)
-  const [progress, setProgress] = useState(loadProgress)
   const [sessionMarked, setSessionMarked] = useState(0)
+
+  const activeUserId = userDoc?.userId
+  const shufflePref = userDoc?.config.shuffle ?? false
+
+  useEffect(() => {
+    if (!activeUserId) return
+    const base = shufflePref ? shuffleIds(defaultOrder) : [...defaultOrder]
+    setOrder(base)
+    setIndex(0)
+    setFlipped(false)
+  }, [activeUserId, shufflePref, defaultOrder])
 
   useEffect(() => {
     if (!initialCardId) return
@@ -52,9 +64,8 @@ export function StudyView({
   }, [initialCardId, order])
 
   const current = cardMap.get(order[index])
-  const status: CardStatus | undefined = current
-    ? progress[current.id]
-    : undefined
+  const status: CardStatus | undefined =
+    userDoc && current ? getCardStatus(userDoc, current.id) : undefined
 
   const go = useCallback(
     (next: number) => {
@@ -66,6 +77,7 @@ export function StudyView({
   )
 
   const handleShuffle = () => {
+    patchConfig({ shuffle: true })
     setOrder(shuffleIds(defaultOrder))
     setIndex(0)
     setFlipped(false)
@@ -73,7 +85,7 @@ export function StudyView({
 
   const mark = (value: CardStatus) => {
     if (!current) return
-    setProgress(setCardStatus(current.id, value))
+    setCardStatus(current.id, value)
     setSessionMarked((n) => n + 1)
     go(index + 1)
   }
@@ -89,24 +101,40 @@ export function StudyView({
       } else if (e.key === 'ArrowLeft' || e.key === 'h') {
         go(index - 1)
       } else if (e.key === 's') {
+        patchConfig({ shuffle: true })
         setOrder(shuffleIds(defaultOrder))
         setIndex(0)
         setFlipped(false)
       } else if (e.key === 'k') {
         if (!current) return
-        setProgress(setCardStatus(current.id, 'known'))
+        setCardStatus(current.id, 'known')
         setSessionMarked((n) => n + 1)
         go(index + 1)
       } else if (e.key === 'u') {
         if (!current) return
-        setProgress(setCardStatus(current.id, 'unknown'))
+        setCardStatus(current.id, 'unknown')
         setSessionMarked((n) => n + 1)
         go(index + 1)
       }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [current, defaultOrder, go, index])
+  }, [
+    current,
+    defaultOrder,
+    go,
+    index,
+    patchConfig,
+    setCardStatus,
+  ])
+
+  if (!userDoc) {
+    return (
+      <p className="py-16 text-center text-muted-foreground">
+        Selecciona un usuario para estudiar.
+      </p>
+    )
+  }
 
   if (!current) {
     return (

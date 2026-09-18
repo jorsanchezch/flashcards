@@ -2,14 +2,21 @@ import { useState } from 'react'
 import { BookOpen, Loader2, RefreshCw } from 'lucide-react'
 import { BrowseView } from '@/components/BrowseView'
 import { StudyView } from '@/components/StudyView'
+import { UserMenu } from '@/components/UserMenu'
+import { UserPickerView } from '@/components/UserPickerView'
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { UserProvider, useUser } from '@/context/UserContext'
 import { useFlashcards } from '@/hooks/useFlashcards'
+import { useUsersRoster } from '@/hooks/useUsersRoster'
+import { loadLastUserId } from '@/lib/userData'
+import type { RosterUser } from '@/lib/userData'
 
 type Tab = 'study' | 'browse'
 
-function App() {
+function FlashcardsApp() {
   const { state, reload } = useFlashcards()
+  const { roster, currentUser, userDoc, selectUser } = useUser()
   const [tab, setTab] = useState<Tab>('study')
   const [studyCardId, setStudyCardId] = useState<string | null>(null)
 
@@ -18,10 +25,16 @@ function App() {
     setTab('study')
   }
 
+  const showMain =
+    state.status === 'ready' &&
+    state.cards.length > 0 &&
+    currentUser &&
+    userDoc
+
   return (
     <div className="min-h-svh bg-background">
       <header className="border-b bg-card/60 backdrop-blur">
-        <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-4 py-4">
+        <div className="mx-auto flex max-w-3xl flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3 text-left">
             <div className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
               <BookOpen className="size-5" />
@@ -35,6 +48,7 @@ function App() {
               </p>
             </div>
           </div>
+          {currentUser && <UserMenu />}
         </div>
       </header>
 
@@ -70,7 +84,11 @@ function App() {
           </p>
         )}
 
-        {state.status === 'ready' && state.cards.length > 0 && (
+        {state.status === 'ready' && state.cards.length > 0 && !currentUser && (
+          <UserPickerGate users={roster} onSelect={selectUser} />
+        )}
+
+        {showMain && (
           <Tabs
             value={tab}
             onValueChange={(v) => setTab(v as Tab)}
@@ -84,7 +102,7 @@ function App() {
             </div>
             <TabsContent value="study">
               <StudyView
-                key={studyCardId ?? 'deck'}
+                key={`${currentUser.id}-${studyCardId ?? 'deck'}`}
                 cards={state.cards}
                 initialCardId={studyCardId}
                 onExitToBrowse={() => setTab('browse')}
@@ -100,6 +118,59 @@ function App() {
         )}
       </main>
     </div>
+  )
+}
+
+function UserPickerGate({
+  users,
+  onSelect,
+}: {
+  users: RosterUser[]
+  onSelect: (user: RosterUser) => void
+}) {
+  const lastId = loadLastUserId()
+  return (
+    <UserPickerView
+      users={users}
+      suggestedUserId={lastId}
+      onSelect={onSelect}
+    />
+  )
+}
+
+function App() {
+  const rosterState = useUsersRoster()
+
+  if (rosterState.state.status === 'loading') {
+    return (
+      <div className="flex min-h-svh flex-col items-center justify-center gap-3 text-muted-foreground">
+        <Loader2 className="size-8 animate-spin" />
+        <p>Cargando…</p>
+      </div>
+    )
+  }
+
+  if (rosterState.state.status === 'error') {
+    return (
+      <div className="mx-auto flex min-h-svh max-w-md flex-col items-center justify-center px-4 text-center">
+        <p className="mb-2 font-medium text-destructive">
+          No se pudo cargar la lista de usuarios
+        </p>
+        <p className="mb-6 text-sm text-muted-foreground">
+          {rosterState.state.message}
+        </p>
+        <Button onClick={() => void rosterState.reload()}>
+          <RefreshCw className="size-4" />
+          Reintentar
+        </Button>
+      </div>
+    )
+  }
+
+  return (
+    <UserProvider roster={rosterState.state.users}>
+      <FlashcardsApp />
+    </UserProvider>
   )
 }
 

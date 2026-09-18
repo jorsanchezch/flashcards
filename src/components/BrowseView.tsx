@@ -1,8 +1,9 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Search } from 'lucide-react'
 import type { Flashcard } from '@/lib/parseFlashcard'
 import { bookSortKey } from '@/lib/biblical'
-import { loadProgress } from '@/lib/progress'
+import { useUser } from '@/context/UserContext'
+import { getCardStatus } from '@/lib/progress'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
 import {
@@ -62,11 +63,33 @@ function buildBookGroups(list: Flashcard[]): BookGroup[] {
   return books
 }
 
+function bookIdFromLabel(cards: Flashcard[], label: string | null): string {
+  if (!label) return 'all'
+  const match = cards.find((c) => c.bookLabel === label)
+  return match?.bookId ?? 'all'
+}
+
 export function BrowseView({ cards, onSelectCard }: BrowseViewProps) {
+  const { userDoc, patchConfig } = useUser()
   const [query, setQuery] = useState('')
   const [bookFilter, setBookFilter] = useState<string>('all')
   const [chapterFilter, setChapterFilter] = useState<number | 'all'>('all')
-  const progress = loadProgress()
+  const [filtersReady, setFiltersReady] = useState(false)
+
+  useEffect(() => {
+    if (!userDoc || filtersReady) return
+    const bookId = bookIdFromLabel(cards, userDoc.config.lastBook)
+    setBookFilter(bookId)
+    const ch = userDoc.config.lastChapter
+    setChapterFilter(
+      bookId !== 'all' && ch != null ? ch : 'all',
+    )
+    setFiltersReady(true)
+  }, [userDoc, cards, filtersReady])
+
+  useEffect(() => {
+    setFiltersReady(false)
+  }, [userDoc?.userId])
 
   const booksInDeck = useMemo(() => {
     const map = new Map<string, { label: string; canonIndex: number }>()
@@ -108,11 +131,39 @@ export function BrowseView({ cards, onSelectCard }: BrowseViewProps) {
 
   const grouped = useMemo(() => buildBookGroups(filtered), [filtered])
 
-  const knownCount = cards.filter((c) => progress[c.id] === 'known').length
+  const knownCount = userDoc
+    ? cards.filter((c) => getCardStatus(userDoc, c.id) === 'known').length
+    : 0
+
+  const persistBrowseFilters = (bookId: string, chapter: number | 'all') => {
+    if (bookId === 'all') {
+      patchConfig({ lastBook: null, lastChapter: null })
+      return
+    }
+    const label = booksInDeck.find((b) => b.id === bookId)?.label ?? null
+    patchConfig({
+      lastBook: label,
+      lastChapter: chapter === 'all' ? null : chapter,
+    })
+  }
 
   const selectBook = (bookId: string) => {
     setBookFilter(bookId)
     setChapterFilter('all')
+    persistBrowseFilters(bookId, 'all')
+  }
+
+  const selectChapter = (ch: number | 'all') => {
+    setChapterFilter(ch)
+    persistBrowseFilters(bookFilter, ch)
+  }
+
+  if (!userDoc) {
+    return (
+      <p className="py-16 text-center text-muted-foreground">
+        Selecciona un usuario para explorar tarjetas.
+      </p>
+    )
   }
 
   return (
@@ -122,8 +173,8 @@ export function BrowseView({ cards, onSelectCard }: BrowseViewProps) {
           Explorar tarjetas
         </h2>
         <p className="text-sm text-muted-foreground">
-          {cards.length} tarjetas · {knownCount} marcadas como conocidas en este
-          dispositivo
+          {cards.length} tarjetas · {knownCount} marcadas como conocidas para{' '}
+          {userDoc.displayName}
         </p>
       </div>
 
@@ -180,7 +231,7 @@ export function BrowseView({ cards, onSelectCard }: BrowseViewProps) {
               variant={chapterFilter === 'all' ? 'default' : 'outline'}
               className="cursor-pointer"
             >
-              <button type="button" onClick={() => setChapterFilter('all')}>
+              <button type="button" onClick={() => selectChapter('all')}>
                 Todos
               </button>
             </Badge>
@@ -191,7 +242,7 @@ export function BrowseView({ cards, onSelectCard }: BrowseViewProps) {
                 variant={chapterFilter === ch ? 'default' : 'outline'}
                 className="cursor-pointer"
               >
-                <button type="button" onClick={() => setChapterFilter(ch)}>
+                <button type="button" onClick={() => selectChapter(ch)}>
                   {ch}
                 </button>
               </Badge>
@@ -227,7 +278,7 @@ export function BrowseView({ cards, onSelectCard }: BrowseViewProps) {
                     </h4>
                     <ul className="flex flex-col gap-2">
                       {ch.cards.map((card) => {
-                        const st = progress[card.id]
+                        const st = getCardStatus(userDoc, card.id)
                         return (
                           <li key={card.id}>
                             <button

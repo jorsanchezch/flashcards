@@ -1,30 +1,33 @@
-const STORAGE_KEY = 'olympics-flashcards-progress-v1'
+import type { UserDocument } from '@/lib/userData'
+import { cardStatusFromDoc, setCardProgress, saveUserDocument } from '@/lib/userData'
 
 export type CardStatus = 'known' | 'unknown'
 
 export type ProgressMap = Record<string, CardStatus>
 
-export function loadProgress(): ProgressMap {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY)
-    if (!raw) return {}
-    return JSON.parse(raw) as ProgressMap
-  } catch {
-    return {}
+export function progressMapFromDocument(doc: UserDocument): ProgressMap {
+  const map: ProgressMap = {}
+  for (const [id, entry] of Object.entries(doc.progress)) {
+    if (entry.status === 'known' || entry.status === 'unknown') {
+      map[id] = entry.status
+    }
   }
-}
-
-export function saveProgress(map: ProgressMap) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(map))
-}
-
-export function setCardStatus(id: string, status: CardStatus | null) {
-  const map = loadProgress()
-  if (status === null) {
-    delete map[id]
-  } else {
-    map[id] = status
-  }
-  saveProgress(map)
   return map
+}
+
+export function applyCardStatus(
+  doc: UserDocument,
+  id: string,
+  status: CardStatus | null,
+): UserDocument {
+  const next = setCardProgress(doc, id, status)
+  saveUserDocument(next)
+  return next
+}
+
+export function getCardStatus(
+  doc: UserDocument,
+  cardId: string,
+): CardStatus | undefined {
+  return cardStatusFromDoc(doc, cardId)
 }
