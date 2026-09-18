@@ -49,14 +49,9 @@ function FlashcardsApp() {
             <div className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
               <BookOpen className="size-5" />
             </div>
-            <div>
-              <h1 className="text-lg font-semibold leading-tight">
-                Flashcards — 1 Samuel
-              </h1>
-              <p className="text-xs text-muted-foreground">
-                Tarjetas atómicas en Markdown · sin servidor
-              </p>
-            </div>
+            <h1 className="text-lg font-semibold leading-tight">
+              Flashcards — 1 Samuel
+            </h1>
           </div>
           {hasSession && <UserMenu />}
         </div>

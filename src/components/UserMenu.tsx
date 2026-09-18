@@ -1,8 +1,22 @@
 import { useRef, useState } from 'react'
-import { ChevronDown, ChevronUp, Download, LogOut, Upload, UserRound } from 'lucide-react'
+import {
+  ChevronDown,
+  ChevronUp,
+  Download,
+  LogOut,
+  MoreVertical,
+  Upload,
+  UserRound,
+} from 'lucide-react'
 import { useUser } from '@/context/UserContext'
 import { UserDataPanel } from '@/components/UserDataPanel'
 import { Button } from '@/components/ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
 
 export function UserMenu() {
   const { userDoc, isGuest, signOut, exportDocument, importDocument } = useUser()
@@ -36,24 +50,27 @@ export function UserMenu() {
           <UserRound className="size-4 shrink-0" />
           <span className="truncate">{label}</span>
         </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => exportDocument()}
-          title="Guardar copia de mi avance"
-        >
-          <Download className="size-4" />
-          <span className="hidden sm:inline">Guardar copia</span>
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => fileRef.current?.click()}
-          title="Cargar copia de mi avance"
-        >
-          <Upload className="size-4" />
-          <span className="hidden sm:inline">Cargar copia</span>
-        </Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="outline"
+              size="icon-sm"
+              aria-label="Más opciones"
+            >
+              <MoreVertical className="size-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-48">
+            <DropdownMenuItem onClick={() => exportDocument()}>
+              <Download className="size-4" />
+              Guardar copia
+            </DropdownMenuItem>
+            <DropdownMenuItem onSelect={() => fileRef.current?.click()}>
+              <Upload className="size-4" />
+              Cargar copia
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
         <input
           ref={fileRef}
           type="file"
