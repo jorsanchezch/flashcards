@@ -28,9 +28,23 @@ npm run build
 npm run preview
 ```
 
+## Publicar en GitHub (`flashcards`)
+
+Repositorio previsto: **https://github.com/jorge-s-nchez/flashcards** (público).
+
+Tras crear el repo en GitHub y autenticarte (`gh auth login`):
+
+```bash
+git remote add github https://github.com/jorge-s-nchez/flashcards.git
+git push -u github cursor/flashcards-github-pages-ec37
+git push github cursor/flashcards-github-pages-ec37:main
+```
+
+Sitio en Pages (tras el primer deploy): **https://jorge-s-nchez.github.io/flashcards/**
+
 ## GitHub Pages
 
-La app usa `base` de Vite apuntando a `/<nombre-del-repo>/` en builds de producción (detectado vía `GITHUB_REPOSITORY` en CI, o con `VITE_BASE_PATH` manual).
+La app usa `base` de Vite apuntando a `/<nombre-del-repo>/` en producción (por defecto `/flashcards/`, o el nombre que indique `GITHUB_REPOSITORY` en CI).
 
 ### Opción recomendada: GitHub Actions
 
