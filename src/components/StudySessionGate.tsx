@@ -3,12 +3,6 @@ import { ChevronLeft, User, UserCircle2 } from 'lucide-react'
 import type { RosterUser } from '@/lib/userData'
 import { UserPickerView } from '@/components/UserPickerView'
 import { Button } from '@/components/ui/button'
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
 
 type StudySessionGateProps = {
   users: RosterUser[]
@@ -44,7 +38,7 @@ export function StudySessionGate({
           suggestedUserId={suggestedUserId}
           onSelect={onSelectUser}
           title="Identifícate"
-          description="Elige tu nombre en la lista del equipo. Tu progreso se guardará solo en este dispositivo y podrá sumarse al resumen del equipo."
+          description="Elige tu nombre en la lista del equipo."
         />
       </div>
     )
@@ -60,7 +54,7 @@ export function StudySessionGate({
           ¿Quién estudia hoy?
         </h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          Puedes practicar sin identificarte o elegir tu nombre del equipo.
+          Elige cómo quieres entrar al modo estudio.
         </p>
       </div>
 
@@ -68,7 +62,7 @@ export function StudySessionGate({
         <Button
           type="button"
           variant="outline"
-          className="h-auto flex-col items-start gap-1 px-4 py-4 text-left"
+          className="h-auto flex-col items-start gap-0.5 px-4 py-3 text-left"
           onClick={onContinueAsGuest}
         >
           <span className="flex items-center gap-2 text-base font-semibold">
@@ -76,14 +70,13 @@ export function StudySessionGate({
             Continuar sin ID
           </span>
           <span className="text-sm font-normal text-muted-foreground">
-            Progreso anónimo en este navegador. No se mezcla con los 13 nombres
-            del equipo ni con el JSON publicado.
+            Practica sin nombre; tu avance queda solo en esta sesión.
           </span>
         </Button>
 
         <Button
           type="button"
-          className="h-auto flex-col items-start gap-1 px-4 py-4 text-left"
+          className="h-auto flex-col items-start gap-0.5 px-4 py-3 text-left"
           onClick={() => setStep('identify')}
         >
           <span className="flex items-center gap-2 text-base font-semibold">
@@ -91,21 +84,15 @@ export function StudySessionGate({
             Identifícate
           </span>
           <span className="text-sm font-normal opacity-90">
-            Elige tu nombre para guardar tu avance y poder actualizar el resumen
-            del equipo.
+            Elige tu nombre y guarda tu progreso en el equipo.
           </span>
         </Button>
       </div>
 
-      <Card className="border-dashed">
-        <CardHeader className="pb-2">
-          <CardTitle className="text-sm">Sin cuentas ni contraseñas</CardTitle>
-          <CardDescription className="text-xs">
-            Todo se guarda en este dispositivo. Puedes cambiar de modo con el
-            botón Cambiar en la cabecera.
-          </CardDescription>
-        </CardHeader>
-      </Card>
+      <p className="text-center text-xs text-muted-foreground">
+        Puedes cambiar más tarde con <strong className="font-medium">Cambiar</strong>{' '}
+        en la cabecera.
+      </p>
     </div>
   )
 }

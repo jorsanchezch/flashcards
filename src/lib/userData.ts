@@ -228,13 +228,13 @@ export function parseImportedUserDocument(
     if (parsed.userId && parsed.userId !== expectedUser.id) {
       return {
         ok: false,
-        message: `El archivo pertenece a otro usuario (${parsed.userId}).`,
+        message: 'Esa copia es de otra persona del equipo.',
       }
     }
     const doc = normalizeUserDocument(parsed, expectedUser)
     return { ok: true, doc }
   } catch {
-    return { ok: false, message: 'El archivo no es un JSON válido.' }
+    return { ok: false, message: 'No se pudo leer la copia. Comprueba que sea la correcta.' }
   }
 }
 

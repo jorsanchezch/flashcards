@@ -57,11 +57,10 @@ Si prefieres publicar sin Actions, puedes construir localmente y subir `dist` a 
 
 ## Funciones
 
-- **Usuarios**: lista en [`public/data/users.json`](public/data/users.json). Hay que elegir nombre antes de estudiar; se recuerda el último en este dispositivo.
-- **Progreso por usuario**: cada persona tiene un documento JSON en `localStorage` (misma forma que un archivo `data/progress/<slug>.json`). Exportar/importar desde la cabecera.
-- **Estudiar**: tarjetas grandes con volteo (clic / toque / Espacio), anterior/siguiente, mezclar, marcar conocida/repasar.
-- **Explorar**: búsqueda, filtro por libro y capítulo (se guardan en la config del usuario), abrir una tarjeta en modo estudio.
-- **Equipo**: resumen de las 13 personas leyendo [`public/data/team-progress.json`](public/data/team-progress.json). Tu fila usa el progreso en vivo de este navegador; **Actualizar resumen del equipo** descarga un JSON para reemplazar ese archivo en el repo y publicar el avance de todos.
+- **Entrada al estudio**: continuar sin ID o identificarse con uno de los 13 nombres del equipo.
+- **Estudiar**: volteo, navegación, mezclar, marcar conocida/repasar; el avance se guarda por persona (o sesión invitada).
+- **Explorar**: búsqueda y filtros por libro y capítulo, sin necesidad de identificarse; al abrir una tarjeta en estudio sí se pide entrada.
+- **Equipo**: resumen de las 13 personas; **Actualizar resumen del equipo** genera una copia para compartir con quien mantenga el listado del grupo.
 - Atajos de teclado, barra de progreso de sesión, estados vacío/carga/error.
 
 ## Stack

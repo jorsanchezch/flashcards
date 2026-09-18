@@ -21,7 +21,7 @@ export function useTeamProgress() {
       }
       const data = (await res.json()) as TeamProgressFile
       if (!data.members || typeof data.members !== 'object') {
-        throw new Error('El archivo de equipo no tiene el formato esperado')
+        throw new Error('El resumen del equipo no tiene el formato esperado')
       }
       setState({ status: 'ready', data })
     } catch (e) {

@@ -9,6 +9,7 @@ import {
 import type { Flashcard } from '@/lib/parseFlashcard'
 import { useUser } from '@/context/UserContext'
 import { getCardStatus, type CardStatus } from '@/lib/progress'
+import { reshuffleStudyOrder, shuffleIds } from '@/lib/shuffle'
 import { FlipCard } from '@/components/FlipCard'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -20,21 +21,12 @@ type StudyViewProps = {
   onExitToBrowse?: () => void
 }
 
-function shuffleIds(ids: string[]): string[] {
-  const arr = [...ids]
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[arr[i], arr[j]] = [arr[j], arr[i]]
-  }
-  return arr
-}
-
 export function StudyView({
   cards,
   initialCardId,
   onExitToBrowse,
 }: StudyViewProps) {
-  const { userDoc, setCardStatus, patchConfig } = useUser()
+  const { userDoc, setCardStatus } = useUser()
   const cardMap = useMemo(
     () => new Map(cards.map((c) => [c.id, c])),
     [cards],
@@ -47,15 +39,15 @@ export function StudyView({
   const [sessionMarked, setSessionMarked] = useState(0)
 
   const activeUserId = userDoc?.userId
-  const shufflePref = userDoc?.config.shuffle ?? false
+  const shuffleOnLoad = userDoc?.config.shuffle ?? false
 
   useEffect(() => {
     if (!activeUserId) return
-    const base = shufflePref ? shuffleIds(defaultOrder) : [...defaultOrder]
+    const base = shuffleOnLoad ? shuffleIds(defaultOrder) : [...defaultOrder]
     setOrder(base)
     setIndex(0)
     setFlipped(false)
-  }, [activeUserId, shufflePref, defaultOrder])
+  }, [activeUserId, defaultOrder, shuffleOnLoad])
 
   useEffect(() => {
     if (!initialCardId) return
@@ -76,11 +68,19 @@ export function StudyView({
     [order.length],
   )
 
-  const handleShuffle = () => {
-    patchConfig({ shuffle: true })
-    setOrder(shuffleIds(defaultOrder))
-    setIndex(0)
+  const applyShuffle = useCallback(() => {
+    const currentId = order[index]
+    const { order: nextOrder, index: nextIndex } = reshuffleStudyOrder(
+      order,
+      currentId,
+    )
+    setOrder(nextOrder)
+    setIndex(nextIndex)
     setFlipped(false)
+  }, [order, index])
+
+  const handleShuffle = () => {
+    applyShuffle()
   }
 
   const mark = (value: CardStatus) => {
@@ -101,10 +101,7 @@ export function StudyView({
       } else if (e.key === 'ArrowLeft' || e.key === 'h') {
         go(index - 1)
       } else if (e.key === 's') {
-        patchConfig({ shuffle: true })
-        setOrder(shuffleIds(defaultOrder))
-        setIndex(0)
-        setFlipped(false)
+        applyShuffle()
       } else if (e.key === 'k') {
         if (!current) return
         setCardStatus(current.id, 'known')
@@ -119,19 +116,12 @@ export function StudyView({
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [
-    current,
-    defaultOrder,
-    go,
-    index,
-    patchConfig,
-    setCardStatus,
-  ])
+  }, [applyShuffle, current, go, index, setCardStatus])
 
   if (!userDoc) {
     return (
       <p className="py-16 text-center text-muted-foreground">
-        Selecciona un usuario para estudiar.
+        Elige cómo quieres entrar al modo estudio.
       </p>
     )
   }
@@ -158,7 +148,12 @@ export function StudyView({
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Button variant="outline" size="sm" onClick={handleShuffle}>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleShuffle}
+            disabled={order.length <= 1}
+          >
             <Shuffle className="size-4" />
             Mezclar
           </Button>

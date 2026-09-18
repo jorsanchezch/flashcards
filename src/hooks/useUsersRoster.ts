@@ -31,7 +31,7 @@ export function useUsersRoster() {
         data.users.filter((u) => u.id && u.displayName),
       )
       if (!users.length) {
-        throw new Error('No hay usuarios válidos en el archivo')
+        throw new Error('No hay nombres válidos en la lista del equipo')
       }
       setState({ status: 'ready', users })
     } catch (e) {

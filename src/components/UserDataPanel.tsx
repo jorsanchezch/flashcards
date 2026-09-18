@@ -20,44 +20,42 @@ export function UserDataPanel() {
 
   if (!userDoc) return null
 
-  const subject = isGuest
-    ? 'tu sesión sin ID'
-    : `los datos de ${userDoc.displayName}`
+  const subject = isGuest ? 'tu sesión sin ID' : `tu perfil (${userDoc.displayName})`
 
   const confirm = () => {
     if (pending === 'progress') resetProgress()
     else if (pending === 'config') resetConfig()
     else if (pending === 'all') resetAllLocalData()
     setPending(null)
-    setDoneMessage('Listo. Solo se modificaron los datos de esta sesión.')
+    setDoneMessage('Listo. Solo se cambió tu sesión actual.')
   }
 
   const pendingCopy =
     pending === 'progress'
       ? {
           title: '¿Borrar todas las marcas de tarjetas?',
-          body: `Se quitarán las etiquetas conocida/repasar de ${subject}. No afecta a otras personas ni al modo invitado de otro navegador.`,
+          body: `Se quitarán las etiquetas conocida y repasar de ${subject}. No afecta a nadie más.`,
         }
       : pending === 'config'
         ? {
             title: '¿Restablecer preferencias?',
-            body: `Se restablecerán mezcla, último libro y capítulo de ${subject}. Las marcas de tarjetas no cambian.`,
+            body: `Volverán los valores por defecto de mezcla y filtros de ${subject}. Las marcas no cambian.`,
           }
         : pending === 'all'
           ? {
-              title: '¿Borrar todo el progreso local?',
-              body: `Se eliminarán marcas y preferencias de ${subject} en este dispositivo. Esta acción no se puede deshacer.`,
+              title: '¿Borrar todo tu avance guardado?',
+              body: `Se eliminarán marcas y preferencias de ${subject}. No se puede deshacer.`,
             }
           : null
 
   return (
     <Card className="mt-3 w-full max-w-md border-dashed">
       <CardHeader className="pb-2">
-        <CardTitle className="text-sm">Mis datos en este dispositivo</CardTitle>
+        <CardTitle className="text-sm">Mis datos</CardTitle>
         <CardDescription className="text-xs">
           {isGuest
-            ? 'Modo sin ID: solo este navegador. No apareces en el resumen publicado del equipo.'
-            : 'Solo puedes modificar tu propio progreso guardado aquí.'}
+            ? 'Sesión sin ID: solo cuenta para ti en este teléfono o computadora.'
+            : 'Solo puedes borrar o restablecer tu propio avance.'}
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-2">

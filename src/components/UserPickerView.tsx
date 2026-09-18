@@ -1,12 +1,6 @@
 import { User } from 'lucide-react'
 import type { RosterUser } from '@/lib/userData'
 import { Button } from '@/components/ui/button'
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
 
 type UserPickerViewProps = {
   users: RosterUser[]
@@ -21,7 +15,7 @@ export function UserPickerView({
   suggestedUserId,
   onSelect,
   title = '¿Quién estudia hoy?',
-  description = 'Elige tu nombre para guardar tu progreso en este dispositivo. Cada persona tiene su propio archivo de avance.',
+  description = 'Elige tu nombre en la lista.',
 }: UserPickerViewProps) {
   return (
     <div className="mx-auto flex max-w-lg flex-col gap-6 px-4 py-12">
@@ -53,16 +47,6 @@ export function UserPickerView({
           )
         })}
       </ul>
-
-      <Card className="border-dashed">
-        <CardHeader className="pb-2">
-          <CardTitle className="text-sm">Privacidad en este dispositivo</CardTitle>
-          <CardDescription className="text-xs">
-            No hay cuentas ni servidor: tu progreso vive en el navegador y puedes
-            exportarlo como JSON cuando quieras.
-          </CardDescription>
-        </CardHeader>
-      </Card>
     </div>
   )
 }

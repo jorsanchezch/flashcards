@@ -75,15 +75,15 @@ export function TeamSummaryView({
     downloadTeamProgressFile(file)
     if (isGuest) {
       setExportHint(
-        'Se descargó team-progress.json sin datos de invitado. El modo sin ID no se publica en el equipo.',
+        'Listo. La copia del equipo no incluye sesiones sin ID. Pásala a quien actualice el resumen del grupo.',
       )
     } else if (userDoc && !isGuestDocument(userDoc)) {
       setExportHint(
-        `Se descargó team-progress.json con tu avance (${currentUserDisplayName}). Sustituye public/data/team-progress.json en el repositorio y haz commit para que todos lo vean.`,
+        `Listo. Incluye tu avance (${currentUserDisplayName}). Pásala a quien actualice el resumen del grupo para que todos lo vean.`,
       )
     } else {
       setExportHint(
-        'Se descargó team-progress.json. Sustituye public/data/team-progress.json en el repositorio y haz commit.',
+        'Listo. Pásala a quien actualice el resumen del grupo.',
       )
     }
   }
@@ -126,19 +126,18 @@ export function TeamSummaryView({
             </h2>
           </div>
           <p className="text-sm text-muted-foreground">
-            {roster.length} integrantes · {totalCards} tarjetas por persona ·
-            datos compartidos desde el repositorio
+            {roster.length} integrantes · {totalCards} tarjetas por persona
           </p>
           {isGuest && userDoc && (
             <p className="mt-1 text-xs text-muted-foreground">
-              Estás sin ID: tu avance aparece abajo solo en este dispositivo y no
-              se incluye en el JSON del equipo.
+              Sin ID: tu avance abajo es solo tuyo y no cuenta en la lista del
+              equipo.
             </p>
           )}
           {userDoc && !isGuest && (
             <p className="mt-1 text-xs text-muted-foreground">
-              Tu fila muestra el progreso en vivo de este dispositivo; el resto
-              refleja el último JSON publicado en GitHub Pages.
+              Tu fila se actualiza al instante aquí; las demás muestran el último
+              resumen compartido del grupo.
             </p>
           )}
         </div>
@@ -149,7 +148,7 @@ export function TeamSummaryView({
           </Button>
           <Button variant="outline" size="sm" onClick={() => void reload()}>
             <RefreshCw className="size-4" />
-            Recargar desde el sitio
+            Actualizar lista
           </Button>
         </div>
       </div>
@@ -166,9 +165,9 @@ export function TeamSummaryView({
       {guestStats && (
         <Card className="mb-6 border-dashed">
           <CardHeader className="pb-2">
-            <CardTitle className="text-base">Tu sesión sin ID (local)</CardTitle>
+            <CardTitle className="text-base">Tu sesión sin ID</CardTitle>
             <CardDescription className="text-xs">
-              No forma parte de las 13 personas del roster publicado.
+              No aparece en la lista de las 13 personas del equipo.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2 text-sm">

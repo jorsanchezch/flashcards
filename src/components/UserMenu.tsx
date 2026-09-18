@@ -19,7 +19,7 @@ export function UserMenu() {
     setImportMessage(null)
     const result = await importDocument(file)
     if (result.ok) {
-      setImportMessage('Progreso importado correctamente.')
+      setImportMessage('Copia cargada correctamente.')
     } else {
       setImportMessage(result.message)
     }
@@ -40,24 +40,24 @@ export function UserMenu() {
           variant="outline"
           size="sm"
           onClick={() => exportDocument()}
-          title="Descargar JSON de progreso"
+          title="Guardar copia de mi avance"
         >
           <Download className="size-4" />
-          <span className="hidden sm:inline">Exportar</span>
+          <span className="hidden sm:inline">Guardar copia</span>
         </Button>
         <Button
           variant="outline"
           size="sm"
           onClick={() => fileRef.current?.click()}
-          title="Importar JSON de progreso"
+          title="Cargar copia de mi avance"
         >
           <Upload className="size-4" />
-          <span className="hidden sm:inline">Importar</span>
+          <span className="hidden sm:inline">Cargar copia</span>
         </Button>
         <input
           ref={fileRef}
           type="file"
-          accept="application/json,.json"
+          accept="application/json"
           className="hidden"
           onChange={(e) => void handleImport(e.target.files?.[0])}
         />

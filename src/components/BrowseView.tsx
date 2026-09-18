@@ -136,6 +136,7 @@ export function BrowseView({ cards, onSelectCard }: BrowseViewProps) {
     : 0
 
   const persistBrowseFilters = (bookId: string, chapter: number | 'all') => {
+    if (!userDoc) return
     if (bookId === 'all') {
       patchConfig({ lastBook: null, lastChapter: null })
       return
@@ -158,14 +159,6 @@ export function BrowseView({ cards, onSelectCard }: BrowseViewProps) {
     persistBrowseFilters(bookFilter, ch)
   }
 
-  if (!userDoc) {
-    return (
-      <p className="py-16 text-center text-muted-foreground">
-        Selecciona un usuario para explorar tarjetas.
-      </p>
-    )
-  }
-
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-6">
       <div className="mb-6">
@@ -173,8 +166,13 @@ export function BrowseView({ cards, onSelectCard }: BrowseViewProps) {
           Explorar tarjetas
         </h2>
         <p className="text-sm text-muted-foreground">
-          {cards.length} tarjetas · {knownCount} marcadas como conocidas para{' '}
-          {userDoc.displayName}
+          {cards.length} tarjetas
+          {userDoc && (
+            <>
+              {' '}
+              · {knownCount} conocidas para {userDoc.displayName}
+            </>
+          )}
         </p>
       </div>
 
@@ -278,7 +276,9 @@ export function BrowseView({ cards, onSelectCard }: BrowseViewProps) {
                     </h4>
                     <ul className="flex flex-col gap-2">
                       {ch.cards.map((card) => {
-                        const st = getCardStatus(userDoc, card.id)
+                        const st = userDoc
+                          ? getCardStatus(userDoc, card.id)
+                          : undefined
                         return (
                           <li key={card.id}>
                             <button

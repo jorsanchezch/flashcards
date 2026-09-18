@@ -127,20 +127,15 @@ function FlashcardsApp() {
             </TabsContent>
 
             <TabsContent value="browse">
-              {!hasSession || !userDoc ? (
-                <StudySessionGate
-                  users={roster}
-                  suggestedUserId={suggestedUserId}
-                  onContinueAsGuest={continueAsGuest}
-                  onSelectUser={selectUser}
-                />
-              ) : (
-                <BrowseView
-                  key={`${sessionKey}-${userDoc.updatedAt}`}
-                  cards={state.cards}
-                  onSelectCard={openCardInStudy}
-                />
-              )}
+              <BrowseView
+                key={
+                  userDoc
+                    ? `${sessionKey}-${userDoc.updatedAt}`
+                    : 'browse-anon'
+                }
+                cards={state.cards}
+                onSelectCard={openCardInStudy}
+              />
             </TabsContent>
 
             <TabsContent value="team">
