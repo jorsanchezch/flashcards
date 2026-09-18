@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import { compareFlashcardsByCanon } from '@/lib/biblical'
 import { parseFlashcardMarkdown, type Flashcard } from '@/lib/parseFlashcard'
 
 type LoadState =
@@ -56,10 +57,7 @@ export function useFlashcards() {
         )
       }
 
-      cards.sort((a, b) =>
-        a.chapterTitle.localeCompare(b.chapterTitle, 'es') ||
-        a.question.localeCompare(b.question, 'es'),
-      )
+      cards.sort(compareFlashcardsByCanon)
 
       setState({ status: 'ready', cards })
     } catch (e) {

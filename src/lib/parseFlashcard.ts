@@ -1,3 +1,4 @@
+import { assignBiblicalLocation } from '@/lib/biblical'
 import { chapterSlugFromPath, chapterTitle } from '@/lib/chapters'
 
 export type Flashcard = {
@@ -5,6 +6,10 @@ export type Flashcard = {
   path: string
   chapterSlug: string
   chapterTitle: string
+  bookId: string
+  bookLabel: string
+  chapter: number
+  canonIndex: number
   question: string
   answer: string
   noteLink?: string
@@ -85,12 +90,18 @@ export function parseFlashcardMarkdown(
   }
 
   const id = filePath.replace(/\.md$/, '')
+  const resolvedChapterTitle = chapterTitle(chapterSlug, footerLabel)
+  const biblical = assignBiblicalLocation(answer, chapterSlug, footerLabel)
 
   return {
     id,
     path: filePath,
     chapterSlug,
-    chapterTitle: chapterTitle(chapterSlug, footerLabel),
+    chapterTitle: resolvedChapterTitle,
+    bookId: biblical.bookId,
+    bookLabel: biblical.bookLabel,
+    chapter: biblical.chapter,
+    canonIndex: biblical.canonIndex,
     question,
     answer,
     noteLink,
