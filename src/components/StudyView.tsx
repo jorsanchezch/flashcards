@@ -6,15 +6,14 @@ import {
   Pencil,
   Shuffle,
   ThumbsDown,
+  ThumbsUp,
+  X,
 } from 'lucide-react'
 import type { Flashcard } from '@/lib/parseFlashcard'
 import { useUser } from '@/context/UserContext'
 import { getCardStatus, getReviewHistory, type CardStatus } from '@/lib/progress'
-import {
-  buildStudyOrder,
-  filterCardsByChapterRange,
-  reshuffleWithinChapter,
-} from '@/lib/studyOrder'
+import { buildStudyOrder, reshuffleWithinChapter } from '@/lib/studyOrder'
+import { resolveStudyPool } from '@/lib/studyPool'
 import { reshuffleStudyOrder } from '@/lib/shuffle'
 import { CardEditorDialog } from '@/components/CardEditorDialog'
 import { FlipCard } from '@/components/FlipCard'
@@ -43,6 +42,7 @@ export function StudyView({
     userDoc,
     setCardStatus,
     recordCardReview,
+    clearStudyGroup,
     saveCardContent,
     revertCardContent,
     patchConfig,
@@ -53,13 +53,11 @@ export function StudyView({
   )
   const [editorOpen, setEditorOpen] = useState(false)
 
+  const studyGroupActive = Boolean(userDoc?.config.studyGroupCardIds?.length)
+
   const studyPool = useMemo(() => {
     if (!userDoc) return cards
-    return filterCardsByChapterRange(
-      cards,
-      userDoc.config.studyChapterFrom,
-      userDoc.config.studyChapterTo,
-    )
+    return resolveStudyPool(cards, userDoc.config)
   }, [cards, userDoc])
 
   const cardMap = useMemo(
@@ -139,6 +137,13 @@ export function StudyView({
     setFlipped(false)
   }, [order, index, shuffleByChapter, cardMap])
 
+  const markKnown = () => {
+    if (!current) return
+    setCardStatus(current.id, 'known')
+    setSessionMarked((n) => n + 1)
+    go(index + 1)
+  }
+
   const markReviewed = () => {
     if (!current) return
     recordCardReview(current.id)
@@ -170,7 +175,10 @@ export function StudyView({
         go(index - 1)
       } else if (e.key === 's') {
         applyShuffle()
-      } else if (e.key === 'r' || e.key === 'k') {
+      } else if (e.key === 'k') {
+        if (!current) return
+        markKnown()
+      } else if (e.key === 'r') {
         if (!current) return
         markReviewed()
       } else if (e.key === 'u') {
@@ -192,7 +200,9 @@ export function StudyView({
   if (!studyPool.length) {
     return (
       <p className="py-16 text-center text-muted-foreground">
-        No hay tarjetas en el rango de capítulos elegido. Amplía el rango abajo.
+        {studyGroupActive
+          ? 'El grupo de estudio no tiene tarjetas visibles. Elige otro grupo en Explorar o quita el grupo.'
+          : 'No hay tarjetas en el rango de capítulos elegido. Amplía el rango abajo.'}
       </p>
     )
   }
@@ -244,8 +254,34 @@ export function StudyView({
         </div>
       </div>
 
+      {studyGroupActive && userDoc.config.studyGroupLabel && (
+        <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-primary/30 bg-primary/5 px-4 py-3">
+          <p className="text-sm">
+            <span className="font-medium">Grupo de estudio:</span>{' '}
+            {userDoc.config.studyGroupLabel}
+            <span className="text-muted-foreground">
+              {' '}
+              · {studyPool.length} tarjetas
+            </span>
+          </p>
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={() => clearStudyGroup()}
+          >
+            <X className="size-4" />
+            Quitar grupo
+          </Button>
+        </div>
+      )}
+
       <div className="rounded-xl border bg-card/50 p-4">
-        <p className="mb-3 text-sm font-medium">Rango de capítulos</p>
+        <p className="mb-3 text-sm font-medium">
+          {studyGroupActive
+            ? 'Capítulos (desactivado mientras hay grupo)'
+            : 'Rango de capítulos'}
+        </p>
         <div className="flex flex-wrap items-end gap-3">
           <div>
             <Label htmlFor="study-from" className="text-xs">Desde</Label>
@@ -256,6 +292,7 @@ export function StudyView({
               className="mt-1 w-24"
               placeholder="1"
               value={userDoc.config.studyChapterFrom ?? ''}
+              disabled={studyGroupActive}
               onChange={(e) =>
                 patchConfig({
                   studyChapterFrom: parseChapterInput(e.target.value),
@@ -272,6 +309,7 @@ export function StudyView({
               className="mt-1 w-24"
               placeholder={String(chapterOptions.at(-1) ?? '')}
               value={userDoc.config.studyChapterTo ?? ''}
+              disabled={studyGroupActive}
               onChange={(e) =>
                 patchConfig({
                   studyChapterTo: parseChapterInput(e.target.value),
@@ -283,6 +321,7 @@ export function StudyView({
             type="button"
             variant="ghost"
             size="sm"
+            disabled={studyGroupActive}
             onClick={() =>
               patchConfig({ studyChapterFrom: null, studyChapterTo: null })
             }
@@ -314,9 +353,13 @@ export function StudyView({
 
       <div className="flex flex-wrap justify-center gap-2">
         <Badge variant="secondary">{current.chapterTitle}</Badge>
-        {reviewHistory.length > 0 && (
+        {status === 'known' && (
+          <Badge className="bg-sky-600 text-white">La sé</Badge>
+        )}
+        {(status === 'reviewed' || reviewHistory.length > 0) && (
           <Badge className="bg-emerald-600 text-white">
-            Revisada · {reviewHistory.length}
+            Revisada
+            {reviewHistory.length > 0 && ` · ${reviewHistory.length}`}
           </Badge>
         )}
         {status === 'unknown' && (
@@ -346,6 +389,10 @@ export function StudyView({
       </div>
 
       <div className="flex flex-wrap justify-center gap-2">
+        <Button variant="default" onClick={markKnown}>
+          <ThumbsUp className="size-4" />
+          La sé (K)
+        </Button>
         <ReviewedMarkButton
           timestamps={reviewHistory}
           onMark={markReviewed}
@@ -358,8 +405,8 @@ export function StudyView({
       </div>
 
       <p className="text-center text-xs text-muted-foreground">
-        Atajos: ← → navegar · Espacio voltear · S mezclar · R revisada · U
-        repasar
+        Atajos: ← → navegar · Espacio voltear · S mezclar · K la sé · R
+        revisada · U repasar
       </p>
 
       <CardEditorDialog

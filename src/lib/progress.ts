@@ -7,14 +7,18 @@ import {
   saveUserDocument,
 } from '@/lib/userData'
 
-export type CardStatus = 'known' | 'unknown'
+export type CardStatus = 'known' | 'unknown' | 'reviewed'
 
 export type ProgressMap = Record<string, CardStatus>
 
 export function progressMapFromDocument(doc: UserDocument): ProgressMap {
   const map: ProgressMap = {}
   for (const [id, entry] of Object.entries(doc.progress)) {
-    if (entry.status === 'known' || entry.status === 'unknown') {
+    if (
+      entry.status === 'known' ||
+      entry.status === 'unknown' ||
+      entry.status === 'reviewed'
+    ) {
       map[id] = entry.status
     }
   }

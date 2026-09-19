@@ -135,6 +135,10 @@ function FlashcardsApp() {
                 baseCards={baseCards}
                 suggestedUserId={suggestedUserId}
                 onSelectCard={openCardInStudy}
+                onStartStudyGroup={() => {
+                  setStudyCardId(null)
+                  setTab('study')
+                }}
               />
             </TabsContent>
 

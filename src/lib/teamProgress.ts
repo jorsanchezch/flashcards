@@ -28,11 +28,13 @@ export function computeStatsFromUserDoc(
 ): MemberProgressStats {
   let known = 0
   let unknown = 0
+  let reviewed = 0
   for (const entry of Object.values(doc.progress)) {
     if (entry.status === 'known') known += 1
     else if (entry.status === 'unknown') unknown += 1
+    else if (entry.status === 'reviewed') reviewed += 1
   }
-  const unseen = Math.max(0, totalCards - known - unknown)
+  const unseen = Math.max(0, totalCards - known - unknown - reviewed)
   return { known, unknown, unseen, total: totalCards }
 }
 

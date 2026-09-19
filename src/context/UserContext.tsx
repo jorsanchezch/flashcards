@@ -29,6 +29,9 @@ import {
   setCardContentOverride,
   revertCardContentOverride,
   updateUserConfig,
+  markCardsReviewed,
+  setStudyGroup as setStudyGroupInDoc,
+  clearStudyGroup as clearStudyGroupInDoc,
   type CardContentOverride,
   type RosterUser,
   type UserConfig,
@@ -49,6 +52,9 @@ type UserContextValue = {
   signOut: () => void
   setCardStatus: (cardId: string, status: CardStatus | null) => void
   recordCardReview: (cardId: string) => void
+  markManyReviewed: (cardIds: string[]) => void
+  setStudyGroup: (cardIds: string[], label: string | null) => void
+  clearStudyGroup: () => void
   patchConfig: (patch: Partial<UserConfig>) => void
   replaceDocument: (doc: UserDocument) => void
   exportDocument: () => void
@@ -138,6 +144,33 @@ export function UserProvider({ roster, children }: UserProviderProps) {
     setUserDoc((doc) => {
       if (!doc) return doc
       return applyCardReview(doc, cardId)
+    })
+  }, [])
+
+  const markManyReviewed = useCallback((cardIds: string[]) => {
+    setUserDoc((doc) => {
+      if (!doc) return doc
+      const next = markCardsReviewed(doc, cardIds)
+      saveUserDocument(next)
+      return next
+    })
+  }, [])
+
+  const setStudyGroup = useCallback((cardIds: string[], label: string | null) => {
+    setUserDoc((doc) => {
+      if (!doc) return doc
+      const next = setStudyGroupInDoc(doc, cardIds, label)
+      saveUserDocument(next)
+      return next
+    })
+  }, [])
+
+  const clearStudyGroup = useCallback(() => {
+    setUserDoc((doc) => {
+      if (!doc) return doc
+      const next = clearStudyGroupInDoc(doc)
+      saveUserDocument(next)
+      return next
     })
   }, [])
 
@@ -280,6 +313,9 @@ export function UserProvider({ roster, children }: UserProviderProps) {
       signOut,
       setCardStatus,
       recordCardReview,
+      markManyReviewed,
+      setStudyGroup,
+      clearStudyGroup,
       patchConfig,
       replaceDocument,
       exportDocument,
@@ -304,6 +340,9 @@ export function UserProvider({ roster, children }: UserProviderProps) {
       signOut,
       setCardStatus,
       recordCardReview,
+      markManyReviewed,
+      setStudyGroup,
+      clearStudyGroup,
       patchConfig,
       replaceDocument,
       exportDocument,

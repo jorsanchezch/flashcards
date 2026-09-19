@@ -1,4 +1,8 @@
-export type CardProgressStatus = 'known' | 'unknown' | 'unseen'
+export type CardProgressStatus =
+  | 'known'
+  | 'unknown'
+  | 'reviewed'
+  | 'unseen'
 
 export type CardProgressEntry = {
   status: CardProgressStatus
@@ -12,6 +16,9 @@ export type UserConfig = {
   shuffleByChapter: boolean
   studyChapterFrom: number | null
   studyChapterTo: number | null
+  /** When set, study mode uses only these card ids (shuffle within group). */
+  studyGroupCardIds: string[] | null
+  studyGroupLabel: string | null
   lastBook: string | null
   lastChapter: number | null
 }
@@ -102,6 +109,8 @@ export function defaultUserConfig(): UserConfig {
     shuffleByChapter: false,
     studyChapterFrom: null,
     studyChapterTo: null,
+    studyGroupCardIds: null,
+    studyGroupLabel: null,
     lastBook: '1 Samuel',
     lastChapter: 1,
   }
@@ -157,16 +166,33 @@ function normalizeUserDocument(
   user: RosterUser,
 ): UserDocument {
   const base = createEmptyUserDocument(user)
-  const config = {
+  const rawConfig = (parsed.config ?? {}) as Partial<UserConfig>
+  const groupIds = Array.isArray(rawConfig.studyGroupCardIds)
+    ? rawConfig.studyGroupCardIds.filter(
+        (id): id is string => typeof id === 'string' && id.length > 0,
+      )
+    : null
+  const config: UserConfig = {
     ...base.config,
-    ...(parsed.config ?? {}),
+    ...rawConfig,
+    studyGroupCardIds: groupIds?.length ? groupIds : null,
+    studyGroupLabel:
+      typeof rawConfig.studyGroupLabel === 'string' &&
+      rawConfig.studyGroupLabel.trim()
+        ? rawConfig.studyGroupLabel.trim()
+        : null,
   }
   const progress: Record<string, CardProgressEntry> = {}
   if (parsed.progress && typeof parsed.progress === 'object') {
     for (const [id, entry] of Object.entries(parsed.progress)) {
       if (!entry || typeof entry !== 'object') continue
-      const status = entry.status
-      if (status !== 'known' && status !== 'unknown' && status !== 'unseen') {
+      let status = entry.status
+      if (
+        status !== 'known' &&
+        status !== 'unknown' &&
+        status !== 'reviewed' &&
+        status !== 'unseen'
+      ) {
         continue
       }
       const reviewedAt: string[] = []
@@ -174,6 +200,9 @@ function normalizeUserDocument(
         for (const ts of (entry as CardProgressEntry).reviewedAt) {
           if (typeof ts === 'string' && ts) reviewedAt.push(ts)
         }
+      }
+      if (status === 'known' && reviewedAt.length > 0) {
+        status = 'reviewed'
       }
       progress[id] = {
         status,
@@ -282,7 +311,7 @@ export function saveUserDocument(doc: UserDocument) {
 export function setCardProgress(
   doc: UserDocument,
   cardId: string,
-  status: 'known' | 'unknown' | null,
+  status: 'known' | 'unknown' | 'reviewed' | null,
 ): UserDocument {
   const next = { ...doc, progress: { ...doc.progress } }
   if (status === null) {
@@ -306,11 +335,50 @@ export function recordCardReview(
   const reviewedAt = [...(prev?.reviewedAt ?? []), new Date().toISOString()]
   const next = { ...doc, progress: { ...doc.progress } }
   next.progress[cardId] = {
-    status: 'known',
+    status: 'reviewed',
     seen: (prev?.seen ?? 0) + 1,
     reviewedAt,
   }
   return touch(next)
+}
+
+export function markCardsReviewed(
+  doc: UserDocument,
+  cardIds: string[],
+): UserDocument {
+  if (!cardIds.length) return doc
+  const now = new Date().toISOString()
+  const progress = { ...doc.progress }
+  for (const cardId of cardIds) {
+    const prev = progress[cardId]
+    progress[cardId] = {
+      status: 'reviewed',
+      seen: (prev?.seen ?? 0) + 1,
+      reviewedAt: [...(prev?.reviewedAt ?? []), now],
+    }
+  }
+  return touch({ ...doc, progress })
+}
+
+export function setStudyGroup(
+  doc: UserDocument,
+  cardIds: string[],
+  label: string | null,
+): UserDocument {
+  const ids = [...new Set(cardIds.filter(Boolean))]
+  return updateUserConfig(doc, {
+    studyGroupCardIds: ids.length ? ids : null,
+    studyGroupLabel: label?.trim() || null,
+    studyChapterFrom: null,
+    studyChapterTo: null,
+  })
+}
+
+export function clearStudyGroup(doc: UserDocument): UserDocument {
+  return updateUserConfig(doc, {
+    studyGroupCardIds: null,
+    studyGroupLabel: null,
+  })
 }
 
 export function getCardReviewTimestamps(
@@ -333,7 +401,7 @@ export function updateUserConfig(
 export function cardStatusFromDoc(
   doc: UserDocument,
   cardId: string,
-): 'known' | 'unknown' | undefined {
+): 'known' | 'unknown' | 'reviewed' | undefined {
   const entry = doc.progress[cardId]
   if (!entry || entry.status === 'unseen') return undefined
   return entry.status

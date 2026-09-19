@@ -1,16 +1,25 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Pencil, Plus, Search, Trash2 } from 'lucide-react'
+import {
+  CheckSquare,
+  Pencil,
+  Plus,
+  Search,
+  Square,
+  Trash2,
+} from 'lucide-react'
 import type { Flashcard } from '@/lib/parseFlashcard'
 import { bookSortKey } from '@/lib/biblical'
 import { DeckSessionPrompt } from '@/components/DeckSessionPrompt'
 import { UserPickerView } from '@/components/UserPickerView'
 import { useUser } from '@/context/UserContext'
 import { getCardStatus, getReviewHistory } from '@/lib/progress'
+import { cardsInBookChapterRange } from '@/lib/studyPool'
 import { isBuiltInCardEdited } from '@/lib/userData'
 import { CardEditorDialog } from '@/components/CardEditorDialog'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import {
   Card,
   CardDescription,
@@ -18,11 +27,14 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 
+const BULK_CONFIRM_MIN = 15
+
 type BrowseViewProps = {
   cards: Flashcard[]
   baseCards: Flashcard[]
   suggestedUserId?: string | null
   onSelectCard: (id: string) => void
+  onStartStudyGroup?: () => void
 }
 
 type BookGroup = {
@@ -81,6 +93,7 @@ export function BrowseView({
   baseCards,
   suggestedUserId,
   onSelectCard,
+  onStartStudyGroup,
 }: BrowseViewProps) {
   const {
     roster,
@@ -90,6 +103,9 @@ export function BrowseView({
     revertCardContent,
     addCustomCard,
     removeCardFromDeck,
+    markManyReviewed,
+    setStudyGroup,
+    clearStudyGroup,
     continueAsGuest,
     selectUser,
   } = useUser()
@@ -104,6 +120,15 @@ export function BrowseView({
   const [sessionPromptOpen, setSessionPromptOpen] = useState(false)
   const [showIdentifyPicker, setShowIdentifyPicker] = useState(false)
   const [pendingAction, setPendingAction] = useState<(() => void) | null>(null)
+  const [selectionMode, setSelectionMode] = useState(false)
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(() => new Set())
+  const [rangeFrom, setRangeFrom] = useState('')
+  const [rangeTo, setRangeTo] = useState('')
+  const [bulkConfirm, setBulkConfirm] = useState<{
+    title: string
+    detail: string
+    onConfirm: () => void
+  } | null>(null)
 
   const baseCardMap = useMemo(
     () => new Map(baseCards.map((c) => [c.id, c])),
@@ -241,6 +266,105 @@ export function BrowseView({
     setDeleteTarget(null)
   }
 
+  const toggleSelected = (id: string) => {
+    setSelectedIds((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) next.delete(id)
+      else next.add(id)
+      return next
+    })
+  }
+
+  const selectAllFiltered = () => {
+    setSelectedIds(new Set(filtered.map((c) => c.id)))
+  }
+
+  const clearSelection = () => {
+    setSelectedIds(new Set())
+  }
+
+  const runBulkReviewed = (ids: string[], contextLabel: string) => {
+    if (!ids.length) return
+    const run = () => {
+      markManyReviewed(ids)
+      setBulkConfirm(null)
+    }
+    if (ids.length >= BULK_CONFIRM_MIN) {
+      setBulkConfirm({
+        title: `¿Marcar ${ids.length} tarjetas como revisadas?`,
+        detail: contextLabel,
+        onConfirm: run,
+      })
+      return
+    }
+    run()
+  }
+
+  const parseRangeChapter = (value: string): number | null => {
+    const n = Number.parseInt(value, 10)
+    return Number.isFinite(n) && n > 0 ? n : null
+  }
+
+  const rangeCards = useMemo(() => {
+    if (bookFilter === 'all') return []
+    const from = parseRangeChapter(rangeFrom)
+    const to = parseRangeChapter(rangeTo)
+    if (from == null || to == null) return []
+    const lo = Math.min(from, to)
+    const hi = Math.max(from, to)
+    return cardsInBookChapterRange(cards, bookFilter, lo, hi)
+  }, [cards, bookFilter, rangeFrom, rangeTo])
+
+  const bookLabel =
+    booksInDeck.find((b) => b.id === bookFilter)?.label ?? 'Libro'
+
+  const startStudyGroup = (pool: Flashcard[], label: string) => {
+    if (!pool.length) return
+    requireSession(() => {
+      setStudyGroup(pool.map((c) => c.id), label)
+      setSelectionMode(false)
+      clearSelection()
+      onStartStudyGroup?.()
+    })
+  }
+
+  const markRangeReviewed = () => {
+    requireSession(() => {
+      runBulkReviewed(
+        rangeCards.map((c) => c.id),
+        `${bookLabel}, capítulos ${rangeFrom}–${rangeTo}.`,
+      )
+    })
+  }
+
+  const markSelectionReviewed = () => {
+    requireSession(() => {
+      runBulkReviewed(
+        [...selectedIds],
+        'Solo las tarjetas que marcaste en la lista.',
+      )
+    })
+  }
+
+  const studySelected = () => {
+    const pool = filtered.filter((c) => selectedIds.has(c.id))
+    startStudyGroup(
+      pool,
+      pool.length === 1
+        ? '1 tarjeta elegida'
+        : `${pool.length} tarjetas elegidas`,
+    )
+  }
+
+  const studyRange = () => {
+    startStudyGroup(
+      rangeCards,
+      `${bookLabel} · cap. ${rangeFrom}–${rangeTo}`,
+    )
+  }
+
+  const hasStudyGroup = Boolean(userDoc?.config.studyGroupCardIds?.length)
+
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-6">
       <div className="mb-6">
@@ -263,7 +387,108 @@ export function BrowseView({
           <Plus className="size-4" />
           Añadir tarjeta
         </Button>
+        <Button
+          type="button"
+          size="sm"
+          variant={selectionMode ? 'default' : 'outline'}
+          onClick={() => {
+            setSelectionMode((v) => !v)
+            clearSelection()
+          }}
+        >
+          {selectionMode ? (
+            <CheckSquare className="size-4" />
+          ) : (
+            <Square className="size-4" />
+          )}
+          {selectionMode ? 'Selección activa' : 'Elegir varias'}
+        </Button>
+        {selectionMode && (
+          <>
+            <Button type="button" size="sm" variant="outline" onClick={selectAllFiltered}>
+              Todas las visibles ({filtered.length})
+            </Button>
+            <Button
+              type="button"
+              size="sm"
+              variant="ghost"
+              onClick={clearSelection}
+              disabled={selectedIds.size === 0}
+            >
+              Limpiar ({selectedIds.size})
+            </Button>
+          </>
+        )}
       </div>
+
+      {selectionMode && selectedIds.size > 0 && (
+        <div className="mb-4 flex flex-wrap gap-2 rounded-xl border bg-muted/30 p-3">
+          <Button type="button" size="sm" onClick={markSelectionReviewed}>
+            Marcar {selectedIds.size} como revisadas
+          </Button>
+          <Button type="button" size="sm" variant="secondary" onClick={studySelected}>
+            Estudiar esta selección
+          </Button>
+        </div>
+      )}
+
+      {bookFilter !== 'all' && (
+        <div className="mb-6 rounded-xl border bg-card/50 p-4">
+          <p className="mb-2 text-sm font-medium">Rango por capítulo</p>
+          <p className="mb-3 text-xs text-muted-foreground">
+            En {bookLabel}: marca como revisadas o arma un grupo de estudio.
+          </p>
+          <div className="flex flex-wrap items-end gap-3">
+            <div>
+              <Label className="text-xs">Desde cap.</Label>
+              <Input
+                type="number"
+                min={1}
+                className="mt-1 w-24"
+                value={rangeFrom}
+                onChange={(e) => setRangeFrom(e.target.value)}
+              />
+            </div>
+            <div>
+              <Label className="text-xs">Hasta cap.</Label>
+              <Input
+                type="number"
+                min={1}
+                className="mt-1 w-24"
+                value={rangeTo}
+                onChange={(e) => setRangeTo(e.target.value)}
+              />
+            </div>
+          </div>
+          {rangeCards.length > 0 && (
+            <div className="mt-3 flex flex-wrap gap-2">
+              <Button type="button" size="sm" variant="outline" onClick={markRangeReviewed}>
+                Revisadas · {rangeCards.length} tarjetas
+              </Button>
+              <Button type="button" size="sm" onClick={studyRange}>
+                Estudiar cap. {rangeFrom}–{rangeTo}
+              </Button>
+            </div>
+          )}
+        </div>
+      )}
+
+      {hasStudyGroup && userDoc?.config.studyGroupLabel && (
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-primary/30 bg-primary/5 px-4 py-3 text-sm">
+          <span>
+            Grupo activo en Estudiar:{' '}
+            <strong>{userDoc.config.studyGroupLabel}</strong>
+          </span>
+          <Button
+            type="button"
+            size="sm"
+            variant="outline"
+            onClick={() => requireSession(() => clearStudyGroup())}
+          >
+            Quitar grupo
+          </Button>
+        </div>
+      )}
 
       <div className="mb-4 flex flex-col gap-3 sm:flex-row">
         <div className="relative flex-1">
@@ -374,9 +599,33 @@ export function BrowseView({
                         return (
                           <li key={card.id}>
                             <div className="flex gap-2 rounded-xl border bg-card p-2">
+                              {selectionMode && (
+                                <button
+                                  type="button"
+                                  className="flex shrink-0 items-start px-1 pt-3"
+                                  aria-label={
+                                    selectedIds.has(card.id)
+                                      ? 'Quitar de la selección'
+                                      : 'Añadir a la selección'
+                                  }
+                                  onClick={() => toggleSelected(card.id)}
+                                >
+                                  {selectedIds.has(card.id) ? (
+                                    <CheckSquare className="size-5 text-primary" />
+                                  ) : (
+                                    <Square className="size-5 text-muted-foreground" />
+                                  )}
+                                </button>
+                              )}
                               <button
                                 type="button"
-                                onClick={() => onSelectCard(card.id)}
+                                onClick={() => {
+                                  if (selectionMode) {
+                                    toggleSelected(card.id)
+                                    return
+                                  }
+                                  onSelectCard(card.id)
+                                }}
                                 className="min-w-0 flex-1 rounded-lg px-2 py-2 text-left transition-colors hover:bg-accent/40"
                               >
                                 <div className="mb-1 flex flex-wrap items-center gap-2">
@@ -397,9 +646,15 @@ export function BrowseView({
                                         Editada
                                       </Badge>
                                     )}
-                                  {reviews.length > 0 && (
+                                  {st === 'known' && (
+                                    <Badge className="bg-sky-600 text-white text-[10px]">
+                                      La sé
+                                    </Badge>
+                                  )}
+                                  {(st === 'reviewed' || reviews.length > 0) && (
                                     <Badge className="bg-emerald-600 text-white text-[10px]">
-                                      Revisada · {reviews.length}
+                                      Revisada
+                                      {reviews.length > 0 && ` · ${reviews.length}`}
                                     </Badge>
                                   )}
                                   {st === 'unknown' && (
@@ -528,6 +783,39 @@ export function BrowseView({
             >
               Cancelar
             </Button>
+          </div>
+        </div>
+      )}
+
+      {bulkConfirm && (
+        <div
+          className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-4 sm:items-center"
+          role="alertdialog"
+          aria-labelledby="bulk-review-title"
+          onClick={() => setBulkConfirm(null)}
+        >
+          <div
+            className="w-full max-w-md rounded-xl border bg-card p-5 shadow-lg"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <p id="bulk-review-title" className="font-medium">
+              {bulkConfirm.title}
+            </p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              {bulkConfirm.detail}
+            </p>
+            <div className="mt-4 flex flex-wrap justify-end gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setBulkConfirm(null)}
+              >
+                Cancelar
+              </Button>
+              <Button type="button" onClick={bulkConfirm.onConfirm}>
+                Sí, marcar
+              </Button>
+            </div>
           </div>
         </div>
       )}
