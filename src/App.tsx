@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { UserProvider, useUser } from '@/context/UserContext'
 import { useFlashcards } from '@/hooks/useFlashcards'
+import { useEffectiveFlashcards } from '@/hooks/useEffectiveFlashcards'
 import { useUsersRoster } from '@/hooks/useUsersRoster'
 import { isGuestSessionId, loadLastUserId } from '@/lib/userData'
 
@@ -32,9 +33,10 @@ function FlashcardsApp() {
     setTab('study')
   }
 
-  const cardsReady =
-    state.status === 'ready' && state.cards.length > 0
-  const totalCards = cardsReady ? state.cards.length : 0
+  const baseCards = state.status === 'ready' ? state.cards : []
+  const effectiveCards = useEffectiveFlashcards(baseCards, userDoc)
+  const cardsReady = state.status === 'ready' && baseCards.length > 0
+  const totalCards = cardsReady ? effectiveCards.length : 0
 
   const lastId = loadLastUserId()
   const suggestedUserId = isGuestSessionId(lastId) ? null : lastId
@@ -113,8 +115,8 @@ function FlashcardsApp() {
                 />
               ) : (
                 <StudyView
-                  key={`${sessionKey}-${studyCardId ?? 'deck'}`}
-                  cards={state.cards}
+                  key={`${sessionKey}-${studyCardId ?? 'deck'}-${userDoc.updatedAt}`}
+                  cards={effectiveCards}
                   initialCardId={studyCardId}
                   onExitToBrowse={() => setTab('browse')}
                 />
@@ -128,7 +130,7 @@ function FlashcardsApp() {
                     ? `${sessionKey}-${userDoc.updatedAt}`
                     : 'browse-anon'
                 }
-                cards={state.cards}
+                cards={userDoc ? effectiveCards : baseCards}
                 onSelectCard={openCardInStudy}
               />
             </TabsContent>

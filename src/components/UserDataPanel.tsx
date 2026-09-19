@@ -10,11 +10,17 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 
-type PendingAction = 'progress' | 'config' | 'all' | null
+type PendingAction = 'progress' | 'config' | 'deck' | 'all' | null
 
 export function UserDataPanel() {
-  const { userDoc, isGuest, resetProgress, resetConfig, resetAllLocalData } =
-    useUser()
+  const {
+    userDoc,
+    isGuest,
+    resetProgress,
+    resetConfig,
+    resetDeckToOriginal,
+    resetAllLocalData,
+  } = useUser()
   const [pending, setPending] = useState<PendingAction>(null)
   const [doneMessage, setDoneMessage] = useState<string | null>(null)
 
@@ -25,6 +31,7 @@ export function UserDataPanel() {
   const confirm = () => {
     if (pending === 'progress') resetProgress()
     else if (pending === 'config') resetConfig()
+    else if (pending === 'deck') resetDeckToOriginal()
     else if (pending === 'all') resetAllLocalData()
     setPending(null)
     setDoneMessage('Listo. Solo se cambió tu sesión actual.')
@@ -41,12 +48,17 @@ export function UserDataPanel() {
             title: '¿Restablecer preferencias?',
             body: `Volverán los valores por defecto de mezcla y filtros de ${subject}. Las marcas no cambian.`,
           }
-        : pending === 'all'
+        : pending === 'deck'
           ? {
-              title: '¿Borrar todo tu avance guardado?',
-              body: `Se eliminarán marcas y preferencias de ${subject}. No se puede deshacer.`,
+              title: '¿Restaurar el mazo original?',
+              body: `Volverás al mazo del curso: se quitarán tus ediciones, tarjetas añadidas y las que hayas ocultado. Las marcas de estudio no cambian.`,
             }
-          : null
+          : pending === 'all'
+            ? {
+                title: '¿Borrar todo tu avance guardado?',
+                body: `Se eliminarán marcas, preferencias y cambios del mazo de ${subject}. No se puede deshacer.`,
+              }
+            : null
 
   return (
     <Card className="mt-3 w-full max-w-md border-dashed">
@@ -86,6 +98,19 @@ export function UserDataPanel() {
             >
               <Settings2 className="size-4" />
               Restablecer preferencias
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="justify-start"
+              onClick={() => {
+                setDoneMessage(null)
+                setPending('deck')
+              }}
+            >
+              <Trash2 className="size-4" />
+              Restaurar mazo original
             </Button>
             <Button
               type="button"

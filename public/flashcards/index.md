@@ -110,7 +110,7 @@ Total: **96** tarjetas.
 - [[flashcards/samuel-12-samuel-se-despide/cuando-samuel-hablo-ante-todo-israel-despues-de|Cuando Samuel habló ante todo Israel después de establecerse el reino, ¿qué pidi…]]
 - [[flashcards/samuel-12-samuel-se-despide/que-respondio-el-pueblo-cuando-samuel-les|¿Qué respondió el pueblo cuando Samuel les preguntó si había cometido alguna de …]]
 - [[flashcards/samuel-12-samuel-se-despide/al-recordar-la-historia-de-israel-que-profeta|Al recordar la historia de Israel, ¿qué profeta mencionó Samuel junto con Moisés…]]
-- [[flashcards/samuel-12-samuel-se-despide/cuando-israel-olvido-al-senor-y-comenzo-a|Cuando Israel olvidó al Señor y comenzó a servir a los baales y Astarot, ¿contra…]]
+- [[flashcards/samuel-12-samuel-se-despide/cuando-israel-olvido-al-senor-y-comenzo-a|Cuando Israel olvidó al Señor y comenzó a rendir culto a las imágenes de Baal y Astoret, ¿contra…]]
 - [[flashcards/samuel-12-samuel-se-despide/cuando-israel-pidio-un-rey-por-miedo-a-nahas|Cuando Israel pidió un rey por miedo a Nahas, rey de los hijos de Amón, ¿quién y…]]
 - [[flashcards/samuel-12-samuel-se-despide/que-senal-hizo-samuel-para-demostrar-al-pueblo|¿Qué señal hizo Samuel para demostrar al pueblo que su petición de un rey había …]]
 - [[flashcards/samuel-12-samuel-se-despide/despues-de-ver-los-truenos-y-la-lluvia-que|Después de ver los truenos y la lluvia, ¿qué reconoció el pueblo ante Samuel?]]

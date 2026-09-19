@@ -11,12 +11,34 @@ export type UserConfig = {
   lastChapter: number | null
 }
 
+export type CardContentOverride = {
+  question: string
+  answer: string
+}
+
+export type UserAddedCard = {
+  id: string
+  question: string
+  answer: string
+  bookId: string
+  bookLabel: string
+  chapter: number
+  canonIndex: number
+}
+
+export type UserDeckState = {
+  edits: Record<string, CardContentOverride>
+  hiddenIds: string[]
+  added: UserAddedCard[]
+}
+
 export type UserDocument = {
   userId: string
   displayName: string
   updatedAt: string
   config: UserConfig
   progress: Record<string, CardProgressEntry>
+  deck: UserDeckState
 }
 
 export type RosterUser = {
@@ -84,6 +106,7 @@ export function createEmptyUserDocument(user: RosterUser): UserDocument {
     updatedAt: new Date().toISOString(),
     config: defaultUserConfig(),
     progress: {},
+    deck: { edits: {}, hiddenIds: [], added: [] },
   }
 }
 
@@ -144,6 +167,8 @@ function normalizeUserDocument(
       }
     }
   }
+  const deck = normalizeDeckState(parsed.deck)
+
   return {
     userId: user.id,
     displayName: user.displayName,
@@ -153,7 +178,64 @@ function normalizeUserDocument(
         : new Date().toISOString(),
     config,
     progress,
+    deck,
   }
+}
+
+function normalizeDeckState(raw: unknown): UserDeckState {
+  const empty = { edits: {}, hiddenIds: [], added: [] } satisfies UserDeckState
+  if (!raw || typeof raw !== 'object') return empty
+
+  const edits: Record<string, CardContentOverride> = {}
+  const sourceEdits = (raw as UserDeckState).edits
+  if (sourceEdits && typeof sourceEdits === 'object') {
+    for (const [id, entry] of Object.entries(sourceEdits)) {
+      if (!entry || typeof entry !== 'object') continue
+      const q = (entry as CardContentOverride).question
+      const a = (entry as CardContentOverride).answer
+      if (typeof q === 'string' && typeof a === 'string' && q.trim() && a.trim()) {
+        edits[id] = { question: q.trim(), answer: a.trim() }
+      }
+    }
+  }
+
+  const hiddenIds: string[] = []
+  const sourceHidden = (raw as UserDeckState).hiddenIds
+  if (Array.isArray(sourceHidden)) {
+    for (const id of sourceHidden) {
+      if (typeof id === 'string' && id) hiddenIds.push(id)
+    }
+  }
+
+  const added: UserAddedCard[] = []
+  const sourceAdded = (raw as UserDeckState).added
+  if (Array.isArray(sourceAdded)) {
+    for (const item of sourceAdded) {
+      if (!item || typeof item !== 'object') continue
+      const card = item as UserAddedCard
+      if (
+        typeof card.id === 'string' &&
+        typeof card.question === 'string' &&
+        typeof card.answer === 'string' &&
+        typeof card.bookId === 'string' &&
+        typeof card.bookLabel === 'string' &&
+        typeof card.chapter === 'number' &&
+        typeof card.canonIndex === 'number'
+      ) {
+        added.push({
+          id: card.id,
+          question: card.question.trim(),
+          answer: card.answer.trim(),
+          bookId: card.bookId,
+          bookLabel: card.bookLabel,
+          chapter: card.chapter,
+          canonIndex: card.canonIndex,
+        })
+      }
+    }
+  }
+
+  return { edits, hiddenIds, added }
 }
 
 function migrateLegacyProgress(user: RosterUser): UserDocument | null {
@@ -251,6 +333,77 @@ export function resetDocumentAll(doc: UserDocument): UserDocument {
     ...doc,
     progress: {},
     config: defaultUserConfig(),
+    deck: { edits: {}, hiddenIds: [], added: [] },
+  })
+}
+
+export function resetDocumentDeck(doc: UserDocument): UserDocument {
+  const customIds = new Set(doc.deck.added.map((c) => c.id))
+  const nextProgress = { ...doc.progress }
+  for (const id of customIds) {
+    delete nextProgress[id]
+  }
+  for (const id of doc.deck.hiddenIds) {
+    delete nextProgress[id]
+  }
+  return touch({
+    ...doc,
+    deck: { edits: {}, hiddenIds: [], added: [] },
+    progress: nextProgress,
+  })
+}
+
+export function setCardContentOverride(
+  doc: UserDocument,
+  cardId: string,
+  question: string,
+  answer: string,
+): UserDocument {
+  const q = question.trim()
+  const a = answer.trim()
+  const addedIndex = doc.deck.added.findIndex((c) => c.id === cardId)
+  if (addedIndex >= 0) {
+    const added = [...doc.deck.added]
+    added[addedIndex] = { ...added[addedIndex], question: q, answer: a }
+    return touch({ ...doc, deck: { ...doc.deck, added } })
+  }
+  const edits = { ...doc.deck.edits, [cardId]: { question: q, answer: a } }
+  return touch({ ...doc, deck: { ...doc.deck, edits } })
+}
+
+export function hideCardFromDeck(doc: UserDocument, cardId: string): UserDocument {
+  const nextProgress = { ...doc.progress }
+  delete nextProgress[cardId]
+  const edits = { ...doc.deck.edits }
+  delete edits[cardId]
+
+  const isCustom = doc.deck.added.some((c) => c.id === cardId)
+  if (isCustom) {
+    const added = doc.deck.added.filter((c) => c.id !== cardId)
+    return touch({
+      ...doc,
+      deck: { ...doc.deck, added, edits },
+      progress: nextProgress,
+    })
+  }
+
+  const hiddenIds = doc.deck.hiddenIds.includes(cardId)
+    ? doc.deck.hiddenIds
+    : [...doc.deck.hiddenIds, cardId]
+  return touch({
+    ...doc,
+    deck: { ...doc.deck, hiddenIds, edits },
+    progress: nextProgress,
+  })
+}
+
+export function addCardToDeck(
+  doc: UserDocument,
+  card: UserAddedCard,
+): UserDocument {
+  return touch({
+    ...doc,
+    deck: { ...doc.deck, added: [...doc.deck.added, card] },
   })
 }
 

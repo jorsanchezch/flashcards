@@ -1,10 +1,12 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Search } from 'lucide-react'
+import { Pencil, Plus, Search, Trash2 } from 'lucide-react'
 import type { Flashcard } from '@/lib/parseFlashcard'
 import { bookSortKey } from '@/lib/biblical'
 import { useUser } from '@/context/UserContext'
 import { getCardStatus } from '@/lib/progress'
+import { CardEditorDialog } from '@/components/CardEditorDialog'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import {
   Card,
@@ -70,11 +72,21 @@ function bookIdFromLabel(cards: Flashcard[], label: string | null): string {
 }
 
 export function BrowseView({ cards, onSelectCard }: BrowseViewProps) {
-  const { userDoc, patchConfig } = useUser()
+  const {
+    userDoc,
+    patchConfig,
+    saveCardContent,
+    addCustomCard,
+    removeCardFromDeck,
+  } = useUser()
   const [query, setQuery] = useState('')
   const [bookFilter, setBookFilter] = useState<string>('all')
   const [chapterFilter, setChapterFilter] = useState<number | 'all'>('all')
   const [filtersReady, setFiltersReady] = useState(false)
+  const [editorOpen, setEditorOpen] = useState(false)
+  const [editorMode, setEditorMode] = useState<'add' | 'edit'>('add')
+  const [editingCard, setEditingCard] = useState<Flashcard | null>(null)
+  const [deleteTarget, setDeleteTarget] = useState<Flashcard | null>(null)
 
   useEffect(() => {
     if (!userDoc || filtersReady) return
@@ -159,6 +171,33 @@ export function BrowseView({ cards, onSelectCard }: BrowseViewProps) {
     persistBrowseFilters(bookFilter, ch)
   }
 
+  const editorDefaults = useMemo(() => {
+    const bookId = bookFilter === 'all' ? '1-samuel' : bookFilter
+    const chapter =
+      chapterFilter === 'all'
+        ? cards.find((c) => c.bookId === bookId)?.chapter ?? 1
+        : chapterFilter
+    return { bookId, chapter }
+  }, [bookFilter, chapterFilter, cards])
+
+  const openAdd = () => {
+    setEditorMode('add')
+    setEditingCard(null)
+    setEditorOpen(true)
+  }
+
+  const openEdit = (card: Flashcard) => {
+    setEditorMode('edit')
+    setEditingCard(card)
+    setEditorOpen(true)
+  }
+
+  const confirmDelete = () => {
+    if (!deleteTarget) return
+    removeCardFromDeck(deleteTarget.id)
+    setDeleteTarget(null)
+  }
+
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-6">
       <div className="mb-6">
@@ -175,6 +214,15 @@ export function BrowseView({ cards, onSelectCard }: BrowseViewProps) {
           )}
         </p>
       </div>
+
+      {userDoc && (
+        <div className="mb-4 flex flex-wrap gap-2">
+          <Button type="button" size="sm" onClick={openAdd}>
+            <Plus className="size-4" />
+            Añadir tarjeta
+          </Button>
+        </div>
+      )}
 
       <div className="mb-4 flex flex-col gap-3 sm:flex-row">
         <div className="relative flex-1">
@@ -281,33 +329,62 @@ export function BrowseView({ cards, onSelectCard }: BrowseViewProps) {
                           : undefined
                         return (
                           <li key={card.id}>
-                            <button
-                              type="button"
-                              onClick={() => onSelectCard(card.id)}
-                              className="w-full rounded-xl border bg-card px-4 py-3 text-left transition-colors hover:bg-accent/40"
-                            >
-                              <div className="mb-1 flex flex-wrap items-center gap-2">
-                                <span className="text-xs text-muted-foreground">
-                                  {card.bookLabel} {card.chapter}
-                                </span>
-                                {st === 'known' && (
-                                  <Badge className="bg-emerald-600 text-white text-[10px]">
-                                    Conocida
-                                  </Badge>
-                                )}
-                                {st === 'unknown' && (
-                                  <Badge
-                                    variant="destructive"
-                                    className="text-[10px]"
+                            <div className="flex gap-2 rounded-xl border bg-card p-2">
+                              <button
+                                type="button"
+                                onClick={() => onSelectCard(card.id)}
+                                className="min-w-0 flex-1 rounded-lg px-2 py-2 text-left transition-colors hover:bg-accent/40"
+                              >
+                                <div className="mb-1 flex flex-wrap items-center gap-2">
+                                  <span className="text-xs text-muted-foreground">
+                                    {card.bookLabel} {card.chapter}
+                                  </span>
+                                  {card.id.startsWith('custom/') && (
+                                    <Badge variant="outline" className="text-[10px]">
+                                      Propia
+                                    </Badge>
+                                  )}
+                                  {st === 'known' && (
+                                    <Badge className="bg-emerald-600 text-white text-[10px]">
+                                      Conocida
+                                    </Badge>
+                                  )}
+                                  {st === 'unknown' && (
+                                    <Badge
+                                      variant="destructive"
+                                      className="text-[10px]"
+                                    >
+                                      Repasar
+                                    </Badge>
+                                  )}
+                                </div>
+                                <p className="line-clamp-2 text-sm font-medium">
+                                  {card.question}
+                                </p>
+                              </button>
+                              {userDoc && (
+                                <div className="flex shrink-0 flex-col gap-1">
+                                  <Button
+                                    type="button"
+                                    variant="outline"
+                                    size="icon-sm"
+                                    aria-label="Editar tarjeta"
+                                    onClick={() => openEdit(card)}
                                   >
-                                    Repasar
-                                  </Badge>
-                                )}
-                              </div>
-                              <p className="line-clamp-2 text-sm font-medium">
-                                {card.question}
-                              </p>
-                            </button>
+                                    <Pencil className="size-4" />
+                                  </Button>
+                                  <Button
+                                    type="button"
+                                    variant="outline"
+                                    size="icon-sm"
+                                    aria-label="Quitar del mazo"
+                                    onClick={() => setDeleteTarget(card)}
+                                  >
+                                    <Trash2 className="size-4 text-destructive" />
+                                  </Button>
+                                </div>
+                              )}
+                            </div>
                           </li>
                         )
                       })}
@@ -317,6 +394,61 @@ export function BrowseView({ cards, onSelectCard }: BrowseViewProps) {
               </div>
             </section>
           ))}
+        </div>
+      )}
+
+      <CardEditorDialog
+        mode={editorMode}
+        open={editorOpen}
+        initialQuestion={editingCard?.question ?? ''}
+        initialAnswer={editingCard?.answer ?? ''}
+        defaults={editorDefaults}
+        onClose={() => setEditorOpen(false)}
+        onSave={({ question, answer, bookId, chapter }) => {
+          if (editorMode === 'add') {
+            addCustomCard(question, answer, bookId, chapter)
+            return
+          }
+          if (editingCard) {
+            saveCardContent(editingCard.id, question, answer)
+          }
+        }}
+      />
+
+      {deleteTarget && (
+        <div
+          className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-4 sm:items-center"
+          role="alertdialog"
+          aria-labelledby="delete-card-title"
+          onClick={() => setDeleteTarget(null)}
+        >
+          <div
+            className="w-full max-w-md rounded-xl border bg-card p-5 shadow-lg"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <p id="delete-card-title" className="font-medium">
+              ¿Quitar esta tarjeta de tu mazo?
+            </p>
+            <p className="mt-2 text-sm text-muted-foreground line-clamp-3">
+              {deleteTarget.question}
+            </p>
+            <p className="mt-2 text-xs text-muted-foreground">
+              Solo desaparece para ti. El resto del equipo sigue viendo la
+              tarjeta original.
+            </p>
+            <div className="mt-4 flex flex-wrap justify-end gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setDeleteTarget(null)}
+              >
+                Cancelar
+              </Button>
+              <Button type="button" variant="destructive" onClick={confirmDelete}>
+                Sí, quitar
+              </Button>
+            </div>
+          </div>
         </div>
       )}
     </div>

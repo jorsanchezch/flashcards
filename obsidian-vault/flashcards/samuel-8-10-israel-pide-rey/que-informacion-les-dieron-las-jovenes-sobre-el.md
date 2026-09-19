@@ -3,7 +3,7 @@
 # ¿Qué información les dieron las jóvenes sobre el hombre que buscaban?
 
 ?
-Que acababa de llegar porque el pueblo tenía un sacrificio en el lugar alto y que debían apresurarse porque el pueblo no comería hasta que él llegara y bendijera el sacrificio. (1 Samuel 9:12-13)
+Que el vidente acababa de llegar para un sacrificio en el lugar de adoración y que debían apresurarse a encontrarlo antes de comer. (1 Samuel 9:12-13, NTV)
 
 ---
 [[notes/samuel-8-10-israel-pide-rey|1 Samuel 8–10 — Israel pide un rey]]

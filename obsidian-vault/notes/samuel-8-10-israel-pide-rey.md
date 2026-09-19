@@ -4,27 +4,17 @@
 
 Capítulos 8–10 — Israel pide un rey
 
-1 Samuel 8. Samuel ya es anciano. Sus hijos: Joel y Abías, son jueces en Beerseba, pero no siguen el camino de Samuel.
+1 Samuel 8. Samuel envejece y nombra a sus hijos Joel y Abías jueces en Beerseba, pero codician el dinero, aceptan sobornos y pervierten la justicia (NTV).
 
-Israel pide: “Danos un rey que nos gobierne, como tienen las demás naciones.”
+Israel pide: «Danos un rey para que nos juzgue así como lo tienen las demás naciones» (NTV).
 
-Esto desagrada a Samuel. Dios le dice que el pueblo no lo está rechazando solamente a él, sino que está rechazando a Dios como su rey.
+Esto disgusta a Samuel. El Señor le dice que el pueblo lo está rechazando a él para que ya no sea su rey (NTV).
 
-Samuel advierte sobre las consecuencias de tener un rey:
+Samuel advierte cómo gobernará un rey: reclutará hijos e hijas, tomará lo mejor de campos y cosechas, exigirá décimas y los hará sus esclavos (NTV).
 
-tomará hijos para el ejército;
+Pero el pueblo insiste: «Queremos un rey que nos juzgue y sea nuestro líder en las batallas» (NTV). El Señor ordena darles un rey.
 
-tomará hijas para diversos servicios;
-
-tomará tierras;
-
-tomará cosechas;
-
-tomará siervos;
-
-cobrará impuestos.
-
-Pero el pueblo insiste. Dios finalmente les concede un rey.
+1 Samuel 9–10. Saúl, hijo de Cis, es ungido por Samuel; el Espíritu del Señor viene sobre él y es proclamado rey ante Israel.
 
 ## Flashcards
 

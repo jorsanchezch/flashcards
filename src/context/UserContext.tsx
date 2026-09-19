@@ -22,12 +22,18 @@ import {
   saveUserDocument,
   resetDocumentAll,
   resetDocumentConfig,
+  resetDocumentDeck,
   resetDocumentProgress,
+  addCardToDeck,
+  hideCardFromDeck,
+  setCardContentOverride,
   updateUserConfig,
   type RosterUser,
   type UserConfig,
   type UserDocument,
 } from '@/lib/userData'
+import { createUserAddedCard } from '@/lib/deckCustomize'
+import { BIBLE_BOOKS } from '@/lib/biblical'
 import { applyCardStatus, type CardStatus } from '@/lib/progress'
 
 type UserContextValue = {
@@ -49,6 +55,19 @@ type UserContextValue = {
   resetProgress: () => void
   resetConfig: () => void
   resetAllLocalData: () => void
+  resetDeckToOriginal: () => void
+  saveCardContent: (
+    cardId: string,
+    question: string,
+    answer: string,
+  ) => void
+  addCustomCard: (
+    question: string,
+    answer: string,
+    bookId: string,
+    chapter: number,
+  ) => string | null
+  removeCardFromDeck: (cardId: string) => void
 }
 
 const UserContext = createContext<UserContextValue | null>(null)
@@ -150,6 +169,52 @@ export function UserProvider({ roster, children }: UserProviderProps) {
     applyReset(resetDocumentAll)
   }, [applyReset])
 
+  const resetDeckToOriginal = useCallback(() => {
+    applyReset(resetDocumentDeck)
+  }, [applyReset])
+
+  const saveCardContent = useCallback(
+    (cardId: string, question: string, answer: string) => {
+      setUserDoc((doc) => {
+        if (!doc) return doc
+        const next = setCardContentOverride(doc, cardId, question, answer)
+        saveUserDocument(next)
+        return next
+      })
+    },
+    [],
+  )
+
+  const addCustomCard = useCallback(
+    (question: string, answer: string, bookId: string, chapter: number) => {
+      const bookIndex = BIBLE_BOOKS.findIndex((b) => b.id === bookId)
+      const book = BIBLE_BOOKS[bookIndex >= 0 ? bookIndex : 0]
+      const card = createUserAddedCard(
+        question,
+        answer,
+        { id: book.id, label: book.label, canonIndex: bookIndex >= 0 ? bookIndex : 0 },
+        chapter,
+      )
+      setUserDoc((doc) => {
+        if (!doc) return doc
+        const next = addCardToDeck(doc, card)
+        saveUserDocument(next)
+        return next
+      })
+      return card.id
+    },
+    [],
+  )
+
+  const removeCardFromDeck = useCallback((cardId: string) => {
+    setUserDoc((doc) => {
+      if (!doc) return doc
+      const next = hideCardFromDeck(doc, cardId)
+      saveUserDocument(next)
+      return next
+    })
+  }, [])
+
   const importDocument = useCallback(
     async (file: File) => {
       if (!userDoc) {
@@ -189,6 +254,10 @@ export function UserProvider({ roster, children }: UserProviderProps) {
       resetProgress,
       resetConfig,
       resetAllLocalData,
+      resetDeckToOriginal,
+      saveCardContent,
+      addCustomCard,
+      removeCardFromDeck,
     }),
     [
       roster,
@@ -207,6 +276,10 @@ export function UserProvider({ roster, children }: UserProviderProps) {
       resetProgress,
       resetConfig,
       resetAllLocalData,
+      resetDeckToOriginal,
+      saveCardContent,
+      addCustomCard,
+      removeCardFromDeck,
     ],
   )
 

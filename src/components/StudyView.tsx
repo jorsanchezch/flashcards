@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import {
   ChevronLeft,
   ChevronRight,
+  Pencil,
   Shuffle,
   ThumbsDown,
   ThumbsUp,
@@ -10,6 +11,7 @@ import type { Flashcard } from '@/lib/parseFlashcard'
 import { useUser } from '@/context/UserContext'
 import { getCardStatus, type CardStatus } from '@/lib/progress'
 import { reshuffleStudyOrder, shuffleIds } from '@/lib/shuffle'
+import { CardEditorDialog } from '@/components/CardEditorDialog'
 import { FlipCard } from '@/components/FlipCard'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -26,7 +28,8 @@ export function StudyView({
   initialCardId,
   onExitToBrowse,
 }: StudyViewProps) {
-  const { userDoc, setCardStatus } = useUser()
+  const { userDoc, setCardStatus, saveCardContent } = useUser()
+  const [editorOpen, setEditorOpen] = useState(false)
   const cardMap = useMemo(
     () => new Map(cards.map((c) => [c.id, c])),
     [cards],
@@ -157,6 +160,14 @@ export function StudyView({
             <Shuffle className="size-4" />
             Mezclar
           </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setEditorOpen(true)}
+          >
+            <Pencil className="size-4" />
+            Editar
+          </Button>
           {onExitToBrowse && (
             <Button variant="ghost" size="sm" onClick={onExitToBrowse}>
               Ver listado
@@ -212,6 +223,21 @@ export function StudyView({
       <p className="text-center text-xs text-muted-foreground">
         Atajos: ← → navegar · Espacio voltear · S mezclar · K/U marcar
       </p>
+
+      <CardEditorDialog
+        mode="edit"
+        open={editorOpen}
+        initialQuestion={current.question}
+        initialAnswer={current.answer}
+        defaults={{
+          bookId: current.bookId,
+          chapter: current.chapter,
+        }}
+        onClose={() => setEditorOpen(false)}
+        onSave={({ question, answer }) => {
+          saveCardContent(current.id, question, answer)
+        }}
+      />
     </div>
   )
 }
