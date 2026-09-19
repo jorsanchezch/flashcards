@@ -1,5 +1,11 @@
 import type { UserDocument } from '@/lib/userData'
-import { cardStatusFromDoc, setCardProgress, saveUserDocument } from '@/lib/userData'
+import {
+  cardStatusFromDoc,
+  getCardReviewTimestamps,
+  recordCardReview,
+  setCardProgress,
+  saveUserDocument,
+} from '@/lib/userData'
 
 export type CardStatus = 'known' | 'unknown'
 
@@ -30,4 +36,20 @@ export function getCardStatus(
   cardId: string,
 ): CardStatus | undefined {
   return cardStatusFromDoc(doc, cardId)
+}
+
+export function applyCardReview(
+  doc: UserDocument,
+  cardId: string,
+): UserDocument {
+  const next = recordCardReview(doc, cardId)
+  saveUserDocument(next)
+  return next
+}
+
+export function getReviewHistory(
+  doc: UserDocument,
+  cardId: string,
+): string[] {
+  return getCardReviewTimestamps(doc, cardId)
 }

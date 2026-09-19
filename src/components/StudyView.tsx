@@ -6,17 +6,25 @@ import {
   Pencil,
   Shuffle,
   ThumbsDown,
-  ThumbsUp,
 } from 'lucide-react'
 import type { Flashcard } from '@/lib/parseFlashcard'
 import { useUser } from '@/context/UserContext'
-import { getCardStatus, type CardStatus } from '@/lib/progress'
-import { reshuffleStudyOrder, shuffleIds } from '@/lib/shuffle'
+import { getCardStatus, getReviewHistory, type CardStatus } from '@/lib/progress'
+import {
+  buildStudyOrder,
+  filterCardsByChapterRange,
+  reshuffleWithinChapter,
+} from '@/lib/studyOrder'
+import { reshuffleStudyOrder } from '@/lib/shuffle'
 import { CardEditorDialog } from '@/components/CardEditorDialog'
 import { FlipCard } from '@/components/FlipCard'
+import { ReviewedMarkButton } from '@/components/ReviewedMarkButton'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import { Progress } from '@/components/ui/progress'
+import { Switch } from '@/components/ui/switch'
 
 type StudyViewProps = {
   cards: Flashcard[]
@@ -31,18 +39,42 @@ export function StudyView({
   initialCardId,
   onExitToBrowse,
 }: StudyViewProps) {
-  const { userDoc, setCardStatus, saveCardContent, revertCardContent } =
-    useUser()
+  const {
+    userDoc,
+    setCardStatus,
+    recordCardReview,
+    saveCardContent,
+    revertCardContent,
+    patchConfig,
+  } = useUser()
   const baseCardMap = useMemo(
     () => new Map(baseCards.map((c) => [c.id, c])),
     [baseCards],
   )
   const [editorOpen, setEditorOpen] = useState(false)
+
+  const studyPool = useMemo(() => {
+    if (!userDoc) return cards
+    return filterCardsByChapterRange(
+      cards,
+      userDoc.config.studyChapterFrom,
+      userDoc.config.studyChapterTo,
+    )
+  }, [cards, userDoc])
+
   const cardMap = useMemo(
-    () => new Map(cards.map((c) => [c.id, c])),
-    [cards],
+    () => new Map(studyPool.map((c) => [c.id, c])),
+    [studyPool],
   )
-  const defaultOrder = useMemo(() => cards.map((c) => c.id), [cards])
+
+  const defaultOrder = useMemo(
+    () =>
+      buildStudyOrder(studyPool, {
+        shuffle: userDoc?.config.shuffle ?? false,
+        shuffleByChapter: userDoc?.config.shuffleByChapter ?? false,
+      }),
+    [studyPool, userDoc?.config.shuffle, userDoc?.config.shuffleByChapter],
+  )
 
   const [order, setOrder] = useState<string[]>(defaultOrder)
   const [index, setIndex] = useState(0)
@@ -50,15 +82,14 @@ export function StudyView({
   const [sessionMarked, setSessionMarked] = useState(0)
 
   const activeUserId = userDoc?.userId
-  const shuffleOnLoad = userDoc?.config.shuffle ?? false
+  const shuffleByChapter = userDoc?.config.shuffleByChapter ?? false
 
   useEffect(() => {
     if (!activeUserId) return
-    const base = shuffleOnLoad ? shuffleIds(defaultOrder) : [...defaultOrder]
-    setOrder(base)
+    setOrder(defaultOrder)
     setIndex(0)
     setFlipped(false)
-  }, [activeUserId, defaultOrder, shuffleOnLoad])
+  }, [activeUserId, defaultOrder])
 
   useEffect(() => {
     if (!initialCardId) return
@@ -69,6 +100,14 @@ export function StudyView({
   const current = cardMap.get(order[index])
   const status: CardStatus | undefined =
     userDoc && current ? getCardStatus(userDoc, current.id) : undefined
+  const reviewHistory =
+    userDoc && current ? getReviewHistory(userDoc, current.id) : []
+
+  const chapterOptions = useMemo(() => {
+    const set = new Set<number>()
+    for (const c of cards) set.add(c.chapter)
+    return [...set].sort((a, b) => a - b)
+  }, [cards])
 
   const go = useCallback(
     (next: number) => {
@@ -81,24 +120,42 @@ export function StudyView({
 
   const applyShuffle = useCallback(() => {
     const currentId = order[index]
-    const { order: nextOrder, index: nextIndex } = reshuffleStudyOrder(
-      order,
-      currentId,
-    )
-    setOrder(nextOrder)
-    setIndex(nextIndex)
+    if (shuffleByChapter && currentId) {
+      const { order: nextOrder, index: nextIndex } = reshuffleWithinChapter(
+        order,
+        cardMap,
+        currentId,
+      )
+      setOrder(nextOrder)
+      setIndex(nextIndex)
+    } else {
+      const { order: nextOrder, index: nextIndex } = reshuffleStudyOrder(
+        order,
+        currentId,
+      )
+      setOrder(nextOrder)
+      setIndex(nextIndex)
+    }
     setFlipped(false)
-  }, [order, index])
+  }, [order, index, shuffleByChapter, cardMap])
 
-  const handleShuffle = () => {
-    applyShuffle()
-  }
-
-  const mark = (value: CardStatus) => {
+  const markReviewed = () => {
     if (!current) return
-    setCardStatus(current.id, value)
+    recordCardReview(current.id)
     setSessionMarked((n) => n + 1)
     go(index + 1)
+  }
+
+  const markRepasar = () => {
+    if (!current) return
+    setCardStatus(current.id, 'unknown')
+    setSessionMarked((n) => n + 1)
+    go(index + 1)
+  }
+
+  const parseChapterInput = (value: string): number | null => {
+    const n = Number.parseInt(value, 10)
+    return Number.isFinite(n) && n > 0 ? n : null
   }
 
   useEffect(() => {
@@ -113,26 +170,29 @@ export function StudyView({
         go(index - 1)
       } else if (e.key === 's') {
         applyShuffle()
-      } else if (e.key === 'k') {
+      } else if (e.key === 'r' || e.key === 'k') {
         if (!current) return
-        setCardStatus(current.id, 'known')
-        setSessionMarked((n) => n + 1)
-        go(index + 1)
+        markReviewed()
       } else if (e.key === 'u') {
-        if (!current) return
-        setCardStatus(current.id, 'unknown')
-        setSessionMarked((n) => n + 1)
-        go(index + 1)
+        markRepasar()
       }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [applyShuffle, current, go, index, setCardStatus])
+  }, [applyShuffle, current, go, index])
 
   if (!userDoc) {
     return (
       <p className="py-16 text-center text-muted-foreground">
         Elige cómo quieres entrar al modo estudio.
+      </p>
+    )
+  }
+
+  if (!studyPool.length) {
+    return (
+      <p className="py-16 text-center text-muted-foreground">
+        No hay tarjetas en el rango de capítulos elegido. Amplía el rango abajo.
       </p>
     )
   }
@@ -162,7 +222,7 @@ export function StudyView({
           <Button
             variant="outline"
             size="sm"
-            onClick={handleShuffle}
+            onClick={applyShuffle}
             disabled={order.length <= 1}
           >
             <Shuffle className="size-4" />
@@ -184,15 +244,83 @@ export function StudyView({
         </div>
       </div>
 
+      <div className="rounded-xl border bg-card/50 p-4">
+        <p className="mb-3 text-sm font-medium">Rango de capítulos</p>
+        <div className="flex flex-wrap items-end gap-3">
+          <div>
+            <Label htmlFor="study-from" className="text-xs">Desde</Label>
+            <Input
+              id="study-from"
+              type="number"
+              min={1}
+              className="mt-1 w-24"
+              placeholder="1"
+              value={userDoc.config.studyChapterFrom ?? ''}
+              onChange={(e) =>
+                patchConfig({
+                  studyChapterFrom: parseChapterInput(e.target.value),
+                })
+              }
+            />
+          </div>
+          <div>
+            <Label htmlFor="study-to" className="text-xs">Hasta</Label>
+            <Input
+              id="study-to"
+              type="number"
+              min={1}
+              className="mt-1 w-24"
+              placeholder={String(chapterOptions.at(-1) ?? '')}
+              value={userDoc.config.studyChapterTo ?? ''}
+              onChange={(e) =>
+                patchConfig({
+                  studyChapterTo: parseChapterInput(e.target.value),
+                })
+              }
+            />
+          </div>
+          <Button
+            type="button"
+            variant="ghost"
+            size="sm"
+            onClick={() =>
+              patchConfig({ studyChapterFrom: null, studyChapterTo: null })
+            }
+          >
+            Todo el libro
+          </Button>
+        </div>
+        <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <label className="flex cursor-pointer items-center gap-2 text-sm">
+            <Switch
+              checked={userDoc.config.shuffle}
+              onCheckedChange={(checked) => patchConfig({ shuffle: checked })}
+            />
+            Mezclar al empezar
+          </label>
+          <label className="flex cursor-pointer items-center gap-2 text-sm">
+            <Switch
+              checked={userDoc.config.shuffleByChapter}
+              onCheckedChange={(checked) =>
+                patchConfig({ shuffleByChapter: checked })
+              }
+            />
+            Mezclar por capítulo (orden de capítulos fijo)
+          </label>
+        </div>
+      </div>
+
       <Progress value={sessionPercent} className="h-2" />
 
-      <div className="flex justify-center">
+      <div className="flex flex-wrap justify-center gap-2">
         <Badge variant="secondary">{current.chapterTitle}</Badge>
-        {status === 'known' && (
-          <Badge className="ml-2 bg-emerald-600 text-white">Conocida</Badge>
+        {reviewHistory.length > 0 && (
+          <Badge className="bg-emerald-600 text-white">
+            Revisada · {reviewHistory.length}
+          </Badge>
         )}
         {status === 'unknown' && (
-          <Badge className="ml-2" variant="destructive">Repasar</Badge>
+          <Badge variant="destructive">Repasar</Badge>
         )}
       </div>
 
@@ -218,18 +346,20 @@ export function StudyView({
       </div>
 
       <div className="flex flex-wrap justify-center gap-2">
-        <Button variant="secondary" onClick={() => mark('known')}>
-          <ThumbsUp className="size-4" />
-          La sé (K)
-        </Button>
-        <Button variant="outline" onClick={() => mark('unknown')}>
+        <ReviewedMarkButton
+          timestamps={reviewHistory}
+          onMark={markReviewed}
+          shortcutHint="R"
+        />
+        <Button variant="outline" onClick={markRepasar}>
           <ThumbsDown className="size-4" />
           Repasar (U)
         </Button>
       </div>
 
       <p className="text-center text-xs text-muted-foreground">
-        Atajos: ← → navegar · Espacio voltear · S mezclar · K/U marcar
+        Atajos: ← → navegar · Espacio voltear · S mezclar · R revisada · U
+        repasar
       </p>
 
       <CardEditorDialog

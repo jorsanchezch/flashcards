@@ -3,10 +3,15 @@ export type CardProgressStatus = 'known' | 'unknown' | 'unseen'
 export type CardProgressEntry = {
   status: CardProgressStatus
   seen: number
+  /** ISO timestamps, oldest first; each “Revisada” appends one. */
+  reviewedAt: string[]
 }
 
 export type UserConfig = {
   shuffle: boolean
+  shuffleByChapter: boolean
+  studyChapterFrom: number | null
+  studyChapterTo: number | null
   lastBook: string | null
   lastChapter: number | null
 }
@@ -94,6 +99,9 @@ export function clearLastUserId() {
 export function defaultUserConfig(): UserConfig {
   return {
     shuffle: false,
+    shuffleByChapter: false,
+    studyChapterFrom: null,
+    studyChapterTo: null,
     lastBook: '1 Samuel',
     lastChapter: 1,
   }
@@ -161,9 +169,16 @@ function normalizeUserDocument(
       if (status !== 'known' && status !== 'unknown' && status !== 'unseen') {
         continue
       }
+      const reviewedAt: string[] = []
+      if (Array.isArray((entry as CardProgressEntry).reviewedAt)) {
+        for (const ts of (entry as CardProgressEntry).reviewedAt) {
+          if (typeof ts === 'string' && ts) reviewedAt.push(ts)
+        }
+      }
       progress[id] = {
         status,
         seen: typeof entry.seen === 'number' ? entry.seen : 0,
+        reviewedAt,
       }
     }
   }
@@ -246,7 +261,7 @@ function migrateLegacyProgress(user: RosterUser): UserDocument | null {
     const doc = createEmptyUserDocument(user)
     for (const [id, status] of Object.entries(legacy)) {
       if (status === 'known' || status === 'unknown') {
-        doc.progress[id] = { status, seen: 1 }
+        doc.progress[id] = { status, seen: 1, reviewedAt: [] }
       }
     }
     saveUserDocument(doc)
@@ -277,9 +292,32 @@ export function setCardProgress(
     next.progress[cardId] = {
       status,
       seen: (prev?.seen ?? 0) + 1,
+      reviewedAt: prev?.reviewedAt ?? [],
     }
   }
   return touch(next)
+}
+
+export function recordCardReview(
+  doc: UserDocument,
+  cardId: string,
+): UserDocument {
+  const prev = doc.progress[cardId]
+  const reviewedAt = [...(prev?.reviewedAt ?? []), new Date().toISOString()]
+  const next = { ...doc, progress: { ...doc.progress } }
+  next.progress[cardId] = {
+    status: 'known',
+    seen: (prev?.seen ?? 0) + 1,
+    reviewedAt,
+  }
+  return touch(next)
+}
+
+export function getCardReviewTimestamps(
+  doc: UserDocument,
+  cardId: string,
+): string[] {
+  return doc.progress[cardId]?.reviewedAt ?? []
 }
 
 export function updateUserConfig(

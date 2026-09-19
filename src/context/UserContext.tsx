@@ -36,7 +36,7 @@ import {
 } from '@/lib/userData'
 import { createUserAddedCard } from '@/lib/deckCustomize'
 import { BIBLE_BOOKS } from '@/lib/biblical'
-import { applyCardStatus, type CardStatus } from '@/lib/progress'
+import { applyCardReview, applyCardStatus, type CardStatus } from '@/lib/progress'
 
 type UserContextValue = {
   roster: RosterUser[]
@@ -48,6 +48,7 @@ type UserContextValue = {
   selectUser: (user: RosterUser) => void
   signOut: () => void
   setCardStatus: (cardId: string, status: CardStatus | null) => void
+  recordCardReview: (cardId: string) => void
   patchConfig: (patch: Partial<UserConfig>) => void
   replaceDocument: (doc: UserDocument) => void
   exportDocument: () => void
@@ -132,6 +133,13 @@ export function UserProvider({ roster, children }: UserProviderProps) {
     },
     [],
   )
+
+  const recordCardReview = useCallback((cardId: string) => {
+    setUserDoc((doc) => {
+      if (!doc) return doc
+      return applyCardReview(doc, cardId)
+    })
+  }, [])
 
   const patchConfig = useCallback((patch: Partial<UserConfig>) => {
     setUserDoc((doc) => {
@@ -271,6 +279,7 @@ export function UserProvider({ roster, children }: UserProviderProps) {
       selectUser,
       signOut,
       setCardStatus,
+      recordCardReview,
       patchConfig,
       replaceDocument,
       exportDocument,
@@ -294,6 +303,7 @@ export function UserProvider({ roster, children }: UserProviderProps) {
       selectUser,
       signOut,
       setCardStatus,
+      recordCardReview,
       patchConfig,
       replaceDocument,
       exportDocument,

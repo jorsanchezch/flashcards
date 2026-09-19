@@ -5,7 +5,7 @@ import { bookSortKey } from '@/lib/biblical'
 import { DeckSessionPrompt } from '@/components/DeckSessionPrompt'
 import { UserPickerView } from '@/components/UserPickerView'
 import { useUser } from '@/context/UserContext'
-import { getCardStatus } from '@/lib/progress'
+import { getCardStatus, getReviewHistory } from '@/lib/progress'
 import { isBuiltInCardEdited } from '@/lib/userData'
 import { CardEditorDialog } from '@/components/CardEditorDialog'
 import { Badge } from '@/components/ui/badge'
@@ -368,6 +368,9 @@ export function BrowseView({
                         const st = userDoc
                           ? getCardStatus(userDoc, card.id)
                           : undefined
+                        const reviews = userDoc
+                          ? getReviewHistory(userDoc, card.id)
+                          : []
                         return (
                           <li key={card.id}>
                             <div className="flex gap-2 rounded-xl border bg-card p-2">
@@ -394,9 +397,9 @@ export function BrowseView({
                                         Editada
                                       </Badge>
                                     )}
-                                  {st === 'known' && (
+                                  {reviews.length > 0 && (
                                     <Badge className="bg-emerald-600 text-white text-[10px]">
-                                      Conocida
+                                      Revisada · {reviews.length}
                                     </Badge>
                                   )}
                                   {st === 'unknown' && (

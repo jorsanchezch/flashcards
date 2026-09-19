@@ -41,7 +41,7 @@ export function UserDataPanel() {
     pending === 'progress'
       ? {
           title: '¿Borrar todas las marcas de tarjetas?',
-          body: `Se quitarán las etiquetas conocida y repasar de ${subject}. No afecta a nadie más.`,
+          body: `Se quitarán las marcas de revisada y repasar de ${subject}. No afecta a nadie más.`,
         }
       : pending === 'config'
         ? {
