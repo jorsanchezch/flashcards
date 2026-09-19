@@ -2,8 +2,11 @@ import { useEffect, useMemo, useState } from 'react'
 import { Pencil, Plus, Search, Trash2 } from 'lucide-react'
 import type { Flashcard } from '@/lib/parseFlashcard'
 import { bookSortKey } from '@/lib/biblical'
+import { DeckSessionPrompt } from '@/components/DeckSessionPrompt'
+import { UserPickerView } from '@/components/UserPickerView'
 import { useUser } from '@/context/UserContext'
 import { getCardStatus } from '@/lib/progress'
+import { isBuiltInCardEdited } from '@/lib/userData'
 import { CardEditorDialog } from '@/components/CardEditorDialog'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -17,6 +20,8 @@ import {
 
 type BrowseViewProps = {
   cards: Flashcard[]
+  baseCards: Flashcard[]
+  suggestedUserId?: string | null
   onSelectCard: (id: string) => void
 }
 
@@ -71,13 +76,22 @@ function bookIdFromLabel(cards: Flashcard[], label: string | null): string {
   return match?.bookId ?? 'all'
 }
 
-export function BrowseView({ cards, onSelectCard }: BrowseViewProps) {
+export function BrowseView({
+  cards,
+  baseCards,
+  suggestedUserId,
+  onSelectCard,
+}: BrowseViewProps) {
   const {
+    roster,
     userDoc,
     patchConfig,
     saveCardContent,
+    revertCardContent,
     addCustomCard,
     removeCardFromDeck,
+    continueAsGuest,
+    selectUser,
   } = useUser()
   const [query, setQuery] = useState('')
   const [bookFilter, setBookFilter] = useState<string>('all')
@@ -87,6 +101,31 @@ export function BrowseView({ cards, onSelectCard }: BrowseViewProps) {
   const [editorMode, setEditorMode] = useState<'add' | 'edit'>('add')
   const [editingCard, setEditingCard] = useState<Flashcard | null>(null)
   const [deleteTarget, setDeleteTarget] = useState<Flashcard | null>(null)
+  const [sessionPromptOpen, setSessionPromptOpen] = useState(false)
+  const [showIdentifyPicker, setShowIdentifyPicker] = useState(false)
+  const [pendingAction, setPendingAction] = useState<(() => void) | null>(null)
+
+  const baseCardMap = useMemo(
+    () => new Map(baseCards.map((c) => [c.id, c])),
+    [baseCards],
+  )
+
+  useEffect(() => {
+    if (!userDoc || !pendingAction) return
+    pendingAction()
+    setPendingAction(null)
+    setSessionPromptOpen(false)
+    setShowIdentifyPicker(false)
+  }, [userDoc, pendingAction])
+
+  const requireSession = (action: () => void) => {
+    if (userDoc) {
+      action()
+      return
+    }
+    setPendingAction(() => action)
+    setSessionPromptOpen(true)
+  }
 
   useEffect(() => {
     if (!userDoc || filtersReady) return
@@ -181,15 +220,19 @@ export function BrowseView({ cards, onSelectCard }: BrowseViewProps) {
   }, [bookFilter, chapterFilter, cards])
 
   const openAdd = () => {
-    setEditorMode('add')
-    setEditingCard(null)
-    setEditorOpen(true)
+    requireSession(() => {
+      setEditorMode('add')
+      setEditingCard(null)
+      setEditorOpen(true)
+    })
   }
 
   const openEdit = (card: Flashcard) => {
-    setEditorMode('edit')
-    setEditingCard(card)
-    setEditorOpen(true)
+    requireSession(() => {
+      setEditorMode('edit')
+      setEditingCard(card)
+      setEditorOpen(true)
+    })
   }
 
   const confirmDelete = () => {
@@ -215,14 +258,12 @@ export function BrowseView({ cards, onSelectCard }: BrowseViewProps) {
         </p>
       </div>
 
-      {userDoc && (
-        <div className="mb-4 flex flex-wrap gap-2">
-          <Button type="button" size="sm" onClick={openAdd}>
-            <Plus className="size-4" />
-            Añadir tarjeta
-          </Button>
-        </div>
-      )}
+      <div className="mb-4 flex flex-wrap gap-2">
+        <Button type="button" size="sm" onClick={openAdd}>
+          <Plus className="size-4" />
+          Añadir tarjeta
+        </Button>
+      </div>
 
       <div className="mb-4 flex flex-col gap-3 sm:flex-row">
         <div className="relative flex-1">
@@ -341,9 +382,18 @@ export function BrowseView({ cards, onSelectCard }: BrowseViewProps) {
                                   </span>
                                   {card.id.startsWith('custom/') && (
                                     <Badge variant="outline" className="text-[10px]">
-                                      Propia
+                                      Añadida por ti
                                     </Badge>
                                   )}
+                                  {userDoc &&
+                                    isBuiltInCardEdited(userDoc, card.id) && (
+                                      <Badge
+                                        variant="outline"
+                                        className="text-[10px]"
+                                      >
+                                        Editada
+                                      </Badge>
+                                    )}
                                   {st === 'known' && (
                                     <Badge className="bg-emerald-600 text-white text-[10px]">
                                       Conocida
@@ -362,28 +412,28 @@ export function BrowseView({ cards, onSelectCard }: BrowseViewProps) {
                                   {card.question}
                                 </p>
                               </button>
-                              {userDoc && (
-                                <div className="flex shrink-0 flex-col gap-1">
-                                  <Button
-                                    type="button"
-                                    variant="outline"
-                                    size="icon-sm"
-                                    aria-label="Editar tarjeta"
-                                    onClick={() => openEdit(card)}
-                                  >
-                                    <Pencil className="size-4" />
-                                  </Button>
-                                  <Button
-                                    type="button"
-                                    variant="outline"
-                                    size="icon-sm"
-                                    aria-label="Quitar del mazo"
-                                    onClick={() => setDeleteTarget(card)}
-                                  >
-                                    <Trash2 className="size-4 text-destructive" />
-                                  </Button>
-                                </div>
-                              )}
+                              <div className="flex shrink-0 flex-col gap-1">
+                                <Button
+                                  type="button"
+                                  variant="outline"
+                                  size="icon-sm"
+                                  aria-label="Editar tarjeta"
+                                  onClick={() => openEdit(card)}
+                                >
+                                  <Pencil className="size-4" />
+                                </Button>
+                                <Button
+                                  type="button"
+                                  variant="outline"
+                                  size="icon-sm"
+                                  aria-label="Quitar del mazo"
+                                  onClick={() =>
+                                    requireSession(() => setDeleteTarget(card))
+                                  }
+                                >
+                                  <Trash2 className="size-4 text-destructive" />
+                                </Button>
+                              </div>
                             </div>
                           </li>
                         )
@@ -402,6 +452,20 @@ export function BrowseView({ cards, onSelectCard }: BrowseViewProps) {
         open={editorOpen}
         initialQuestion={editingCard?.question ?? ''}
         initialAnswer={editingCard?.answer ?? ''}
+        originalQuestion={
+          editingCard ? baseCardMap.get(editingCard.id)?.question : undefined
+        }
+        originalAnswer={
+          editingCard ? baseCardMap.get(editingCard.id)?.answer : undefined
+        }
+        canRevertToOriginal={
+          Boolean(
+            editingCard &&
+              baseCardMap.has(editingCard.id) &&
+              userDoc &&
+              isBuiltInCardEdited(userDoc, editingCard.id),
+          )
+        }
         defaults={editorDefaults}
         onClose={() => setEditorOpen(false)}
         onSave={({ question, answer, bookId, chapter }) => {
@@ -410,10 +474,60 @@ export function BrowseView({ cards, onSelectCard }: BrowseViewProps) {
             return
           }
           if (editingCard) {
-            saveCardContent(editingCard.id, question, answer)
+            const original = baseCardMap.get(editingCard.id)
+            saveCardContent(
+              editingCard.id,
+              question,
+              answer,
+              original
+                ? { question: original.question, answer: original.answer }
+                : undefined,
+            )
           }
         }}
+        onRevertToOriginal={
+          editingCard && baseCardMap.has(editingCard.id)
+            ? () => revertCardContent(editingCard.id)
+            : undefined
+        }
       />
+
+      <DeckSessionPrompt
+        open={sessionPromptOpen && !showIdentifyPicker}
+        onContinueAsGuest={() => continueAsGuest()}
+        onIdentify={() => {
+          setSessionPromptOpen(false)
+          setShowIdentifyPicker(true)
+        }}
+        onClose={() => {
+          setSessionPromptOpen(false)
+          setPendingAction(null)
+        }}
+      />
+
+      {showIdentifyPicker && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-background">
+          <UserPickerView
+            users={roster}
+            suggestedUserId={suggestedUserId}
+            onSelect={selectUser}
+            title="Identifícate"
+            description="Elige tu nombre para guardar tus tarjetas."
+          />
+          <div className="px-4 pb-8 text-center">
+            <Button
+              type="button"
+              variant="ghost"
+              onClick={() => {
+                setShowIdentifyPicker(false)
+                setPendingAction(null)
+              }}
+            >
+              Cancelar
+            </Button>
+          </div>
+        </div>
+      )}
 
       {deleteTarget && (
         <div

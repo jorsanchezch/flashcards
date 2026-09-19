@@ -117,6 +117,7 @@ function FlashcardsApp() {
                 <StudyView
                   key={`${sessionKey}-${studyCardId ?? 'deck'}-${userDoc.updatedAt}`}
                   cards={effectiveCards}
+                  baseCards={baseCards}
                   initialCardId={studyCardId}
                   onExitToBrowse={() => setTab('browse')}
                 />
@@ -131,6 +132,8 @@ function FlashcardsApp() {
                     : 'browse-anon'
                 }
                 cards={userDoc ? effectiveCards : baseCards}
+                baseCards={baseCards}
+                suggestedUserId={suggestedUserId}
                 onSelectCard={openCardInStudy}
               />
             </TabsContent>

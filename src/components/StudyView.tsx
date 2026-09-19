@@ -1,3 +1,4 @@
+import { isBuiltInCardEdited } from '@/lib/userData'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import {
   ChevronLeft,
@@ -19,16 +20,23 @@ import { Progress } from '@/components/ui/progress'
 
 type StudyViewProps = {
   cards: Flashcard[]
+  baseCards: Flashcard[]
   initialCardId?: string | null
   onExitToBrowse?: () => void
 }
 
 export function StudyView({
   cards,
+  baseCards,
   initialCardId,
   onExitToBrowse,
 }: StudyViewProps) {
-  const { userDoc, setCardStatus, saveCardContent } = useUser()
+  const { userDoc, setCardStatus, saveCardContent, revertCardContent } =
+    useUser()
+  const baseCardMap = useMemo(
+    () => new Map(baseCards.map((c) => [c.id, c])),
+    [baseCards],
+  )
   const [editorOpen, setEditorOpen] = useState(false)
   const cardMap = useMemo(
     () => new Map(cards.map((c) => [c.id, c])),
@@ -229,14 +237,36 @@ export function StudyView({
         open={editorOpen}
         initialQuestion={current.question}
         initialAnswer={current.answer}
+        originalQuestion={baseCardMap.get(current.id)?.question}
+        originalAnswer={baseCardMap.get(current.id)?.answer}
+        canRevertToOriginal={
+          Boolean(
+            userDoc &&
+              baseCardMap.has(current.id) &&
+              isBuiltInCardEdited(userDoc, current.id),
+          )
+        }
         defaults={{
           bookId: current.bookId,
           chapter: current.chapter,
         }}
         onClose={() => setEditorOpen(false)}
         onSave={({ question, answer }) => {
-          saveCardContent(current.id, question, answer)
+          const original = baseCardMap.get(current.id)
+          saveCardContent(
+            current.id,
+            question,
+            answer,
+            original
+              ? { question: original.question, answer: original.answer }
+              : undefined,
+          )
         }}
+        onRevertToOriginal={
+          baseCardMap.has(current.id)
+            ? () => revertCardContent(current.id)
+            : undefined
+        }
       />
     </div>
   )

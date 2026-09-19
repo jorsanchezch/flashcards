@@ -27,7 +27,9 @@ import {
   addCardToDeck,
   hideCardFromDeck,
   setCardContentOverride,
+  revertCardContentOverride,
   updateUserConfig,
+  type CardContentOverride,
   type RosterUser,
   type UserConfig,
   type UserDocument,
@@ -60,7 +62,9 @@ type UserContextValue = {
     cardId: string,
     question: string,
     answer: string,
+    original?: CardContentOverride,
   ) => void
+  revertCardContent: (cardId: string) => void
   addCustomCard: (
     question: string,
     answer: string,
@@ -174,16 +178,36 @@ export function UserProvider({ roster, children }: UserProviderProps) {
   }, [applyReset])
 
   const saveCardContent = useCallback(
-    (cardId: string, question: string, answer: string) => {
+    (
+      cardId: string,
+      question: string,
+      answer: string,
+      original?: CardContentOverride,
+    ) => {
       setUserDoc((doc) => {
         if (!doc) return doc
-        const next = setCardContentOverride(doc, cardId, question, answer)
+        const next = setCardContentOverride(
+          doc,
+          cardId,
+          question,
+          answer,
+          original,
+        )
         saveUserDocument(next)
         return next
       })
     },
     [],
   )
+
+  const revertCardContent = useCallback((cardId: string) => {
+    setUserDoc((doc) => {
+      if (!doc) return doc
+      const next = revertCardContentOverride(doc, cardId)
+      saveUserDocument(next)
+      return next
+    })
+  }, [])
 
   const addCustomCard = useCallback(
     (question: string, answer: string, bookId: string, chapter: number) => {
@@ -256,6 +280,7 @@ export function UserProvider({ roster, children }: UserProviderProps) {
       resetAllLocalData,
       resetDeckToOriginal,
       saveCardContent,
+      revertCardContent,
       addCustomCard,
       removeCardFromDeck,
     }),
@@ -278,6 +303,7 @@ export function UserProvider({ roster, children }: UserProviderProps) {
       resetAllLocalData,
       resetDeckToOriginal,
       saveCardContent,
+      revertCardContent,
       addCustomCard,
       removeCardFromDeck,
     ],

@@ -70,7 +70,7 @@ export function StudySessionGate({
             Continuar sin ID
           </span>
           <span className="text-sm font-normal text-muted-foreground">
-            Practica sin nombre; tu avance queda solo en esta sesión.
+            Practica sin nombre; tu mazo y marcas quedan solo para ti aquí.
           </span>
         </Button>
 

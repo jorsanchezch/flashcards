@@ -358,6 +358,7 @@ export function setCardContentOverride(
   cardId: string,
   question: string,
   answer: string,
+  original?: CardContentOverride,
 ): UserDocument {
   const q = question.trim()
   const a = answer.trim()
@@ -367,8 +368,34 @@ export function setCardContentOverride(
     added[addedIndex] = { ...added[addedIndex], question: q, answer: a }
     return touch({ ...doc, deck: { ...doc.deck, added } })
   }
-  const edits = { ...doc.deck.edits, [cardId]: { question: q, answer: a } }
+  const edits = { ...doc.deck.edits }
+  const matchesOriginal =
+    original &&
+    q === original.question.trim() &&
+    a === original.answer.trim()
+  if (matchesOriginal) {
+    delete edits[cardId]
+  } else {
+    edits[cardId] = { question: q, answer: a }
+  }
   return touch({ ...doc, deck: { ...doc.deck, edits } })
+}
+
+export function revertCardContentOverride(
+  doc: UserDocument,
+  cardId: string,
+): UserDocument {
+  if (!doc.deck.edits[cardId]) return doc
+  const edits = { ...doc.deck.edits }
+  delete edits[cardId]
+  return touch({ ...doc, deck: { ...doc.deck, edits } })
+}
+
+export function isBuiltInCardEdited(
+  doc: UserDocument,
+  cardId: string,
+): boolean {
+  return Boolean(doc.deck.edits[cardId])
 }
 
 export function hideCardFromDeck(doc: UserDocument, cardId: string): UserDocument {

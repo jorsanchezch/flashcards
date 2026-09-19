@@ -14,6 +14,9 @@ type CardEditorDialogProps = {
   open: boolean
   initialQuestion?: string
   initialAnswer?: string
+  originalQuestion?: string
+  originalAnswer?: string
+  canRevertToOriginal?: boolean
   defaults: CardEditorDefaults
   onClose: () => void
   onSave: (payload: {
@@ -22,6 +25,7 @@ type CardEditorDialogProps = {
     bookId: string
     chapter: number
   }) => void
+  onRevertToOriginal?: () => void
 }
 
 export function CardEditorDialog({
@@ -29,14 +33,20 @@ export function CardEditorDialog({
   open,
   initialQuestion = '',
   initialAnswer = '',
+  originalQuestion,
+  originalAnswer: _originalAnswer,
+  canRevertToOriginal = false,
   defaults,
   onClose,
   onSave,
+  onRevertToOriginal,
 }: CardEditorDialogProps) {
   const [question, setQuestion] = useState(initialQuestion)
   const [answer, setAnswer] = useState(initialAnswer)
   const [bookId, setBookId] = useState(defaults.bookId)
   const [chapter, setChapter] = useState(String(defaults.chapter))
+  const [discardConfirm, setDiscardConfirm] = useState(false)
+  const [revertConfirm, setRevertConfirm] = useState(false)
 
   useEffect(() => {
     if (!open) return
@@ -44,6 +54,8 @@ export function CardEditorDialog({
     setAnswer(initialAnswer)
     setBookId(defaults.bookId)
     setChapter(String(defaults.chapter))
+    setDiscardConfirm(false)
+    setRevertConfirm(false)
   }, [open, initialQuestion, initialAnswer, defaults.bookId, defaults.chapter])
 
   if (!open) return null
@@ -53,6 +65,18 @@ export function CardEditorDialog({
     question.trim().length > 0 &&
     answer.trim().length > 0 &&
     Number.parseInt(chapter, 10) > 0
+
+  const isDirty =
+    question.trim() !== initialQuestion.trim() ||
+    answer.trim() !== initialAnswer.trim()
+
+  const requestClose = () => {
+    if (isDirty) {
+      setDiscardConfirm(true)
+      return
+    }
+    onClose()
+  }
 
   const submit = () => {
     if (!canSave) return
@@ -65,13 +89,19 @@ export function CardEditorDialog({
     onClose()
   }
 
+  const confirmRevert = () => {
+    onRevertToOriginal?.()
+    setRevertConfirm(false)
+    onClose()
+  }
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-4 sm:items-center"
       role="dialog"
       aria-modal="true"
       aria-labelledby="card-editor-title"
-      onClick={onClose}
+      onClick={requestClose}
     >
       <div
         className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-xl border bg-card p-5 shadow-lg"
@@ -82,9 +112,77 @@ export function CardEditorDialog({
         </h3>
         <p className="mt-1 text-sm text-muted-foreground">
           {mode === 'add'
-            ? 'La tarjeta se guardará solo en tu mazo en este dispositivo.'
-            : 'Los cambios se guardan solo para ti en este dispositivo.'}
+            ? 'Se añadirá solo a tu mazo personal.'
+            : 'Los cambios son solo para ti; el texto del curso no se modifica.'}
         </p>
+
+        {discardConfirm && (
+          <div
+            className="mt-4 rounded-lg border border-destructive/30 bg-destructive/5 p-3"
+            role="alertdialog"
+          >
+            <p className="text-sm font-medium">¿Descartar los cambios?</p>
+            <p className="mt-1 text-xs text-muted-foreground">
+              Lo que escribiste en esta ventana no se guardará.
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <Button
+                type="button"
+                size="sm"
+                variant="destructive"
+                onClick={() => {
+                  setDiscardConfirm(false)
+                  onClose()
+                }}
+              >
+                Sí, descartar
+              </Button>
+              <Button
+                type="button"
+                size="sm"
+                variant="outline"
+                onClick={() => setDiscardConfirm(false)}
+              >
+                Seguir editando
+              </Button>
+            </div>
+          </div>
+        )}
+
+        {revertConfirm && (
+          <div
+            className="mt-4 rounded-lg border border-destructive/30 bg-destructive/5 p-3"
+            role="alertdialog"
+          >
+            <p className="text-sm font-medium">¿Volver al texto del curso?</p>
+            <p className="mt-1 text-xs text-muted-foreground">
+              Se restaurará la pregunta y la respuesta originales de esta tarjeta.
+            </p>
+            {originalQuestion && (
+              <p className="mt-2 line-clamp-2 text-xs italic text-muted-foreground">
+                «{originalQuestion}»
+              </p>
+            )}
+            <div className="mt-3 flex flex-wrap gap-2">
+              <Button
+                type="button"
+                size="sm"
+                variant="destructive"
+                onClick={confirmRevert}
+              >
+                Sí, restaurar
+              </Button>
+              <Button
+                type="button"
+                size="sm"
+                variant="outline"
+                onClick={() => setRevertConfirm(false)}
+              >
+                Cancelar
+              </Button>
+            </div>
+          </div>
+        )}
 
         <div className="mt-4 flex flex-col gap-3">
           <div>
@@ -138,13 +236,25 @@ export function CardEditorDialog({
           )}
         </div>
 
-        <div className="mt-5 flex flex-wrap justify-end gap-2">
-          <Button type="button" variant="outline" onClick={onClose}>
-            Cancelar
-          </Button>
-          <Button type="button" onClick={submit} disabled={!canSave}>
-            Guardar
-          </Button>
+        <div className="mt-5 flex flex-col gap-3">
+          {mode === 'edit' && canRevertToOriginal && onRevertToOriginal && (
+            <Button
+              type="button"
+              variant="outline"
+              className="w-full"
+              onClick={() => setRevertConfirm(true)}
+            >
+              Volver al texto del curso
+            </Button>
+          )}
+          <div className="flex flex-wrap justify-end gap-2">
+            <Button type="button" variant="outline" onClick={requestClose}>
+              Cancelar
+            </Button>
+            <Button type="button" onClick={submit} disabled={!canSave}>
+              Guardar
+            </Button>
+          </div>
         </div>
       </div>
     </div>

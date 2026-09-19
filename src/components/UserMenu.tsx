@@ -74,7 +74,7 @@ export function UserMenu() {
         <input
           ref={fileRef}
           type="file"
-          accept="application/json"
+          accept=".json,application/json"
           className="hidden"
           onChange={(e) => void handleImport(e.target.files?.[0])}
         />
