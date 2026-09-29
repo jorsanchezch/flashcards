@@ -115,7 +115,7 @@ function FlashcardsApp() {
                 />
               ) : (
                 <StudyView
-                  key={`${sessionKey}-${studyCardId ?? 'deck'}-${userDoc.updatedAt}`}
+                  key={`${sessionKey}-${studyCardId ?? 'deck'}`}
                   cards={effectiveCards}
                   baseCards={baseCards}
                   initialCardId={studyCardId}
@@ -126,11 +126,7 @@ function FlashcardsApp() {
 
             <TabsContent value="browse">
               <BrowseView
-                key={
-                  userDoc
-                    ? `${sessionKey}-${userDoc.updatedAt}`
-                    : 'browse-anon'
-                }
+                key={userDoc ? sessionKey : 'browse-anon'}
                 cards={userDoc ? effectiveCards : baseCards}
                 baseCards={baseCards}
                 suggestedUserId={suggestedUserId}

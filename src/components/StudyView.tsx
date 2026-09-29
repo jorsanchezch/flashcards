@@ -389,7 +389,7 @@ export function StudyView({
       </div>
 
       <div className="flex flex-wrap justify-center gap-2">
-        <Button variant="default" onClick={markKnown}>
+        <Button type="button" variant="default" onClick={markKnown}>
           <ThumbsUp className="size-4" />
           La sé (K)
         </Button>
@@ -398,7 +398,7 @@ export function StudyView({
           onMark={markReviewed}
           shortcutHint="R"
         />
-        <Button variant="outline" onClick={markRepasar}>
+        <Button type="button" variant="outline" onClick={markRepasar}>
           <ThumbsDown className="size-4" />
           Repasar (U)
         </Button>
