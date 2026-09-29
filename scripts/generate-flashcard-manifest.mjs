@@ -1,4 +1,4 @@
-import { readdir, readFile, writeFile, stat, mkdir, cp } from 'node:fs/promises'
+import { readdir, readFile, writeFile, stat, mkdir, cp, rm } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -15,6 +15,12 @@ async function syncFromVault() {
   }
   await mkdir(publicFlashcards, { recursive: true })
   await cp(vaultFlashcards, publicFlashcards, { recursive: true, force: true })
+  const vaultFiles = new Set(await walkMd(vaultFlashcards))
+  for (const rel of await walkMd(publicFlashcards)) {
+    if (!vaultFiles.has(rel)) {
+      await rm(path.join(publicFlashcards, rel))
+    }
+  }
 }
 
 async function walkMd(dir, base = '') {
