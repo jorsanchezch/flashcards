@@ -28,22 +28,45 @@ import {
   hideCardFromDeck,
   setCardContentOverride,
   revertCardContentOverride,
+  saveGlossaryEntry as saveGlossaryEntryInDoc,
+  hideGlossaryEntry as hideGlossaryEntryInDoc,
   updateUserConfig,
   markCardsReviewed,
   setStudyGroup as setStudyGroupInDoc,
   clearStudyGroup as clearStudyGroupInDoc,
   type CardContentOverride,
+  type GlossaryEntry,
   type RosterUser,
   type UserConfig,
+  type UserDeckState,
   type UserDocument,
 } from '@/lib/userData'
-import { createUserAddedCard } from '@/lib/deckCustomize'
+import { createUserAddedCard, emptyDeckState } from '@/lib/deckCustomize'
 import { BIBLE_BOOKS } from '@/lib/biblical'
 import { applyCardReview, applyCardStatus, type CardStatus } from '@/lib/progress'
 import {
   loadPublishedTeamProgress,
   mergeGroupDocWithPublished,
 } from '@/lib/teamProgress'
+import {
+  adminNeedsPasswordSetup,
+  isAdminUserId,
+  loadAdminRecords,
+  setupAdminSecretIfMissing,
+  verifyAdminSecret,
+  type AdminRecord,
+} from '@/lib/adminAuth'
+import {
+  clearAuthorDeckOverlay,
+  collectPendingDeckChanges,
+  loadLocalSharedDeck,
+  loadPublishedSharedDeck,
+  mergeDeckIntoShared,
+  mergeSharedLayers,
+  mutateSharedDeck,
+  saveLocalSharedDeck,
+  type PendingDeckChange,
+} from '@/lib/sharedDeck'
 
 type UserContextValue = {
   roster: RosterUser[]
@@ -51,9 +74,15 @@ type UserContextValue = {
   userDoc: UserDocument | null
   groupDoc: UserDocument
   isGuest: boolean
+  isAdmin: boolean
   hasSession: boolean
   continueAsGuest: () => void
   selectUser: (user: RosterUser) => void
+  unlockAdmin: (
+    user: RosterUser,
+    secret: string,
+  ) => Promise<{ ok: true } | { ok: false; message: string; needsSetup?: boolean }>
+  isAdminAccount: (userId: string) => boolean
   signOut: () => void
   setCardStatus: (cardId: string, status: CardStatus | null) => void
   recordCardReview: (cardId: string) => void
@@ -82,8 +111,15 @@ type UserContextValue = {
     answer: string,
     bookId: string,
     chapter: number,
+    originalNumber?: number,
   ) => string | null
   removeCardFromDeck: (cardId: string) => void
+  saveGlossaryEntry: (entry: GlossaryEntry) => void
+  deleteGlossaryEntry: (entryId: string) => void
+  sharedDeckHasChanges: boolean
+  listPendingChanges: () => PendingDeckChange[]
+  persistPendingChange: (userId: string) => void
+  sharedDeck: UserDeckState
 }
 
 const UserContext = createContext<UserContextValue | null>(null)
@@ -99,6 +135,8 @@ export function UserProvider({ roster, children }: UserProviderProps) {
   const [groupDoc, setGroupDoc] = useState<UserDocument>(() =>
     loadGroupDocument(),
   )
+  const [admins, setAdmins] = useState<AdminRecord[]>([])
+  const [sharedDeck, setSharedDeck] = useState(emptyDeckState)
 
   const rosterById = useMemo(
     () => new Map(roster.map((u) => [u.id, u])),
@@ -131,7 +169,12 @@ export function UserProvider({ roster, children }: UserProviderProps) {
           group = merged
         }
       }
+      const publishedShared = await loadPublishedSharedDeck()
+      const localShared = loadLocalSharedDeck()
+      const records = await loadAdminRecords()
       if (cancelled) return
+      setAdmins(records)
+      setSharedDeck(mergeSharedLayers(publishedShared, localShared))
       setGroupDoc(group)
       const lastId = loadLastUserId()
       if (!lastId) return
@@ -142,6 +185,9 @@ export function UserProvider({ roster, children }: UserProviderProps) {
       }
       const user = rosterById.get(lastId)
       if (!user) return
+      if (isAdminUserId(user.id, records)) {
+        return
+      }
       setCurrentUser(user)
       setUserDoc(loadUserDocument(user))
     }
@@ -160,10 +206,42 @@ export function UserProvider({ roster, children }: UserProviderProps) {
   }, [])
 
   const selectUser = useCallback((user: RosterUser) => {
+    if (isAdminUserId(user.id, admins)) return
     saveLastUserId(user.id)
     setCurrentUser(user)
     setUserDoc(loadUserDocument(user))
-  }, [])
+  }, [admins])
+
+  const unlockAdmin = useCallback(
+    async (user: RosterUser, secret: string) => {
+      if (!isAdminUserId(user.id, admins)) {
+        return { ok: false as const, message: 'Esa cuenta no es de administración.' }
+      }
+      if (adminNeedsPasswordSetup(user.id, admins)) {
+        const setup = await setupAdminSecretIfMissing(user.id, secret, admins)
+        if (!setup.ok) return setup
+      } else {
+        const ok = await verifyAdminSecret(user.id, secret, admins)
+        if (!ok) {
+          return { ok: false as const, message: 'La clave no es correcta.' }
+        }
+      }
+      saveLastUserId(user.id)
+      setCurrentUser(user)
+      setUserDoc(loadUserDocument(user))
+      return { ok: true as const }
+    },
+    [admins],
+  )
+
+  const isAdminAccount = useCallback(
+    (userId: string) => isAdminUserId(userId, admins),
+    [admins],
+  )
+
+  const isAdmin = Boolean(
+    currentUser && isAdminUserId(currentUser.id, admins),
+  )
 
   const signOut = useCallback(() => {
     clearLastUserId()
@@ -262,6 +340,16 @@ export function UserProvider({ roster, children }: UserProviderProps) {
       answer: string,
       original?: CardContentOverride,
     ) => {
+      if (isAdmin) {
+        setSharedDeck((deck) => {
+          const next = mutateSharedDeck(deck, (doc) =>
+            setCardContentOverride(doc, cardId, question, answer, original),
+          )
+          saveLocalSharedDeck(next)
+          return next
+        })
+        return
+      }
       setUserDoc((doc) => {
         if (!doc) return doc
         const next = setCardContentOverride(
@@ -274,41 +362,94 @@ export function UserProvider({ roster, children }: UserProviderProps) {
         return commitDoc(next)
       })
     },
-    [],
+    [commitDoc, isAdmin],
   )
 
   const revertCardContent = useCallback((cardId: string) => {
+    if (isAdmin) {
+      setSharedDeck((deck) => {
+        const next = mutateSharedDeck(deck, (doc) =>
+          revertCardContentOverride(doc, cardId),
+        )
+        saveLocalSharedDeck(next)
+        return next
+      })
+      return
+    }
     setUserDoc((doc) => {
       if (!doc) return doc
       const next = revertCardContentOverride(doc, cardId)
       return commitDoc(next)
     })
-  }, [])
+  }, [commitDoc, isAdmin])
 
   const addCustomCard = useCallback(
-    (question: string, answer: string, bookId: string, chapter: number) => {
+    (
+      question: string,
+      answer: string,
+      bookId: string,
+      chapter: number,
+      originalNumber?: number,
+    ) => {
       const bookIndex = BIBLE_BOOKS.findIndex((b) => b.id === bookId)
       const book = BIBLE_BOOKS[bookIndex >= 0 ? bookIndex : 0]
-      const card = createUserAddedCard(
+      const assigned = originalNumber && originalNumber > 0 ? originalNumber : 0
+      const created = createUserAddedCard(
         question,
         answer,
-        { id: book.id, label: book.label, canonIndex: bookIndex >= 0 ? bookIndex : 0 },
+        {
+          id: book.id,
+          label: book.label,
+          canonIndex: bookIndex >= 0 ? bookIndex : 0,
+        },
         chapter,
+        assigned || Date.now() % 1_000_000,
       )
+      if (isAdmin) {
+        setSharedDeck((deck) => {
+          const next = mutateSharedDeck(deck, (doc) => addCardToDeck(doc, created))
+          saveLocalSharedDeck(next)
+          return next
+        })
+        return created.id
+      }
       setUserDoc((doc) => {
         if (!doc) return doc
-        const next = addCardToDeck(doc, card)
-        return commitDoc(next)
+        return commitDoc(addCardToDeck(doc, created))
       })
-      return card.id
+      return created.id
     },
-    [],
+    [commitDoc, isAdmin],
   )
 
   const removeCardFromDeck = useCallback((cardId: string) => {
+    if (isAdmin) {
+      setSharedDeck((deck) => {
+        const next = mutateSharedDeck(deck, (doc) => hideCardFromDeck(doc, cardId))
+        saveLocalSharedDeck(next)
+        return next
+      })
+      return
+    }
     setUserDoc((doc) => {
       if (!doc) return doc
       const next = hideCardFromDeck(doc, cardId)
+      return commitDoc(next)
+    })
+  }, [commitDoc, isAdmin])
+
+  const saveGlossaryEntry = useCallback((entry: GlossaryEntry) => {
+    setUserDoc((doc) => {
+      if (!doc) return doc
+      const next = saveGlossaryEntryInDoc(doc, entry)
+      return commitDoc(next)
+    })
+  }, [])
+
+  const deleteGlossaryEntry = useCallback((entryId: string) => {
+    setUserDoc((doc) => {
+      if (!doc) return doc
+      const next = hideGlossaryEntryInDoc(doc, entryId)
       return commitDoc(next)
     })
   }, [])
@@ -334,6 +475,37 @@ export function UserProvider({ roster, children }: UserProviderProps) {
   const isGuest = isGuestDocument(userDoc)
   const hasSession = userDoc !== null
 
+  const listPendingChanges = useCallback(() => {
+    if (!currentUser) return []
+    return collectPendingDeckChanges(currentUser.id)
+  }, [currentUser, sharedDeck])
+
+  const persistPendingChange = useCallback(
+    (userId: string) => {
+      const pending = collectPendingDeckChanges(currentUser?.id ?? '').find(
+        (row) => row.userId === userId,
+      )
+      if (!pending) return
+      setSharedDeck((deck) => {
+        const next = mergeDeckIntoShared(deck, pending.deck)
+        saveLocalSharedDeck(next)
+        return next
+      })
+      clearAuthorDeckOverlay(userId)
+      if (userDoc?.userId === userId) {
+        setUserDoc((doc) =>
+          doc ? commitDoc({ ...doc, deck: emptyDeckState() }) : doc,
+        )
+      }
+    },
+    [commitDoc, currentUser, userDoc],
+  )
+
+  const sharedDeckHasChanges =
+    Object.keys(sharedDeck.edits).length > 0 ||
+    sharedDeck.hiddenIds.length > 0 ||
+    sharedDeck.added.length > 0
+
   const value = useMemo(
     () => ({
       roster,
@@ -341,9 +513,12 @@ export function UserProvider({ roster, children }: UserProviderProps) {
       userDoc,
       groupDoc,
       isGuest,
+      isAdmin,
       hasSession,
       continueAsGuest,
       selectUser,
+      unlockAdmin,
+      isAdminAccount,
       signOut,
       setCardStatus,
       recordCardReview,
@@ -362,6 +537,12 @@ export function UserProvider({ roster, children }: UserProviderProps) {
       revertCardContent,
       addCustomCard,
       removeCardFromDeck,
+      saveGlossaryEntry,
+      deleteGlossaryEntry,
+      sharedDeckHasChanges,
+      listPendingChanges,
+      persistPendingChange,
+      sharedDeck,
     }),
     [
       roster,
@@ -369,9 +550,12 @@ export function UserProvider({ roster, children }: UserProviderProps) {
       userDoc,
       groupDoc,
       isGuest,
+      isAdmin,
       hasSession,
       continueAsGuest,
       selectUser,
+      unlockAdmin,
+      isAdminAccount,
       signOut,
       setCardStatus,
       recordCardReview,
@@ -390,6 +574,12 @@ export function UserProvider({ roster, children }: UserProviderProps) {
       revertCardContent,
       addCustomCard,
       removeCardFromDeck,
+      saveGlossaryEntry,
+      deleteGlossaryEntry,
+      sharedDeckHasChanges,
+      listPendingChanges,
+      persistPendingChange,
+      sharedDeck,
     ],
   )
 

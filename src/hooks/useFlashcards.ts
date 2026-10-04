@@ -58,6 +58,9 @@ export function useFlashcards() {
       }
 
       cards.sort(compareFlashcardsByCanon)
+      cards.forEach((card, index) => {
+        card.originalNumber = index + 1
+      })
 
       setState({ status: 'ready', cards })
     } catch (e) {

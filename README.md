@@ -43,12 +43,12 @@ Haz push a `main`: el workflow [`.github/workflows/deploy-pages.yml`](.github/wo
 
 ## Funciones
 
-- **Entrada al estudio**: continuar sin ID o identificarse con uno de los 13 nombres del equipo. Sin ID, las marcas La sé, Repasar y Revisada son del equipo y se ven en Equipo.
-- **Estudiar**: volteo, navegación, salto a un número de tarjeta, mezclar, marcar; citas NTV enlazan a Bible Gateway.
-- **Explorar**: búsqueda y filtros por libro y capítulo (orden bíblico: Samuel y luego Reyes).
-- **Equipo**: resumen de las 13 personas y el avance compartido sin ID; **Actualizar resumen del equipo** incluye ese avance del grupo.
-- **Material**: inventario del grupo, mapa del viaje del arca y ritmo del curso (lunes, miércoles y viernes, 1 sep–31 oct 2026).
-- Atajos de teclado, barra de progreso de sesión, estados vacío/carga/error.
+- **Entrada al estudio**: continuar sin ID o identificarse. Jorge Sanchez pide clave. Sin ID, las marcas La sé, Repasar y Revisada son del equipo.
+- **Estudiar**: volteo, salto al número de cola, filtros compartidos (libro/capítulo y glosario), mezclar, marcar sin avanzar de tarjeta; citas NTV en pregunta y respuesta; número original arriba a la derecha en las dos caras. Siguiente/Anterior desde la respuesta muestran al instante la pregunta siguiente, sin animación de volteo.
+- **Lista**: misma barra de filtros; búsqueda; número original de cada tarjeta.
+- **Equipo**: integrantes ordenados por avance (La sé + Revisada).
+- **Material**: inventario, mapa del arca, ritmo del curso y glosario (palabras, referencias, filtro y edición).
+- **Mazo**: quienes no administran editan solo su copia; la administración puede pasar esos cambios al mazo del curso.
 
 ## Stack
 

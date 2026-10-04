@@ -14,9 +14,12 @@ import { UserPickerView } from '@/components/UserPickerView'
 import { useUser } from '@/context/UserContext'
 import { getCardStatus, getReviewHistory } from '@/lib/progress'
 import { cardsInBookChapterRange } from '@/lib/studyPool'
-import { isBuiltInCardEdited } from '@/lib/userData'
+import { applyDeckGroupings } from '@/lib/deckFilter'
+import { defaultUserConfig, isBuiltInCardEdited } from '@/lib/userData'
+import { useGlossary } from '@/context/GlossaryContext'
 import { CardEditorDialog } from '@/components/CardEditorDialog'
-import { CitationLinks } from '@/components/CitedText'
+import { CitationLinks, CitedText } from '@/components/CitedText'
+import { DeckFilterBar } from '@/components/DeckFilterBar'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -42,6 +45,7 @@ type BookGroup = {
   bookId: string
   bookLabel: string
   canonIndex: number
+  cardCount: number
   chapters: { chapter: number; cards: Flashcard[] }[]
 }
 
@@ -55,6 +59,7 @@ function buildBookGroups(list: Flashcard[]): BookGroup[] {
         bookId: card.bookId,
         bookLabel: card.bookLabel,
         canonIndex: card.canonIndex,
+        cardCount: 0,
         chapters: [],
       }
       byBook.set(card.bookId, group)
@@ -75,8 +80,10 @@ function buildBookGroups(list: Flashcard[]): BookGroup[] {
 
   for (const book of books) {
     book.chapters.sort((a, b) => a.chapter - b.chapter)
+    book.cardCount = 0
     for (const ch of book.chapters) {
       ch.cards.sort((a, b) => a.question.localeCompare(b.question, 'es'))
+      book.cardCount += ch.cards.length
     }
   }
 
@@ -110,6 +117,8 @@ export function BrowseView({
     continueAsGuest,
     selectUser,
   } = useUser()
+  const { matchers } = useGlossary()
+  const [localConfig, setLocalConfig] = useState(defaultUserConfig)
   const [query, setQuery] = useState('')
   const [bookFilter, setBookFilter] = useState<string>('all')
   const [chapterFilter, setChapterFilter] = useState<number | 'all'>('all')
@@ -190,9 +199,16 @@ export function BrowseView({
     return [...set].sort((a, b) => a - b)
   }, [cards, bookFilter])
 
+  const filterConfig = userDoc?.config ?? localConfig
+  const patchFilters = (patch: Parameters<typeof patchConfig>[0]) => {
+    if (userDoc) patchConfig(patch)
+    else setLocalConfig((prev) => ({ ...prev, ...patch }))
+  }
+
   const filtered = useMemo(() => {
+    const grouped = applyDeckGroupings(cards, filterConfig.groupings, matchers)
     const q = query.trim().toLowerCase()
-    return cards.filter((c) => {
+    return grouped.filter((c) => {
       if (bookFilter !== 'all' && c.bookId !== bookFilter) return false
       if (chapterFilter !== 'all' && c.chapter !== chapterFilter) return false
       if (!q) return true
@@ -204,7 +220,7 @@ export function BrowseView({
         String(c.chapter).includes(q)
       )
     })
-  }, [cards, query, bookFilter, chapterFilter])
+  }, [cards, query, bookFilter, chapterFilter, filterConfig.groupings, matchers])
 
   const grouped = useMemo(() => buildBookGroups(filtered), [filtered])
 
@@ -370,10 +386,10 @@ export function BrowseView({
     <div className="mx-auto w-full max-w-3xl px-4 py-6">
       <div className="mb-6">
         <h2 className="text-xl font-semibold tracking-tight">
-          Explorar tarjetas
+          Lista de tarjetas
         </h2>
         <p className="text-sm text-muted-foreground">
-          {cards.length} tarjetas
+          {filtered.length === 1 ? '1 tarjeta' : `${filtered.length} tarjetas`}
           {userDoc && (
             <>
               {' '}
@@ -381,6 +397,14 @@ export function BrowseView({
             </>
           )}
         </p>
+      </div>
+
+      <div className="mb-4">
+        <DeckFilterBar
+          cards={cards}
+          config={filterConfig}
+          onPatch={patchFilters}
+        />
       </div>
 
       <div className="mb-4 flex flex-wrap gap-2">
@@ -580,8 +604,13 @@ export function BrowseView({
         <div className="flex flex-col gap-8">
           {grouped.map((book) => (
             <section key={book.bookId}>
-              <h3 className="mb-4 border-b pb-2 text-lg font-semibold tracking-tight">
-                {book.bookLabel}
+              <h3 className="mb-4 flex items-baseline justify-between gap-3 border-b pb-2 text-lg font-semibold tracking-tight">
+                <span>{book.bookLabel}</span>
+                <span className="shrink-0 text-sm font-normal tabular-nums text-muted-foreground">
+                  {book.cardCount === 1
+                    ? '1 tarjeta'
+                    : `${book.cardCount} tarjetas`}
+                </span>
               </h3>
               <div className="flex flex-col gap-6">
                 {book.chapters.map((ch) => (
@@ -634,6 +663,11 @@ export function BrowseView({
                                   <span className="text-xs text-muted-foreground">
                                     {card.bookLabel} {card.chapter}
                                   </span>
+                                  {card.originalNumber > 0 && (
+                                    <span className="ml-auto text-xs tabular-nums text-muted-foreground">
+                                      {card.originalNumber}
+                                    </span>
+                                  )}
                                   {card.id.startsWith('custom/') && (
                                     <Badge variant="outline" className="text-[10px]">
                                       Añadida por ti
@@ -669,7 +703,7 @@ export function BrowseView({
                                   )}
                                 </div>
                                 <p className="line-clamp-2 text-sm font-medium">
-                                  {card.question}
+                                  <CitedText text={card.question} />
                                 </p>
                               </button>
                               <CitationLinks

@@ -16,6 +16,7 @@ export function UserDataPanel() {
   const {
     userDoc,
     isGuest,
+    isAdmin,
     resetProgress,
     resetConfig,
     resetDeckToOriginal,
@@ -101,6 +102,7 @@ export function UserDataPanel() {
               <Settings2 className="size-4" />
               Restablecer preferencias
             </Button>
+            {isAdmin && (
             <Button
               type="button"
               variant="outline"
@@ -114,6 +116,7 @@ export function UserDataPanel() {
               <Trash2 className="size-4" />
               Restaurar mazo original
             </Button>
+            )}
             <Button
               type="button"
               variant="destructive"

@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import {
   ChevronDown,
   ChevronUp,
+  ClipboardList,
   Download,
   LogOut,
   MoreVertical,
@@ -10,6 +11,7 @@ import {
 } from 'lucide-react'
 import { useUser } from '@/context/UserContext'
 import { UserDataPanel } from '@/components/UserDataPanel'
+import { PendingChangesDialog } from '@/components/PendingChangesDialog'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -19,10 +21,12 @@ import {
 } from '@/components/ui/dropdown-menu'
 
 export function UserMenu() {
-  const { userDoc, isGuest, signOut, exportDocument, importDocument } = useUser()
+  const { userDoc, isGuest, isAdmin, signOut, exportDocument, importDocument } =
+    useUser()
   const fileRef = useRef<HTMLInputElement>(null)
   const [importMessage, setImportMessage] = useState<string | null>(null)
   const [showDataPanel, setShowDataPanel] = useState(false)
+  const [pendingOpen, setPendingOpen] = useState(false)
 
   if (!userDoc) return null
 
@@ -50,34 +54,6 @@ export function UserMenu() {
           <UserRound className="size-4 shrink-0" />
           <span className="truncate">{label}</span>
         </Button>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="outline"
-              size="icon-sm"
-              aria-label="Más opciones"
-            >
-              <MoreVertical className="size-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-48">
-            <DropdownMenuItem onClick={() => exportDocument()}>
-              <Download className="size-4" />
-              Guardar copia
-            </DropdownMenuItem>
-            <DropdownMenuItem onSelect={() => fileRef.current?.click()}>
-              <Upload className="size-4" />
-              Cargar copia
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <input
-          ref={fileRef}
-          type="file"
-          accept=".json,application/json"
-          className="hidden"
-          onChange={(e) => void handleImport(e.target.files?.[0])}
-        />
         <Button
           variant="outline"
           size="sm"
@@ -95,6 +71,42 @@ export function UserMenu() {
           <LogOut className="size-4" />
           Cambiar
         </Button>
+        {isAdmin && (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon-sm"
+                aria-label="Más opciones"
+              >
+                <MoreVertical className="size-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuItem onClick={() => exportDocument()}>
+                <Download className="size-4" />
+                Guardar copia
+              </DropdownMenuItem>
+              <DropdownMenuItem onSelect={() => fileRef.current?.click()}>
+                <Upload className="size-4" />
+                Cargar copia
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setPendingOpen(true)}>
+                <ClipboardList className="size-4" />
+                Cambios pendientes
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        )}
+        {isAdmin && (
+          <input
+            ref={fileRef}
+            type="file"
+            accept=".json,application/json"
+            className="hidden"
+            onChange={(e) => void handleImport(e.target.files?.[0])}
+          />
+        )}
       </div>
       {importMessage && (
         <p className="max-w-xs text-right text-xs text-muted-foreground">
@@ -102,6 +114,9 @@ export function UserMenu() {
         </p>
       )}
       {showDataPanel && <UserDataPanel />}
+      {pendingOpen && (
+        <PendingChangesDialog onClose={() => setPendingOpen(false)} />
+      )}
     </div>
   )
 }

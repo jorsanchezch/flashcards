@@ -220,8 +220,8 @@ export function TeamSummaryView({
         <CardHeader className="pb-2">
           <CardTitle className="text-sm">Totales del equipo</CardTitle>
           <CardDescription className="text-xs">
-            Suma de las cifras mostradas abajo (cada persona sobre {totalCards}{' '}
-            tarjetas).
+            Lista ordenada por avance (La sé + Revisada, de más a menos). Cada
+            persona sobre {totalCards} tarjetas.
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-wrap gap-4 text-sm">

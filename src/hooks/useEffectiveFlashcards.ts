@@ -1,14 +1,17 @@
 import { useMemo } from 'react'
-import { mergeDeckWithUserState } from '@/lib/deckCustomize'
+import { applySharedThenPersonal } from '@/lib/sharedDeck'
 import type { Flashcard } from '@/lib/parseFlashcard'
+import { emptyDeckState } from '@/lib/deckCustomize'
 import type { UserDocument } from '@/lib/userData'
+import { useUser } from '@/context/UserContext'
 
 export function useEffectiveFlashcards(
   baseCards: Flashcard[],
   userDoc: UserDocument | null,
 ): Flashcard[] {
+  const { sharedDeck, isAdmin } = useUser()
   return useMemo(() => {
-    if (!userDoc) return baseCards
-    return mergeDeckWithUserState(baseCards, userDoc.deck)
-  }, [baseCards, userDoc])
+    const personal = isAdmin ? emptyDeckState() : userDoc?.deck ?? emptyDeckState()
+    return applySharedThenPersonal(baseCards, sharedDeck, personal)
+  }, [baseCards, userDoc, sharedDeck, isAdmin])
 }

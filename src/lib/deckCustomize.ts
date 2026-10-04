@@ -23,6 +23,7 @@ export function userAddedToFlashcard(card: UserAddedCard): Flashcard {
     bookLabel: biblical.bookLabel,
     chapter: biblical.chapter,
     canonIndex: biblical.canonIndex,
+    originalNumber: card.originalNumber ?? 0,
     question: card.question,
     answer: card.answer,
   }
@@ -34,6 +35,10 @@ export function mergeDeckWithUserState(
 ): Flashcard[] {
   const hidden = new Set(deck.hiddenIds)
   const merged: Flashcard[] = []
+  let maxOriginal = 0
+  for (const card of baseCards) {
+    if (card.originalNumber > maxOriginal) maxOriginal = card.originalNumber
+  }
 
   for (const card of baseCards) {
     if (hidden.has(card.id)) continue
@@ -50,7 +55,12 @@ export function mergeDeckWithUserState(
   }
 
   for (const added of deck.added) {
-    merged.push(userAddedToFlashcard(added))
+    const flash = userAddedToFlashcard(added)
+    const number = added.originalNumber && added.originalNumber > 0
+      ? added.originalNumber
+      : ++maxOriginal
+    if (number > maxOriginal) maxOriginal = number
+    merged.push({ ...flash, originalNumber: number })
   }
 
   merged.sort(compareFlashcardsByCanon)
@@ -62,6 +72,7 @@ export function createUserAddedCard(
   answer: string,
   book: { id: string; label: string; canonIndex: number },
   chapter: number,
+  originalNumber: number,
 ): UserAddedCard {
   return {
     id: `custom/${crypto.randomUUID()}`,
@@ -71,5 +82,6 @@ export function createUserAddedCard(
     bookLabel: book.label,
     chapter,
     canonIndex: book.canonIndex,
+    originalNumber,
   }
 }

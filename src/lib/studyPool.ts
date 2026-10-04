@@ -21,8 +21,8 @@ export function resolveStudyPool(
   }
   return filterCardsByChapterRange(
     cards,
-    config.studyChapterFrom,
-    config.studyChapterTo,
+    config.studyChapterFrom ?? null,
+    config.studyChapterTo ?? null,
   )
 }
 

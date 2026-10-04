@@ -10,6 +10,7 @@ export type Flashcard = {
   bookLabel: string
   chapter: number
   canonIndex: number
+  originalNumber: number
   question: string
   answer: string
   noteLink?: string
@@ -102,6 +103,7 @@ export function parseFlashcardMarkdown(
     bookLabel: biblical.bookLabel,
     chapter: biblical.chapter,
     canonIndex: biblical.canonIndex,
+    originalNumber: 0,
     question,
     answer,
     noteLink,

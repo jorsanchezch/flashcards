@@ -1,7 +1,12 @@
 import { useState } from 'react'
 import { CalendarDays, ExternalLink, FileText, Map } from 'lucide-react'
 import { CitationLinks } from '@/components/CitedText'
+import {
+  GlossaryMaterialRow,
+  GlossaryPanel,
+} from '@/components/GlossaryPanel'
 import { coursePaceOn, formatChapterRange, formatLongDate } from '@/lib/coursePace'
+import type { Flashcard } from '@/lib/parseFlashcard'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import {
@@ -21,10 +26,39 @@ const ARK_MAP_SRC = `${import.meta.env.BASE_URL}viaje-del-arca.png`
 const ARK_CONTEXT =
   'Después de la derrota en Eben-ezer, los filisteos se llevaron el arca a Asdod y la pusieron en el templo de Dagón; allí Dagón cayó y la ciudad sufrió tumores. La enviaron a Gat y luego a Ecrón, y el mismo azote las siguió. A los siete meses la devolvieron en una carreta nueva, con ofrendas, y las vacas fueron derecho a Bet-semes. Algunos de Bet-semes miraron dentro del arca y murieron; entonces la llevaron a Quiriat-jearim, a la casa de Abinadab, donde permaneció unos veinte años mientras Israel se volvía al Señor. (1 Samuel 4:11; 5:1-12; 6:1-16; 6:19-21; 7:1-2, NTV)'
 
-export function StudyMaterialsView() {
-  const [openRow, setOpenRow] = useState<string | null>(null)
+export type MaterialRow = 'doc' | 'ark' | 'pace' | 'glossary' | null
+
+type StudyMaterialsViewProps = {
+  cards: Flashcard[]
+  openRow: MaterialRow
+  onOpenRow: (row: MaterialRow) => void
+  glossaryTermId: string | null
+  onSelectGlossaryTerm: (id: string | null) => void
+  onOpenCardInStudy: (cardId: string) => void
+  suggestedUserId?: string | null
+}
+
+export function StudyMaterialsView({
+  cards,
+  openRow,
+  onOpenRow,
+  glossaryTermId,
+  onSelectGlossaryTerm,
+  onOpenCardInStudy,
+  suggestedUserId,
+}: StudyMaterialsViewProps) {
   const [mapOpen, setMapOpen] = useState(false)
   const pace = coursePaceOn()
+
+  const toggle = (row: Exclude<MaterialRow, null>) => {
+    if (openRow === row) {
+      onOpenRow(null)
+      onSelectGlossaryTerm(null)
+      return
+    }
+    onOpenRow(row)
+    if (row !== 'glossary') onSelectGlossaryTerm(null)
+  }
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-6">
@@ -32,16 +66,36 @@ export function StudyMaterialsView() {
         Material de estudio
       </h2>
       <p className="mt-1 text-sm text-muted-foreground">
-        Documentos, mapa y ritmo del curso para 1–2 Samuel y 1–2 Reyes.
+        Documentos, mapa, glosario y ritmo del curso para 1–2 Samuel y 1–2 Reyes.
       </p>
 
       <ul className="mt-6 flex flex-col gap-3">
         <li>
+          <GlossaryMaterialRow
+            open={openRow === 'glossary'}
+            onToggle={() => toggle('glossary')}
+          />
+          {openRow === 'glossary' && (
+            <div className="mt-2">
+              <GlossaryPanel
+                cards={cards}
+                selectedTermId={glossaryTermId}
+                onSelectTerm={onSelectGlossaryTerm}
+                onOpenCardInStudy={onOpenCardInStudy}
+                onBackToMaterials={() => {
+                  onSelectGlossaryTerm(null)
+                  onOpenRow(null)
+                }}
+                suggestedUserId={suggestedUserId}
+              />
+            </div>
+          )}
+        </li>
+
+        <li>
           <button
             type="button"
-            onClick={() =>
-              setOpenRow((v) => (v === 'doc' ? null : 'doc'))
-            }
+            onClick={() => toggle('doc')}
             className="flex w-full min-h-11 items-center justify-between gap-3 rounded-xl border bg-card px-4 py-3 text-left transition-colors hover:bg-accent/40"
           >
             <span className="flex items-center gap-3">
@@ -86,9 +140,7 @@ export function StudyMaterialsView() {
         <li>
           <button
             type="button"
-            onClick={() =>
-              setOpenRow((v) => (v === 'ark' ? null : 'ark'))
-            }
+            onClick={() => toggle('ark')}
             className="flex w-full min-h-11 items-center justify-between gap-3 rounded-xl border bg-card px-4 py-3 text-left transition-colors hover:bg-accent/40"
           >
             <span className="flex items-center gap-3">
@@ -139,9 +191,7 @@ export function StudyMaterialsView() {
         <li>
           <button
             type="button"
-            onClick={() =>
-              setOpenRow((v) => (v === 'pace' ? null : 'pace'))
-            }
+            onClick={() => toggle('pace')}
             className="flex w-full min-h-11 items-center justify-between gap-3 rounded-xl border bg-card px-4 py-3 text-left transition-colors hover:bg-accent/40"
           >
             <span className="flex items-center gap-3">

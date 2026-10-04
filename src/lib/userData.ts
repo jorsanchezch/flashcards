@@ -1,3 +1,20 @@
+import {
+  emptyGlossaryOverlay,
+  isCustomGlossaryId,
+  normalizeGlossaryEntry,
+  normalizeGlossaryOverlay,
+  type GlossaryEntry,
+  type GlossaryOverlay,
+} from '@/lib/glossary'
+import {
+  parseDeckGroupings,
+  setBookRangeGrouping,
+  setCardIdsGrouping,
+  type DeckGrouping,
+} from '@/lib/deckFilter'
+
+export type { GlossaryEntry, GlossaryOverlay }
+
 export type CardProgressStatus =
   | 'known'
   | 'unknown'
@@ -12,19 +29,22 @@ export type CardProgressEntry = {
 }
 
 export type UserConfig = {
+  /** Active grouping clauses (book range, glossary words, …). AND between kinds. */
+  groupings: DeckGrouping[]
+  /** Temporary shuffle of the current filtered pool. */
   shuffle: boolean
-  shuffleByChapter: boolean
-  studyChapterFrom: number | null
-  studyChapterTo: number | null
-  /** When set, study mode uses only these card ids (shuffle within group). */
-  studyGroupCardIds: string[] | null
-  studyGroupLabel: string | null
   lastBook: string | null
   lastChapter: number | null
   /** Saved study-queue order (card ids) for this session. */
   studySessionOrder: string[] | null
   /** 0-based index in studySessionOrder. */
   studySessionIndex: number
+  /** @deprecated migrated into groupings */
+  shuffleByChapter?: boolean
+  studyChapterFrom?: number | null
+  studyChapterTo?: number | null
+  studyGroupCardIds?: string[] | null
+  studyGroupLabel?: string | null
 }
 
 export type CardContentOverride = {
@@ -40,6 +60,7 @@ export type UserAddedCard = {
   bookLabel: string
   chapter: number
   canonIndex: number
+  originalNumber?: number
 }
 
 export type UserDeckState = {
@@ -55,6 +76,7 @@ export type UserDocument = {
   config: UserConfig
   progress: Record<string, CardProgressEntry>
   deck: UserDeckState
+  glossary: GlossaryOverlay
 }
 
 export type RosterUser = {
@@ -122,14 +144,10 @@ export function clearLastUserId() {
 
 export function defaultUserConfig(): UserConfig {
   return {
+    groupings: [],
     shuffle: false,
-    shuffleByChapter: false,
-    studyChapterFrom: null,
-    studyChapterTo: null,
-    studyGroupCardIds: null,
-    studyGroupLabel: null,
-    lastBook: '1 Samuel',
-    lastChapter: 1,
+    lastBook: null,
+    lastChapter: null,
     studySessionOrder: null,
     studySessionIndex: 0,
   }
@@ -143,6 +161,7 @@ export function createEmptyUserDocument(user: RosterUser): UserDocument {
     config: defaultUserConfig(),
     progress: {},
     deck: { edits: {}, hiddenIds: [], added: [] },
+    glossary: emptyGlossaryOverlay(),
   }
 }
 
@@ -202,17 +221,56 @@ export function loadUserDocument(user: RosterUser): UserDocument {
   }
 }
 
+function migrateLegacyGroupings(raw: Partial<UserConfig>): DeckGrouping[] {
+  let groupings: DeckGrouping[] = []
+  const groupIds = Array.isArray(raw.studyGroupCardIds)
+    ? raw.studyGroupCardIds.filter(
+        (id): id is string => typeof id === 'string' && id.length > 0,
+      )
+    : []
+  if (groupIds.length) {
+    groupings = setCardIdsGrouping(
+      groupings,
+      groupIds,
+      typeof raw.studyGroupLabel === 'string' ? raw.studyGroupLabel : null,
+    )
+  }
+  const bookLabel =
+    typeof raw.lastBook === 'string' && raw.lastBook.trim()
+      ? raw.lastBook.trim()
+      : null
+  const bookId = bookIdFromLegacyLabel(bookLabel)
+  const from =
+    typeof raw.studyChapterFrom === 'number' && raw.studyChapterFrom > 0
+      ? Math.floor(raw.studyChapterFrom)
+      : null
+  const to =
+    typeof raw.studyChapterTo === 'number' && raw.studyChapterTo > 0
+      ? Math.floor(raw.studyChapterTo)
+      : null
+  if (bookId && (from != null || to != null)) {
+    groupings = setBookRangeGrouping(groupings, bookId, from, to)
+  }
+  return groupings
+}
+
+function bookIdFromLegacyLabel(label: string | null): string | null {
+  if (!label) return null
+  const map: Record<string, string> = {
+    '1 Samuel': '1-samuel',
+    '2 Samuel': '2-samuel',
+    '1 Reyes': '1-reyes',
+    '2 Reyes': '2-reyes',
+  }
+  return map[label] ?? null
+}
+
 function normalizeUserDocument(
   parsed: Partial<UserDocument>,
   user: RosterUser,
 ): UserDocument {
   const base = createEmptyUserDocument(user)
   const rawConfig = (parsed.config ?? {}) as Partial<UserConfig>
-  const groupIds = Array.isArray(rawConfig.studyGroupCardIds)
-    ? rawConfig.studyGroupCardIds.filter(
-        (id): id is string => typeof id === 'string' && id.length > 0,
-      )
-    : null
   const sessionOrder = Array.isArray(rawConfig.studySessionOrder)
     ? rawConfig.studySessionOrder.filter(
         (id): id is string => typeof id === 'string' && id.length > 0,
@@ -223,15 +281,24 @@ function normalizeUserDocument(
     typeof rawIndex === 'number' && Number.isFinite(rawIndex)
       ? Math.max(0, Math.floor(rawIndex))
       : 0
+
+  let groupings = parseDeckGroupings(rawConfig.groupings)
+  if (!groupings.length) {
+    groupings = migrateLegacyGroupings(rawConfig)
+  }
+
   const config: UserConfig = {
     ...base.config,
-    ...rawConfig,
-    studyGroupCardIds: groupIds?.length ? groupIds : null,
-    studyGroupLabel:
-      typeof rawConfig.studyGroupLabel === 'string' &&
-      rawConfig.studyGroupLabel.trim()
-        ? rawConfig.studyGroupLabel.trim()
+    lastBook:
+      typeof rawConfig.lastBook === 'string' && rawConfig.lastBook.trim()
+        ? rawConfig.lastBook.trim()
         : null,
+    lastChapter:
+      typeof rawConfig.lastChapter === 'number' && rawConfig.lastChapter > 0
+        ? Math.floor(rawConfig.lastChapter)
+        : null,
+    groupings,
+    shuffle: Boolean(rawConfig.shuffle),
     studySessionOrder: sessionOrder?.length ? sessionOrder : null,
     studySessionIndex: sessionIndex,
   }
@@ -265,6 +332,9 @@ function normalizeUserDocument(
     }
   }
   const deck = normalizeDeckState(parsed.deck)
+  const glossary = normalizeGlossaryOverlay(
+    (parsed as Partial<UserDocument>).glossary,
+  )
 
   return {
     userId: user.id,
@@ -276,6 +346,7 @@ function normalizeUserDocument(
     config,
     progress,
     deck,
+    glossary,
   }
 }
 
@@ -327,6 +398,11 @@ function normalizeDeckState(raw: unknown): UserDeckState {
           bookLabel: card.bookLabel,
           chapter: card.chapter,
           canonIndex: card.canonIndex,
+          originalNumber:
+            typeof card.originalNumber === 'number' &&
+            Number.isFinite(card.originalNumber)
+              ? Math.floor(card.originalNumber)
+              : undefined,
         })
       }
     }
@@ -425,19 +501,18 @@ export function setStudyGroup(
   cardIds: string[],
   label: string | null,
 ): UserDocument {
-  const ids = [...new Set(cardIds.filter(Boolean))]
   return updateUserConfig(doc, {
-    studyGroupCardIds: ids.length ? ids : null,
-    studyGroupLabel: label?.trim() || null,
-    studyChapterFrom: null,
-    studyChapterTo: null,
+    groupings: setCardIdsGrouping(doc.config.groupings, cardIds, label),
+    studySessionOrder: null,
+    studySessionIndex: 0,
   })
 }
 
 export function clearStudyGroup(doc: UserDocument): UserDocument {
   return updateUserConfig(doc, {
-    studyGroupCardIds: null,
-    studyGroupLabel: null,
+    groupings: setCardIdsGrouping(doc.config.groupings, [], null),
+    studySessionOrder: null,
+    studySessionIndex: 0,
   })
 }
 
@@ -507,6 +582,7 @@ export function resetDocumentAll(doc: UserDocument): UserDocument {
     progress: {},
     config: defaultUserConfig(),
     deck: { edits: {}, hiddenIds: [], added: [] },
+    glossary: emptyGlossaryOverlay(),
   })
 }
 
@@ -604,6 +680,61 @@ export function addCardToDeck(
   return touch({
     ...doc,
     deck: { ...doc.deck, added: [...doc.deck.added, card] },
+  })
+}
+
+export function saveGlossaryEntry(
+  doc: UserDocument,
+  entry: GlossaryEntry,
+): UserDocument {
+  const normalized = normalizeGlossaryEntry(entry, entry.id)
+  if (!normalized) return doc
+  const glossary = {
+    added: [...doc.glossary.added],
+    updates: { ...doc.glossary.updates },
+    hiddenIds: doc.glossary.hiddenIds.filter((id) => id !== normalized.id),
+  }
+
+  if (isCustomGlossaryId(normalized.id)) {
+    const index = glossary.added.findIndex((item) => item.id === normalized.id)
+    if (index >= 0) glossary.added[index] = normalized
+    else glossary.added.push(normalized)
+    return touch({ ...doc, glossary })
+  }
+
+  glossary.updates[normalized.id] = {
+    term: normalized.term,
+    aliases: normalized.aliases,
+    kind: normalized.kind,
+    note: normalized.note,
+    properName: normalized.properName,
+  }
+  return touch({ ...doc, glossary })
+}
+
+export function hideGlossaryEntry(
+  doc: UserDocument,
+  entryId: string,
+): UserDocument {
+  if (isCustomGlossaryId(entryId)) {
+    return touch({
+      ...doc,
+      glossary: {
+        ...doc.glossary,
+        added: doc.glossary.added.filter((item) => item.id !== entryId),
+      },
+    })
+  }
+  if (doc.glossary.hiddenIds.includes(entryId)) return doc
+  const updates = { ...doc.glossary.updates }
+  delete updates[entryId]
+  return touch({
+    ...doc,
+    glossary: {
+      ...doc.glossary,
+      updates,
+      hiddenIds: [...doc.glossary.hiddenIds, entryId],
+    },
   })
 }
 

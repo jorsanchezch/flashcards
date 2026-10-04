@@ -3,11 +3,12 @@ import { BookOpen, Loader2, RefreshCw } from 'lucide-react'
 import { BrowseView } from '@/components/BrowseView'
 import { StudyView } from '@/components/StudyView'
 import { StudySessionGate } from '@/components/StudySessionGate'
-import { StudyMaterialsView } from '@/components/StudyMaterialsView'
+import { StudyMaterialsView, type MaterialRow } from '@/components/StudyMaterialsView'
 import { TeamSummaryView } from '@/components/TeamSummaryView'
 import { UserMenu } from '@/components/UserMenu'
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { GlossaryProvider } from '@/context/GlossaryContext'
 import { UserProvider, useUser } from '@/context/UserContext'
 import { useFlashcards } from '@/hooks/useFlashcards'
 import { useEffectiveFlashcards } from '@/hooks/useEffectiveFlashcards'
@@ -29,8 +30,12 @@ function FlashcardsApp() {
   } = useUser()
   const [tab, setTab] = useState<Tab>('study')
   const [studyCardId, setStudyCardId] = useState<string | null>(null)
+  const [materialRow, setMaterialRow] = useState<MaterialRow>(null)
+  const [glossaryTermId, setGlossaryTermId] = useState<string | null>(null)
+  const [returnToGlossary, setReturnToGlossary] = useState(false)
 
-  const openCardInStudy = (id: string) => {
+  const openCardInStudy = (id: string, fromGlossary = false) => {
+    setReturnToGlossary(fromGlossary)
     setStudyCardId(id)
     setTab('study')
   }
@@ -57,7 +62,11 @@ function FlashcardsApp() {
               Flashcards — Samuel y Reyes
             </h1>
           </div>
-          {hasSession && <UserMenu />}
+          {hasSession && (
+            <div className="flex w-full justify-end sm:w-auto">
+              <UserMenu />
+            </div>
+          )}
         </div>
       </header>
 
@@ -83,6 +92,7 @@ function FlashcardsApp() {
             onValueChange={(v) => {
               const next = v as Tab
               if (next !== 'study') setStudyCardId(null)
+              if (next !== 'material') setReturnToGlossary(false)
               setTab(next)
             }}
             className="mx-auto max-w-3xl"
@@ -90,7 +100,7 @@ function FlashcardsApp() {
             <div className="px-4 pt-4">
               <TabsList className="grid h-auto w-full grid-cols-2 gap-1 sm:grid-cols-4">
                 <TabsTrigger value="study">Estudiar</TabsTrigger>
-                <TabsTrigger value="browse">Explorar</TabsTrigger>
+                <TabsTrigger value="browse">Lista</TabsTrigger>
                 <TabsTrigger value="team">Equipo</TabsTrigger>
                 <TabsTrigger value="material">Material</TabsTrigger>
               </TabsList>
@@ -119,6 +129,15 @@ function FlashcardsApp() {
                   baseCards={baseCards}
                   initialCardId={studyCardId}
                   onExitToBrowse={() => setTab('browse')}
+                  onBackToGlossary={
+                    returnToGlossary
+                      ? () => {
+                          setTab('material')
+                          setMaterialRow('glossary')
+                          setStudyCardId(null)
+                        }
+                      : undefined
+                  }
                 />
               )}
             </TabsContent>
@@ -138,7 +157,7 @@ function FlashcardsApp() {
                   cards={userDoc ? effectiveCards : baseCards}
                   baseCards={baseCards}
                   suggestedUserId={suggestedUserId}
-                  onSelectCard={openCardInStudy}
+                  onSelectCard={(id) => openCardInStudy(id, false)}
                   onStartStudyGroup={() => {
                     setStudyCardId(null)
                     setTab('study')
@@ -159,7 +178,15 @@ function FlashcardsApp() {
             </TabsContent>
 
             <TabsContent value="material">
-              <StudyMaterialsView />
+              <StudyMaterialsView
+                cards={userDoc ? effectiveCards : baseCards}
+                openRow={materialRow}
+                onOpenRow={setMaterialRow}
+                glossaryTermId={glossaryTermId}
+                onSelectGlossaryTerm={setGlossaryTermId}
+                onOpenCardInStudy={(id) => openCardInStudy(id, true)}
+                suggestedUserId={suggestedUserId}
+              />
             </TabsContent>
           </Tabs>
         )}
@@ -199,7 +226,9 @@ function App() {
 
   return (
     <UserProvider roster={rosterState.state.users}>
-      <FlashcardsApp />
+      <GlossaryProvider>
+        <FlashcardsApp />
+      </GlossaryProvider>
     </UserProvider>
   )
 }

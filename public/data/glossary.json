@@ -1,0 +1,2401 @@
+{
+  "entries": [
+    {
+      "id": "aaron",
+      "term": "Aarón",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "abdias",
+      "term": "Abdías",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "abel-bet-maaca",
+      "term": "Abel-bet-maaca",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "abiam",
+      "term": "Abiam",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "abiatar",
+      "term": "Abiatar",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "abinadab",
+      "term": "Abinadab",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "abiram",
+      "term": "Abiram",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "abisag",
+      "term": "Abisag",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "abisai",
+      "term": "Abisai",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "abner",
+      "term": "Abner",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "absalon",
+      "term": "Absalón",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "abias",
+      "term": "Abías",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "acab",
+      "term": "Acab",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "acaz",
+      "term": "Acaz",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "acbor",
+      "term": "Acbor",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "adoniram",
+      "term": "Adoniram",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "adonias",
+      "term": "Adonías",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "adramelec",
+      "term": "Adramelec",
+      "aliases": [],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "adulam",
+      "term": "Adulam",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "afec",
+      "term": "Afec",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "agag",
+      "term": "Agag",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "ahicam",
+      "term": "Ahicam",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "ahilud",
+      "term": "Ahilud",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "ahimelec",
+      "term": "Ahimelec",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "ahitofel",
+      "term": "Ahitofel",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "ahias",
+      "term": "Ahías",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "amasa",
+      "term": "Amasa",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "amasias",
+      "term": "Amasías",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "amitai",
+      "term": "Amitai",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "amiud",
+      "term": "Amiud",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "amnon",
+      "term": "Amnón",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "amoz",
+      "term": "Amoz",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "amon",
+      "term": "Amón",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "ana",
+      "term": "Ana",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "anamelec",
+      "term": "Anamelec",
+      "aliases": [],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "anatot",
+      "term": "Anatot",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "aquinoam",
+      "term": "Aquinoam",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "aquis",
+      "term": "Aquís",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "araba",
+      "term": "Araba",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "aram",
+      "term": "Aram",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "arauna",
+      "term": "Arauna",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "arca",
+      "term": "arca",
+      "aliases": [
+        "arca del pacto",
+        "arca de Dios"
+      ],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "armoni",
+      "term": "Armoni",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "arsa",
+      "term": "Arsa",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "asa",
+      "term": "Asa",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "asael",
+      "term": "Asael",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "asaias",
+      "term": "Asaías",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "asdod",
+      "term": "Asdod",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "asera",
+      "term": "Asera",
+      "aliases": [],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "asima",
+      "term": "Asima",
+      "aliases": [],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "asiria",
+      "term": "Asiria",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "astoret",
+      "term": "Astoret",
+      "aliases": [],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "ava",
+      "term": "Ava",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "azarias",
+      "term": "Azarías",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "baal",
+      "term": "Baal",
+      "aliases": [],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "baal-hazor",
+      "term": "Baal-hazor",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "baal-perazim",
+      "term": "Baal-perazim",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "baal-zebub",
+      "term": "Baal-zebub",
+      "aliases": [],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "baala",
+      "term": "Baala",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "baana",
+      "term": "Baana",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "baasa",
+      "term": "Baasa",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "babilonia",
+      "term": "Babilonia",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "bahurim",
+      "term": "Bahurim",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "baladan",
+      "term": "Baladán",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "barac",
+      "term": "Barac",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "barzilai",
+      "term": "Barzilai",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "beerot",
+      "term": "Beerot",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "beerseba",
+      "term": "Beerseba",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "belen",
+      "term": "Belén",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "ben-adad",
+      "term": "Ben-adad",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "benjamin",
+      "term": "Benjamín",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "berodac-baladan",
+      "term": "Berodac-baladán",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "bet-rehob",
+      "term": "Bet-rehob",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "bet-semes",
+      "term": "Bet-semes",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "betel",
+      "term": "Betel",
+      "aliases": [
+        "Bet-el"
+      ],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "betsabe",
+      "term": "Betsabé",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "bezec",
+      "term": "Bezec",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "bicri",
+      "term": "Bicri",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "boaz",
+      "term": "Boaz",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "boscat",
+      "term": "Boscat",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "cabul",
+      "term": "Cabul",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "carmelo",
+      "term": "Carmelo",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "carreta",
+      "term": "carreta",
+      "aliases": [
+        "carreta nueva"
+      ],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "cedron",
+      "term": "Cedrón",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "cis",
+      "term": "Cis",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "cison",
+      "term": "Cisón",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "cuta",
+      "term": "Cuta",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "dagon",
+      "term": "Dagón",
+      "aliases": [],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "damasco",
+      "term": "Damasco",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "dan",
+      "term": "Dan",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "david",
+      "term": "David",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "dodo",
+      "term": "Dodo",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "doeg",
+      "term": "Doeg",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "dotan",
+      "term": "Dotán",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "ebenezer",
+      "term": "Ebenezer",
+      "aliases": [
+        "Eben-ezer"
+      ],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "ecron",
+      "term": "Ecrón",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "edom",
+      "term": "Edom",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "efod",
+      "term": "efod",
+      "aliases": [],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "efrain",
+      "term": "Efraín",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "egipto",
+      "term": "Egipto",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "elat",
+      "term": "Elat",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "elcana",
+      "term": "Elcaná",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "eleazar",
+      "term": "Eleazar",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "eliada",
+      "term": "Eliada",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "eliam",
+      "term": "Eliam",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "eliaquim",
+      "term": "Eliaquim",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "eliseo",
+      "term": "Eliseo",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "ela",
+      "term": "Elá",
+      "aliases": [
+        "Ela"
+      ],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "eli",
+      "term": "Elí",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "elias",
+      "term": "Elías",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "en-rogel",
+      "term": "En-rogel",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "esar-hadon",
+      "term": "Esar-hadón",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "etanim",
+      "term": "Etanim",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "etbaal",
+      "term": "Etbaal",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "evil-merodac",
+      "term": "Evil-merodac",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "ezequias",
+      "term": "Ezequías",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "ezion-geber",
+      "term": "Ezión-geber",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "filisteos",
+      "term": "filisteos",
+      "aliases": [
+        "filisteo",
+        "filistea",
+        "filisteas"
+      ],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "finees",
+      "term": "Finees",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "gabaa",
+      "term": "Gabaa",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "gabaonitas",
+      "term": "gabaonitas",
+      "aliases": [
+        "gabaonita"
+      ],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "gabaon",
+      "term": "Gabaón",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "gad",
+      "term": "Gad",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "gadi",
+      "term": "Gadi",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "galaad",
+      "term": "Galaad",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "galilea",
+      "term": "Galilea",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "gat",
+      "term": "Gat",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "geba",
+      "term": "Geba",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "gebal",
+      "term": "Gebal",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "gedalias",
+      "term": "Gedalías",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "gera",
+      "term": "Gera",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "gesur",
+      "term": "Gesur",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "gezer",
+      "term": "Gezer",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "giezi",
+      "term": "Giezi",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "gihon",
+      "term": "Gihón",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "gilgal",
+      "term": "Gilgal",
+      "aliases": [
+        "Guilgal"
+      ],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "goliat",
+      "term": "Goliat",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "gozan",
+      "term": "Gozán",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "guibea",
+      "term": "Guibeá",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "habor",
+      "term": "Habor",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "hadad",
+      "term": "Hadad",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "hadad-ezer",
+      "term": "Hadad-ezer",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "haguit",
+      "term": "Haguit",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "halah",
+      "term": "Halah",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "hamat",
+      "term": "Hamat",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "hanani",
+      "term": "Hananí",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "hazael",
+      "term": "Hazael",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "hazor",
+      "term": "Hazor",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "hebron",
+      "term": "Hebrón",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "heret",
+      "term": "Heret",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "hiel",
+      "term": "Hiel",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "hilcias",
+      "term": "Hilcías",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "hiram",
+      "term": "Hiram",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "holocausto",
+      "term": "holocausto",
+      "aliases": [
+        "holocaustos"
+      ],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "horeb",
+      "term": "Horeb",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "hulda",
+      "term": "Hulda",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "husai",
+      "term": "Husai",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "ibleam",
+      "term": "Ibleam",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "ichabod",
+      "term": "Ichabod",
+      "aliases": [
+        "Icabod"
+      ],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "imla",
+      "term": "Imlá",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "is-boset",
+      "term": "Is-boset",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "isacar",
+      "term": "Isacar",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "isai",
+      "term": "Isaí",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "isaias",
+      "term": "Isaías",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "ismael",
+      "term": "Ismael",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "israel",
+      "term": "Israel",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "israelitas",
+      "term": "israelitas",
+      "aliases": [
+        "israelita"
+      ],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "itai",
+      "term": "Itai",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "jabes",
+      "term": "Jabes",
+      "aliases": [
+        "Jabés"
+      ],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "jacob",
+      "term": "Jacob",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "jaquin",
+      "term": "Jaquín",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "jedida",
+      "term": "Jedida",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "jefte",
+      "term": "Jefté",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "jehu",
+      "term": "Jehú",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "jeroboam",
+      "term": "Jeroboam",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "jerubaal",
+      "term": "Jerubaal",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "jerusalen",
+      "term": "Jerusalén",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "jezabel",
+      "term": "Jezabel",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "jezreel",
+      "term": "Jezreel",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "joab",
+      "term": "Joab",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "joacaz",
+      "term": "Joacaz",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "joacim",
+      "term": "Joacim",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "joaquin",
+      "term": "Joaquín",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "joel",
+      "term": "Joel",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "joiada",
+      "term": "Joiada",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "jonadab",
+      "term": "Jonadab",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "jonatan",
+      "term": "Jonatán",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "jonas",
+      "term": "Jonás",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "joram",
+      "term": "Joram",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "jordan",
+      "term": "Jordán",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "josaba",
+      "term": "Josaba",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "josafat",
+      "term": "Josafat",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "josheb-bashebet",
+      "term": "Josheb-bashebet",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "josue",
+      "term": "Josué",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "josias",
+      "term": "Josías",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "jotam",
+      "term": "Jotam",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "joas",
+      "term": "Joás",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "juda",
+      "term": "Judá",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "kir",
+      "term": "Kir",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "laquis",
+      "term": "Laquis",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "levitas",
+      "term": "levitas",
+      "aliases": [
+        "levita"
+      ],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "levi",
+      "term": "Leví",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "libna",
+      "term": "Libna",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "lugares-altos",
+      "term": "lugares altos",
+      "aliases": [],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "libano",
+      "term": "Líbano",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "maaca",
+      "term": "Maaca",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "mahanaim",
+      "term": "Mahanaim",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "manahem",
+      "term": "Manahem",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "manases",
+      "term": "Manasés",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "mar-de-bronce",
+      "term": "mar de bronce",
+      "aliases": [],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "matanias",
+      "term": "Matanías",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "matri",
+      "term": "Matri",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "matan",
+      "term": "Matán",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "mefiboset",
+      "term": "Mefiboset",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "meguido",
+      "term": "Meguido",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "mical",
+      "term": "Mical",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "micmas",
+      "term": "Micmas",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "milcom",
+      "term": "Milcom",
+      "aliases": [],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "milo",
+      "term": "Milo",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "miqueas",
+      "term": "Miqueas",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "mizpa",
+      "term": "Mizpa",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "moab",
+      "term": "Moab",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "moises",
+      "term": "Moisés",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "moloc",
+      "term": "Moloc",
+      "aliases": [],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "naaman",
+      "term": "Naamán",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "nabat",
+      "term": "Nabat",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "nabot",
+      "term": "Nabot",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "nabucodonosor",
+      "term": "Nabucodonosor",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "nabuzaradan",
+      "term": "Nabuzaradán",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "nadab",
+      "term": "Nadab",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "nahas",
+      "term": "Nahas",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "naiot",
+      "term": "Naiot",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "natan",
+      "term": "Natán",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "necao",
+      "term": "Necao",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "neftali",
+      "term": "Neftalí",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "nehustan",
+      "term": "Nehustán",
+      "aliases": [],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "ner",
+      "term": "Ner",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "nergal",
+      "term": "Nergal",
+      "aliases": [],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "netanias",
+      "term": "Netanías",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "nibhaz",
+      "term": "Nibhaz",
+      "aliases": [],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "nimsi",
+      "term": "Nimsi",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "nisroc",
+      "term": "Nisroc",
+      "aliases": [],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "nob",
+      "term": "Nob",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "ninive",
+      "term": "Nínive",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "obed-edom",
+      "term": "Obed-edom",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "ocozias",
+      "term": "Ocozías",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "ofir",
+      "term": "Ofir",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "ofni",
+      "term": "Ofni",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "omri",
+      "term": "Omri",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "oseas",
+      "term": "Oseas",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "pacto",
+      "term": "pacto",
+      "aliases": [],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "pas-damim",
+      "term": "Pas-damim",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "peka",
+      "term": "Peka",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "penina",
+      "term": "Penina",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "pul",
+      "term": "Pul",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "perez-uza",
+      "term": "Pérez-uza",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "quemos",
+      "term": "Quemós",
+      "aliases": [],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "querit",
+      "term": "Querit",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "querubines",
+      "term": "querubines",
+      "aliases": [
+        "querubín"
+      ],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "quiriat-jearim",
+      "term": "Quiriat-jearim",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "rabsaces",
+      "term": "Rabsaces",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "ramot",
+      "term": "Ramot",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "rama",
+      "term": "Ramá",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "raquel",
+      "term": "Raquel",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "ratones",
+      "term": "ratones",
+      "aliases": [
+        "ratones de oro"
+      ],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "recab",
+      "term": "Recab",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "reina-de-saba",
+      "term": "reina de Sabá",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "remalias",
+      "term": "Remalías",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "rezin",
+      "term": "Rezín",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "rezon",
+      "term": "Rezón",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "ribla",
+      "term": "Ribla",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "rimon",
+      "term": "Rimón",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "rizpa",
+      "term": "Rizpa",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "roboam",
+      "term": "Roboam",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "ruben",
+      "term": "Rubén",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "saba",
+      "term": "Sabá",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "sadoc",
+      "term": "Sadoc",
+      "aliases": [
+        "Zadok"
+      ],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "safat",
+      "term": "Safat",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "safan",
+      "term": "Safán",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "salmanasar",
+      "term": "Salmanasar",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "salomon",
+      "term": "Salomón",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "salum",
+      "term": "Salum",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "samaria",
+      "term": "Samaria",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "samuel",
+      "term": "Samuel",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "sarepta",
+      "term": "Sarepta",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "sarezer",
+      "term": "Sarezer",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "sarvia",
+      "term": "Sarvia",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "saul",
+      "term": "Saúl",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "seba",
+      "term": "Seba",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "sebna",
+      "term": "Sebna",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "sedequias",
+      "term": "Sedequías",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "sefarvaim",
+      "term": "Sefarvaim",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "segub",
+      "term": "Segub",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "sela",
+      "term": "Sela",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "semaias",
+      "term": "Semaías",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "semer",
+      "term": "Semer",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "senaquerib",
+      "term": "Senaquerib",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "seraias",
+      "term": "Seraías",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "sidon",
+      "term": "Sidón",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "sila",
+      "term": "Sila",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "silo",
+      "term": "Silo",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "simei",
+      "term": "Simei",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "siquem",
+      "term": "Siquem",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "siria",
+      "term": "Siria",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "sisac",
+      "term": "Sisac",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "sucot",
+      "term": "Sucot",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "sucot-benot",
+      "term": "Sucot-benot",
+      "aliases": [],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "sisara",
+      "term": "Sísara",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "tabernaculo",
+      "term": "tabernáculo",
+      "aliases": [],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "tabor",
+      "term": "Tabor",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "talmai",
+      "term": "Talmai",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "tamar",
+      "term": "Tamar",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "tarsis",
+      "term": "Tarsis",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "tartac",
+      "term": "Tartac",
+      "aliases": [],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "tecoa",
+      "term": "Tecoa",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "templo",
+      "term": "templo",
+      "aliases": [],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "tibni",
+      "term": "Tibni",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "tifsa",
+      "term": "Tifsa",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "tiglat-pileser",
+      "term": "Tiglat-pileser",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "tiro",
+      "term": "Tiro",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "tirsa",
+      "term": "Tirsa",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "tob",
+      "term": "Tob",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "tumores",
+      "term": "tumores",
+      "aliases": [],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "ungido",
+      "term": "ungido",
+      "aliases": [
+        "unción",
+        "ungió"
+      ],
+      "kind": "concepto",
+      "note": ""
+    },
+    {
+      "id": "urias",
+      "term": "Urías",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "uza",
+      "term": "Uza",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "uzias",
+      "term": "Uzías",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "zacarias",
+      "term": "Zacarías",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "zaretan",
+      "term": "Zaretán",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "zereda",
+      "term": "Zereda",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "ziba",
+      "term": "Ziba",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "zimri",
+      "term": "Zimri",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "zoba",
+      "term": "Zoba",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "zohelet",
+      "term": "Zohélet",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "zuf",
+      "term": "Zuf",
+      "aliases": [],
+      "kind": "persona",
+      "note": ""
+    },
+    {
+      "id": "eufrates",
+      "term": "Éufrates",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    },
+    {
+      "id": "ezel",
+      "term": "Ézel",
+      "aliases": [],
+      "kind": "lugar",
+      "note": ""
+    }
+  ]
+}

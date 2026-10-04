@@ -257,9 +257,15 @@ export function buildTeamRows(
         isLive: liveForTeam?.userId === user.id,
       }
     })
-    .sort((a, b) =>
-      a.displayName.localeCompare(b.displayName, 'es', { sensitivity: 'base' }),
-    )
+    .sort((a, b) => {
+      const aDone = a.stats.known + a.stats.reviewed
+      const bDone = b.stats.known + b.stats.reviewed
+      if (bDone !== aDone) return bDone - aDone
+      if (a.stats.unseen !== b.stats.unseen) return a.stats.unseen - b.stats.unseen
+      return a.displayName.localeCompare(b.displayName, 'es', {
+        sensitivity: 'base',
+      })
+    })
 }
 
 export function mergePublishedTeamExport(
