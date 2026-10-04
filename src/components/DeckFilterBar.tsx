@@ -11,8 +11,10 @@ import {
   getBookRange,
   getCardIdsGrouping,
   getGlossaryTermIds,
+  getGlossarySides,
   hasActiveFilters,
   setBookRangeGrouping,
+  setGlossarySides,
   setGlossaryTermIds,
   toggleGlossaryTerm,
   type DeckGrouping,
@@ -68,6 +70,7 @@ export function DeckFilterBar({ cards, config, onPatch }: DeckFilterBarProps) {
 
   const bookRange = getBookRange(config.groupings)
   const glossaryIds = getGlossaryTermIds(config.groupings)
+  const glossarySides = getGlossarySides(config.groupings)
   const cardGroup = getCardIdsGrouping(config.groupings)
   const selectedBook = books.find((b) => b.id === bookRange?.bookId) ?? null
   const chapters = selectedBook?.chapters ?? []
@@ -288,26 +291,80 @@ export function DeckFilterBar({ cards, config, onPatch }: DeckFilterBarProps) {
           Palabras del glosario
         </p>
         {glossarySelected.length > 0 && (
-          <div className="mb-2 flex flex-wrap gap-2">
-            {glossarySelected.map((entry) => (
-              <Badge key={entry.id} variant="default" className="gap-1 pr-1">
-                {entry.term}
-                <button
-                  type="button"
-                  className="rounded-full p-0.5 hover:bg-primary-foreground/20"
-                  aria-label={`Quitar ${entry.term}`}
-                  onMouseDown={keepPageScroll}
-                  onClick={() =>
-                    patchGroupings(
-                      toggleGlossaryTerm(config.groupings, entry.id),
-                    )
-                  }
-                >
-                  <X className="size-3" />
-                </button>
-              </Badge>
-            ))}
-          </div>
+          <>
+            <div className="mb-2 flex flex-wrap gap-2">
+              {glossarySelected.map((entry) => (
+                <Badge key={entry.id} variant="default" className="gap-1 pr-1">
+                  {entry.term}
+                  <button
+                    type="button"
+                    className="rounded-full p-0.5 hover:bg-primary-foreground/20"
+                    aria-label={`Quitar ${entry.term}`}
+                    onMouseDown={keepPageScroll}
+                    onClick={() =>
+                      patchGroupings(
+                        toggleGlossaryTerm(config.groupings, entry.id),
+                      )
+                    }
+                  >
+                    <X className="size-3" />
+                  </button>
+                </Badge>
+              ))}
+            </div>
+            <div className="mb-3 flex flex-wrap items-center gap-2">
+              <span className="text-xs text-muted-foreground">Buscar en</span>
+              <button
+                type="button"
+                onMouseDown={keepPageScroll}
+                onClick={() =>
+                  patchGroupings(
+                    setGlossarySides(config.groupings, {
+                      question: !glossarySides.question,
+                      answer: glossarySides.answer,
+                    }),
+                  )
+                }
+                className={cn(
+                  'min-h-11 rounded-full border px-3 text-sm',
+                  glossarySides.question
+                    ? 'border-primary bg-primary text-primary-foreground'
+                    : 'bg-background',
+                )}
+                aria-pressed={glossarySides.question}
+              >
+                Pregunta
+              </button>
+              <button
+                type="button"
+                onMouseDown={keepPageScroll}
+                onClick={() =>
+                  patchGroupings(
+                    setGlossarySides(config.groupings, {
+                      question: glossarySides.question,
+                      answer: !glossarySides.answer,
+                    }),
+                  )
+                }
+                className={cn(
+                  'min-h-11 rounded-full border px-3 text-sm',
+                  glossarySides.answer
+                    ? 'border-primary bg-primary text-primary-foreground'
+                    : 'bg-background',
+                )}
+                aria-pressed={glossarySides.answer}
+              >
+                Respuesta
+              </button>
+              <span className="text-xs text-muted-foreground">
+                {glossarySides.question && glossarySides.answer
+                  ? 'En pregunta o respuesta'
+                  : glossarySides.question
+                    ? 'Solo en la pregunta'
+                    : 'Solo en la respuesta'}
+              </span>
+            </div>
+          </>
         )}
         <div className="relative" ref={glossaryBox}>
           <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />

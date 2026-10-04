@@ -1,8 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
-import {
-  parseGlossaryFile,
-  type GlossaryEntry,
-} from '@/lib/glossary'
+import { parseGlossaryFile, type GlossaryEntry } from '@/lib/glossary'
+import { glossaryCatalogUrl } from '@/lib/localCatalog'
 
 type PublishedGlossaryState =
   | { status: 'loading' }
@@ -17,8 +15,7 @@ export function usePublishedGlossary() {
   const reload = useCallback(async () => {
     setState({ status: 'loading' })
     try {
-      const base = import.meta.env.BASE_URL
-      const res = await fetch(`${base}data/glossary.json`)
+      const res = await fetch(glossaryCatalogUrl())
       if (!res.ok) {
         throw new Error('No se pudo cargar el glosario')
       }

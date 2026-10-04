@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { compareFlashcardsByCanon } from '@/lib/biblical'
+import { cardsCatalogUrl } from '@/lib/localCatalog'
 import { parseFlashcardMarkdown, type Flashcard } from '@/lib/parseFlashcard'
 
 type LoadState =
@@ -19,6 +20,31 @@ export function useFlashcards() {
     setState({ status: 'loading' })
     try {
       const base = import.meta.env.BASE_URL
+      const catalogRes = await fetch(cardsCatalogUrl())
+      if (catalogRes.ok) {
+        const payload: unknown = await catalogRes.json()
+        const list = Array.isArray(payload)
+          ? payload
+          : payload &&
+              typeof payload === 'object' &&
+              Array.isArray((payload as { cards?: unknown }).cards)
+            ? (payload as { cards: Flashcard[] }).cards
+            : []
+        if (list.length) {
+          const cards = (list as Flashcard[]).map((row) => ({
+            ...row,
+            originalNumber:
+              typeof row.originalNumber === 'number' ? row.originalNumber : 0,
+          }))
+          cards.sort(compareFlashcardsByCanon)
+          cards.forEach((card, index) => {
+            if (!card.originalNumber) card.originalNumber = index + 1
+          })
+          setState({ status: 'ready', cards })
+          return
+        }
+      }
+
       const manifestRes = await fetch(`${base}flashcards/manifest.json`)
       if (!manifestRes.ok) {
         throw new Error(

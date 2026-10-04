@@ -21,9 +21,14 @@ function HighlightedPlain({
   text: string
   matchers: CompiledGlossaryForm[]
 }) {
+  const { entries, openTerm } = useGlossary()
   if (!text) return null
   const matches = findGlossaryMatches(text, matchers)
   if (!matches.length) return <>{text}</>
+
+  const extraAlias = new Set(
+    entries.filter((e) => e.aliases.length > 1).map((e) => e.id),
+  )
 
   const nodes: ReactNode[] = []
   let cursor = 0
@@ -31,10 +36,24 @@ function HighlightedPlain({
     if (match.start > cursor) {
       nodes.push(text.slice(cursor, match.start))
     }
+    const italic = match.isAlias && extraAlias.has(match.entryId)
     nodes.push(
-      <strong key={`${match.start}-${match.end}-${i}`} className="font-semibold">
+      <button
+        key={`${match.start}-${match.end}-${i}`}
+        type="button"
+        className={cn(
+          'inline cursor-pointer bg-transparent p-0 text-inherit font-semibold underline decoration-dotted decoration-primary/70 underline-offset-2',
+          italic && 'italic',
+        )}
+        onClick={(e) => {
+          e.preventDefault()
+          e.stopPropagation()
+          openTerm(match.entryId)
+        }}
+        onPointerDown={(e) => e.stopPropagation()}
+      >
         {text.slice(match.start, match.end)}
-      </strong>,
+      </button>,
     )
     cursor = match.end
   })

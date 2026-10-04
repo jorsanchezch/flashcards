@@ -20,7 +20,9 @@ npm install
 npm run dev
 ```
 
-El servidor de Vite escucha en **http://127.0.0.1:18765/** (todas las interfaces, IPv4 e IPv6).
+El servidor de Vite escucha en **http://127.0.0.1:18480/** (IPv4 `0.0.0.0`). Si Safari no abre el loopback, usa la URL de red que imprime Vite (`http://<lan>:18480/`).
+
+En **local**, las tarjetas y el glosario se leen de SQLite (`data/flashcards.db`) a través de `/api/local/*`. `npm run build` exporta JSON estático a `public/data/` para GitHub Pages.
 
 ## Build
 

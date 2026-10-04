@@ -13,9 +13,16 @@ export type BookRangeGrouping = {
   to: number | null
 }
 
+export type GlossaryFilterSides = {
+  question: boolean
+  answer: boolean
+}
+
 export type GlossaryGrouping = {
   kind: 'glossary'
   termIds: string[]
+  /** Where the term must appear. Default: both sides (OR). */
+  sides?: GlossaryFilterSides
 }
 
 export type CardIdsGrouping = {
@@ -56,7 +63,11 @@ export function parseDeckGroupings(raw: unknown): DeckGrouping[] {
           )
         : []
       if (!termIds.length) continue
-      out.push({ kind: 'glossary', termIds: [...new Set(termIds)] })
+      out.push({
+        kind: 'glossary',
+        termIds: [...new Set(termIds)],
+        sides: parseGlossarySides((item as GlossaryGrouping).sides),
+      })
     } else if (kind === 'card-ids') {
       const ids = Array.isArray((item as CardIdsGrouping).ids)
         ? (item as CardIdsGrouping).ids.filter(
@@ -81,6 +92,21 @@ function parsePositiveInt(value: unknown): number | null {
   return n > 0 ? n : null
 }
 
+export function defaultGlossarySides(): GlossaryFilterSides {
+  return { question: true, answer: true }
+}
+
+export function parseGlossarySides(raw: unknown): GlossaryFilterSides {
+  const fallback = defaultGlossarySides()
+  if (!raw || typeof raw !== 'object') return fallback
+  const question = (raw as GlossaryFilterSides).question
+  const answer = (raw as GlossaryFilterSides).answer
+  const q = question !== false
+  const a = answer !== false
+  if (!q && !a) return fallback
+  return { question: q, answer: a }
+}
+
 export function getBookRange(
   groupings: DeckGrouping[],
 ): BookRangeGrouping | null {
@@ -90,6 +116,16 @@ export function getBookRange(
 export function getGlossaryTermIds(groupings: DeckGrouping[]): string[] {
   const g = groupings.find((x): x is GlossaryGrouping => x.kind === 'glossary')
   return g?.termIds ?? []
+}
+
+export function getGlossaryGrouping(
+  groupings: DeckGrouping[],
+): GlossaryGrouping | null {
+  return groupings.find((x): x is GlossaryGrouping => x.kind === 'glossary') ?? null
+}
+
+export function getGlossarySides(groupings: DeckGrouping[]): GlossaryFilterSides {
+  return parseGlossarySides(getGlossaryGrouping(groupings)?.sides)
 }
 
 export function getCardIdsGrouping(
@@ -127,14 +163,28 @@ export function setBookRangeGrouping(
 export function setGlossaryTermIds(
   groupings: DeckGrouping[],
   termIds: string[],
+  sides?: GlossaryFilterSides,
 ): DeckGrouping[] {
   const unique = [...new Set(termIds.filter(Boolean))]
   if (!unique.length) return replaceGrouping(groupings, null, 'glossary')
   return replaceGrouping(
     groupings,
-    { kind: 'glossary', termIds: unique },
+    {
+      kind: 'glossary',
+      termIds: unique,
+      sides: parseGlossarySides(sides ?? getGlossarySides(groupings)),
+    },
     'glossary',
   )
+}
+
+export function setGlossarySides(
+  groupings: DeckGrouping[],
+  sides: GlossaryFilterSides,
+): DeckGrouping[] {
+  const termIds = getGlossaryTermIds(groupings)
+  if (!termIds.length) return groupings
+  return setGlossaryTermIds(groupings, termIds, parseGlossarySides(sides))
 }
 
 export function toggleGlossaryTerm(
@@ -215,9 +265,10 @@ function applyOneGrouping(
   }
   if (grouping.kind === 'glossary') {
     if (!grouping.termIds.length) return cards
+    const sides = parseGlossarySides(grouping.sides)
     return cards.filter((card) =>
       grouping.termIds.some((termId) =>
-        cardReferencesTerm(card, matchers, termId),
+        cardReferencesTerm(card, matchers, termId, sides),
       ),
     )
   }

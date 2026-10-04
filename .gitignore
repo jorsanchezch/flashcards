@@ -24,3 +24,9 @@ dist-ssr
 __pycache__/
 scripts/__pycache__/
 
+# Local SQLite (Pages uses exported JSON)
+data/*.db
+data/*.db-*
+data/*.db-wal
+data/*.db-shm
+

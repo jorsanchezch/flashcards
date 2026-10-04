@@ -1,0 +1,11 @@
+{
+  "versions": [
+    {
+      "id": "ntv",
+      "label": "Nueva Traducción Viviente",
+      "gatewayParam": "NTV",
+      "isDefault": 1
+    }
+  ],
+  "selected": "ntv"
+}

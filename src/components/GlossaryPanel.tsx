@@ -1,17 +1,10 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { ArrowLeft, ArrowRight, BookOpen, ExternalLink, Pencil, Plus, Search, Trash2 } from 'lucide-react'
 import { CitedText } from '@/components/CitedText'
 import { DeckSessionPrompt } from '@/components/DeckSessionPrompt'
 import { UserPickerView } from '@/components/UserPickerView'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { useGlossary } from '@/context/GlossaryContext'
@@ -36,6 +29,8 @@ type GlossaryPanelProps = {
   cards: Flashcard[]
   selectedTermId: string | null
   onSelectTerm: (id: string | null) => void
+  autoOpenDetails?: boolean
+  onAutoOpenDetailsConsumed?: () => void
   onOpenCardInStudy: (cardId: string) => void
   onStudyWithFilter?: () => void
   onBackToMaterials: () => void
@@ -73,6 +68,8 @@ export function GlossaryPanel({
   cards,
   selectedTermId,
   onSelectTerm,
+  autoOpenDetails,
+  onAutoOpenDetailsConsumed,
   onOpenCardInStudy,
   onStudyWithFilter,
   onBackToMaterials,
@@ -104,8 +101,22 @@ export function GlossaryPanel({
   const [pendingStudyFilter, setPendingStudyFilter] = useState<string | null>(
     null,
   )
+  const [detailsId, setDetailsId] = useState<string | null>(null)
+  const rowRefs = useRef<Record<string, HTMLLIElement | null>>({})
 
-  const selected = entries.find((e) => e.id === selectedTermId) ?? null
+  useEffect(() => {
+    if (!selectedTermId) return
+    const node = rowRefs.current[selectedTermId]
+    node?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
+  }, [selectedTermId])
+
+  useEffect(() => {
+    if (!autoOpenDetails || !selectedTermId) return
+    setDetailsId(selectedTermId)
+    onAutoOpenDetailsConsumed?.()
+  }, [autoOpenDetails, selectedTermId, onAutoOpenDetailsConsumed])
+
+  const detailsEntry = entries.find((e) => e.id === detailsId) ?? null
   const filterTermIds = userDoc
     ? getGlossaryTermIds(userDoc.config.groupings)
     : []
@@ -180,9 +191,9 @@ export function GlossaryPanel({
   }, [entries, query])
 
   const references = useMemo(() => {
-    if (!selected) return []
-    return cardsForGlossaryTerm(cards, matchers, selected.id)
-  }, [cards, matchers, selected])
+    if (!detailsEntry) return []
+    return cardsForGlossaryTerm(cards, matchers, detailsEntry.id)
+  }, [cards, matchers, detailsEntry])
 
   const requireSession = (action: 'add' | GlossaryEntry, run: () => void) => {
     if (hasSession && userDoc) {
@@ -288,191 +299,6 @@ export function GlossaryPanel({
     )
   }
 
-  if (selected) {
-    return (
-      <div className="space-y-4">
-        <Button
-          type="button"
-          variant="ghost"
-          className="min-h-11 px-2"
-          onClick={() => onSelectTerm(null)}
-        >
-          <ArrowLeft className="size-4" />
-          Volver al glosario
-        </Button>
-        <Card>
-          <CardHeader className="pb-2">
-            <div className="flex flex-wrap items-start justify-between gap-2">
-              <div>
-                <CardTitle className="text-xl">{selected.term}</CardTitle>
-                <CardDescription className="mt-1">
-                  {glossaryKindLabel(selected.kind)}
-                  {selected.properName ? ' · Nombre propio' : ''}
-                </CardDescription>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                <Button
-                  type="button"
-                  variant="default"
-                  size="sm"
-                  className="min-h-11"
-                  onClick={() => filterAndStudy(selected.id)}
-                >
-                  Filtrar mazo
-                  <ArrowRight className="size-4" />
-                </Button>
-                {filterTermIds.includes(selected.id) && (
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  className="min-h-11"
-                  onClick={() => toggleFilter(selected.id)}
-                >
-                  Quitar del filtro
-                </Button>
-                )}
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  className="min-h-11"
-                  onClick={() =>
-                    requireSession(selected, () => setEditor(toEditor(selected)))
-                  }
-                >
-                  <Pencil className="size-4" />
-                  Editar
-                </Button>
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  className="min-h-11"
-                  onClick={() =>
-                    requireSession(selected, () => setDeleteTarget(selected))
-                  }
-                >
-                  <Trash2 className="size-4 text-destructive" />
-                  Eliminar
-                </Button>
-              </div>
-            </div>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            {selected.note ? (
-              <p className="text-sm leading-relaxed">
-                <span className="font-medium">Sentido. </span>
-                {selected.note}
-              </p>
-            ) : null}
-            {selected.aliases.length > 0 && (
-              <p className="text-sm leading-relaxed">
-                <span className="font-medium">También se escribe. </span>
-                {selected.aliases.join(', ')}
-              </p>
-            )}
-            {selected.related.length > 0 && (
-              <div>
-                <p className="mb-2 text-sm font-medium">Relacionado</p>
-                <ul className="flex flex-col gap-1">
-                  {selected.related.map((item) => {
-                    const other = entries.find((e) => e.id === item.id)
-                    if (!other) return null
-                    return (
-                      <li key={item.id}>
-                        <button
-                          type="button"
-                          className="w-full rounded-lg px-2 py-2 text-left text-sm hover:bg-accent/40"
-                          onClick={() => onSelectTerm(other.id)}
-                        >
-                          <span className="font-medium">{other.term}</span>
-                          <span className="text-muted-foreground">
-                            {' '}
-                            — {item.rel}
-                          </span>
-                        </button>
-                      </li>
-                    )
-                  })}
-                </ul>
-              </div>
-            )}
-            <Button asChild className="min-h-11 w-full sm:w-auto">
-              <a
-                href={glossaryBibleSearchUrl(selected)}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <ExternalLink className="size-4" />
-                Ver en la Biblia (NTV)
-              </a>
-            </Button>
-            <p className="text-sm text-muted-foreground">
-              {references.length === 1
-                ? '1 tarjeta menciona esta palabra.'
-                : `${references.length} tarjetas mencionan esta palabra.`}
-            </p>
-            {references.length === 0 ? (
-              <p className="rounded-lg border border-dashed px-3 py-6 text-center text-sm text-muted-foreground">
-                Ninguna tarjeta usa esta palabra todavía.
-              </p>
-            ) : (
-              <ul className="flex flex-col gap-2">
-                {references.map((card) => (
-                  <li key={card.id}>
-                    <button
-                      type="button"
-                      onClick={() => onOpenCardInStudy(card.id)}
-                      className="w-full min-h-11 rounded-xl border bg-card px-3 py-3 text-left transition-colors hover:bg-accent/40"
-                    >
-                      <p className="text-xs text-muted-foreground">
-                        {card.bookLabel} {card.chapter} · Abrir en modo estudio
-                      </p>
-                      <p className="mt-1 text-sm font-medium leading-snug">
-                        <CitedText text={card.question} />
-                      </p>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </CardContent>
-        </Card>
-        {editor && (
-          <GlossaryEditor
-            editor={editor}
-            setEditor={setEditor}
-            onCancel={() => setEditor(null)}
-            onSave={saveEditor}
-            subject={subject}
-          />
-        )}
-        <DeleteConfirm
-          target={deleteTarget}
-          subject={subject}
-          onCancel={() => setDeleteTarget(null)}
-          onConfirm={confirmDelete}
-        />
-        <DeckSessionPrompt
-          open={sessionPrompt}
-          onContinueAsGuest={() => {
-            continueAsGuest()
-            afterSession()
-          }}
-          onIdentify={() => {
-            setSessionPrompt(false)
-            setShowIdentify(true)
-          }}
-          onClose={() => {
-            setSessionPrompt(false)
-            setPendingAfterSession(null)
-          }}
-        />
-      </div>
-    )
-  }
-
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-2">
@@ -496,7 +322,9 @@ export function GlossaryPanel({
       </div>
 
       <p className="text-sm text-muted-foreground">
-        {entries.length} palabras. Toca una para ver las tarjetas donde aparece.
+        {entries.length} palabras. Toca <strong>Detalles</strong> para el sentido
+        y los enlaces, o <strong>Estudiar esta palabra</strong> para filtrar el
+        mazo.
         {hasSession
           ? isGuest
             ? ' Los cambios de esta sesión sin ID se guardan para el equipo.'
@@ -524,19 +352,20 @@ export function GlossaryPanel({
       ) : (
         <ul className="flex flex-col gap-1">
           {filtered.map((entry) => (
-            <li key={entry.id}>
-              <button
-                type="button"
-                onClick={() => onSelectTerm(entry.id)}
-                className="flex w-full min-h-11 items-center justify-between gap-3 rounded-xl border bg-card px-3 py-2.5 text-left transition-colors hover:bg-accent/40"
+            <li
+              key={entry.id}
+              ref={(node) => {
+                rowRefs.current[entry.id] = node
+              }}
+            >
+              <div
+                className={cn(
+                  'flex w-full flex-wrap items-center gap-2 rounded-xl border bg-card px-3 py-2',
+                  selectedTermId === entry.id && 'border-primary ring-2 ring-primary/20',
+                )}
               >
-                <span className="min-w-0">
+                <span className="min-w-0 flex-1">
                   <span className="block truncate font-medium">{entry.term}</span>
-                  {entry.aliases.length > 0 && (
-                    <span className="block truncate text-xs text-muted-foreground">
-                      {entry.aliases.join(', ')}
-                    </span>
-                  )}
                 </span>
                 <Badge
                   variant="secondary"
@@ -547,10 +376,54 @@ export function GlossaryPanel({
                 >
                   {glossaryKindLabel(entry.kind)}
                 </Badge>
-              </button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  className="min-h-11"
+                  onClick={() => {
+                    onSelectTerm(entry.id)
+                    setDetailsId(entry.id)
+                  }}
+                >
+                  Detalles
+                </Button>
+                <Button
+                  type="button"
+                  size="sm"
+                  className="min-h-11"
+                  onClick={() => filterAndStudy(entry.id)}
+                >
+                  Estudiar esta palabra
+                  <ArrowRight className="size-4" />
+                </Button>
+              </div>
             </li>
           ))}
         </ul>
+      )}
+
+      {detailsEntry && (
+        <GlossaryDetailsModal
+          entry={detailsEntry}
+          entries={entries}
+          references={references}
+          filterTermIds={filterTermIds}
+          onClose={() => setDetailsId(null)}
+          onSelectRelated={(id) => {
+            onSelectTerm(id)
+            setDetailsId(id)
+          }}
+          onStudy={() => filterAndStudy(detailsEntry.id)}
+          onToggleFilter={() => toggleFilter(detailsEntry.id)}
+          onEdit={() =>
+            requireSession(detailsEntry, () => setEditor(toEditor(detailsEntry)))
+          }
+          onDelete={() =>
+            requireSession(detailsEntry, () => setDeleteTarget(detailsEntry))
+          }
+          onOpenCardInStudy={onOpenCardInStudy}
+        />
       )}
 
       {editor && (
@@ -583,6 +456,157 @@ export function GlossaryPanel({
           setPendingAfterSession(null)
         }}
       />
+    </div>
+  )
+}
+
+function GlossaryDetailsModal({
+  entry,
+  entries,
+  references,
+  filterTermIds,
+  onClose,
+  onSelectRelated,
+  onStudy,
+  onToggleFilter,
+  onEdit,
+  onDelete,
+  onOpenCardInStudy,
+}: {
+  entry: GlossaryEntry
+  entries: GlossaryEntry[]
+  references: Flashcard[]
+  filterTermIds: string[]
+  onClose: () => void
+  onSelectRelated: (id: string) => void
+  onStudy: () => void
+  onToggleFilter: () => void
+  onEdit: () => void
+  onDelete: () => void
+  onOpenCardInStudy: (cardId: string) => void
+}) {
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-4 sm:items-center"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="glossary-details-title"
+      onClick={onClose}
+    >
+      <div
+        className="max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-xl border bg-card p-5 shadow-lg"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex flex-wrap items-start justify-between gap-2">
+          <div>
+            <p id="glossary-details-title" className="text-xl font-semibold">
+              {entry.term}
+            </p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              {glossaryKindLabel(entry.kind)}
+              {entry.properName ? ' · Nombre propio' : ''}
+            </p>
+          </div>
+          <Button type="button" variant="ghost" onClick={onClose}>
+            Cerrar
+          </Button>
+        </div>
+        <div className="mt-4 flex flex-wrap gap-2">
+          <Button type="button" className="min-h-11" onClick={onStudy}>
+            Estudiar esta palabra
+            <ArrowRight className="size-4" />
+          </Button>
+          {filterTermIds.includes(entry.id) && (
+            <Button type="button" variant="outline" className="min-h-11" onClick={onToggleFilter}>
+              Quitar del filtro
+            </Button>
+          )}
+          <Button type="button" variant="outline" className="min-h-11" onClick={onEdit}>
+            <Pencil className="size-4" />
+            Editar
+          </Button>
+          <Button type="button" variant="outline" className="min-h-11" onClick={onDelete}>
+            <Trash2 className="size-4 text-destructive" />
+            Eliminar
+          </Button>
+        </div>
+        <div className="mt-4 space-y-3">
+          {entry.note ? (
+            <p className="text-sm leading-relaxed">
+              <span className="font-medium">Sentido. </span>
+              {entry.note}
+            </p>
+          ) : null}
+          {entry.aliases.length > 0 && (
+            <p className="text-sm leading-relaxed">
+              <span className="font-medium">También se escribe. </span>
+              {entry.aliases.join(', ')}
+            </p>
+          )}
+          {entry.related.length > 0 && (
+            <div>
+              <p className="mb-2 text-sm font-medium">Relacionado</p>
+              <ul className="flex flex-col gap-1">
+                {entry.related.map((item) => {
+                  const other = entries.find((e) => e.id === item.id)
+                  if (!other) return null
+                  return (
+                    <li key={item.id}>
+                      <button
+                        type="button"
+                        className="w-full rounded-lg px-2 py-2 text-left text-sm hover:bg-accent/40"
+                        onClick={() => onSelectRelated(other.id)}
+                      >
+                        <span className="font-medium">{other.term}</span>
+                        <span className="text-muted-foreground"> — {item.rel}</span>
+                      </button>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+          )}
+          <Button asChild className="min-h-11 w-full sm:w-auto">
+            <a
+              href={glossaryBibleSearchUrl(entry)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <ExternalLink className="size-4" />
+              Ver en la Biblia (NTV)
+            </a>
+          </Button>
+          <p className="text-sm text-muted-foreground">
+            {references.length === 1
+              ? '1 tarjeta menciona esta palabra.'
+              : `${references.length} tarjetas mencionan esta palabra.`}
+          </p>
+          {references.length === 0 ? (
+            <p className="rounded-lg border border-dashed px-3 py-6 text-center text-sm text-muted-foreground">
+              Ninguna tarjeta usa esta palabra todavía.
+            </p>
+          ) : (
+            <ul className="flex flex-col gap-2">
+              {references.map((card) => (
+                <li key={card.id}>
+                  <button
+                    type="button"
+                    onClick={() => onOpenCardInStudy(card.id)}
+                    className="w-full min-h-11 rounded-xl border bg-background px-3 py-3 text-left transition-colors hover:bg-accent/40"
+                  >
+                    <p className="text-xs text-muted-foreground">
+                      {card.bookLabel} {card.chapter} · Abrir en modo estudio
+                    </p>
+                    <p className="mt-1 text-sm font-medium leading-snug">
+                      <CitedText text={card.question} />
+                    </p>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
     </div>
   )
 }

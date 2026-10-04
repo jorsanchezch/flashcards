@@ -20,11 +20,18 @@ type GlossaryContextValue = {
   entries: GlossaryEntry[]
   matchers: CompiledGlossaryForm[]
   reload: () => void
+  openTerm: (id: string) => void
 }
 
 const GlossaryContext = createContext<GlossaryContextValue | null>(null)
 
-export function GlossaryProvider({ children }: { children: ReactNode }) {
+export function GlossaryProvider({
+  children,
+  onOpenTerm,
+}: {
+  children: ReactNode
+  onOpenTerm: (id: string) => void
+}) {
   const { userDoc } = useUser()
   const published = usePublishedGlossary()
 
@@ -50,6 +57,7 @@ export function GlossaryProvider({ children }: { children: ReactNode }) {
       entries,
       matchers,
       reload: published.reload,
+      openTerm: onOpenTerm,
     }),
     [
       published.state,
@@ -57,6 +65,7 @@ export function GlossaryProvider({ children }: { children: ReactNode }) {
       publishedEntries,
       entries,
       matchers,
+      onOpenTerm,
     ],
   )
 

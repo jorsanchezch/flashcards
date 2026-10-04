@@ -32,6 +32,8 @@ type StudyMaterialsViewProps = {
   onOpenRow: (row: MaterialRow) => void
   glossaryTermId: string | null
   onSelectGlossaryTerm: (id: string | null) => void
+  autoOpenDetails?: boolean
+  onAutoOpenDetailsConsumed?: () => void
   onOpenCardInStudy: (cardId: string) => void
   onStudyWithFilter?: () => void
   suggestedUserId?: string | null
@@ -43,6 +45,8 @@ export function StudyMaterialsView({
   onOpenRow,
   glossaryTermId,
   onSelectGlossaryTerm,
+  autoOpenDetails,
+  onAutoOpenDetailsConsumed,
   onOpenCardInStudy,
   onStudyWithFilter,
   suggestedUserId,
@@ -80,6 +84,8 @@ export function StudyMaterialsView({
                 cards={cards}
                 selectedTermId={glossaryTermId}
                 onSelectTerm={onSelectGlossaryTerm}
+                autoOpenDetails={autoOpenDetails}
+                onAutoOpenDetailsConsumed={onAutoOpenDetailsConsumed}
                 onOpenCardInStudy={onOpenCardInStudy}
                 onStudyWithFilter={onStudyWithFilter}
                 onBackToMaterials={() => {

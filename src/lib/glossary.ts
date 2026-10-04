@@ -43,12 +43,14 @@ export type CompiledGlossaryForm = {
   form: string
   folded: string
   properName: boolean
+  isAlias: boolean
 }
 
 export type GlossaryMatch = {
   start: number
   end: number
   entryId: string
+  isAlias: boolean
 }
 
 const HYPHEN_RE = /[\u2010\u2011\u2012\u2013\u2014\u2015\u2212\uFE58\uFE63\uFF0D-]/u
@@ -318,30 +320,32 @@ function isWholeWord(text: string, start: number, end: number): boolean {
 export function compileGlossaryMatchers(
   entries: GlossaryEntry[],
 ): CompiledGlossaryForm[] {
-  const forms: CompiledGlossaryForm[] = []
+  const matchers: CompiledGlossaryForm[] = []
   const seen = new Set<string>()
   for (const entry of entries) {
-    for (const form of [entry.term, ...entry.aliases]) {
+    const variants = [entry.term, ...entry.aliases]
+    variants.forEach((form, index) => {
       const trimmed = form.trim()
-      if (!trimmed) continue
+      if (!trimmed) return
       const folded = foldText(trimmed, entry.properName).folded
-      if (!folded) continue
+      if (!folded) return
       const key = `${entry.id}\n${entry.properName ? 'cs' : 'ci'}\n${folded}`
-      if (seen.has(key)) continue
+      if (seen.has(key)) return
       seen.add(key)
-      forms.push({
+      matchers.push({
         entryId: entry.id,
         form: trimmed,
         folded,
         properName: entry.properName,
+        isAlias: index > 0,
       })
-    }
+    })
   }
-  forms.sort(
+  matchers.sort(
     (a, b) =>
       b.folded.length - a.folded.length || a.form.localeCompare(b.form, 'es'),
   )
-  return forms
+  return matchers
 }
 
 export function stripCitations(text: string): string {
@@ -381,7 +385,12 @@ export function findGlossaryMatches(
       }
       if (blocked) continue
       for (let i = range.start; i < range.end; i++) taken[i] = 1
-      matches.push({ start: range.start, end: range.end, entryId: matcher.entryId })
+      matches.push({
+        start: range.start,
+        end: range.end,
+        entryId: matcher.entryId,
+        isAlias: matcher.isAlias,
+      })
     }
   }
 
@@ -393,9 +402,17 @@ export function cardReferencesTerm(
   card: Pick<Flashcard, 'question' | 'answer'>,
   matchers: CompiledGlossaryForm[],
   entryId: string,
+  sides: { question?: boolean; answer?: boolean } = { question: true, answer: true },
 ): boolean {
-  const haystack = stripCitations(`${card.question}\n${card.answer}`)
-  return findGlossaryMatches(haystack, matchers, entryId).length > 0
+  const wantQ = sides.question !== false
+  const wantA = sides.answer !== false
+  if (wantQ && findGlossaryMatches(stripCitations(card.question), matchers, entryId).length) {
+    return true
+  }
+  if (wantA && findGlossaryMatches(stripCitations(card.answer), matchers, entryId).length) {
+    return true
+  }
+  return false
 }
 
 export function cardsForGlossaryTerm(

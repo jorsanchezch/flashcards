@@ -32,7 +32,15 @@ function FlashcardsApp() {
   const [studyCardId, setStudyCardId] = useState<string | null>(null)
   const [materialRow, setMaterialRow] = useState<MaterialRow>(null)
   const [glossaryTermId, setGlossaryTermId] = useState<string | null>(null)
+  const [glossaryAutoDetails, setGlossaryAutoDetails] = useState(false)
   const [returnToGlossary, setReturnToGlossary] = useState(false)
+
+  const openGlossaryTerm = (id: string) => {
+    setTab('material')
+    setMaterialRow('glossary')
+    setGlossaryTermId(id)
+    setGlossaryAutoDetails(true)
+  }
 
   const openCardInStudy = (id: string, fromGlossary = false) => {
     setReturnToGlossary(fromGlossary)
@@ -51,6 +59,7 @@ function FlashcardsApp() {
   const sessionKey = userDoc?.userId ?? 'none'
 
   return (
+    <GlossaryProvider onOpenTerm={openGlossaryTerm}>
     <div className="min-h-svh bg-background">
       <header className="border-b bg-card/60 backdrop-blur">
         <div className="mx-auto flex max-w-3xl flex-col gap-3 px-4 py-4 sm:flex-row sm:items-start sm:justify-between">
@@ -184,6 +193,8 @@ function FlashcardsApp() {
                 onOpenRow={setMaterialRow}
                 glossaryTermId={glossaryTermId}
                 onSelectGlossaryTerm={setGlossaryTermId}
+                autoOpenDetails={glossaryAutoDetails}
+                onAutoOpenDetailsConsumed={() => setGlossaryAutoDetails(false)}
                 onOpenCardInStudy={(id) => openCardInStudy(id, true)}
                 onStudyWithFilter={() => {
                   setStudyCardId(null)
@@ -197,6 +208,7 @@ function FlashcardsApp() {
         )}
       </main>
     </div>
+    </GlossaryProvider>
   )
 }
 
@@ -231,9 +243,7 @@ function App() {
 
   return (
     <UserProvider roster={rosterState.state.users}>
-      <GlossaryProvider>
-        <FlashcardsApp />
-      </GlossaryProvider>
+      <FlashcardsApp />
     </UserProvider>
   )
 }
