@@ -329,8 +329,16 @@ export function StudyView({
   }
 
   useEffect(() => {
+    if (editorOpen) return
     const onKey = (e: KeyboardEvent) => {
-      if (e.target instanceof HTMLInputElement) return
+      if (
+        e.target instanceof HTMLInputElement ||
+        e.target instanceof HTMLTextAreaElement ||
+        e.target instanceof HTMLSelectElement ||
+        (e.target instanceof HTMLElement && e.target.isContentEditable)
+      ) {
+        return
+      }
       if (e.key === ' ' || e.key === 'Enter') {
         e.preventDefault()
         setFlipped((f) => !f)
@@ -352,7 +360,7 @@ export function StudyView({
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [applyShuffle, current, go, index])
+  }, [applyShuffle, current, editorOpen, go, index])
 
   if (!userDoc) {
     return (
