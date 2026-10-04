@@ -379,7 +379,9 @@ export function StudyView({
   }
 
   const sessionPercent =
-    order.length > 0 ? Math.round(((index + 1) / order.length) * 100) : 0
+    order.length <= 1
+      ? 100
+      : Math.round((index / (order.length - 1)) * 100)
 
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 py-6">
@@ -458,7 +460,7 @@ export function StudyView({
         aria-valuemax={order.length}
         aria-valuenow={index + 1}
         aria-valuetext={`Tarjeta ${index + 1} de ${order.length}`}
-        className="touch-none cursor-ew-resize py-2 outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
+        className="relative touch-none cursor-ew-resize py-2 outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
         onPointerDown={onProgressPointerDown}
         onPointerMove={onProgressPointerMove}
         onPointerUp={onProgressPointerUp}
@@ -472,6 +474,14 @@ export function StudyView({
             draggingProgress &&
               '[&_[data-slot=progress-indicator]]:transition-none',
           )}
+        />
+        <span
+          aria-hidden
+          className={cn(
+            'pointer-events-none absolute top-1/2 size-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-background bg-primary shadow-sm',
+            !draggingProgress && 'transition-[left]',
+          )}
+          style={{ left: `${sessionPercent}%` }}
         />
       </div>
 
