@@ -87,7 +87,7 @@ export const sqliteConnector: CatalogConnector = {
       return { enabled: false, source: 'sqlite', verseCount: 0, versions: [] }
     }
   },
-  async searchBible(query: string, versionId = 'kjv') {
+  async searchBible(query: string, versionId = 'ntv') {
     const params = new URLSearchParams({ q: query, version: versionId })
     const raw = (await readJson(
       `${baseUrl()}api/local/bible-search?${params.toString()}`,

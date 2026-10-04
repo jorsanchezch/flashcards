@@ -63,7 +63,7 @@ function sqliteLocalApi(): Plugin {
               hits: searchBibleFromDb(
                 db,
                 params.get('q') ?? '',
-                params.get('version') ?? 'kjv',
+                params.get('version') ?? 'ntv',
               ),
             })
             db.close()

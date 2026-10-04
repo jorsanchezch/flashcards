@@ -308,7 +308,7 @@ export function bibleStatusFromDb(db) {
   }
 }
 
-export function searchBibleFromDb(db, query, versionId = 'kjv') {
+export function searchBibleFromDb(db, query, versionId = 'ntv') {
   const q = String(query ?? '').trim()
   if (q.length < 2) return []
   return db
