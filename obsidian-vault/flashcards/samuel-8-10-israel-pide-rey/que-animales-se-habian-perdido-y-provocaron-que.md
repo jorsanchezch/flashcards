@@ -1,6 +1,6 @@
 #flashcard
 
-# ¿Qué animales se habían perdido y provocaron que el joven saliera de su casa?
+# ¿Qué animales se habían perdido y provocaron que Saúl saliera de su casa?
 
 ?
 Los burros de su padre. (1 Samuel 9:3, NTV)

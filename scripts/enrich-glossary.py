@@ -696,57 +696,262 @@ NOTES: dict[str, str] = {
 }
 
 # Short relations to other glossary ids only.
+# Convention: for entry E, (other_id, rel) means "other is [rel] relative to E".
+# The UI shows "{other.term} — {rel}" under E (e.g. under Saúl: "Cis — padre").
 REL: dict[str, list[tuple[str, str]]] = {
     "aaron": [("moises", "hermano"), ("sadoc", "linaje del sacerdocio"), ("levitas", "tribu")],
-    "samuel": [("ana", "hijo"), ("elcana", "hijo"), ("eli", "criado en Silo"), ("saul", "lo ungió"), ("david", "lo ungió")],
-    "ana": [("samuel", "madre"), ("elcana", "esposa"), ("penina", "la otra esposa"), ("silo", "oró allí")],
-    "elcana": [("samuel", "padre"), ("ana", "esposo"), ("penina", "esposo"), ("rama", "de Ramá")],
-    "eli": [("ofni", "padre"), ("finees", "padre"), ("samuel", "lo crió"), ("silo", "sacerdote allí"), ("ichabod", "abuelo")],
-    "saul": [("cis", "hijo"), ("jonatan", "padre"), ("mical", "padre"), ("is-boset", "padre"), ("david", "lo persiguió"), ("samuel", "ungido por")],
-    "david": [("isai", "hijo"), ("saul", "ungido en su lugar"), ("jonatan", "amigo"), ("salomon", "padre"), ("jerusalen", "su ciudad")],
-    "salomon": [("david", "hijo"), ("betsabe", "hijo"), ("natan", "apoyado por"), ("templo", "lo edificó"), ("reina-de-saba", "la recibió")],
-    "reina-de-saba": [("saba", "reina de"), ("salomon", "lo visitó")],
+    "moises": [("aaron", "hermano")],
+    "samuel": [
+        ("ana", "madre"),
+        ("elcana", "padre"),
+        ("eli", "lo crió en Silo"),
+        ("saul", "ungido por él"),
+        ("david", "ungido por él"),
+    ],
+    "ana": [("samuel", "hijo"), ("elcana", "esposo"), ("penina", "la otra esposa"), ("silo", "oró allí")],
+    "elcana": [("samuel", "hijo"), ("ana", "esposa"), ("penina", "esposa"), ("rama", "de Ramá")],
+    "penina": [("elcana", "esposo"), ("ana", "la otra esposa")],
+    "eli": [
+        ("ofni", "hijo"),
+        ("finees", "hijo"),
+        ("samuel", "lo crió"),
+        ("silo", "sacerdote allí"),
+        ("ichabod", "nieto"),
+    ],
+    "ofni": [("eli", "padre"), ("finees", "hermano")],
+    "finees": [("eli", "padre"), ("ofni", "hermano"), ("ichabod", "hijo")],
+    "ichabod": [("finees", "padre"), ("eli", "abuelo")],
+    "saul": [
+        ("cis", "padre"),
+        ("jonatan", "hijo"),
+        ("mical", "hija"),
+        ("is-boset", "hijo"),
+        ("abinadab", "hijo"),
+        ("david", "lo persiguió"),
+        ("samuel", "lo ungió"),
+    ],
+    "cis": [("saul", "hijo"), ("benjamin", "tribu")],
+    "david": [
+        ("isai", "padre"),
+        ("saul", "rey a quien sucedió"),
+        ("jonatan", "amigo"),
+        ("mical", "esposa"),
+        ("betsabe", "esposa"),
+        ("salomon", "hijo"),
+        ("absalon", "hijo"),
+        ("amnon", "hijo"),
+        ("tamar", "hija"),
+        ("adonias", "hijo"),
+        ("jerusalen", "su ciudad"),
+    ],
+    "isai": [("david", "hijo")],
+    "salomon": [
+        ("david", "padre"),
+        ("betsabe", "madre"),
+        ("natan", "lo apoyó"),
+        ("roboam", "hijo"),
+        ("templo", "lo edificó"),
+        ("reina-de-saba", "lo visitó"),
+    ],
+    "reina-de-saba": [("saba", "su reino"), ("salomon", "lo visitó")],
     "saba": [("reina-de-saba", "su reina"), ("salomon", "comercio y visita")],
-    "jonatan": [("saul", "hijo"), ("david", "amigo"), ("mefiboset", "padre")],
-    "mical": [("saul", "hija"), ("david", "esposa")],
-    "absalon": [("david", "hijo"), ("tamar", "hermano"), ("amnon", "vengó a Tamar"), ("ahitofel", "su consejero"), ("joab", "lo mató")],
-    "amnon": [("david", "hijo"), ("tamar", "la violó"), ("absalon", "lo mató"), ("aquinoam", "hijo")],
-    "tamar": [("david", "hija"), ("absalon", "hermana"), ("amnon", "víctima de")],
-    "joab": [("sarvia", "hijo"), ("david", "general de"), ("abner", "lo mató"), ("absalon", "lo mató")],
-    "abner": [("ner", "hijo"), ("saul", "jefe de su ejército"), ("is-boset", "puso por rey"), ("joab", "lo asesinó")],
-    "betsabe": [("urias", "esposa de"), ("david", "luego esposa de"), ("salomon", "madre"), ("eliam", "hija")],
-    "urias": [("betsabe", "esposo"), ("david", "lo mandó matar")],
+    "jonatan": [("saul", "padre"), ("david", "amigo"), ("mefiboset", "hijo")],
+    "mical": [("saul", "padre"), ("david", "esposo")],
+    "absalon": [
+        ("david", "padre"),
+        ("tamar", "hermana"),
+        ("amnon", "hermano; lo mató"),
+        ("ahitofel", "su consejero"),
+        ("joab", "lo mató"),
+    ],
+    "amnon": [
+        ("david", "padre"),
+        ("aquinoam", "madre"),
+        ("tamar", "la violó"),
+        ("absalon", "hermano; lo mató"),
+    ],
+    "aquinoam": [("amnon", "hijo"), ("david", "esposo")],
+    "tamar": [("david", "padre"), ("absalon", "hermano"), ("amnon", "la violó")],
+    "joab": [
+        ("sarvia", "madre"),
+        ("david", "su general"),
+        ("abner", "lo mató"),
+        ("absalon", "lo mató"),
+    ],
+    "sarvia": [("joab", "hijo"), ("david", "hermano")],
+    "abner": [
+        ("ner", "padre"),
+        ("saul", "jefe de su ejército"),
+        ("is-boset", "lo puso por rey"),
+        ("joab", "lo asesinó"),
+    ],
+    "ner": [("abner", "hijo"), ("saul", "sobrino"), ("cis", "hermano")],
+    "betsabe": [
+        ("urias", "primer esposo"),
+        ("david", "luego esposo"),
+        ("salomon", "hijo"),
+        ("eliam", "padre"),
+    ],
+    "eliam": [("betsabe", "hija")],
+    "urias": [("betsabe", "esposa"), ("david", "lo mandó matar")],
     "natan": [("david", "profeta de"), ("salomon", "lo apoyó")],
-    "sadoc": [("abiatar", "sacerdote junto a"), ("david", "fiel a"), ("salomon", "lo ungió"), ("aaron", "linaje")],
-    "abiatar": [("ahimelec", "hijo"), ("david", "huyó a"), ("sadoc", "compañero"), ("adonias", "apoyó a")],
-    "ahimelec": [("abiatar", "padre"), ("nob", "sacerdote de"), ("doeg", "lo denunció"), ("saul", "lo mató")],
+    "sadoc": [
+        ("abiatar", "sacerdote junto a"),
+        ("david", "fiel a"),
+        ("salomon", "lo ungió"),
+        ("aaron", "linaje"),
+    ],
+    "abiatar": [
+        ("ahimelec", "padre"),
+        ("david", "huyó a"),
+        ("sadoc", "compañero"),
+        ("adonias", "apoyó a"),
+    ],
+    "ahimelec": [
+        ("abiatar", "hijo"),
+        ("nob", "sacerdote de"),
+        ("doeg", "lo denunció"),
+        ("saul", "lo mató"),
+    ],
     "goliat": [("gat", "de Gat"), ("david", "lo mató"), ("filisteos", "campeón de")],
-    "filisteos": [("gat", "una de sus ciudades"), ("asdod", "una de sus ciudades"), ("ecron", "una de sus ciudades"), ("arca", "la tomaron")],
-    "arca": [("silo", "estaba allí"), ("dagon", "lo derribó"), ("quiriat-jearim", "descansó allí"), ("david", "la subió")],
-    "acab": [("jezabel", "esposo"), ("ocozias", "padre"), ("joram", "padre"), ("elias", "lo enfrentó"), ("nabot", "le quitó la viña")],
-    "jezabel": [("acab", "esposa"), ("etbaal", "hija"), ("elias", "lo persiguió"), ("jehu", "la hizo matar")],
-    "elias": [("eliseo", "su sucesor"), ("acab", "lo reprendió"), ("carmelo", "el duelo con Baal"), ("sarepta", "la viuda")],
-    "eliseo": [("elias", "discípulo"), ("safat", "hijo"), ("naaman", "lo sanó"), ("giezi", "su criado")],
-    "jeroboam": [("nabat", "hijo"), ("roboam", "se separó de"), ("ahias", "profecía de"), ("betel", "becerro en")],
-    "roboam": [("salomon", "hijo"), ("jeroboam", "se le fue el norte"), ("siquem", "allí se dividió el reino")],
-    "omri": [("acab", "padre"), ("samaria", "fundó la capital"), ("tibni", "rival")],
-    "jehu": [("nimsi", "nieto"), ("acab", "exterminó su casa"), ("jezabel", "hizo ejecutar"), ("eliseo", "ungido vía")],
-    "ezequias": [("isaias", "profeta de"), ("senaquerib", "lo sitió"), ("manases", "padre de")],
-    "senaquerib": [("ezequias", "sitió a"), ("asiria", "rey de"), ("esar-hadon", "padre de")],
+    "filisteos": [
+        ("gat", "una de sus ciudades"),
+        ("asdod", "una de sus ciudades"),
+        ("ecron", "una de sus ciudades"),
+        ("arca", "la tomaron"),
+    ],
+    "arca": [
+        ("silo", "estaba allí"),
+        ("dagon", "lo derribó"),
+        ("quiriat-jearim", "descansó allí"),
+        ("david", "la subió"),
+    ],
+    "acab": [
+        ("omri", "padre"),
+        ("jezabel", "esposa"),
+        ("ocozias", "hijo"),
+        ("joram", "hijo"),
+        ("elias", "lo enfrentó"),
+        ("nabot", "le quitó la viña"),
+    ],
+    "jezabel": [
+        ("acab", "esposo"),
+        ("etbaal", "padre"),
+        ("elias", "lo persiguió"),
+        ("jehu", "la hizo matar"),
+    ],
+    "etbaal": [("jezabel", "hija"), ("sidon", "rey de")],
+    "elias": [
+        ("eliseo", "su sucesor"),
+        ("acab", "lo reprendió"),
+        ("carmelo", "el duelo con Baal"),
+        ("sarepta", "la viuda"),
+    ],
+    "eliseo": [
+        ("elias", "maestro"),
+        ("safat", "padre"),
+        ("naaman", "lo sanó"),
+        ("giezi", "su criado"),
+    ],
+    "safat": [("eliseo", "hijo")],
+    "jeroboam": [
+        ("nabat", "padre"),
+        ("roboam", "se separó de"),
+        ("ahias", "profecía de"),
+        ("betel", "becerro en"),
+    ],
+    "nabat": [("jeroboam", "hijo")],
+    "roboam": [
+        ("salomon", "padre"),
+        ("jeroboam", "se le fue el norte"),
+        ("siquem", "allí se dividió el reino"),
+    ],
+    "omri": [("acab", "hijo"), ("samaria", "fundó la capital"), ("tibni", "rival")],
+    "jehu": [
+        ("nimsi", "abuelo"),
+        ("acab", "exterminó su casa"),
+        ("jezabel", "hizo ejecutar"),
+        ("eliseo", "ungido vía"),
+    ],
+    "nimsi": [("jehu", "nieto")],
+    "ezequias": [
+        ("isaias", "profeta de"),
+        ("senaquerib", "lo sitió"),
+        ("manases", "hijo"),
+    ],
+    "manases": [("ezequias", "padre")],
+    "senaquerib": [
+        ("ezequias", "sitió a"),
+        ("asiria", "rey de"),
+        ("esar-hadon", "hijo"),
+    ],
+    "esar-hadon": [("senaquerib", "padre")],
     "josias": [("hulda", "consultó a"), ("hilcias", "el libro hallado"), ("necao", "murió frente a")],
-    "nabucodonosor": [("babilonia", "rey de"), ("sedequias", "lo venció"), ("joaquin", "lo llevó cautivo")],
-    "sedequias": [("matanias", "su nombre primero"), ("nabucodonosor", "vasallo de"), ("ribla", "juzgado allí")],
-    "is-boset": [("saul", "hijo"), ("abner", "lo puso por rey"), ("mahanaim", "reinó allí")],
-    "mefiboset": [("jonatan", "hijo"), ("david", "comió a su mesa"), ("ziba", "siervo de su casa")],
-    "adonias": [("haguit", "hijo"), ("david", "se proclamó rey en vida de"), ("salomon", "rival"), ("abisag", "la pidió")],
+    "nabucodonosor": [
+        ("babilonia", "rey de"),
+        ("sedequias", "lo venció"),
+        ("joaquin", "lo llevó cautivo"),
+    ],
+    "sedequias": [
+        ("matanias", "su nombre primero"),
+        ("nabucodonosor", "vasallo de"),
+        ("ribla", "juzgado allí"),
+    ],
+    "is-boset": [
+        ("saul", "padre"),
+        ("abner", "lo puso por rey"),
+        ("mahanaim", "reinó allí"),
+    ],
+    "mefiboset": [
+        ("jonatan", "padre"),
+        ("david", "comió a su mesa"),
+        ("ziba", "siervo de su casa"),
+    ],
+    "adonias": [
+        ("haguit", "madre"),
+        ("david", "padre"),
+        ("salomon", "rival"),
+        ("abisag", "la pidió"),
+    ],
+    "haguit": [("adonias", "hijo"), ("david", "esposo")],
     "hiram": [("tiro", "rey de"), ("salomon", "aliado de"), ("libano", "cedros de")],
     "naaman": [("eliseo", "sanado por"), ("siria", "general de"), ("jordan", "se bañó")],
     "nabot": [("acab", "su viña"), ("jezabel", "lo hizo matar"), ("jezreel", "de Jezreel")],
-    "templo": [("salomon", "lo construyó"), ("jerusalen", "en"), ("querubines", "en el lugar santísimo")],
+    "templo": [
+        ("salomon", "lo construyó"),
+        ("jerusalen", "en"),
+        ("querubines", "en el lugar santísimo"),
+    ],
     "samaria": [("omri", "la fundó"), ("acab", "capital de"), ("asiria", "la tomó")],
     "jerusalen": [("david", "la tomó"), ("salomon", "el templo"), ("juda", "capital de")],
-    "israel": [("juda", "el otro reino"), ("samaria", "su capital del norte"), ("jeroboam", "primer rey del norte")],
+    "israel": [
+        ("juda", "el otro reino"),
+        ("samaria", "su capital del norte"),
+        ("jeroboam", "primer rey del norte"),
+    ],
     "juda": [("israel", "el reino hermano"), ("jerusalen", "su capital"), ("david", "casa de")],
+    # Extra contextual links for terms that only had co-occurrence labels.
+    # Labels describe the related term relative to the entry (UI: "Other — label").
+    "abdias": [("acab", "su rey"), ("jezabel", "de quien escondió profetas"), ("elias", "contemporáneo")],
+    "abel-bet-maaca": [("joab", "quien la sitió"), ("seba", "sitiado allí"), ("bicri", "padre de Seba")],
+    "abisag": [("david", "rey a quien cuidó"), ("adonias", "quien la pidió"), ("sunem", "su pueblo")],
+    "abisai": [("sarvia", "madre"), ("joab", "hermano"), ("david", "su rey")],
+    "agag": [("saul", "quien lo perdonó"), ("samuel", "quien lo ejecutó")],
+    "adulam": [("david", "quien se escondió allí")],
+    "ahitofel": [("david", "su rey"), ("absalon", "a quien se pasó")],
+    "amasa": [("david", "tío"), ("absalon", "a quien sirvió"), ("joab", "quien lo asesinó")],
+    "doeg": [("saul", "su rey"), ("ahimelec", "a quien denunció"), ("edom", "su pueblo")],
+    "hiel": [("betel", "su pueblo"), ("abiram", "hijo"), ("jerico", "ciudad que reconstruyó")],
+    "hulda": [("josias", "rey a quien habló"), ("jerusalen", "donde profetizó")],
+    "rizpa": [("saul", "su señor"), ("armoni", "hijo")],
+    "ziba": [("saul", "señor de su casa"), ("mefiboset", "a quien sirvió"), ("david", "quien le encargó tierras")],
+    "tibni": [("omri", "rival"), ("israel", "trono que disputó")],
+    "seba": [("bicri", "padre"), ("david", "rey contra quien se rebeló"), ("joab", "quien lo persiguió")],
+    "quiriat-jearim": [("arca", "que descansó allí"), ("abinadab", "dueño de la casa")],
+    "abiam": [("roboam", "padre"), ("jeroboam", "rival"), ("juda", "su reino")],
+    "ahilud": [("josafat", "hijo (el cronista)")],
+    "abinadab": [("quiriat-jearim", "su pueblo"), ("arca", "en su casa"), ("eleazar", "hijo")],
+    "acbor": [("josias", "su rey"), ("hulda", "a quien consultó"), ("hilcias", "compañero")],
 }
 
 
@@ -822,6 +1027,214 @@ def load_cards() -> list[tuple[str, str, str]]:
     return out
 
 
+def entry_forms(entry: dict) -> list[str]:
+    forms = [entry.get("term") or ""]
+    forms.extend(entry.get("aliases") or [])
+    # Longest first so "Abel-bet-maaca" wins over shorter fragments.
+    return sorted({f.strip() for f in forms if f and f.strip()}, key=len, reverse=True)
+
+
+def find_form_span(text: str, forms: list[str]) -> tuple[str, int, int] | None:
+    if not text:
+        return None
+    best: tuple[str, int, int] | None = None
+    for form in forms:
+        for m in re.finditer(re.escape(form), text, flags=re.IGNORECASE):
+            span = (form, m.start(), m.end())
+            if best is None or (span[2] - span[1]) > (best[2] - best[1]):
+                best = span
+            break
+    return best
+
+
+def clean_rel_label(label: str, limit: int = 42) -> str:
+    label = re.sub(r"\s+", " ", label).strip(" .;,:")
+    label = re.sub(r"^(que|y|o|en|de|del|la|el|los|las)\s+", "", label, flags=re.I)
+    if len(label) <= limit:
+        return label
+    cut = label[: limit - 1]
+    if " " in cut:
+        cut = cut.rsplit(" ", 1)[0]
+    return cut + "…"
+
+
+def rel_from_entry_note(note: str, form: str, start: int, end: int) -> str | None:
+    """Infer how the mentioned other relates to this entry, from the entry note."""
+    before = note[:start]
+    after = note[end:]
+    window_before = before[-56:]
+    window_after = after[:40]
+    paired = [
+        (r"hijo(?:s)? de\s+$", "padre o madre"),
+        (r"hija(?:s)? de\s+$", "padre o madre"),
+        (r"padre de\s+$", "hijo"),
+        (r"madre de\s+$", "hijo"),
+        (r"esposo de\s+$", "esposa"),
+        (r"esposa(?:\s+sidonia)?\s+de\s+$", "esposo"),
+        (r"hermano de\s+$", "hermano"),
+        (r"hermana de\s+$", "hermana"),
+        (r"nieto de\s+$", "abuelo"),
+        (r"abuelo de\s+$", "nieto"),
+        (r"concubina de\s+$", "su señor"),
+        (r"mayordomo de\s+$", "su rey"),
+        (r"siervo(?:s)? de\s+$", "su señor"),
+        (r"criado de\s+$", "su señor"),
+        (r"general de\s+$", "su rey"),
+        (r"consejero de\s+$", "su rey"),
+        (r"profeta de\s+$", "su rey o pueblo"),
+        (r"rey(?:\s+filisteo|\s+amalecita|\s+arameo)?\s+de\s+$", "su reino"),
+        (r"reina de\s+$", "su reino"),
+        (r"capital de\s+$", "su reino"),
+        (r"ciudad(?:\s+filistea)?\s+de\s+$", "su ciudad"),
+        (r"pueblo de\s+$", "su pueblo"),
+        (r"cueva donde\s+$", "allí en el relato"),
+        (r"donde\s+$", "ligado a ese lugar"),
+        (r"sitió a\s+$", "sitiado allí"),
+        (r"mató a\s+$", "muerto por él/ella"),
+        (r"perdonó a\s+$", "perdonado por él"),
+        (r"ungió a\s+$", "ungido por él"),
+        (r"enfrentó a\s+$", "enfrentado por él"),
+        (r"ayudó a\s+$", "ayudado por él"),
+        (r"rival de\s+$", "su rival"),
+        (r"amigo de\s+$", "amigo"),
+        (r"valiente(?:s)? de\s+$", "su rey"),
+        (r"sobrino de\s+$", "tío o tía"),
+        (r"tío de\s+$", "sobrino"),
+    ]
+    for pat, rel in paired:
+        if re.search(pat, window_before, flags=re.IGNORECASE):
+            return rel
+
+    # Action that starts right after the name: "Joab sitió…", "Samuel ejecutó…"
+    m = re.match(
+        r"^\s*,?\s*(sitió|mató|ungió|escondió|ayudó|enfrentó|tomó|fundó|"
+        r"gobernó|huyó|pidió|cuidó|denunció|perdonó|ejecutó|asesinó|"
+        r"reconstruyó|anunció|veló|encargó|se\s+pasó|se\s+rebeló|"
+        r"se\s+escondió|lo\s+mató|la\s+pidió)",
+        window_after,
+        flags=re.IGNORECASE,
+    )
+    if m:
+        return clean_rel_label(m.group(1))
+
+    # Relative clause: "a quien Saúl perdonó"
+    if re.search(r"\ba quien\s+$", window_before, flags=re.IGNORECASE):
+        m = re.match(
+            r"^\s*(perdonó|ejecutó|mató|ungió|sitió|enfrentó|ayudó|asesinó)",
+            window_after,
+            flags=re.IGNORECASE,
+        )
+        if m:
+            return clean_rel_label(m.group(1))
+
+    # Trailing apposition after comma: "Sarvia, madre de Joab"
+    m = re.match(
+        r"^\s*,\s*((?:padre|madre|hijo|hija|hermano|hermana|esposo|esposa|"
+        r"rey|reina|profeta|general|mayordomo|siervo|concubina)"
+        r"(?:\s+[a-záéíóúüñ]+){0,4})",
+        window_after,
+        flags=re.IGNORECASE,
+    )
+    if m:
+        return clean_rel_label(m.group(1))
+
+    return None
+
+
+def rel_from_other_note(other_note: str, entry_form: str, start: int) -> str | None:
+    """If the other note describes this entry, invert common kinship phrases."""
+    before = other_note[:start]
+    window_before = before[-48:]
+    paired = [
+        (r"hijo(?:s)? de\s+$", "hijo"),
+        (r"hija(?:s)? de\s+$", "hija"),
+        (r"padre de\s+$", "padre"),
+        (r"madre de\s+$", "madre"),
+        (r"esposo de\s+$", "esposo"),
+        (r"esposa de\s+$", "esposa"),
+        (r"hermano de\s+$", "hermano"),
+        (r"hermana de\s+$", "hermana"),
+        (r"mayordomo de\s+$", "su mayordomo"),
+        (r"general de\s+$", "su general"),
+        (r"profeta de\s+$", "su profeta"),
+        (r"rey de\s+$", "su rey"),
+    ]
+    for pat, rel in paired:
+        if re.search(pat, window_before, flags=re.IGNORECASE):
+            return rel
+    return None
+
+
+def kind_fallback_rel(entry: dict, other: dict) -> str:
+    ek, ok = entry.get("kind"), other.get("kind")
+    if ek == "lugar" and ok == "persona":
+        return "en el relato del lugar"
+    if ek == "persona" and ok == "lugar":
+        return "lugar del relato"
+    if ek == "persona" and ok == "persona":
+        return "en el mismo relato"
+    if ek == "concepto" or ok == "concepto":
+        return "ligado en el relato"
+    if ek == "lugar" and ok == "lugar":
+        return "lugar del mismo relato"
+    return "en el mismo relato"
+
+
+def contextual_rel(entry: dict, other: dict) -> str:
+    """Label for UI '{other} — {rel}' under entry."""
+    note = entry.get("note") or ""
+    span = find_form_span(note, entry_forms(other))
+    if span:
+        form, start, end = span
+        inferred = rel_from_entry_note(note, form, start, end)
+        if inferred:
+            return inferred
+
+    other_note = other.get("note") or ""
+    span = find_form_span(other_note, entry_forms(entry))
+    if span:
+        form, start, _end = span
+        inferred = rel_from_other_note(other_note, form, start)
+        if inferred:
+            return inferred
+
+    return kind_fallback_rel(entry, other)
+
+
+def seed_related_from_notes(entries: list[dict]) -> None:
+    """For entries without explicit REL, link terms named in their note."""
+    for e in entries:
+        if e.get("related"):
+            continue
+        note = e.get("note") or ""
+        if not note:
+            continue
+        scored: list[tuple[int, str, str]] = []
+        for other in entries:
+            if other["id"] == e["id"]:
+                continue
+            span = find_form_span(note, entry_forms(other))
+            if not span:
+                continue
+            form, start, end = span
+            # Skip tiny accidental hits (e.g. Ana inside Anatot handled by longest form).
+            if len(form) < 3:
+                continue
+            rel = rel_from_entry_note(note, form, start, end) or kind_fallback_rel(e, other)
+            scored.append((len(form), other["id"], rel))
+        scored.sort(key=lambda row: -row[0])
+        seen: set[str] = set()
+        related = []
+        for _n, oid, rel in scored:
+            if oid in seen:
+                continue
+            seen.add(oid)
+            related.append({"id": oid, "rel": rel})
+            if len(related) >= 3:
+                break
+        e["related"] = related
+
+
 def main() -> None:
     data = json.loads(GLOSSARY.read_text(encoding="utf-8"))
     entries = data["entries"]
@@ -867,7 +1280,11 @@ def main() -> None:
             related.append({"id": oid, "rel": rel})
         e["related"] = related
 
-    # For remaining terms, link other glossary words that share a card.
+    # Derive relations from notes when REL has no row for the term.
+    seed_related_from_notes(entries)
+
+    # For remaining terms, link other glossary words that share a card,
+    # with a contextual label instead of a generic co-occurrence phrase.
     by_id = {e["id"]: e for e in entries}
     folded_forms: list[tuple[str, str]] = []
     for e in entries:
@@ -897,7 +1314,7 @@ def main() -> None:
             other = by_id.get(oid)
             if not other:
                 continue
-            related.append({"id": oid, "rel": "aparece en las mismas tarjetas"})
+            related.append({"id": oid, "rel": contextual_rel(e, other)})
         e["related"] = related
 
     GLOSSARY.write_text(
@@ -907,8 +1324,15 @@ def main() -> None:
     with_note = sum(1 for e in entries if e.get("note"))
     with_aka = sum(1 for e in entries if e.get("aliases"))
     with_rel = sum(1 for e in entries if e.get("related"))
+    generic = sum(
+        1
+        for e in entries
+        for r in e.get("related") or []
+        if r.get("rel") == "aparece en las mismas tarjetas"
+    )
     print(
-        f"Wrote {len(entries)} entries: {with_note} notes, {with_aka} with aliases, {with_rel} with related"
+        f"Wrote {len(entries)} entries: {with_note} notes, {with_aka} with aliases, "
+        f"{with_rel} with related, {generic} generic co-occurrence labels"
     )
 
 

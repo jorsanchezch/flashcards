@@ -1,6 +1,6 @@
 #flashcard
 
-# ¿Qué característica física distinguía especialmente al joven que salió a buscar los animales perdidos de su padre?
+# ¿Qué característica física distinguía especialmente a Saúl cuando salió a buscar los animales perdidos de su padre?
 
 ?
 Tan alto que los demás apenas le llegaban a los hombros. (1 Samuel 9:2, NTV)
