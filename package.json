@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "npm run dev",
     "predev": "node scripts/generate-flashcard-manifest.mjs && node scripts/sqlite/sync.mjs all",
     "dev": "vite --host 0.0.0.0 --port 18480 --strictPort",
     "prebuild": "node scripts/generate-flashcard-manifest.mjs && node scripts/sqlite/sync.mjs all",

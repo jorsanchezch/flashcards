@@ -13,16 +13,26 @@ Aplicación web estática para estudiar **974 tarjetas** en Markdown sobre **1 S
 
 Antes de `dev` o `build`, el script [`scripts/generate-flashcard-manifest.mjs`](scripts/generate-flashcard-manifest.mjs) sincroniza desde `obsidian-vault/flashcards/` hacia `public/flashcards/` (si existe el vault) y genera `public/flashcards/manifest.json`.
 
-## Desarrollo local
+## Arranque local (otra máquina)
+
+```bash
+git clone git@github.com:jorsanchezch/flashcards.git
+cd flashcards
+./scripts/run-local.sh
+```
+
+Equivale a `npm install && npm start` (mismo servidor que `npm run dev`). Abre **http://127.0.0.1:18480/**. Si Safari no conecta a loopback, usa la URL de red que imprime Vite (`http://<lan>:18480/`).
+
+El `.db` y los dumps KJV/ASV van en el clone: [`data/flashcards.db`](data/flashcards.db), [`data/bible-dumps/`](data/bible-dumps/). DBeaver: `jdbc:sqlite:` + ruta absoluta a `data/flashcards.db` en el clone.
+
+`npm run db:import-bible` solo hace falta si vuelves a cargar dumps. `npm run build` exporta JSON a `public/data/` para GitHub Pages (sin texto bíblico). NTV es la versión por defecto; aún no hay dump NTV con licencia en el `.db`.
+
+## Desarrollo local (ya clonado)
 
 ```bash
 npm install
-npm run dev
+npm start
 ```
-
-El servidor de Vite escucha en **http://127.0.0.1:18480/** (IPv4 `0.0.0.0`). Si Safari no abre el loopback, usa la URL de red que imprime Vite (`http://<lan>:18480/`).
-
-En **local**, las tarjetas y el glosario se leen de SQLite en [`data/flashcards.db`](data/flashcards.db) (si el clone está bajo `/tmp`, la app usa `~/Library/Application Support/flashcards/flashcards.db`). Dumps públicos KJV/ASV: [`data/bible-dumps/`](data/bible-dumps/). `npm run db:import-bible` recarga esos dumps. `npm run build` exporta JSON estático a `public/data/` para GitHub Pages (sin texto bíblico). NTV es la versión por defecto; el texto NTV no está en el `.db` hasta que haya un dump con licencia.
 
 ## Build
 
