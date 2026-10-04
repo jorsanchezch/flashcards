@@ -84,7 +84,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "beerseba",
+          "id": "ahias",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -101,7 +101,7 @@
       "related": [
         {
           "id": "ahimelec",
-          "rel": "hijo"
+          "rel": "padre"
         },
         {
           "id": "david",
@@ -204,7 +204,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "amon",
+          "id": "david",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -219,7 +219,7 @@
       "related": [
         {
           "id": "ner",
-          "rel": "hijo"
+          "rel": "padre"
         },
         {
           "id": "saul",
@@ -227,7 +227,7 @@
         },
         {
           "id": "is-boset",
-          "rel": "puso por rey"
+          "rel": "lo puso por rey"
         },
         {
           "id": "joab",
@@ -247,15 +247,15 @@
       "related": [
         {
           "id": "david",
-          "rel": "hijo"
+          "rel": "padre"
         },
         {
           "id": "tamar",
-          "rel": "hermano"
+          "rel": "hermana"
         },
         {
           "id": "amnon",
-          "rel": "vengó a Tamar"
+          "rel": "hermano; lo mató"
         },
         {
           "id": "ahitofel",
@@ -282,11 +282,11 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "beerseba",
+          "id": "ahias",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "joel",
+          "id": "jeroboam",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -302,16 +302,20 @@
       "properName": true,
       "related": [
         {
+          "id": "omri",
+          "rel": "padre"
+        },
+        {
           "id": "jezabel",
-          "rel": "esposo"
+          "rel": "esposa"
         },
         {
           "id": "ocozias",
-          "rel": "padre"
+          "rel": "hijo"
         },
         {
           "id": "joram",
-          "rel": "padre"
+          "rel": "hijo"
         },
         {
           "id": "elias",
@@ -407,11 +411,11 @@
       "related": [
         {
           "id": "haguit",
-          "rel": "hijo"
+          "rel": "madre"
         },
         {
           "id": "david",
-          "rel": "se proclamó rey en vida de"
+          "rel": "padre"
         },
         {
           "id": "salomon",
@@ -478,15 +482,15 @@
       "properName": true,
       "related": [
         {
+          "id": "filisteos",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
           "id": "asdod",
           "rel": "aparece en las mismas tarjetas"
         },
         {
           "id": "tumores",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "arca",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -567,7 +571,7 @@
       "related": [
         {
           "id": "abiatar",
-          "rel": "padre"
+          "rel": "hijo"
         },
         {
           "id": "nob",
@@ -672,7 +676,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "azarias",
+          "id": "aquis",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -735,7 +739,11 @@
       "related": [
         {
           "id": "david",
-          "rel": "hijo"
+          "rel": "padre"
+        },
+        {
+          "id": "aquinoam",
+          "rel": "madre"
         },
         {
           "id": "tamar",
@@ -743,11 +751,7 @@
         },
         {
           "id": "absalon",
-          "rel": "lo mató"
-        },
-        {
-          "id": "aquinoam",
-          "rel": "hijo"
+          "rel": "hermano; lo mató"
         }
       ]
     },
@@ -806,11 +810,11 @@
       "related": [
         {
           "id": "samuel",
-          "rel": "madre"
+          "rel": "hijo"
         },
         {
           "id": "elcana",
-          "rel": "esposa"
+          "rel": "esposo"
         },
         {
           "id": "penina",
@@ -881,12 +885,12 @@
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "amnon",
+          "rel": "hijo"
         },
         {
-          "id": "jezreel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "esposo"
         }
       ]
     },
@@ -925,15 +929,15 @@
       "properName": true,
       "related": [
         {
-          "id": "eliseo",
+          "id": "sedequias",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "eli",
+          "id": "david",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "elias",
+          "id": "saul",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -953,11 +957,11 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "filisteos",
+          "id": "eliaquim",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "israel",
+          "id": "eli",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -1076,7 +1080,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "israel",
+          "id": "saul",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -1149,7 +1153,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "afec",
+          "id": "filisteos",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -1169,11 +1173,11 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "asa",
+          "id": "templo",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "templo",
+          "id": "asa",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -1221,7 +1225,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "samaria",
+          "id": "israel",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -1262,15 +1266,15 @@
       "properName": true,
       "related": [
         {
-          "id": "samaria",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "david",
           "rel": "aparece en las mismas tarjetas"
         },
         {
           "id": "saul",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "samaria",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -1291,11 +1295,11 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "amasias",
+          "id": "natan",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "cis",
+          "id": "sadoc",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -1309,15 +1313,15 @@
       "properName": false,
       "related": [
         {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "asera",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "israel",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -1486,7 +1490,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "isai",
+          "id": "evil-merodac",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -1627,7 +1631,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "abiam",
+          "id": "eli",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -1644,15 +1648,15 @@
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "isai",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "adulam",
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "samuel",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -1677,7 +1681,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "acab",
+          "id": "israel",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -1699,7 +1703,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "ela",
+          "id": "david",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -1772,7 +1776,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "holocausto",
+          "id": "filisteos",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -1815,19 +1819,19 @@
       "related": [
         {
           "id": "urias",
-          "rel": "esposa de"
+          "rel": "primer esposo"
         },
         {
           "id": "david",
-          "rel": "luego esposa de"
+          "rel": "luego esposo"
         },
         {
           "id": "salomon",
-          "rel": "madre"
+          "rel": "hijo"
         },
         {
           "id": "eliam",
-          "rel": "hija"
+          "rel": "padre"
         }
       ]
     },
@@ -2014,15 +2018,11 @@
       "related": [
         {
           "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hijo"
         },
         {
-          "id": "juda",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "acaz",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "benjamin",
+          "rel": "tribu"
         }
       ]
     },
@@ -2066,11 +2066,11 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "asiria",
+          "id": "gabaonitas",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "ava",
+          "id": "gabaon",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -2112,11 +2112,11 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "ben-adad",
+          "id": "eliseo",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "siria",
+          "id": "ben-adad",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -2153,19 +2153,43 @@
       "related": [
         {
           "id": "isai",
-          "rel": "hijo"
+          "rel": "padre"
         },
         {
           "id": "saul",
-          "rel": "ungido en su lugar"
+          "rel": "rey a quien sucedió"
         },
         {
           "id": "jonatan",
           "rel": "amigo"
         },
         {
+          "id": "mical",
+          "rel": "esposa"
+        },
+        {
+          "id": "betsabe",
+          "rel": "esposa"
+        },
+        {
           "id": "salomon",
-          "rel": "padre"
+          "rel": "hijo"
+        },
+        {
+          "id": "absalon",
+          "rel": "hijo"
+        },
+        {
+          "id": "amnon",
+          "rel": "hijo"
+        },
+        {
+          "id": "tamar",
+          "rel": "hija"
+        },
+        {
+          "id": "adonias",
+          "rel": "hijo"
         },
         {
           "id": "jerusalen",
@@ -2245,15 +2269,15 @@
       "properName": true,
       "related": [
         {
-          "id": "samuel",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "afec",
           "rel": "aparece en las mismas tarjetas"
         },
         {
           "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "filisteos",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -2297,11 +2321,11 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "ela",
+          "id": "david",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "david",
+          "id": "ela",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -2369,11 +2393,11 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "ana",
+          "id": "roboam",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "samuel",
+          "id": "ana",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -2398,7 +2422,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "filisteos",
+          "id": "eli",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -2415,15 +2439,15 @@
       "related": [
         {
           "id": "samuel",
-          "rel": "padre"
+          "rel": "hijo"
         },
         {
           "id": "ana",
-          "rel": "esposo"
+          "rel": "esposa"
         },
         {
           "id": "penina",
-          "rel": "esposo"
+          "rel": "esposa"
         },
         {
           "id": "rama",
@@ -2487,15 +2511,7 @@
       "related": [
         {
           "id": "betsabe",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "urias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hija"
         }
       ]
     },
@@ -2535,11 +2551,11 @@
       "related": [
         {
           "id": "elias",
-          "rel": "discípulo"
+          "rel": "maestro"
         },
         {
           "id": "safat",
-          "rel": "hijo"
+          "rel": "padre"
         },
         {
           "id": "naaman",
@@ -2570,7 +2586,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "arca",
+          "id": "saul",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -2585,11 +2601,11 @@
       "related": [
         {
           "id": "ofni",
-          "rel": "padre"
+          "rel": "hijo"
         },
         {
           "id": "finees",
-          "rel": "padre"
+          "rel": "hijo"
         },
         {
           "id": "samuel",
@@ -2601,7 +2617,7 @@
         },
         {
           "id": "ichabod",
-          "rel": "abuelo"
+          "rel": "nieto"
         }
       ]
     },
@@ -2668,16 +2684,8 @@
       "properName": true,
       "related": [
         {
-          "id": "adramelec",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "nisroc",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "senaquerib",
+          "rel": "padre"
         }
       ]
     },
@@ -2712,16 +2720,12 @@
       "properName": true,
       "related": [
         {
-          "id": "acab",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "baal",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "jezabel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hija"
+        },
+        {
+          "id": "sidon",
+          "rel": "rey de"
         }
       ]
     },
@@ -2766,7 +2770,7 @@
         },
         {
           "id": "manases",
-          "rel": "padre de"
+          "rel": "hijo"
         }
       ]
     },
@@ -2837,15 +2841,15 @@
       "related": [
         {
           "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "padre"
         },
         {
           "id": "ofni",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hermano"
         },
         {
-          "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ichabod",
+          "rel": "hijo"
         }
       ]
     },
@@ -2894,7 +2898,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "cuta",
+          "id": "asa",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -2918,7 +2922,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "joab",
+          "id": "gabaonitas",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -2932,15 +2936,15 @@
       "properName": true,
       "related": [
         {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
           "id": "israel",
           "rel": "aparece en las mismas tarjetas"
         },
         {
           "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "ana",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -2978,15 +2982,15 @@
       "properName": true,
       "related": [
         {
-          "id": "jabes",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "israel",
           "rel": "aparece en las mismas tarjetas"
         },
         {
           "id": "jacob",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jabes",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -3026,11 +3030,11 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "asdod",
+          "id": "filisteos",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "filisteos",
+          "id": "asdod",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -3090,15 +3094,15 @@
       "properName": true,
       "related": [
         {
-          "id": "ismael",
+          "id": "ahicam",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "mizpa",
+          "id": "dan",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "netanias",
+          "id": "nabuzaradan",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -3182,15 +3186,15 @@
       "properName": true,
       "related": [
         {
+          "id": "naaman",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
           "id": "eliseo",
           "rel": "aparece en las mismas tarjetas"
         },
         {
           "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "naaman",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -3232,11 +3236,11 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "betel",
+          "id": "saul",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "mizpa",
+          "id": "betel",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -3350,7 +3354,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "ner",
+          "id": "edom",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -3374,7 +3378,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "ner",
+          "id": "damasco",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -3391,11 +3395,11 @@
       "related": [
         {
           "id": "adonias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hijo"
         },
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "esposo"
         }
       ]
     },
@@ -3432,15 +3436,15 @@
       "properName": true,
       "related": [
         {
-          "id": "amitai",
+          "id": "asiria",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "araba",
+          "id": "ava",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "israel",
+          "id": "babilonia",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -3498,15 +3502,15 @@
       "properName": true,
       "related": [
         {
-          "id": "david",
+          "id": "absalon",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "gezer",
+          "id": "amnon",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "jerusalen",
+          "id": "baal",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -3676,15 +3680,15 @@
       "properName": true,
       "related": [
         {
+          "id": "jerusalen",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "juda",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
           "id": "acbor",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "ahicam",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "asa",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -3700,15 +3704,15 @@
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "dan",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "abiatar",
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "absalon",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -3746,16 +3750,12 @@
       "properName": true,
       "related": [
         {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "finees",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "padre"
+        },
+        {
+          "id": "eli",
+          "rel": "abuelo"
         }
       ]
     },
@@ -3797,7 +3797,7 @@
       "related": [
         {
           "id": "saul",
-          "rel": "hijo"
+          "rel": "padre"
         },
         {
           "id": "abner",
@@ -3844,16 +3844,8 @@
       "properName": true,
       "related": [
         {
-          "id": "abisai",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "joab",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hijo"
         }
       ]
     },
@@ -3872,11 +3864,11 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "babilonia",
+          "id": "asiria",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "asa",
+          "id": "siria",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -3968,11 +3960,11 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "amitai",
+          "id": "abisai",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "araba",
+          "id": "absalon",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -4096,7 +4088,7 @@
       "related": [
         {
           "id": "nimsi",
-          "rel": "nieto"
+          "rel": "abuelo"
         },
         {
           "id": "acab",
@@ -4122,7 +4114,7 @@
       "related": [
         {
           "id": "nabat",
-          "rel": "hijo"
+          "rel": "padre"
         },
         {
           "id": "roboam",
@@ -4200,11 +4192,11 @@
       "related": [
         {
           "id": "acab",
-          "rel": "esposa"
+          "rel": "esposo"
         },
         {
           "id": "etbaal",
-          "rel": "hija"
+          "rel": "padre"
         },
         {
           "id": "elias",
@@ -4229,11 +4221,11 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "eli",
+          "id": "jezabel",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "jezabel",
+          "id": "nabot",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -4248,11 +4240,11 @@
       "related": [
         {
           "id": "sarvia",
-          "rel": "hijo"
+          "rel": "madre"
         },
         {
           "id": "david",
-          "rel": "general de"
+          "rel": "su general"
         },
         {
           "id": "abner",
@@ -4375,11 +4367,11 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "david",
+          "id": "adonias",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "asa",
+          "id": "salomon",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -4399,11 +4391,11 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "amnon",
+          "id": "jehu",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "tamar",
+          "id": "recab",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -4420,7 +4412,7 @@
       "related": [
         {
           "id": "saul",
-          "rel": "hijo"
+          "rel": "padre"
         },
         {
           "id": "david",
@@ -4428,7 +4420,7 @@
         },
         {
           "id": "mefiboset",
-          "rel": "padre"
+          "rel": "hijo"
         }
       ]
     },
@@ -4467,15 +4459,15 @@
       "properName": true,
       "related": [
         {
+          "id": "juda",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
           "id": "israel",
           "rel": "aparece en las mismas tarjetas"
         },
         {
           "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "juda",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -4541,11 +4533,11 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "acab",
+          "id": "joram",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "joram",
+          "id": "juda",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -4621,15 +4613,15 @@
       "properName": true,
       "related": [
         {
+          "id": "azarias",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "uzias",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
           "id": "cis",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "jerusalen",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "lugares-altos",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -4804,15 +4796,15 @@
       "properName": false,
       "related": [
         {
+          "id": "jerusalen",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
           "id": "ela",
           "rel": "aparece en las mismas tarjetas"
         },
         {
           "id": "ezequias",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "asa",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -4828,15 +4820,15 @@
       "properName": true,
       "related": [
         {
-          "id": "joas",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "asa",
           "rel": "aparece en las mismas tarjetas"
         },
         {
           "id": "hiram",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "salomon",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -4906,7 +4898,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "peka",
+          "id": "gad",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -4922,16 +4914,8 @@
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "jerusalen",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "ezequias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "padre"
         }
       ]
     },
@@ -5013,15 +4997,15 @@
       "properName": true,
       "related": [
         {
-          "id": "asa",
+          "id": "joaquin",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "baal",
+          "id": "matanias",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "abiatar",
+          "id": "sedequias",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -5039,7 +5023,7 @@
       "related": [
         {
           "id": "jonatan",
-          "rel": "hijo"
+          "rel": "padre"
         },
         {
           "id": "david",
@@ -5062,15 +5046,15 @@
       "properName": true,
       "related": [
         {
+          "id": "josias",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "necao",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "gezer",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "hazor",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -5087,11 +5071,11 @@
       "related": [
         {
           "id": "saul",
-          "rel": "hija"
+          "rel": "padre"
         },
         {
           "id": "david",
-          "rel": "esposa"
+          "rel": "esposo"
         }
       ]
     },
@@ -5162,7 +5146,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "gezer",
+          "id": "asa",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -5183,11 +5167,11 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "elat",
+          "id": "imla",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "ela",
+          "id": "josafat",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -5251,15 +5235,7 @@
       "related": [
         {
           "id": "aaron",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hermano"
         }
       ]
     },
@@ -5321,16 +5297,8 @@
       "properName": true,
       "related": [
         {
-          "id": "ahias",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jeroboam",
+          "rel": "hijo"
         }
       ]
     },
@@ -5415,15 +5383,15 @@
       "properName": true,
       "related": [
         {
+          "id": "jonadab",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
           "id": "asa",
           "rel": "aparece en las mismas tarjetas"
         },
         {
           "id": "jeroboam",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "roboam",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -5443,11 +5411,11 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "israel",
+          "id": "galaad",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "jacob",
+          "id": "jabes",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -5505,15 +5473,15 @@
       "properName": true,
       "related": [
         {
+          "id": "josias",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "meguido",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
           "id": "acaz",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "egipto",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "eliaquim",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -5576,15 +5544,15 @@
       "related": [
         {
           "id": "abner",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hijo"
         },
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "saul",
+          "rel": "sobrino"
         },
         {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "cis",
+          "rel": "hermano"
         }
       ]
     },
@@ -5668,15 +5636,7 @@
       "related": [
         {
           "id": "jehu",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "jezreel",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "eliseo",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "nieto"
         }
       ]
     },
@@ -5721,7 +5681,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "ahimelec",
+          "id": "efod",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -5783,7 +5743,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "israel",
+          "id": "asa",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -5816,15 +5776,11 @@
       "related": [
         {
           "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "padre"
         },
         {
           "id": "finees",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hermano"
         }
       ]
     },
@@ -5838,7 +5794,7 @@
       "related": [
         {
           "id": "acab",
-          "rel": "padre"
+          "rel": "hijo"
         },
         {
           "id": "samaria",
@@ -5886,15 +5842,15 @@
       "properName": false,
       "related": [
         {
-          "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "david",
           "rel": "aparece en las mismas tarjetas"
         },
         {
           "id": "jonatan",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "natan",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -5931,15 +5887,15 @@
       "properName": true,
       "related": [
         {
+          "id": "ela",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "oseas",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
           "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "manahem",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "remalias",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -5955,16 +5911,12 @@
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "elcana",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "esposo"
         },
         {
-          "id": "ner",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ana",
+          "rel": "la otra esposa"
         }
       ]
     },
@@ -6088,11 +6040,11 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "ela",
+          "id": "abinadab",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "filisteos",
+          "id": "asa",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -6165,7 +6117,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "israel",
+          "id": "asa",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -6207,15 +6159,15 @@
       "properName": false,
       "related": [
         {
+          "id": "tumores",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
           "id": "arca",
           "rel": "aparece en las mismas tarjetas"
         },
         {
           "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "tumores",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -6257,7 +6209,7 @@
       "related": [
         {
           "id": "saba",
-          "rel": "reina de"
+          "rel": "su reino"
         },
         {
           "id": "salomon",
@@ -6417,7 +6369,7 @@
       "related": [
         {
           "id": "salomon",
-          "rel": "hijo"
+          "rel": "padre"
         },
         {
           "id": "jeroboam",
@@ -6514,16 +6466,8 @@
       "properName": true,
       "related": [
         {
-          "id": "josafat",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "acab",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "joram",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "eliseo",
+          "rel": "hijo"
         }
       ]
     },
@@ -6538,15 +6482,15 @@
       "properName": true,
       "related": [
         {
-          "id": "acbor",
+          "id": "hilcias",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "ahicam",
+          "id": "ner",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "asa",
+          "id": "templo",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -6587,15 +6531,19 @@
       "related": [
         {
           "id": "david",
-          "rel": "hijo"
+          "rel": "padre"
         },
         {
           "id": "betsabe",
-          "rel": "hijo"
+          "rel": "madre"
         },
         {
           "id": "natan",
-          "rel": "apoyado por"
+          "rel": "lo apoyó"
+        },
+        {
+          "id": "roboam",
+          "rel": "hijo"
         },
         {
           "id": "templo",
@@ -6603,7 +6551,7 @@
         },
         {
           "id": "reina-de-saba",
-          "rel": "la recibió"
+          "rel": "lo visitó"
         }
       ]
     },
@@ -6618,15 +6566,15 @@
       "properName": true,
       "related": [
         {
-          "id": "jabes",
+          "id": "ana",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "jeroboam",
+          "id": "gad",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "roboam",
+          "id": "gadi",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -6663,23 +6611,23 @@
       "related": [
         {
           "id": "ana",
-          "rel": "hijo"
+          "rel": "madre"
         },
         {
           "id": "elcana",
-          "rel": "hijo"
+          "rel": "padre"
         },
         {
           "id": "eli",
-          "rel": "criado en Silo"
+          "rel": "lo crió en Silo"
         },
         {
           "id": "saul",
-          "rel": "lo ungió"
+          "rel": "ungido por él"
         },
         {
           "id": "david",
-          "rel": "lo ungió"
+          "rel": "ungido por él"
         }
       ]
     },
@@ -6735,7 +6683,11 @@
       "related": [
         {
           "id": "joab",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hijo"
+        },
+        {
+          "id": "david",
+          "rel": "hermano"
         }
       ]
     },
@@ -6749,19 +6701,23 @@
       "related": [
         {
           "id": "cis",
-          "rel": "hijo"
+          "rel": "padre"
         },
         {
           "id": "jonatan",
-          "rel": "padre"
+          "rel": "hijo"
         },
         {
           "id": "mical",
-          "rel": "padre"
+          "rel": "hija"
         },
         {
           "id": "is-boset",
-          "rel": "padre"
+          "rel": "hijo"
+        },
+        {
+          "id": "abinadab",
+          "rel": "hijo"
         },
         {
           "id": "david",
@@ -6769,7 +6725,7 @@
         },
         {
           "id": "samuel",
-          "rel": "ungido por"
+          "rel": "lo ungió"
         }
       ]
     },
@@ -6784,15 +6740,15 @@
       "properName": true,
       "related": [
         {
-          "id": "beerseba",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "david",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "samuel",
+          "id": "beerseba",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "bicri",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -6975,7 +6931,7 @@
         },
         {
           "id": "esar-hadon",
-          "rel": "padre de"
+          "rel": "hijo"
         }
       ]
     },
@@ -7012,15 +6968,15 @@
       "properName": true,
       "related": [
         {
-          "id": "acab",
+          "id": "amon",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "baal",
+          "id": "astoret",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "etbaal",
+          "id": "milcom",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -7044,7 +7000,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "eliseo",
+          "id": "asa",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -7092,7 +7048,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "saul",
+          "id": "jerusalen",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -7317,15 +7273,15 @@
       "related": [
         {
           "id": "david",
-          "rel": "hija"
+          "rel": "padre"
         },
         {
           "id": "absalon",
-          "rel": "hermana"
+          "rel": "hermano"
         },
         {
           "id": "amnon",
-          "rel": "víctima de"
+          "rel": "la violó"
         }
       ]
     },
@@ -7380,11 +7336,11 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "joab",
+          "id": "cuta",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "cuta",
+          "id": "joab",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -7563,7 +7519,7 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "asdod",
+          "id": "ratones",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -7586,11 +7542,11 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "jacob",
+          "id": "samuel",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "samuel",
+          "id": "saul",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -7607,7 +7563,7 @@
       "related": [
         {
           "id": "betsabe",
-          "rel": "esposo"
+          "rel": "esposa"
         },
         {
           "id": "david",
@@ -7655,11 +7611,11 @@
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "amasias",
+          "id": "natan",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "cis",
+          "id": "sadoc",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
@@ -7791,15 +7747,15 @@
       "properName": true,
       "related": [
         {
-          "id": "amon",
+          "id": "david",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "bet-rehob",
+          "id": "filisteos",
           "rel": "aparece en las mismas tarjetas"
         },
         {
-          "id": "maaca",
+          "id": "hadad",
           "rel": "aparece en las mismas tarjetas"
         }
       ]
