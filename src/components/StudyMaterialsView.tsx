@@ -1,13 +1,12 @@
 import { useState } from 'react'
-import { CalendarDays, ExternalLink, FileText, Map } from 'lucide-react'
+import { ExternalLink, FileText, Map } from 'lucide-react'
 import { CitationLinks } from '@/components/CitedText'
+import { CoursePacePanel } from '@/components/CoursePacePanel'
 import {
   GlossaryMaterialRow,
   GlossaryPanel,
 } from '@/components/GlossaryPanel'
-import { coursePaceOn, formatChapterRange, formatLongDate } from '@/lib/coursePace'
 import type { Flashcard } from '@/lib/parseFlashcard'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -16,7 +15,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { Progress } from '@/components/ui/progress'
 
 const GROUP_DOC_URL =
   'https://docs.google.com/document/d/1Q4EsUCusmKX9_Bzk3XND_AyfW7cP14P12jn0lhQTBn4/edit?usp=sharing'
@@ -35,6 +33,7 @@ type StudyMaterialsViewProps = {
   glossaryTermId: string | null
   onSelectGlossaryTerm: (id: string | null) => void
   onOpenCardInStudy: (cardId: string) => void
+  onStudyWithFilter?: () => void
   suggestedUserId?: string | null
 }
 
@@ -45,10 +44,10 @@ export function StudyMaterialsView({
   glossaryTermId,
   onSelectGlossaryTerm,
   onOpenCardInStudy,
+  onStudyWithFilter,
   suggestedUserId,
 }: StudyMaterialsViewProps) {
   const [mapOpen, setMapOpen] = useState(false)
-  const pace = coursePaceOn()
 
   const toggle = (row: Exclude<MaterialRow, null>) => {
     if (openRow === row) {
@@ -82,6 +81,7 @@ export function StudyMaterialsView({
                 selectedTermId={glossaryTermId}
                 onSelectTerm={onSelectGlossaryTerm}
                 onOpenCardInStudy={onOpenCardInStudy}
+                onStudyWithFilter={onStudyWithFilter}
                 onBackToMaterials={() => {
                   onSelectGlossaryTerm(null)
                   onOpenRow(null)
@@ -188,82 +188,11 @@ export function StudyMaterialsView({
           )}
         </li>
 
-        <li>
-          <button
-            type="button"
-            onClick={() => toggle('pace')}
-            className="flex w-full min-h-11 items-center justify-between gap-3 rounded-xl border bg-card px-4 py-3 text-left transition-colors hover:bg-accent/40"
-          >
-            <span className="flex items-center gap-3">
-              <CalendarDays className="size-5 shrink-0 text-primary" />
-              <span>
-                <span className="block font-medium">Ritmo del curso</span>
-                <span className="block text-xs text-muted-foreground">
-                  Tres días por semana, 1 de septiembre al 31 de octubre
-                </span>
-              </span>
-            </span>
-            <span className="text-xs text-muted-foreground">
-              {openRow === 'pace' ? 'Cerrar' : 'Abrir'}
-            </span>
-          </button>
-          {openRow === 'pace' && (
-            <Card className="mt-2">
-              <CardHeader className="pb-2">
-                <div className="flex flex-wrap items-center gap-2">
-                  <CardTitle className="text-base">Dónde deberíamos ir</CardTitle>
-                  {pace.isStudyDay ? (
-                    <Badge>Hoy hay sesión</Badge>
-                  ) : (
-                    <Badge variant="secondary">Hoy no hay sesión</Badge>
-                  )}
-                </div>
-                <CardDescription>
-                  1 Samuel, 2 Samuel, 1 Reyes y 2 Reyes · lunes, miércoles y
-                  viernes · {pace.totalChapters} capítulos en{' '}
-                  {pace.totalSessions} sesiones.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <div className="mb-2 flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">
-                      {pace.coveredLabel}
-                    </span>
-                    <span className="font-medium tabular-nums">
-                      {pace.percent}%
-                    </span>
-                  </div>
-                  <Progress value={pace.percent} className="h-2" />
-                  <p className="mt-2 text-xs text-muted-foreground">
-                    {pace.sessionsDone} de {pace.totalSessions} sesiones del
-                    calendario ya pasaron.
-                  </p>
-                </div>
-                {pace.isStudyDay && pace.todaySession && (
-                  <p className="text-sm">
-                    <strong>Esta sesión:</strong>{' '}
-                    {formatChapterRange(pace.todaySession.chapters)}
-                  </p>
-                )}
-                {!pace.isStudyDay && pace.lastSession && (
-                  <p className="text-sm">
-                    <strong>Última sesión</strong> (
-                    {formatLongDate(pace.lastSession.date)}):{' '}
-                    {formatChapterRange(pace.lastSession.chapters)}
-                  </p>
-                )}
-                {pace.nextSession && (
-                  <p className="text-sm">
-                    <strong>Próxima sesión</strong> (
-                    {formatLongDate(pace.nextSession.date)}):{' '}
-                    {formatChapterRange(pace.nextSession.chapters)}
-                  </p>
-                )}
-              </CardContent>
-            </Card>
-          )}
-        </li>
+        <CoursePacePanel
+          cards={cards}
+          open={openRow === 'pace'}
+          onToggle={() => toggle('pace')}
+        />
       </ul>
 
       {mapOpen && (

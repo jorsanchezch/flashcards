@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react'
-import { Shuffle, X } from 'lucide-react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { Search, Shuffle, X } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -8,7 +8,6 @@ import { useGlossary } from '@/context/GlossaryContext'
 import {
   applyDeckGroupings,
   canonicalIds,
-  clearedFilterPatch,
   getBookRange,
   getCardIdsGrouping,
   getGlossaryTermIds,
@@ -20,8 +19,13 @@ import {
 } from '@/lib/deckFilter'
 import { bookSortKey } from '@/lib/biblical'
 import type { Flashcard } from '@/lib/parseFlashcard'
-import { shuffleIds } from '@/lib/shuffle'
-import type { UserConfig } from '@/lib/userData'
+import { shuffleIdsFresh } from '@/lib/shuffle'
+import {
+  groupingsPatch,
+  shuffleConfigPatch,
+  stopShuffleConfigPatch,
+  type UserConfig,
+} from '@/lib/userData'
 import { cn } from '@/lib/utils'
 
 type DeckFilterBarProps = {
@@ -30,10 +34,15 @@ type DeckFilterBarProps = {
   onPatch: (patch: Partial<UserConfig>) => void
 }
 
+function keepPageScroll(e: React.MouseEvent) {
+  e.preventDefault()
+}
+
 export function DeckFilterBar({ cards, config, onPatch }: DeckFilterBarProps) {
   const { entries, matchers } = useGlossary()
-  const [glossaryOpen, setGlossaryOpen] = useState(false)
   const [glossaryQuery, setGlossaryQuery] = useState('')
+  const [glossaryOpen, setGlossaryOpen] = useState(false)
+  const glossaryBox = useRef<HTMLDivElement>(null)
 
   const books = useMemo(() => {
     const map = new Map<string, { label: string; canonIndex: number; chapters: number[] }>()
@@ -69,9 +78,9 @@ export function DeckFilterBar({ cards, config, onPatch }: DeckFilterBarProps) {
   )
 
   const glossarySelected = entries.filter((e) => glossaryIds.includes(e.id))
+  const q = glossaryQuery.trim().toLocaleLowerCase('es')
   const glossaryChoices = entries.filter((e) => {
     if (glossaryIds.includes(e.id)) return false
-    const q = glossaryQuery.trim().toLocaleLowerCase('es')
     if (!q) return true
     return (
       e.term.toLocaleLowerCase('es').includes(q) ||
@@ -79,12 +88,19 @@ export function DeckFilterBar({ cards, config, onPatch }: DeckFilterBarProps) {
     )
   })
 
+  useEffect(() => {
+    if (!glossaryOpen) return
+    const onPointer = (event: PointerEvent) => {
+      if (!glossaryBox.current?.contains(event.target as Node)) {
+        setGlossaryOpen(false)
+      }
+    }
+    document.addEventListener('pointerdown', onPointer)
+    return () => document.removeEventListener('pointerdown', onPointer)
+  }, [glossaryOpen])
+
   const patchGroupings = (groupings: DeckGrouping[]) => {
-    onPatch({
-      groupings,
-      studySessionOrder: null,
-      studySessionIndex: 0,
-    })
+    onPatch(groupingsPatch(config, groupings))
   }
 
   const parseChapter = (raw: string): number | null => {
@@ -92,51 +108,39 @@ export function DeckFilterBar({ cards, config, onPatch }: DeckFilterBarProps) {
     return Number.isFinite(n) && n > 0 ? n : null
   }
 
-  const startShuffle = () => {
-    const ids = shuffleIds(canonicalIds(filtered))
-    onPatch({
-      shuffle: true,
-      studySessionOrder: ids,
-      studySessionIndex: 0,
-    })
+  const shuffleNow = () => {
+    const ids = shuffleIdsFresh(
+      canonicalIds(filtered),
+      config.studySessionOrder,
+    )
+    onPatch(shuffleConfigPatch(config, ids, 0))
   }
 
   const stopShuffle = () => {
-    onPatch({
-      shuffle: false,
-      studySessionOrder: canonicalIds(filtered),
-      studySessionIndex: 0,
-    })
+    onPatch(stopShuffleConfigPatch(config, canonicalIds(filtered)))
   }
 
-  const reshuffle = () => {
-    const currentId = config.studySessionOrder?.[config.studySessionIndex]
-    const ids = shuffleIds(canonicalIds(filtered))
-    let index = 0
-    if (currentId) {
-      const found = ids.indexOf(currentId)
-      if (found >= 0) index = found
-    }
-    onPatch({
-      shuffle: true,
-      studySessionOrder: ids,
-      studySessionIndex: index,
-    })
+  const addGlossaryTerm = (termId: string) => {
+    patchGroupings(
+      setGlossaryTermIds(config.groupings, [...glossaryIds, termId]),
+    )
+    setGlossaryQuery('')
+    setGlossaryOpen(false)
   }
 
   const filtersOn = hasActiveFilters(config.groupings) || config.shuffle
 
   return (
-    <div className="rounded-xl border bg-card/50 p-4">
+    <div className="rounded-xl border bg-card/50 p-4 [overflow-anchor:none]">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <p className="text-sm font-medium">Filtros</p>
         <div className="flex flex-wrap items-center gap-2">
           <ShuffleControl
             shuffle={config.shuffle}
             disabled={filtered.length <= 1}
-            onStart={startShuffle}
+            onStart={shuffleNow}
             onStop={stopShuffle}
-            onReshuffle={reshuffle}
+            onReshuffle={shuffleNow}
           />
           <Button
             type="button"
@@ -144,7 +148,8 @@ export function DeckFilterBar({ cards, config, onPatch }: DeckFilterBarProps) {
             size="sm"
             className="min-h-11"
             disabled={!filtersOn}
-            onClick={() => onPatch(clearedFilterPatch())}
+            onMouseDown={keepPageScroll}
+            onClick={() => onPatch(groupingsPatch(config, []))}
           >
             Limpiar filtros
           </Button>
@@ -165,6 +170,7 @@ export function DeckFilterBar({ cards, config, onPatch }: DeckFilterBarProps) {
             type="button"
             variant="outline"
             size="sm"
+            onMouseDown={keepPageScroll}
             onClick={() =>
               patchGroupings(
                 config.groupings.filter((g) => g.kind !== 'card-ids'),
@@ -186,6 +192,7 @@ export function DeckFilterBar({ cards, config, onPatch }: DeckFilterBarProps) {
           >
             <button
               type="button"
+              onMouseDown={keepPageScroll}
               onClick={() =>
                 patchGroupings(
                   setBookRangeGrouping(config.groupings, null, null, null),
@@ -204,9 +211,15 @@ export function DeckFilterBar({ cards, config, onPatch }: DeckFilterBarProps) {
             >
               <button
                 type="button"
+                onMouseDown={keepPageScroll}
                 onClick={() =>
                   patchGroupings(
-                    setBookRangeGrouping(config.groupings, book.id, null, null),
+                    setBookRangeGrouping(
+                      config.groupings,
+                      book.id,
+                      null,
+                      null,
+                    ),
                   )
                 }
               >
@@ -271,20 +284,9 @@ export function DeckFilterBar({ cards, config, onPatch }: DeckFilterBarProps) {
       )}
 
       <div className="mt-4">
-        <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-          <p className="text-xs font-medium text-muted-foreground">
-            Palabras del glosario
-          </p>
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            className="min-h-11"
-            onClick={() => setGlossaryOpen((v) => !v)}
-          >
-            {glossaryOpen ? 'Cerrar lista' : 'Elegir palabras'}
-          </Button>
-        </div>
+        <p className="mb-2 text-xs font-medium text-muted-foreground">
+          Palabras del glosario
+        </p>
         {glossarySelected.length > 0 && (
           <div className="mb-2 flex flex-wrap gap-2">
             {glossarySelected.map((entry) => (
@@ -294,8 +296,11 @@ export function DeckFilterBar({ cards, config, onPatch }: DeckFilterBarProps) {
                   type="button"
                   className="rounded-full p-0.5 hover:bg-primary-foreground/20"
                   aria-label={`Quitar ${entry.term}`}
+                  onMouseDown={keepPageScroll}
                   onClick={() =>
-                    patchGroupings(toggleGlossaryTerm(config.groupings, entry.id))
+                    patchGroupings(
+                      toggleGlossaryTerm(config.groupings, entry.id),
+                    )
                   }
                 >
                   <X className="size-3" />
@@ -304,38 +309,52 @@ export function DeckFilterBar({ cards, config, onPatch }: DeckFilterBarProps) {
             ))}
           </div>
         )}
-        {glossaryOpen && (
-          <div className="rounded-lg border bg-background p-3">
-            <Input
-              value={glossaryQuery}
-              onChange={(e) => setGlossaryQuery(e.target.value)}
-              placeholder="Buscar palabra"
-              className="mb-2 h-11"
-              aria-label="Buscar palabra del glosario"
-            />
-            <ul className="max-h-48 overflow-y-auto">
-              {glossaryChoices.slice(0, 40).map((entry) => (
-                <li key={entry.id}>
-                  <button
-                    type="button"
-                    className="flex min-h-11 w-full items-center justify-between rounded-md px-2 text-left text-sm hover:bg-accent/50"
-                    onClick={() =>
-                      patchGroupings(
-                        setGlossaryTermIds(config.groupings, [
-                          ...glossaryIds,
-                          entry.id,
-                        ]),
-                      )
-                    }
-                  >
-                    <span>{entry.term}</span>
-                    <span className="text-xs text-muted-foreground">Añadir</span>
-                  </button>
+        <div className="relative" ref={glossaryBox}>
+          <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
+          <Input
+            value={glossaryQuery}
+            onChange={(e) => {
+              setGlossaryQuery(e.target.value)
+              setGlossaryOpen(true)
+            }}
+            onFocus={() => setGlossaryOpen(true)}
+            placeholder="Buscar y añadir una palabra…"
+            className="h-11 pl-9"
+            aria-label="Buscar palabra del glosario"
+            aria-expanded={glossaryOpen}
+            aria-controls="glossary-filter-list"
+          />
+          {glossaryOpen && (
+            <ul
+              id="glossary-filter-list"
+              className="absolute z-30 mt-1 max-h-56 w-full overflow-y-auto rounded-lg border bg-popover p-1 shadow-md"
+            >
+              {glossaryChoices.length === 0 ? (
+                <li className="px-3 py-2 text-sm text-muted-foreground">
+                  {q
+                    ? 'Ninguna palabra coincide.'
+                    : 'Todas las palabras ya están en el filtro.'}
                 </li>
-              ))}
+              ) : (
+                glossaryChoices.slice(0, 40).map((entry) => (
+                  <li key={entry.id}>
+                    <button
+                      type="button"
+                      className="flex min-h-11 w-full items-center justify-between rounded-md px-3 text-left text-sm hover:bg-accent/50"
+                      onMouseDown={keepPageScroll}
+                      onClick={() => addGlossaryTerm(entry.id)}
+                    >
+                      <span>{entry.term}</span>
+                      <span className="text-xs text-muted-foreground">
+                        Añadir
+                      </span>
+                    </button>
+                  </li>
+                ))
+              )}
             </ul>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   )
@@ -361,6 +380,7 @@ export function ShuffleControl({
         variant="outline"
         className="min-h-11"
         disabled={disabled}
+        onMouseDown={keepPageScroll}
         onClick={onStart}
       >
         <Shuffle className="size-4" />
@@ -381,15 +401,18 @@ export function ShuffleControl({
         className="flex h-11 w-11 items-center justify-center border-r hover:bg-accent"
         aria-label="Dejar de mezclar"
         disabled={disabled}
+        onMouseDown={keepPageScroll}
         onClick={onStop}
       >
         <X className="size-4" />
       </button>
       <button
         type="button"
-        className="flex h-11 w-11 items-center justify-center hover:bg-accent"
-        aria-label="Volver a mezclar"
+        className="flex h-11 min-w-11 items-center justify-center gap-1 px-2 hover:bg-accent"
+        aria-label="Mezclar de nuevo"
+        title="Mezclar de nuevo"
         disabled={disabled}
+        onMouseDown={keepPageScroll}
         onClick={onReshuffle}
       >
         <Shuffle className="size-4" />

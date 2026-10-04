@@ -21,7 +21,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Progress } from '@/components/ui/progress'
-import { isBuiltInCardEdited } from '@/lib/userData'
+import { isBuiltInCardEdited, rememberStudyCursor } from '@/lib/userData'
 import { useGlossary } from '@/context/GlossaryContext'
 
 type StudyViewProps = {
@@ -98,7 +98,8 @@ export function StudyView({
   const [indexFocused, setIndexFocused] = useState(false)
 
   const activeUserId = userDoc?.userId
-  const filterSignature = `${groupingsSignature(userDoc?.config.groupings ?? [])}|${userDoc?.config.shuffle ? '1' : '0'}`
+  const filterSignature = groupingsSignature(userDoc?.config.groupings ?? [])
+  const savedOrderKey = (userDoc?.config.studySessionOrder ?? []).join('\n')
 
   useEffect(() => {
     if (!activeUserId) return
@@ -118,6 +119,29 @@ export function StudyView({
   }, [activeUserId, poolSignature, initialCardId, filterSignature])
 
   useEffect(() => {
+    if (!userDoc) return
+    const saved = userDoc.config.studySessionOrder
+    if (!saved?.length) return
+    const same =
+      saved.length === order.length &&
+      saved.every((id, i) => id === order[i])
+    if (same) return
+    const next = restoreStudyCursor({
+      poolIds,
+      defaultOrder,
+      savedOrder: saved,
+      savedIndex: userDoc.config.studySessionIndex,
+      initialCardId,
+    })
+    setOrder(next.order)
+    setIndex(next.index)
+    setSkipFlipMotion(true)
+    setFlipped(false)
+    // Adopt Mezclar / other-book cursor written from the filter bar.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [savedOrderKey, userDoc?.config.studySessionIndex])
+
+  useEffect(() => {
     if (!userDoc || !order.length) return
     const saved = userDoc.config.studySessionOrder
     const sameOrder =
@@ -128,6 +152,11 @@ export function StudyView({
     patchConfig({
       studySessionOrder: order,
       studySessionIndex: index,
+      studyCursors: rememberStudyCursor({
+        ...userDoc.config,
+        studySessionOrder: order,
+        studySessionIndex: index,
+      }),
     })
     // Persist cursor; skip looping on userDoc identity after save.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -199,7 +228,17 @@ export function StudyView({
     setOrder(nextOrder)
     setIndex(nextIndex)
     showQuestionInstantly()
-    patchConfig({ shuffle: true, studySessionOrder: nextOrder, studySessionIndex: nextIndex })
+    patchConfig({
+      shuffle: true,
+      studySessionOrder: nextOrder,
+      studySessionIndex: nextIndex,
+      studyCursors: rememberStudyCursor({
+        ...userDoc!.config,
+        shuffle: true,
+        studySessionOrder: nextOrder,
+        studySessionIndex: nextIndex,
+      }),
+    })
   }, [order, index, patchConfig, showQuestionInstantly])
 
   const markKnown = () => {
@@ -371,7 +410,12 @@ export function StudyView({
             />
           </>
         }
-        back={<CitedText text={current.answer} />}
+        back={
+          <>
+            <CitedText text={current.answer} citeStyle="plain" />
+            <CitationLinks text={current.answer} compact className="mt-3" />
+          </>
+        }
         flipped={flipped}
         instant={skipFlipMotion}
         onFlip={() => setFlipped((f) => !f)}

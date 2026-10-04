@@ -1,6 +1,6 @@
-/** Course pace: 1–2 Samuel and 1–2 Reyes, 3 study days/week, 1 Sep–31 Oct 2026. */
+/** Ritmo del curso: fechas, libros/capítulos y días de sesión, recalculado. */
 
-export type CourseBookId = '1-samuel' | '2-samuel' | '1-reyes' | '2-reyes'
+export type CourseBookId = string
 
 export type CourseChapter = {
   bookId: CourseBookId
@@ -13,25 +13,80 @@ export type CourseSession = {
   chapters: CourseChapter[]
 }
 
-const COURSE_START = '2026-09-01'
-const COURSE_END = '2026-10-31'
-const STUDY_WEEKDAYS = new Set([1, 3, 5]) // lunes, miércoles, viernes
+export type CourseBookRange = {
+  bookId: string
+  bookLabel: string
+  from: number
+  to: number
+}
 
-const BOOKS: { id: CourseBookId; label: string; chapters: number }[] = [
-  { id: '1-samuel', label: '1 Samuel', chapters: 22 },
-  { id: '2-samuel', label: '2 Samuel', chapters: 24 },
-  { id: '1-reyes', label: '1 Reyes', chapters: 22 },
-  { id: '2-reyes', label: '2 Reyes', chapters: 25 },
+export type CoursePaceSettings = {
+  start: string
+  end: string
+  weekdays: number[]
+  books: CourseBookRange[]
+}
+
+export const WEEKDAY_OPTIONS: { day: number; label: string; short: string }[] = [
+  { day: 1, label: 'Lunes', short: 'L' },
+  { day: 2, label: 'Martes', short: 'M' },
+  { day: 3, label: 'Miércoles', short: 'X' },
+  { day: 4, label: 'Jueves', short: 'J' },
+  { day: 5, label: 'Viernes', short: 'V' },
+  { day: 6, label: 'Sábado', short: 'S' },
+  { day: 0, label: 'Domingo', short: 'D' },
 ]
 
-export function allCourseChapters(): CourseChapter[] {
-  const list: CourseChapter[] = []
-  for (const book of BOOKS) {
-    for (let n = 1; n <= book.chapters; n += 1) {
-      list.push({ bookId: book.id, bookLabel: book.label, chapter: n })
+const SHARED_PACE_KEY = 'flashcards-shared-pace-v1'
+const LOCAL_PACE_KEY = 'flashcards-course-pace-v1'
+
+const FALLBACK_BOOKS: CourseBookRange[] = [
+  { bookId: '1-samuel', bookLabel: '1 Samuel', from: 1, to: 31 },
+  { bookId: '2-samuel', bookLabel: '2 Samuel', from: 1, to: 24 },
+  { bookId: '1-reyes', bookLabel: '1 Reyes', from: 1, to: 22 },
+  { bookId: '2-reyes', bookLabel: '2 Reyes', from: 1, to: 25 },
+]
+
+export function defaultCoursePaceSettings(): CoursePaceSettings {
+  return {
+    start: '2026-09-01',
+    end: '2026-10-31',
+    weekdays: [1, 3, 5],
+    books: FALLBACK_BOOKS.map((b) => ({ ...b })),
+  }
+}
+
+export type CourseBookMeta = {
+  id: string
+  label: string
+  maxChapter: number
+}
+
+export function courseBooksFromCards(
+  cards: { bookId: string; bookLabel: string; chapter: number }[],
+): CourseBookMeta[] {
+  const map = new Map<string, CourseBookMeta>()
+  for (const card of cards) {
+    const cur = map.get(card.bookId)
+    if (!cur) {
+      map.set(card.bookId, {
+        id: card.bookId,
+        label: card.bookLabel,
+        maxChapter: card.chapter,
+      })
+    } else if (card.chapter > cur.maxChapter) {
+      cur.maxChapter = card.chapter
     }
   }
-  return list
+  const order = ['1-samuel', '2-samuel', '1-reyes', '2-reyes']
+  return [...map.values()].sort((a, b) => {
+    const ia = order.indexOf(a.id)
+    const ib = order.indexOf(b.id)
+    if (ia >= 0 && ib >= 0) return ia - ib
+    if (ia >= 0) return -1
+    if (ib >= 0) return 1
+    return a.label.localeCompare(b.label, 'es')
+  })
 }
 
 function ymd(d: Date): string {
@@ -43,15 +98,160 @@ function ymd(d: Date): string {
 
 function parseYmd(iso: string): Date {
   const [y, m, d] = iso.split('-').map(Number)
-  return new Date(y, m - 1, d)
+  return new Date(y, (m ?? 1) - 1, d ?? 1)
 }
 
-export function studyDatesInCourse(): string[] {
+function isYmd(value: unknown): value is string {
+  return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)
+}
+
+export function normalizeCoursePaceSettings(
+  raw: unknown,
+  booksMeta?: CourseBookMeta[],
+): CoursePaceSettings {
+  const fallback = defaultCoursePaceSettings()
+  const meta =
+    booksMeta && booksMeta.length
+      ? booksMeta
+      : fallback.books.map((b) => ({
+          id: b.bookId,
+          label: b.bookLabel,
+          maxChapter: b.to,
+        }))
+  const source =
+    raw && typeof raw === 'object' ? (raw as Partial<CoursePaceSettings>) : {}
+  let start = isYmd(source.start) ? source.start : fallback.start
+  let end = isYmd(source.end) ? source.end : fallback.end
+  if (parseYmd(end) < parseYmd(start)) {
+    const swap = start
+    start = end
+    end = swap
+  }
+  const weekdaysRaw = Array.isArray(source.weekdays) ? source.weekdays : fallback.weekdays
+  const weekdays = [
+    ...new Set(
+      weekdaysRaw.filter(
+        (d): d is number =>
+          typeof d === 'number' && Number.isInteger(d) && d >= 0 && d <= 6,
+      ),
+    ),
+  ]
+  const safeDays = weekdays.length ? weekdays : [...fallback.weekdays]
+
+  const byId = new Map(meta.map((b) => [b.id, b]))
+  const books: CourseBookRange[] = []
+  if (Array.isArray(source.books)) {
+    for (const row of source.books) {
+      if (!row || typeof row !== 'object') continue
+      const bookId = typeof row.bookId === 'string' ? row.bookId : ''
+      const info = byId.get(bookId)
+      if (!info) continue
+      const max = info.maxChapter
+      let from =
+        typeof row.from === 'number' && Number.isFinite(row.from)
+          ? Math.floor(row.from)
+          : 1
+      let to =
+        typeof row.to === 'number' && Number.isFinite(row.to)
+          ? Math.floor(row.to)
+          : max
+      from = Math.min(max, Math.max(1, from))
+      to = Math.min(max, Math.max(1, to))
+      if (to < from) {
+        const t = from
+        from = to
+        to = t
+      }
+      books.push({
+        bookId: info.id,
+        bookLabel: info.label,
+        from,
+        to,
+      })
+    }
+  }
+  if (!books.length) {
+    for (const info of meta) {
+      books.push({
+        bookId: info.id,
+        bookLabel: info.label,
+        from: 1,
+        to: info.maxChapter,
+      })
+    }
+  }
+
+  return { start, end, weekdays: safeDays, books }
+}
+
+export function loadSharedCoursePace(
+  booksMeta?: CourseBookMeta[],
+): CoursePaceSettings | null {
+  try {
+    const raw = localStorage.getItem(SHARED_PACE_KEY)
+    if (!raw) return null
+    return normalizeCoursePaceSettings(JSON.parse(raw), booksMeta)
+  } catch {
+    return null
+  }
+}
+
+export function saveSharedCoursePace(settings: CoursePaceSettings) {
+  localStorage.setItem(SHARED_PACE_KEY, JSON.stringify(settings))
+}
+
+export function loadLocalCoursePace(
+  booksMeta?: CourseBookMeta[],
+): CoursePaceSettings | null {
+  try {
+    const raw = localStorage.getItem(LOCAL_PACE_KEY)
+    if (!raw) return null
+    return normalizeCoursePaceSettings(JSON.parse(raw), booksMeta)
+  } catch {
+    return null
+  }
+}
+
+export function saveLocalCoursePace(settings: CoursePaceSettings) {
+  localStorage.setItem(LOCAL_PACE_KEY, JSON.stringify(settings))
+}
+
+export function resolveCoursePaceSettings(options: {
+  personal?: unknown
+  booksMeta?: CourseBookMeta[]
+}): CoursePaceSettings {
+  const meta = options.booksMeta
+  if (options.personal) {
+    return normalizeCoursePaceSettings(options.personal, meta)
+  }
+  return (
+    loadSharedCoursePace(meta) ??
+    loadLocalCoursePace(meta) ??
+    normalizeCoursePaceSettings(null, meta)
+  )
+}
+
+export function allCourseChapters(settings: CoursePaceSettings): CourseChapter[] {
+  const list: CourseChapter[] = []
+  for (const book of settings.books) {
+    for (let n = book.from; n <= book.to; n += 1) {
+      list.push({
+        bookId: book.bookId,
+        bookLabel: book.bookLabel,
+        chapter: n,
+      })
+    }
+  }
+  return list
+}
+
+export function studyDatesInCourse(settings: CoursePaceSettings): string[] {
   const dates: string[] = []
-  const cur = parseYmd(COURSE_START)
-  const end = parseYmd(COURSE_END)
+  const wanted = new Set(settings.weekdays)
+  const cur = parseYmd(settings.start)
+  const end = parseYmd(settings.end)
   while (cur.getTime() <= end.getTime()) {
-    if (STUDY_WEEKDAYS.has(cur.getDay())) dates.push(ymd(cur))
+    if (wanted.has(cur.getDay())) dates.push(ymd(cur))
     cur.setDate(cur.getDate() + 1)
   }
   return dates
@@ -77,9 +277,12 @@ function splitChaptersAcrossSessions(
   return buckets
 }
 
-export function buildCourseSessions(): CourseSession[] {
-  const dates = studyDatesInCourse()
-  const buckets = splitChaptersAcrossSessions(allCourseChapters(), dates.length)
+export function buildCourseSessions(settings: CoursePaceSettings): CourseSession[] {
+  const dates = studyDatesInCourse(settings)
+  const buckets = splitChaptersAcrossSessions(
+    allCourseChapters(settings),
+    dates.length,
+  )
   return dates.map((date, i) => ({ date, chapters: buckets[i] ?? [] }))
 }
 
@@ -113,6 +316,24 @@ export function formatLongDate(iso: string): string {
   })
 }
 
+export function weekdaySummary(weekdays: number[]): string {
+  const labels = WEEKDAY_OPTIONS.filter((d) => weekdays.includes(d.day)).map(
+    (d) => d.label.toLowerCase(),
+  )
+  if (!labels.length) return 'sin días de sesión'
+  if (labels.length === 1) return `un día por semana (${labels[0]})`
+  return `${labels.length} días por semana (${labels.join(', ')})`
+}
+
+export function booksSummary(books: CourseBookRange[]): string {
+  if (!books.length) return 'sin libros'
+  return books
+    .map((b) =>
+      b.from === b.to ? `${b.bookLabel} ${b.from}` : `${b.bookLabel} ${b.from}–${b.to}`,
+    )
+    .join(', ')
+}
+
 export type CoursePaceSnapshot = {
   totalChapters: number
   totalSessions: number
@@ -124,13 +345,17 @@ export type CoursePaceSnapshot = {
   nextSession: CourseSession | null
   lastSession: CourseSession | null
   isStudyDay: boolean
+  settings: CoursePaceSettings
 }
 
-export function coursePaceOn(today: Date = new Date()): CoursePaceSnapshot {
-  const sessions = buildCourseSessions()
+export function coursePaceOn(
+  settings: CoursePaceSettings,
+  today: Date = new Date(),
+): CoursePaceSnapshot {
+  const sessions = buildCourseSessions(settings)
   const todayKey = ymd(today)
-  const start = parseYmd(COURSE_START)
-  const end = parseYmd(COURSE_END)
+  const start = parseYmd(settings.start)
+  const end = parseYmd(settings.end)
   const t = parseYmd(todayKey)
 
   let lastIdx = -1
@@ -145,20 +370,18 @@ export function coursePaceOn(today: Date = new Date()): CoursePaceSnapshot {
   else if (t > end) sessionsDone = sessions.length
   else sessionsDone = lastIdx >= 0 ? lastIdx + 1 : 0
 
-  const covered = sessions
-    .slice(0, sessionsDone)
-    .flatMap((s) => s.chapters)
+  const covered = sessions.slice(0, sessionsDone).flatMap((s) => s.chapters)
   const coveredThrough = covered.at(-1) ?? null
-  const totalChapters = allCourseChapters().length
+  const totalChapters = allCourseChapters(settings).length
   const percent =
-    totalChapters <= 0
-      ? 0
-      : Math.round((covered.length / totalChapters) * 100)
+    totalChapters <= 0 ? 0 : Math.round((covered.length / totalChapters) * 100)
 
   let coveredLabel = 'El curso aún no comienza'
-  if (t > end) coveredLabel = 'El tramo de septiembre–octubre ya terminó'
+  if (t > end) coveredLabel = 'Este tramo del curso ya terminó'
   else if (coveredThrough) {
     coveredLabel = `Hasta ${coveredThrough.bookLabel} ${coveredThrough.chapter}`
+  } else if (!sessions.length) {
+    coveredLabel = 'No hay sesiones con estas fechas y días'
   }
 
   return {
@@ -172,5 +395,6 @@ export function coursePaceOn(today: Date = new Date()): CoursePaceSnapshot {
     nextSession,
     lastSession: lastIdx >= 0 ? sessions[lastIdx] : null,
     isStudyDay: Boolean(todaySession),
+    settings,
   }
 }

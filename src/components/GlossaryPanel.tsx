@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { ArrowLeft, BookOpen, Pencil, Plus, Search, Trash2 } from 'lucide-react'
+import { ArrowLeft, ArrowRight, BookOpen, ExternalLink, Pencil, Plus, Search, Trash2 } from 'lucide-react'
 import { CitedText } from '@/components/CitedText'
 import { DeckSessionPrompt } from '@/components/DeckSessionPrompt'
 import { UserPickerView } from '@/components/UserPickerView'
@@ -18,6 +18,7 @@ import { useGlossary } from '@/context/GlossaryContext'
 import { useUser } from '@/context/UserContext'
 import {
   cardsForGlossaryTerm,
+  glossaryBibleSearchUrl,
   glossaryKindLabel,
   GLOSSARY_KINDS,
   isCustomGlossaryId,
@@ -26,7 +27,8 @@ import {
   type GlossaryEntry,
   type GlossaryKind,
 } from '@/lib/glossary'
-import { toggleGlossaryTerm, getGlossaryTermIds } from '@/lib/deckFilter'
+import { toggleGlossaryTerm, getGlossaryTermIds, setGlossaryTermIds } from '@/lib/deckFilter'
+import { groupingsPatch } from '@/lib/userData'
 import type { Flashcard } from '@/lib/parseFlashcard'
 import { cn } from '@/lib/utils'
 
@@ -35,6 +37,7 @@ type GlossaryPanelProps = {
   selectedTermId: string | null
   onSelectTerm: (id: string | null) => void
   onOpenCardInStudy: (cardId: string) => void
+  onStudyWithFilter?: () => void
   onBackToMaterials: () => void
   suggestedUserId?: string | null
 }
@@ -71,6 +74,7 @@ export function GlossaryPanel({
   selectedTermId,
   onSelectTerm,
   onOpenCardInStudy,
+  onStudyWithFilter,
   onBackToMaterials,
   suggestedUserId,
 }: GlossaryPanelProps) {
@@ -97,10 +101,36 @@ export function GlossaryPanel({
 
   const [pendingFilterId, setPendingFilterId] = useState<string | null>(null)
 
+  const [pendingStudyFilter, setPendingStudyFilter] = useState<string | null>(
+    null,
+  )
+
   const selected = entries.find((e) => e.id === selectedTermId) ?? null
   const filterTermIds = userDoc
     ? getGlossaryTermIds(userDoc.config.groupings)
     : []
+
+  const applyGlossaryFilter = (termId: string) => {
+    if (!userDoc) return
+    const ids = getGlossaryTermIds(userDoc.config.groupings)
+    const nextIds = ids.includes(termId) ? ids : [...ids, termId]
+    patchConfig(
+      groupingsPatch(
+        userDoc.config,
+        setGlossaryTermIds(userDoc.config.groupings, nextIds),
+      ),
+    )
+  }
+
+  const filterAndStudy = (termId: string) => {
+    if (!userDoc) {
+      setPendingStudyFilter(termId)
+      setSessionPrompt(true)
+      return
+    }
+    applyGlossaryFilter(termId)
+    onStudyWithFilter?.()
+  }
 
   const toggleFilter = (termId: string) => {
     if (!userDoc) {
@@ -108,23 +138,35 @@ export function GlossaryPanel({
       setSessionPrompt(true)
       return
     }
-    patchConfig({
-      groupings: toggleGlossaryTerm(userDoc.config.groupings, termId),
-      studySessionOrder: null,
-      studySessionIndex: 0,
-    })
+    patchConfig(
+      groupingsPatch(
+        userDoc.config,
+        toggleGlossaryTerm(userDoc.config.groupings, termId),
+      ),
+    )
   }
 
   useEffect(() => {
     if (!userDoc || !pendingFilterId) return
     const termId = pendingFilterId
     setPendingFilterId(null)
-    patchConfig({
-      groupings: toggleGlossaryTerm(userDoc.config.groupings, termId),
-      studySessionOrder: null,
-      studySessionIndex: 0,
-    })
+    patchConfig(
+      groupingsPatch(
+        userDoc.config,
+        toggleGlossaryTerm(userDoc.config.groupings, termId),
+      ),
+    )
   }, [userDoc, pendingFilterId, patchConfig])
+
+  useEffect(() => {
+    if (!userDoc || !pendingStudyFilter) return
+    const termId = pendingStudyFilter
+    setPendingStudyFilter(null)
+    applyGlossaryFilter(termId)
+    onStudyWithFilter?.()
+    // apply after session exists
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userDoc, pendingStudyFilter])
 
   const filtered = useMemo(() => {
     const q = query.trim().toLocaleLowerCase('es')
@@ -176,6 +218,7 @@ export function GlossaryPanel({
       kind: editor.kind,
       note: editor.note.trim(),
       properName: editor.properName,
+      related: entries.find((e) => e.id === editor.id)?.related ?? [],
     })
     setEditor(null)
     onSelectTerm(editor.id)
@@ -265,27 +308,30 @@ export function GlossaryPanel({
                 <CardDescription className="mt-1">
                   {glossaryKindLabel(selected.kind)}
                   {selected.properName ? ' · Nombre propio' : ''}
-                  {selected.aliases.length
-                    ? ` · También: ${selected.aliases.join(', ')}`
-                    : ''}
                 </CardDescription>
               </div>
               <div className="flex flex-wrap gap-2">
                 <Button
                   type="button"
-                  variant={
-                    selected && filterTermIds.includes(selected.id)
-                      ? 'default'
-                      : 'outline'
-                  }
+                  variant="default"
+                  size="sm"
+                  className="min-h-11"
+                  onClick={() => filterAndStudy(selected.id)}
+                >
+                  Filtrar mazo
+                  <ArrowRight className="size-4" />
+                </Button>
+                {filterTermIds.includes(selected.id) && (
+                <Button
+                  type="button"
+                  variant="outline"
                   size="sm"
                   className="min-h-11"
                   onClick={() => toggleFilter(selected.id)}
                 >
-                  {selected && filterTermIds.includes(selected.id)
-                    ? 'Quitar del filtro'
-                    : 'Filtrar mazo'}
+                  Quitar del filtro
                 </Button>
+                )}
                 <Button
                   type="button"
                   variant="outline"
@@ -315,8 +361,53 @@ export function GlossaryPanel({
           </CardHeader>
           <CardContent className="space-y-3">
             {selected.note ? (
-              <p className="text-sm leading-relaxed">{selected.note}</p>
+              <p className="text-sm leading-relaxed">
+                <span className="font-medium">Sentido. </span>
+                {selected.note}
+              </p>
             ) : null}
+            {selected.aliases.length > 0 && (
+              <p className="text-sm leading-relaxed">
+                <span className="font-medium">También se escribe. </span>
+                {selected.aliases.join(', ')}
+              </p>
+            )}
+            {selected.related.length > 0 && (
+              <div>
+                <p className="mb-2 text-sm font-medium">Relacionado</p>
+                <ul className="flex flex-col gap-1">
+                  {selected.related.map((item) => {
+                    const other = entries.find((e) => e.id === item.id)
+                    if (!other) return null
+                    return (
+                      <li key={item.id}>
+                        <button
+                          type="button"
+                          className="w-full rounded-lg px-2 py-2 text-left text-sm hover:bg-accent/40"
+                          onClick={() => onSelectTerm(other.id)}
+                        >
+                          <span className="font-medium">{other.term}</span>
+                          <span className="text-muted-foreground">
+                            {' '}
+                            — {item.rel}
+                          </span>
+                        </button>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+            )}
+            <Button asChild className="min-h-11 w-full sm:w-auto">
+              <a
+                href={glossaryBibleSearchUrl(selected)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <ExternalLink className="size-4" />
+                Ver en la Biblia (NTV)
+              </a>
+            </Button>
             <p className="text-sm text-muted-foreground">
               {references.length === 1
                 ? '1 tarjeta menciona esta palabra.'
@@ -540,7 +631,9 @@ function GlossaryEditor({
             />
           </div>
           <div>
-            <Label htmlFor="glossary-aliases">Otras formas (separadas por coma)</Label>
+            <Label htmlFor="glossary-aliases">
+              También se escribe / otras versiones
+            </Label>
             <Input
               id="glossary-aliases"
               className="mt-1 h-11"
@@ -548,7 +641,7 @@ function GlossaryEditor({
               onChange={(e) =>
                 setEditor({ ...editor, aliases: e.target.value })
               }
-              placeholder="por ejemplo: arca del pacto"
+              placeholder="Sadoc, Zadok, Sadoq"
             />
           </div>
           <div>
@@ -570,7 +663,7 @@ function GlossaryEditor({
             </select>
           </div>
           <div>
-            <Label htmlFor="glossary-note">Nota (opcional)</Label>
+            <Label htmlFor="glossary-note">Sentido (quién / qué / dónde)</Label>
             <textarea
               id="glossary-note"
               className="mt-1 min-h-24 w-full rounded-md border border-input bg-transparent px-3 py-2 text-base md:text-sm"

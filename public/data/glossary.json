@@ -5,579 +5,1954 @@
       "term": "Aarón",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Hermano de Moisés; de su linaje sale el sacerdocio de Sadoc.",
+      "properName": true,
+      "related": [
+        {
+          "id": "moises",
+          "rel": "hermano"
+        },
+        {
+          "id": "sadoc",
+          "rel": "linaje del sacerdocio"
+        },
+        {
+          "id": "levitas",
+          "rel": "tribu"
+        }
+      ]
     },
     {
       "id": "abdias",
       "term": "Abdías",
-      "aliases": [],
+      "aliases": [
+        "Obadiah",
+        "Obadías"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Mayordomo de Acab que escondió a cien profetas del Señor.",
+      "properName": true,
+      "related": [
+        {
+          "id": "acab",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "abel-bet-maaca",
       "term": "Abel-bet-maaca",
-      "aliases": [],
+      "aliases": [
+        "Abel Bet Maaca",
+        "Abel Beth Maacah"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad del norte donde Joab sitió a Seba hijo de Bicri.",
+      "properName": true,
+      "related": [
+        {
+          "id": "joab",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "maaca",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "seba",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "abiam",
       "term": "Abiam",
-      "aliases": [],
+      "aliases": [
+        "Abijam",
+        "Abías"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Judá, hijo de Roboam; guerra con Jeroboam.",
+      "properName": true,
+      "related": [
+        {
+          "id": "abias",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "roboam",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "beerseba",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "abiatar",
       "term": "Abiatar",
-      "aliases": [],
+      "aliases": [
+        "Abiathar"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Sacerdote hijo de Ahimelec; huyó a David y luego fue depuesto por Salomón.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ahimelec",
+          "rel": "hijo"
+        },
+        {
+          "id": "david",
+          "rel": "huyó a"
+        },
+        {
+          "id": "sadoc",
+          "rel": "compañero"
+        },
+        {
+          "id": "adonias",
+          "rel": "apoyó a"
+        }
+      ]
     },
     {
       "id": "abinadab",
       "term": "Abinadab",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Hombre de Quiriat-jearim en cuya casa estuvo el arca; también un hijo de Saúl.",
+      "properName": true,
+      "related": [
+        {
+          "id": "arca",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eleazar",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "abiram",
       "term": "Abiram",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de Hiel de Betel; murió al poner Hiel los cimientos de Jericó.",
+      "properName": true,
+      "related": [
+        {
+          "id": "betel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "hiel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "josue",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "abisag",
       "term": "Abisag",
-      "aliases": [],
+      "aliases": [
+        "Abishag"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Joven de Sunem que cuidó a David anciano; Adonías la pidió por esposa.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "adonias",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "salomon",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "abisai",
       "term": "Abisai",
-      "aliases": [],
+      "aliases": [
+        "Abishai"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de Sarvia, hermano de Joab; valiente de David.",
+      "properName": true,
+      "related": [
+        {
+          "id": "isai",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "joab",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "amon",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "abner",
       "term": "Abner",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Jefe del ejército de Saúl, tío de Saúl; pasó a David y Joab lo mató.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ner",
+          "rel": "hijo"
+        },
+        {
+          "id": "saul",
+          "rel": "jefe de su ejército"
+        },
+        {
+          "id": "is-boset",
+          "rel": "puso por rey"
+        },
+        {
+          "id": "joab",
+          "rel": "lo asesinó"
+        }
+      ]
     },
     {
       "id": "absalon",
       "term": "Absalón",
-      "aliases": [],
+      "aliases": [
+        "Absalom"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de David que se rebeló, tomó Jerusalén y murió en el bosque de Efraín.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "hijo"
+        },
+        {
+          "id": "tamar",
+          "rel": "hermano"
+        },
+        {
+          "id": "amnon",
+          "rel": "vengó a Tamar"
+        },
+        {
+          "id": "ahitofel",
+          "rel": "su consejero"
+        },
+        {
+          "id": "joab",
+          "rel": "lo mató"
+        }
+      ]
     },
     {
       "id": "abias",
       "term": "Abías",
-      "aliases": [],
+      "aliases": [
+        "Abijah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de Jeroboam a quien Ahías anunció que moriría; o rey Abías de Judá.",
+      "properName": true,
+      "related": [
+        {
+          "id": "abiam",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "beerseba",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "joel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "acab",
       "term": "Acab",
-      "aliases": [],
+      "aliases": [
+        "Ahab"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Israel en Samaria; esposo de Jezabel; combatió a Elías y a Ben-adad.",
+      "properName": true,
+      "related": [
+        {
+          "id": "jezabel",
+          "rel": "esposo"
+        },
+        {
+          "id": "ocozias",
+          "rel": "padre"
+        },
+        {
+          "id": "joram",
+          "rel": "padre"
+        },
+        {
+          "id": "elias",
+          "rel": "lo enfrentó"
+        },
+        {
+          "id": "nabot",
+          "rel": "le quitó la viña"
+        }
+      ]
     },
     {
       "id": "acaz",
       "term": "Acaz",
-      "aliases": [],
+      "aliases": [
+        "Ahaz"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Judá que pidió ayuda a Asiria y copió el altar de Damasco.",
+      "properName": true,
+      "related": [
+        {
+          "id": "joacaz",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "cis",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "acbor",
       "term": "Acbor",
-      "aliases": [],
+      "aliases": [
+        "Achbor"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Oficial de Josías enviado junto con Hilcías a consultar a Hulda.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ahicam",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asaias",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "adoniram",
       "term": "Adoniram",
-      "aliases": [],
+      "aliases": [
+        "Adoram"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Encargado de los trabajos forzados bajo David, Salomón y Roboam.",
+      "properName": true,
+      "related": [
+        {
+          "id": "gad",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jacob",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "adonias",
       "term": "Adonías",
-      "aliases": [],
+      "aliases": [
+        "Adonijah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de David y Haguit que se proclamó rey; Salomón lo perdonó y luego lo mató.",
+      "properName": true,
+      "related": [
+        {
+          "id": "haguit",
+          "rel": "hijo"
+        },
+        {
+          "id": "david",
+          "rel": "se proclamó rey en vida de"
+        },
+        {
+          "id": "salomon",
+          "rel": "rival"
+        },
+        {
+          "id": "abisag",
+          "rel": "la pidió"
+        }
+      ]
     },
     {
       "id": "adramelec",
       "term": "Adramelec",
-      "aliases": [],
+      "aliases": [
+        "Adrammelech"
+      ],
       "kind": "concepto",
-      "note": ""
+      "note": "Dios de Sepharvaim al que quemaban hijos; también un hijo de Senaquerib.",
+      "properName": false,
+      "related": [
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "anamelec",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asima",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "adulam",
       "term": "Adulam",
-      "aliases": [],
+      "aliases": [
+        "Adullam"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Cueva donde David se escondió y reunió a su gente.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "belen",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "afec",
       "term": "Afec",
-      "aliases": [],
+      "aliases": [
+        "Aphek"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Lugar donde filisteos y Siria pelearon contra Israel.",
+      "properName": true,
+      "related": [
+        {
+          "id": "asdod",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "tumores",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "arca",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "agag",
       "term": "Agag",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Rey amalecita a quien Saúl perdonó y Samuel ejecutó.",
+      "properName": true,
+      "related": [
+        {
+          "id": "saul",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "samuel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "ahicam",
       "term": "Ahicam",
-      "aliases": [],
+      "aliases": [
+        "Ahikam"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de Safán; protegió a Jeremías; padre de Gedalías.",
+      "properName": true,
+      "related": [
+        {
+          "id": "dan",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "gedalias",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "nabuzaradan",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "ahilud",
       "term": "Ahilud",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Padre de Josafat, el cronista de David y Salomón.",
+      "properName": true,
+      "related": [
+        {
+          "id": "josafat",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "safat",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "seraias",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "ahimelec",
       "term": "Ahimelec",
-      "aliases": [],
+      "aliases": [
+        "Ahimelech"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Sacerdote de Nob que ayudó a David; Saúl lo mató por Doeg.",
+      "properName": true,
+      "related": [
+        {
+          "id": "abiatar",
+          "rel": "padre"
+        },
+        {
+          "id": "nob",
+          "rel": "sacerdote de"
+        },
+        {
+          "id": "doeg",
+          "rel": "lo denunció"
+        },
+        {
+          "id": "saul",
+          "rel": "lo mató"
+        }
+      ]
     },
     {
       "id": "ahitofel",
       "term": "Ahitofel",
-      "aliases": [],
+      "aliases": [
+        "Ahithophel"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Consejero de David que se pasó a Absalón y luego se ahorcó.",
+      "properName": true,
+      "related": [
+        {
+          "id": "absalon",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "ahias",
       "term": "Ahías",
-      "aliases": [],
+      "aliases": [
+        "Ahijah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Profeta de Silo que anunció a Jeroboam el reino de las diez tribus.",
+      "properName": true,
+      "related": [
+        {
+          "id": "jeroboam",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "roboam",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "amasa",
       "term": "Amasa",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Sobrino de David, jefe de Absalón; Joab lo asesinó.",
+      "properName": true,
+      "related": [
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "joab",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "amasias",
       "term": "Amasías",
-      "aliases": [],
+      "aliases": [
+        "Amaziah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Judá, hijo de Joás; venció a Edom y desafió a Israel.",
+      "properName": true,
+      "related": [
+        {
+          "id": "juda",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jerusalen",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "azarias",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "amitai",
       "term": "Amitai",
-      "aliases": [],
+      "aliases": [
+        "Amittai"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Padre del profeta Jonás, de Gat-hefer.",
+      "properName": true,
+      "related": [
+        {
+          "id": "araba",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "hamat",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "amiud",
       "term": "Amiud",
-      "aliases": [],
+      "aliases": [
+        "Ammihud"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Padre de Talmai, rey de Gesur.",
+      "properName": true,
+      "related": [
+        {
+          "id": "absalon",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "amnon",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "gesur",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "amnon",
       "term": "Amnón",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo primogénito de David; violó a Tamar y Absalón lo mató.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "hijo"
+        },
+        {
+          "id": "tamar",
+          "rel": "la violó"
+        },
+        {
+          "id": "absalon",
+          "rel": "lo mató"
+        },
+        {
+          "id": "aquinoam",
+          "rel": "hijo"
+        }
+      ]
     },
     {
       "id": "amoz",
       "term": "Amoz",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Padre del profeta Isaías.",
+      "properName": true,
+      "related": [
+        {
+          "id": "isai",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "isaias",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "amon",
       "term": "Amón",
-      "aliases": [],
+      "aliases": [
+        "Ammon"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Nación al este del Jordán; también un rey de Judá, padre de Josías.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jacob",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "ana",
       "term": "Ana",
-      "aliases": [],
+      "aliases": [
+        "Hannah",
+        "Anna"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Madre de Samuel; oró en Silo y el Señor le dio un hijo.",
+      "properName": true,
+      "related": [
+        {
+          "id": "samuel",
+          "rel": "madre"
+        },
+        {
+          "id": "elcana",
+          "rel": "esposa"
+        },
+        {
+          "id": "penina",
+          "rel": "la otra esposa"
+        },
+        {
+          "id": "silo",
+          "rel": "oró allí"
+        }
+      ]
     },
     {
       "id": "anamelec",
       "term": "Anamelec",
-      "aliases": [],
+      "aliases": [
+        "Anammelech"
+      ],
       "kind": "concepto",
-      "note": ""
+      "note": "Dios de Sepharvaim al que se quemaban hijos.",
+      "properName": false,
+      "related": [
+        {
+          "id": "adramelec",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asima",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "anatot",
       "term": "Anatot",
-      "aliases": [],
+      "aliases": [
+        "Anathoth"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Pueblo de sacerdotes en Benjamín; origen de Abiatar y Jeremías.",
+      "properName": true,
+      "related": [
+        {
+          "id": "abiatar",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "salomon",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "aquinoam",
       "term": "Aquinoam",
-      "aliases": [],
+      "aliases": [
+        "Ahinoam"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Esposa de David, de Jezreel; madre de Amnón.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jezreel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "aquis",
       "term": "Aquís",
-      "aliases": [],
+      "aliases": [
+        "Achish"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey filisteo de Gat que dio a David Siclag.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ner",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "araba",
       "term": "Araba",
-      "aliases": [],
+      "aliases": [
+        "Arabah"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "La depresión del Jordán, hacia el sur.",
+      "properName": true,
+      "related": [
+        {
+          "id": "eliseo",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "elias",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "aram",
       "term": "Aram",
-      "aliases": [],
+      "aliases": [
+        "Syria"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Siria; Damasco y sus reyes (Hadad-ezer, Ben-adad, Hazael, Rezín).",
+      "properName": true,
+      "related": [
+        {
+          "id": "siria",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "filisteos",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "arauna",
       "term": "Arauna",
-      "aliases": [],
+      "aliases": [
+        "Araunah",
+        "Ornan"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Jebuseo cuyo era el era David compró para el altar (la era de Arauna).",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ner",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "arca",
       "term": "arca",
       "aliases": [
         "arca del pacto",
-        "arca de Dios"
+        "arca de Dios",
+        "ark of the covenant"
       ],
       "kind": "concepto",
-      "note": ""
+      "note": "El arca del pacto del Señor, tomada por filisteos y luego a Jerusalén.",
+      "properName": false,
+      "related": [
+        {
+          "id": "silo",
+          "rel": "estaba allí"
+        },
+        {
+          "id": "dagon",
+          "rel": "lo derribó"
+        },
+        {
+          "id": "quiriat-jearim",
+          "rel": "descansó allí"
+        },
+        {
+          "id": "david",
+          "rel": "la subió"
+        }
+      ]
     },
     {
       "id": "armoni",
       "term": "Armoni",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de Saúl y Rizpa; entregado a los gabaonitas.",
+      "properName": true,
+      "related": [
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "gad",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "mefiboset",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "arsa",
       "term": "Arsa",
-      "aliases": [],
+      "aliases": [
+        "Arza"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Mayordomo de Ela en Tirsa; Zimri mató al rey en su casa.",
+      "properName": true,
+      "related": [
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ela",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "tirsa",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "asa",
       "term": "Asa",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Judá que quitó ídolos y peleo con Baasa.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "templo",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "asael",
       "term": "Asael",
-      "aliases": [],
+      "aliases": [
+        "Asahel"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Hermano de Joab, veloz; Abner lo mató en Gabaón.",
+      "properName": true,
+      "related": [
+        {
+          "id": "abisai",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "abner",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "asaias",
       "term": "Asaías",
-      "aliases": [],
+      "aliases": [
+        "Asaiah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Siervo del rey Josías enviado a Hulda.",
+      "properName": true,
+      "related": [
+        {
+          "id": "acbor",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ahicam",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "asdod",
       "term": "Asdod",
-      "aliases": [],
+      "aliases": [
+        "Ashdod",
+        "Azoto"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad filistea; el arca derribó a Dagón allí.",
+      "properName": true,
+      "related": [
+        {
+          "id": "arca",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "gat",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "afec",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "asera",
       "term": "Asera",
-      "aliases": [],
+      "aliases": [
+        "Asherah"
+      ],
       "kind": "concepto",
-      "note": ""
+      "note": "Poste o diosa cananea que Israel adoró junto a Baal.",
+      "properName": false,
+      "related": [
+        {
+          "id": "baal",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "templo",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "asima",
       "term": "Asima",
-      "aliases": [],
+      "aliases": [
+        "Ashima"
+      ],
       "kind": "concepto",
-      "note": ""
+      "note": "Ídolo que hicieron los de Hamat en Samaria.",
+      "properName": false,
+      "related": [
+        {
+          "id": "adramelec",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "anamelec",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "asiria",
       "term": "Asiria",
-      "aliases": [],
+      "aliases": [
+        "Assyria"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Imperio que se llevó a Israel y amenazó a Judá en días de Ezequías.",
+      "properName": true,
+      "related": [
+        {
+          "id": "siria",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "samaria",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "astoret",
       "term": "Astoret",
-      "aliases": [],
+      "aliases": [
+        "Ashtoreth",
+        "Astarté"
+      ],
       "kind": "concepto",
-      "note": ""
+      "note": "Diosa cananea que Israel y Salomón llegaron a honrar.",
+      "properName": false,
+      "related": [
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "samuel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "baal",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "ava",
       "term": "Ava",
-      "aliases": [],
+      "aliases": [
+        "Avva"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Lugar de donde Asiria trajo gente a Samaria.",
+      "properName": true,
+      "related": [
+        {
+          "id": "samaria",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "saul",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "azarias",
       "term": "Azarías",
-      "aliases": [],
+      "aliases": [
+        "Azariah",
+        "Uzías"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Nombre de varios; un sacerdote o el rey Uzías de Judá.",
+      "properName": true,
+      "related": [
+        {
+          "id": "uzias",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "amasias",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "cis",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "baal",
       "term": "Baal",
       "aliases": [],
       "kind": "concepto",
-      "note": ""
+      "note": "Dios cananeo cuyo culto Jezabel y Acab impulsaron en Israel.",
+      "properName": false,
+      "related": [
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jacob",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asera",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "baal-hazor",
       "term": "Baal-hazor",
-      "aliases": [],
+      "aliases": [
+        "Baal Hazor"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Lugar cerca de Efraín donde Absalón mató a Amnón.",
+      "properName": true,
+      "related": [
+        {
+          "id": "absalon",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "amnon",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "baal",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "baal-perazim",
       "term": "Baal-perazim",
-      "aliases": [],
+      "aliases": [
+        "Baal Perazim"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Sitio donde David venció a los filisteos: «el Señor irrumpió».",
+      "properName": true,
+      "related": [
+        {
+          "id": "baal",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "filisteos",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "baal-zebub",
       "term": "Baal-zebub",
-      "aliases": [],
+      "aliases": [
+        "Beelzebub"
+      ],
       "kind": "concepto",
-      "note": ""
+      "note": "Dios de Ecrón al que consultó Ocozías de Israel.",
+      "properName": false,
+      "related": [
+        {
+          "id": "baal",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "elias",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "baala",
       "term": "Baala",
-      "aliases": [],
+      "aliases": [
+        "Baalah"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Otro nombre de Quiriat-jearim, de donde David trajo el arca.",
+      "properName": true,
+      "related": [
+        {
+          "id": "arca",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "baal",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "baana",
       "term": "Baana",
-      "aliases": [],
+      "aliases": [
+        "Baanah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Oficial de Salomón, o uno de los que mataron a Is-boset.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "recab",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "baasa",
       "term": "Baasa",
-      "aliases": [],
+      "aliases": [
+        "Baasha"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Israel que mató a Nadab y peleo con Asa de Judá.",
+      "properName": true,
+      "related": [
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jeroboam",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "roboam",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "babilonia",
       "term": "Babilonia",
-      "aliases": [],
+      "aliases": [
+        "Babylon",
+        "Babel"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Imperio de Nabucodonosor que tomó Jerusalén y llevó al exilio.",
+      "properName": true,
+      "related": [
+        {
+          "id": "joaquin",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "nabucodonosor",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "isai",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "bahurim",
       "term": "Bahurim",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Pueblo de Benjamín; Simei maldijo a David allí.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "gera",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "baladan",
       "term": "Baladán",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Padre de Berodac-baladán, rey de Babilonia.",
+      "properName": true,
+      "related": [
+        {
+          "id": "babilonia",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "berodac-baladan",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "dan",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "barac",
       "term": "Barac",
-      "aliases": [],
+      "aliases": [
+        "Barak"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Juez que, con Débora, venció a Sísara (recordado en el relato).",
+      "properName": true,
+      "related": [
+        {
+          "id": "baal",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "egipto",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jefte",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "barzilai",
       "term": "Barzilai",
-      "aliases": [],
+      "aliases": [
+        "Barzillai"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Galaadita que sostuvo a David en Mahanaim.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "galaad",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "salomon",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "beerot",
       "term": "Beerot",
-      "aliases": [],
+      "aliases": [
+        "Beeroth"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Pueblo gabaonita; origen de los asesinos de Is-boset.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "baana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "recab",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "beerseba",
       "term": "Beerseba",
-      "aliases": [],
+      "aliases": [
+        "Beersheba",
+        "Beer-sheba"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad del sur de Judá; «desde Dan hasta Beerseba».",
+      "properName": true,
+      "related": [
+        {
+          "id": "seba",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "samuel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "abiam",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "belen",
       "term": "Belén",
-      "aliases": [],
+      "aliases": [
+        "Bethlehem",
+        "Belén de Judá"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Pueblo de Judá, ciudad de Isaí y David.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "isai",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "adulam",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "ben-adad",
       "term": "Ben-adad",
-      "aliases": [],
+      "aliases": [
+        "Ben-Hadad",
+        "Benhadad"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Nombre de reyes de Siria que pelearon con Acab y más tarde con Israel.",
+      "properName": true,
+      "related": [
+        {
+          "id": "siria",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "hazael",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "acab",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "benjamin",
       "term": "Benjamín",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Tribu y territorio de Saúl, Gabaa y Jerusalén al norte.",
+      "properName": true,
+      "related": [
+        {
+          "id": "saul",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "samuel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ela",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "berodac-baladan",
       "term": "Berodac-baladán",
-      "aliases": [],
+      "aliases": [
+        "Berodach-Baladan",
+        "Merodach-Baladan"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Babilonia que envió mensajeros a Ezequías.",
+      "properName": true,
+      "related": [
+        {
+          "id": "babilonia",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "baladan",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "dan",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "bet-rehob",
       "term": "Bet-rehob",
-      "aliases": [],
+      "aliases": [
+        "Beth Rehob"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Región aramea de donde tomaron mercenarios contra David.",
+      "properName": true,
+      "related": [
+        {
+          "id": "amon",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "maaca",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "tob",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "bet-semes",
       "term": "Bet-semes",
-      "aliases": [],
+      "aliases": [
+        "Beth Shemesh"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Pueblo de Judá adonde volvió el arca en la carreta; allí murieron hombres por mirar dentro.",
+      "properName": true,
+      "related": [
+        {
+          "id": "arca",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "carreta",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "holocausto",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "betel",
       "term": "Betel",
       "aliases": [
-        "Bet-el"
+        "Bet-el",
+        "Bethel"
       ],
       "kind": "lugar",
-      "note": ""
+      "note": "Santuario del norte; Jeroboam puso un becerro; Elías y Eliseo pasaron por allí.",
+      "properName": true,
+      "related": [
+        {
+          "id": "jeroboam",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "roboam",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "juda",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "betsabe",
       "term": "Betsabé",
-      "aliases": [],
+      "aliases": [
+        "Bathsheba",
+        "Bath-sheba"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Esposa de Urías, luego de David; madre de Salomón.",
+      "properName": true,
+      "related": [
+        {
+          "id": "urias",
+          "rel": "esposa de"
+        },
+        {
+          "id": "david",
+          "rel": "luego esposa de"
+        },
+        {
+          "id": "salomon",
+          "rel": "madre"
+        },
+        {
+          "id": "eliam",
+          "rel": "hija"
+        }
+      ]
     },
     {
       "id": "bezec",
       "term": "Bezec",
-      "aliases": [],
+      "aliases": [
+        "Bezek"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Lugar donde Saúl reunió a Israel para socorrer a Jabes.",
+      "properName": true,
+      "related": [
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jacob",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "saul",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "bicri",
       "term": "Bicri",
-      "aliases": [],
+      "aliases": [
+        "Bichri"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Padre de Seba, benjamita que se rebeló contra David.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "seba",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "benjamin",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "boaz",
       "term": "Boaz",
-      "aliases": [],
+      "aliases": [
+        "Booz"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Una de las dos columnas del pórtico del templo de Salomón.",
+      "properName": true,
+      "related": [
+        {
+          "id": "jaquin",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "boscat",
       "term": "Boscat",
-      "aliases": [],
+      "aliases": [
+        "Bozkath"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Pueblo de Judá, origen de Jedida, madre de Josías.",
+      "properName": true,
+      "related": [
+        {
+          "id": "jedida",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "josias",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "cabul",
       "term": "Cabul",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Región de Galilea que Salomón dio a Hiram y no le agradó.",
+      "properName": true,
+      "related": [
+        {
+          "id": "hiram",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "carmelo",
       "term": "Carmelo",
-      "aliases": [],
+      "aliases": [
+        "Carmel",
+        "Monte Carmelo"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Monte donde Elías enfrentó a los profetas de Baal.",
+      "properName": true,
+      "related": [
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eliseo",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "elias",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "carreta",
@@ -586,249 +1961,838 @@
         "carreta nueva"
       ],
       "kind": "concepto",
-      "note": ""
+      "note": "Carreta nueva con que los filisteos devolvieron el arca.",
+      "properName": false,
+      "related": [
+        {
+          "id": "arca",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jacob",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "cedron",
       "term": "Cedrón",
-      "aliases": [],
+      "aliases": [
+        "Kidron"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Arroyo al oriente de Jerusalén; Asa y otros echaron allí ídolos.",
+      "properName": true,
+      "related": [
+        {
+          "id": "jerusalen",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asera",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "baal",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "cis",
       "term": "Cis",
-      "aliases": [],
+      "aliases": [
+        "Kish"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Padre de Saúl, benjamita.",
+      "properName": true,
+      "related": [
+        {
+          "id": "saul",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "juda",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "acaz",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "cison",
       "term": "Cisón",
-      "aliases": [],
+      "aliases": [
+        "Kishon"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Arroyo al pie del Carmelo donde Elías degolló a los profetas de Baal.",
+      "properName": true,
+      "related": [
+        {
+          "id": "baal",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "cis",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "cuta",
       "term": "Cuta",
-      "aliases": [],
+      "aliases": [
+        "Cuthah",
+        "Cutha"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Lugar de donde Asiria trajo colonos a Samaria.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asiria",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ava",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "dagon",
       "term": "Dagón",
       "aliases": [],
       "kind": "concepto",
-      "note": ""
+      "note": "Dios filisteo de Asdod; cayó roto ante el arca.",
+      "properName": false,
+      "related": [
+        {
+          "id": "arca",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "templo",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ela",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "damasco",
       "term": "Damasco",
-      "aliases": [],
+      "aliases": [
+        "Damascus"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Capital de Siria; Hadad-ezer, Rezín, Hazael.",
+      "properName": true,
+      "related": [
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ben-adad",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "siria",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "dan",
       "term": "Dan",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad y tribu del extremo norte; Jeroboam puso el otro becerro.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jordan",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "david",
       "term": "David",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de Isaí, rey de Israel y Judá; ungió Samuel; tomó Jerusalén.",
+      "properName": true,
+      "related": [
+        {
+          "id": "isai",
+          "rel": "hijo"
+        },
+        {
+          "id": "saul",
+          "rel": "ungido en su lugar"
+        },
+        {
+          "id": "jonatan",
+          "rel": "amigo"
+        },
+        {
+          "id": "salomon",
+          "rel": "padre"
+        },
+        {
+          "id": "jerusalen",
+          "rel": "su ciudad"
+        }
+      ]
     },
     {
       "id": "dodo",
       "term": "Dodo",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Padre de Eleazar, uno de los tres valientes de David.",
+      "properName": true,
+      "related": [
+        {
+          "id": "eleazar",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "pas-damim",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "doeg",
       "term": "Doeg",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Edomita, pastor de Saúl, que delató a Ahimelec y mató a los sacerdotes de Nob.",
+      "properName": true,
+      "related": [
+        {
+          "id": "edom",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "saul",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "nob",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "dotan",
       "term": "Dotán",
-      "aliases": [],
+      "aliases": [
+        "Dothan"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad donde el ejército sirio rodeó a Eliseo.",
+      "properName": true,
+      "related": [
+        {
+          "id": "eliseo",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "ebenezer",
       "term": "Ebenezer",
       "aliases": [
-        "Eben-ezer"
+        "Eben-ezer",
+        "Eben Ezer"
       ],
       "kind": "lugar",
-      "note": ""
+      "note": "«Piedra de ayuda»: memorial de Samuel; también campamento frente a Afec.",
+      "properName": true,
+      "related": [
+        {
+          "id": "samuel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "afec",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "ecron",
       "term": "Ecrón",
-      "aliases": [],
+      "aliases": [
+        "Ekron"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad filistea; el arca llegó allí y Ocozías consultó a Baal-zebub.",
+      "properName": true,
+      "related": [
+        {
+          "id": "arca",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "filisteos",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "gat",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "edom",
       "term": "Edom",
-      "aliases": [],
+      "aliases": [
+        "Seir"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Nación al sur de Judá, descendientes de Esaú; David puso guarniciones.",
+      "properName": true,
+      "related": [
+        {
+          "id": "saul",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ela",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "efod",
       "term": "efod",
-      "aliases": [],
+      "aliases": [
+        "ephod"
+      ],
       "kind": "concepto",
-      "note": ""
+      "note": "Vestidura sacerdotal de lino; David y Samuel la usaron; el de Nob guardaba la espada de Goliat.",
+      "properName": false,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "goliat",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "nob",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "efrain",
       "term": "Efraín",
-      "aliases": [],
+      "aliases": [
+        "Ephraim"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Tribu y monte; bosque donde murió Absalón; Elcaná era de la sierra de Efraín.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "elat",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "elcana",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "egipto",
       "term": "Egipto",
-      "aliases": [],
+      "aliases": [
+        "Egypt"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Tierra del éxodo; Salomón se emparentó con Faraón; refugio y amenaza (Sisac, Necao).",
+      "properName": true,
+      "related": [
+        {
+          "id": "salomon",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "samuel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "elat",
       "term": "Elat",
-      "aliases": [],
+      "aliases": [
+        "Elath",
+        "Ezion"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Puerto al sur, junto a Ezión-geber, en el mar Rojo.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ela",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "saul",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "filisteos",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "elcana",
       "term": "Elcaná",
-      "aliases": [],
+      "aliases": [
+        "Elkanah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Padre de Samuel, de Ramá, esposo de Ana y Penina.",
+      "properName": true,
+      "related": [
+        {
+          "id": "samuel",
+          "rel": "padre"
+        },
+        {
+          "id": "ana",
+          "rel": "esposo"
+        },
+        {
+          "id": "penina",
+          "rel": "esposo"
+        },
+        {
+          "id": "rama",
+          "rel": "de Ramá"
+        }
+      ]
     },
     {
       "id": "eleazar",
       "term": "Eleazar",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de Abinadab que cuidó el arca; o el valiente hijo de Dodo.",
+      "properName": true,
+      "related": [
+        {
+          "id": "abinadab",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "arca",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "eliada",
       "term": "Eliada",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de David nacido en Jerusalén.",
+      "properName": true,
+      "related": [
+        {
+          "id": "damasco",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "rezon",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "eliam",
       "term": "Eliam",
-      "aliases": [],
+      "aliases": [
+        "Ammiel"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Padre de Betsabé, uno de los treinta de David.",
+      "properName": true,
+      "related": [
+        {
+          "id": "betsabe",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "urias",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "eliaquim",
       "term": "Eliaquim",
-      "aliases": [],
+      "aliases": [
+        "Eliakim"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Mayordomo de Ezequías, hijo de Hilcías; salió al Rabsaces.",
+      "properName": true,
+      "related": [
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "rabsaces",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "hilcias",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "eliseo",
       "term": "Eliseo",
-      "aliases": [],
+      "aliases": [
+        "Elisha"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Profeta sucesor de Elías; milagros en Israel, Naamán y Dotán.",
+      "properName": true,
+      "related": [
+        {
+          "id": "elias",
+          "rel": "discípulo"
+        },
+        {
+          "id": "safat",
+          "rel": "hijo"
+        },
+        {
+          "id": "naaman",
+          "rel": "lo sanó"
+        },
+        {
+          "id": "giezi",
+          "rel": "su criado"
+        }
+      ]
     },
     {
       "id": "ela",
       "term": "Elá",
       "aliases": [
-        "Ela"
+        "Elah"
       ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Israel, hijo de Baasa; Zimri lo mató en Tirsa.",
+      "properName": true,
+      "related": [
+        {
+          "id": "elat",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "samuel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "arca",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "eli",
       "term": "Elí",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Sacerdote de Silo, padre de Ofni y Finees; crió a Samuel.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ofni",
+          "rel": "padre"
+        },
+        {
+          "id": "finees",
+          "rel": "padre"
+        },
+        {
+          "id": "samuel",
+          "rel": "lo crió"
+        },
+        {
+          "id": "silo",
+          "rel": "sacerdote allí"
+        },
+        {
+          "id": "ichabod",
+          "rel": "abuelo"
+        }
+      ]
     },
     {
       "id": "elias",
       "term": "Elías",
-      "aliases": [],
+      "aliases": [
+        "Elijah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Profeta de Tesba; sequía, Carmelo, Horeb; subió al cielo; enfrentó a Acab.",
+      "properName": true,
+      "related": [
+        {
+          "id": "eliseo",
+          "rel": "su sucesor"
+        },
+        {
+          "id": "acab",
+          "rel": "lo reprendió"
+        },
+        {
+          "id": "carmelo",
+          "rel": "el duelo con Baal"
+        },
+        {
+          "id": "sarepta",
+          "rel": "la viuda"
+        }
+      ]
     },
     {
       "id": "en-rogel",
       "term": "En-rogel",
-      "aliases": [],
+      "aliases": [
+        "En Rogel"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Fuente cerca de Jerusalén donde Adonías hizo banquete.",
+      "properName": true,
+      "related": [
+        {
+          "id": "abiatar",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "husai",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "esar-hadon",
       "term": "Esar-hadón",
-      "aliases": [],
+      "aliases": [
+        "Esarhaddon"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de Senaquerib que reinó en Asiria después del asesinato de su padre.",
+      "properName": true,
+      "related": [
+        {
+          "id": "adramelec",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "nisroc",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "etanim",
       "term": "Etanim",
-      "aliases": [],
+      "aliases": [
+        "Ethanim"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Mes séptimo, cuando Salomón dedicó el templo.",
+      "properName": true,
+      "related": [
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jacob",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "etbaal",
       "term": "Etbaal",
-      "aliases": [],
+      "aliases": [
+        "Ethbaal"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Sidón, padre de Jezabel.",
+      "properName": true,
+      "related": [
+        {
+          "id": "acab",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "baal",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jezabel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "evil-merodac",
       "term": "Evil-merodac",
-      "aliases": [],
+      "aliases": [
+        "Evil-Merodach",
+        "Amel-Marduk"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Babilonia que libertó a Joaquín de la prisión.",
+      "properName": true,
+      "related": [
+        {
+          "id": "babilonia",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "joaquin",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "ezequias",
       "term": "Ezequías",
-      "aliases": [],
+      "aliases": [
+        "Hezekiah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Judá que confió en el Señor frente a Senaquerib y enfermó y sanó.",
+      "properName": true,
+      "related": [
+        {
+          "id": "isaias",
+          "rel": "profeta de"
+        },
+        {
+          "id": "senaquerib",
+          "rel": "lo sitió"
+        },
+        {
+          "id": "manases",
+          "rel": "padre de"
+        }
+      ]
     },
     {
       "id": "ezion-geber",
       "term": "Ezión-geber",
-      "aliases": [],
+      "aliases": [
+        "Ezion Geber"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Puerto de Salomón en el mar Rojo, junto a Elat.",
+      "properName": true,
+      "related": [
+        {
+          "id": "elat",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ela",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "hiram",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "filisteos",
@@ -836,131 +2800,422 @@
       "aliases": [
         "filisteo",
         "filistea",
-        "filisteas"
+        "filisteas",
+        "Philistines"
       ],
       "kind": "persona",
-      "note": ""
+      "note": "Pueblo de la costa (Gat, Asdod, Ecrón); enemigos de Saúl y David.",
+      "properName": true,
+      "related": [
+        {
+          "id": "gat",
+          "rel": "una de sus ciudades"
+        },
+        {
+          "id": "asdod",
+          "rel": "una de sus ciudades"
+        },
+        {
+          "id": "ecron",
+          "rel": "una de sus ciudades"
+        },
+        {
+          "id": "arca",
+          "rel": "la tomaron"
+        }
+      ]
     },
     {
       "id": "finees",
       "term": "Finees",
-      "aliases": [],
+      "aliases": [
+        "Phinehas"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de Elí; murió cuando el arca fue tomada; su mujer nombró a Ichabod.",
+      "properName": true,
+      "related": [
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ofni",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "arca",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "gabaa",
       "term": "Gabaa",
-      "aliases": [],
+      "aliases": [
+        "Gibeah",
+        "Gabaa de Benjamín"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Pueblo de Saúl en Benjamín.",
+      "properName": true,
+      "related": [
+        {
+          "id": "saul",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "benjamin",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "elat",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "gabaonitas",
       "term": "gabaonitas",
       "aliases": [
-        "gabaonita"
+        "gabaonita",
+        "Gibeonites"
       ],
       "kind": "persona",
-      "note": ""
+      "note": "Habitantes de Gabaón; Saúl los persiguió y David les entregó descendientes de Saúl.",
+      "properName": true,
+      "related": [
+        {
+          "id": "gabaon",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "saul",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "cuta",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "gabaon",
       "term": "Gabaón",
-      "aliases": [],
+      "aliases": [
+        "Gibeon"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad donde el sol se detuvo en la memoria; estanque de Abner y Joab; Salomón ofreció allí.",
+      "properName": true,
+      "related": [
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "salomon",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "joab",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "gad",
       "term": "Gad",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Profeta de David; o la tribu al este del Jordán.",
+      "properName": true,
+      "related": [
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jacob",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "gadi",
       "term": "Gadi",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Padre de Manahem, de Tirsa.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "gad",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "manahem",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "galaad",
       "term": "Galaad",
-      "aliases": [],
+      "aliases": [
+        "Gilead"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Región al este del Jordán; Jabes, Ramot, Mahanaim, Barzilai.",
+      "properName": true,
+      "related": [
+        {
+          "id": "jabes",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jacob",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "galilea",
       "term": "Galilea",
-      "aliases": [],
+      "aliases": [
+        "Galilee"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Norte de Israel; Cabul, que Salomón dio a Hiram.",
+      "properName": true,
+      "related": [
+        {
+          "id": "hiram",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "salomon",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "gat",
       "term": "Gat",
-      "aliases": [],
+      "aliases": [
+        "Gath"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad filistea de Goliat y de Aquís; el arca pasó por allí.",
+      "properName": true,
+      "related": [
+        {
+          "id": "arca",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asdod",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "filisteos",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "geba",
       "term": "Geba",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Pueblo de Benjamín, frontera con Micmas.",
+      "properName": true,
+      "related": [
+        {
+          "id": "filisteos",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jonatan",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "natan",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "gebal",
       "term": "Gebal",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Canteros de Gebal ayudaron a Hiram y Salomón.",
+      "properName": true,
+      "related": [
+        {
+          "id": "geba",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "hiram",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "salomon",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "gedalias",
       "term": "Gedalías",
-      "aliases": [],
+      "aliases": [
+        "Gedaliah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de Ahicam; Nabucodonosor lo dejó gobernador; Ismael lo mató.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ismael",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "mizpa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "netanias",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "gera",
       "term": "Gera",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Padre de Simei, benjamita de Bahurim.",
+      "properName": true,
+      "related": [
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "bahurim",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "gesur",
       "term": "Gesur",
-      "aliases": [],
+      "aliases": [
+        "Geshur"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Reino arameo; Talmai, abuelo de Absalón, que huyó allí.",
+      "properName": true,
+      "related": [
+        {
+          "id": "absalon",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "amiud",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "amnon",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "gezer",
       "term": "Gezer",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad que Faraón dio a Salomón como dote.",
+      "properName": true,
+      "related": [
+        {
+          "id": "salomon",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "hazor",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "giezi",
       "term": "Giezi",
-      "aliases": [],
+      "aliases": [
+        "Gehazi"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Criado de Eliseo; mintió a Naamán y quedó leproso.",
+      "properName": true,
+      "related": [
+        {
+          "id": "eliseo",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "naaman",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "gihon",
       "term": "Gihón",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Manantial de Jerusalén donde ungieron a Salomón.",
+      "properName": true,
+      "related": [
+        {
+          "id": "salomon",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "natan",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "sadoc",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "gilgal",
@@ -969,163 +3224,516 @@
         "Guilgal"
       ],
       "kind": "lugar",
-      "note": ""
+      "note": "Santuario donde Samuel y Saúl se encontraron; Elías y Eliseo pasaron.",
+      "properName": true,
+      "related": [
+        {
+          "id": "samuel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "betel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "mizpa",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "goliat",
       "term": "Goliat",
-      "aliases": [],
+      "aliases": [
+        "Goliath"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Gigante filisteo de Gat a quien David mató.",
+      "properName": true,
+      "related": [
+        {
+          "id": "gat",
+          "rel": "de Gat"
+        },
+        {
+          "id": "david",
+          "rel": "lo mató"
+        },
+        {
+          "id": "filisteos",
+          "rel": "campeón de"
+        }
+      ]
     },
     {
       "id": "gozan",
       "term": "Gozán",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Río o región a donde Asiria deportó a Israel.",
+      "properName": true,
+      "related": [
+        {
+          "id": "asiria",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "habor",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "guibea",
       "term": "Guibeá",
-      "aliases": [],
+      "aliases": [
+        "Gibeah"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Otra forma de Gabaa, pueblo de Saúl.",
+      "properName": true,
+      "related": [
+        {
+          "id": "benjamin",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "filisteos",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jonatan",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "habor",
       "term": "Habor",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Río de Gozán, destino del destierro de Israel.",
+      "properName": true,
+      "related": [
+        {
+          "id": "asiria",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "gozan",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "hadad",
       "term": "Hadad",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Edomita adversario de Salomón; o nombre divino arameo.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "hadad-ezer",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ner",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "hadad-ezer",
       "term": "Hadad-ezer",
-      "aliases": [],
+      "aliases": [
+        "Hadadezer"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Zoba a quien David derrotó.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "hadad",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ner",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "haguit",
       "term": "Haguit",
-      "aliases": [],
+      "aliases": [
+        "Haggith"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Esposa de David, madre de Adonías.",
+      "properName": true,
+      "related": [
+        {
+          "id": "adonias",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "halah",
       "term": "Halah",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Lugar del destierro asirio de Israel.",
+      "properName": true,
+      "related": [
+        {
+          "id": "asiria",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "gozan",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "hamat",
       "term": "Hamat",
-      "aliases": [],
+      "aliases": [
+        "Hamath"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad-estado al norte; frontera de David y Salomón.",
+      "properName": true,
+      "related": [
+        {
+          "id": "amitai",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "araba",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "hanani",
       "term": "Hananí",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Vidente que reprendió a Asa por confiar en Siria.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "baasa",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "hazael",
       "term": "Hazael",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Siria ungido por Elías; hostigó a Israel.",
+      "properName": true,
+      "related": [
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jacob",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eliseo",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "hazor",
       "term": "Hazor",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad del norte que Salomón fortificó.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "gezer",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jerusalen",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "hebron",
       "term": "Hebrón",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad de Judá; David reinó allí siete años.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "abner",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ner",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "heret",
       "term": "Heret",
-      "aliases": [],
+      "aliases": [
+        "Hareth",
+        "Hereth"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Bosque donde David se escondió.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "hiel",
       "term": "Hiel",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "De Betel; reconstruyó Jericó y perdió a Abiram y Segub.",
+      "properName": true,
+      "related": [
+        {
+          "id": "abiram",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "betel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "josue",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "hilcias",
       "term": "Hilcías",
-      "aliases": [],
+      "aliases": [
+        "Hilkiah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Sacerdote que halló el libro de la ley en días de Josías.",
+      "properName": true,
+      "related": [
+        {
+          "id": "templo",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eliaquim",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "hiram",
       "term": "Hiram",
-      "aliases": [],
+      "aliases": [
+        "Huram"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Tiro, amigo de David y Salomón; envió cedros y artesanos.",
+      "properName": true,
+      "related": [
+        {
+          "id": "tiro",
+          "rel": "rey de"
+        },
+        {
+          "id": "salomon",
+          "rel": "aliado de"
+        },
+        {
+          "id": "libano",
+          "rel": "cedros de"
+        }
+      ]
     },
     {
       "id": "holocausto",
       "term": "holocausto",
       "aliases": [
-        "holocaustos"
+        "holocaustos",
+        "burnt offering"
       ],
       "kind": "concepto",
-      "note": ""
+      "note": "Ofrenda quemada por completo al Señor.",
+      "properName": false,
+      "related": [
+        {
+          "id": "salomon",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "arca",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "horeb",
       "term": "Horeb",
-      "aliases": [],
+      "aliases": [
+        "Sinaí"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Monte de Dios donde Elías oyó la voz suave.",
+      "properName": true,
+      "related": [
+        {
+          "id": "arca",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "moises",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "hulda",
       "term": "Hulda",
-      "aliases": [],
+      "aliases": [
+        "Huldah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Profetisa en Jerusalén que habló a Josías sobre el libro de la ley.",
+      "properName": true,
+      "related": [
+        {
+          "id": "acbor",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ahicam",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "husai",
       "term": "Husai",
-      "aliases": [],
+      "aliases": [
+        "Hushai"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Amigo de David que desbarató el consejo de Ahitofel.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "dan",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "abiatar",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "ibleam",
       "term": "Ibleam",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad cerca de Meguido; Ocozías de Judá huyó herido hacia allí.",
+      "properName": true,
+      "related": [
+        {
+          "id": "juda",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "meguido",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ocozias",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "ichabod",
@@ -1134,1268 +3742,4161 @@
         "Icabod"
       ],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de la nuera de Elí: «se ha ido la gloria» cuando cayó el arca.",
+      "properName": true,
+      "related": [
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jacob",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "finees",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "imla",
       "term": "Imlá",
-      "aliases": [],
+      "aliases": [
+        "Imlah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Padre de Miqueas, el profeta que habló contra Acab.",
+      "properName": true,
+      "related": [
+        {
+          "id": "acab",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "josafat",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "miqueas",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "is-boset",
       "term": "Is-boset",
-      "aliases": [],
+      "aliases": [
+        "Ishbosheth",
+        "Isboset",
+        "Eshbaal"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de Saúl, rey de Israel por Abner; lo asesinaron en su cama.",
+      "properName": true,
+      "related": [
+        {
+          "id": "saul",
+          "rel": "hijo"
+        },
+        {
+          "id": "abner",
+          "rel": "lo puso por rey"
+        },
+        {
+          "id": "mahanaim",
+          "rel": "reinó allí"
+        }
+      ]
     },
     {
       "id": "isacar",
       "term": "Isacar",
-      "aliases": [],
+      "aliases": [
+        "Issachar"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Tribu; Baasa era de Isacar.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ahias",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "baasa",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "isai",
       "term": "Isaí",
-      "aliases": [],
+      "aliases": [
+        "Jesse"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Padre de David, de Belén.",
+      "properName": true,
+      "related": [
+        {
+          "id": "abisai",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "joab",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "isaias",
       "term": "Isaías",
-      "aliases": [],
+      "aliases": [
+        "Isaiah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Profeta hijo de Amoz; consejero de Ezequías.",
+      "properName": true,
+      "related": [
+        {
+          "id": "isai",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "babilonia",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "ismael",
       "term": "Ismael",
-      "aliases": [],
+      "aliases": [
+        "Ishmael"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de Netanías; mató a Gedalías en Mizpa.",
+      "properName": true,
+      "related": [
+        {
+          "id": "gedalias",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "mizpa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "netanias",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "israel",
       "term": "Israel",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "El pueblo y el reino del norte (diez tribus) frente a Judá.",
+      "properName": true,
+      "related": [
+        {
+          "id": "juda",
+          "rel": "el otro reino"
+        },
+        {
+          "id": "samaria",
+          "rel": "su capital del norte"
+        },
+        {
+          "id": "jeroboam",
+          "rel": "primer rey del norte"
+        }
+      ]
     },
     {
       "id": "israelitas",
       "term": "israelitas",
       "aliases": [
-        "israelita"
+        "israelita",
+        "Israelites",
+        "hijos de Israel"
       ],
       "kind": "persona",
-      "note": ""
+      "note": "Los hijos de Israel, el pueblo del Señor en estos relatos.",
+      "properName": true,
+      "related": [
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jacob",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "itai",
       "term": "Itai",
-      "aliases": [],
+      "aliases": [
+        "Ittai"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Gateo que se quedó con David en la huida de Absalón.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "amitai",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "araba",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "jabes",
       "term": "Jabes",
       "aliases": [
-        "Jabés"
+        "Jabesh",
+        "Jabes de Galaad"
       ],
       "kind": "lugar",
-      "note": ""
+      "note": "Jabes de Galaad, a la que Saúl salvó; luego rescató su cuerpo.",
+      "properName": true,
+      "related": [
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jacob",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "galaad",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "jacob",
       "term": "Jacob",
-      "aliases": [],
+      "aliases": [
+        "Israel"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Patriarca; Israel lleva su nombre.",
+      "properName": true,
+      "related": [
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "samuel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "jaquin",
       "term": "Jaquín",
-      "aliases": [],
+      "aliases": [
+        "Jachin"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "La otra columna del pórtico del templo, junto a Boaz.",
+      "properName": true,
+      "related": [
+        {
+          "id": "boaz",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "jedida",
       "term": "Jedida",
-      "aliases": [],
+      "aliases": [
+        "Jedidah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Madre de Josías, de Boscat.",
+      "properName": true,
+      "related": [
+        {
+          "id": "boscat",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "josias",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "jefte",
       "term": "Jefté",
-      "aliases": [],
+      "aliases": [
+        "Jephthah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Juez de Galaad, recordado en el relato.",
+      "properName": true,
+      "related": [
+        {
+          "id": "baal",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "barac",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "egipto",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "jehu",
       "term": "Jehú",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Israel ungido para acabar con la casa de Acab.",
+      "properName": true,
+      "related": [
+        {
+          "id": "nimsi",
+          "rel": "nieto"
+        },
+        {
+          "id": "acab",
+          "rel": "exterminó su casa"
+        },
+        {
+          "id": "jezabel",
+          "rel": "hizo ejecutar"
+        },
+        {
+          "id": "eliseo",
+          "rel": "ungido vía"
+        }
+      ]
     },
     {
       "id": "jeroboam",
       "term": "Jeroboam",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Primer rey del norte; puso becerros en Betel y Dan.",
+      "properName": true,
+      "related": [
+        {
+          "id": "nabat",
+          "rel": "hijo"
+        },
+        {
+          "id": "roboam",
+          "rel": "se separó de"
+        },
+        {
+          "id": "ahias",
+          "rel": "profecía de"
+        },
+        {
+          "id": "betel",
+          "rel": "becerro en"
+        }
+      ]
     },
     {
       "id": "jerubaal",
       "term": "Jerubaal",
-      "aliases": [],
+      "aliases": [
+        "Jerubbaal",
+        "Gedeón",
+        "Gideon"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Gedeón, llamado Jerubaal.",
+      "properName": true,
+      "related": [
+        {
+          "id": "baal",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "barac",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "egipto",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "jerusalen",
       "term": "Jerusalén",
-      "aliases": [],
+      "aliases": [
+        "Jerusalem"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad de David y del templo; capital de Judá.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "la tomó"
+        },
+        {
+          "id": "salomon",
+          "rel": "el templo"
+        },
+        {
+          "id": "juda",
+          "rel": "capital de"
+        }
+      ]
     },
     {
       "id": "jezabel",
       "term": "Jezabel",
-      "aliases": [],
+      "aliases": [
+        "Jezebel"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Esposa sidonia de Acab; persiguió profetas e hizo matar a Nabot.",
+      "properName": true,
+      "related": [
+        {
+          "id": "acab",
+          "rel": "esposa"
+        },
+        {
+          "id": "etbaal",
+          "rel": "hija"
+        },
+        {
+          "id": "elias",
+          "rel": "lo persiguió"
+        },
+        {
+          "id": "jehu",
+          "rel": "la hizo matar"
+        }
+      ]
     },
     {
       "id": "jezreel",
       "term": "Jezreel",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Valle y ciudad de Acab; Jehú ejecutó allí el juicio.",
+      "properName": true,
+      "related": [
+        {
+          "id": "acab",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jezabel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "joab",
       "term": "Joab",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de Sarvia, general de David; mató a Abner, Absalón y Amasa.",
+      "properName": true,
+      "related": [
+        {
+          "id": "sarvia",
+          "rel": "hijo"
+        },
+        {
+          "id": "david",
+          "rel": "general de"
+        },
+        {
+          "id": "abner",
+          "rel": "lo mató"
+        },
+        {
+          "id": "absalon",
+          "rel": "lo mató"
+        }
+      ]
     },
     {
       "id": "joacaz",
       "term": "Joacaz",
-      "aliases": [],
+      "aliases": [
+        "Jehoahaz",
+        "Joahaz"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Israel hijo de Jehú, o el hijo de Josías llevado a Egipto.",
+      "properName": true,
+      "related": [
+        {
+          "id": "acaz",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "cis",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "joacim",
       "term": "Joacim",
-      "aliases": [],
+      "aliases": [
+        "Jehoiakim"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Judá, hijo de Josías; siervo de Nabucodonosor.",
+      "properName": true,
+      "related": [
+        {
+          "id": "acaz",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "egipto",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eliaquim",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "joaquin",
       "term": "Joaquín",
-      "aliases": [],
+      "aliases": [
+        "Jehoiachin",
+        "Conías"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Judá llevado a Babilonia; Evil-merodac lo exaltó.",
+      "properName": true,
+      "related": [
+        {
+          "id": "babilonia",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "evil-merodac",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jerusalen",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "joel",
       "term": "Joel",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Padre de Haguit no; el mayor hijo de Samuel, juez en Beerseba.",
+      "properName": true,
+      "related": [
+        {
+          "id": "abiam",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "abias",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "beerseba",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "joiada",
       "term": "Joiada",
-      "aliases": [],
+      "aliases": [
+        "Jehoiada"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Sacerdote que escondió a Joás y derribó a Atalía (en Reyes, con Josaba).",
+      "properName": true,
+      "related": [
+        {
+          "id": "templo",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "jonadab",
       "term": "Jonadab",
-      "aliases": [],
+      "aliases": [
+        "Jehonadab"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Amigo de Amnón, o Jehonadab hijo de Recab aliado de Jehú.",
+      "properName": true,
+      "related": [
+        {
+          "id": "nadab",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "amnon",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "tamar",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "jonatan",
       "term": "Jonatán",
-      "aliases": [],
+      "aliases": [
+        "Jonathan"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de Saúl, amigo de David; murió en Gilboa.",
+      "properName": true,
+      "related": [
+        {
+          "id": "saul",
+          "rel": "hijo"
+        },
+        {
+          "id": "david",
+          "rel": "amigo"
+        },
+        {
+          "id": "mefiboset",
+          "rel": "padre"
+        }
+      ]
     },
     {
       "id": "jonas",
       "term": "Jonás",
-      "aliases": [],
+      "aliases": [
+        "Jonah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Profeta hijo de Amitai, enviado a Nínive (nombrado en Reyes).",
+      "properName": true,
+      "related": [
+        {
+          "id": "amitai",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "araba",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "hamat",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "joram",
       "term": "Joram",
-      "aliases": [],
+      "aliases": [
+        "Jehoram"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Israel (hijo de Acab) o de Judá (hijo de Josafat).",
+      "properName": true,
+      "related": [
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jacob",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "juda",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "jordan",
       "term": "Jordán",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Río que Israel cruzó; Eliseo lo partió con el manto de Elías.",
+      "properName": true,
+      "related": [
+        {
+          "id": "dan",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eliseo",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "josaba",
       "term": "Josaba",
-      "aliases": [],
+      "aliases": [
+        "Jehosheba"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Hija de Joram; escondió al niño Joás del exterminio de Atalía.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "joas",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "josafat",
       "term": "Josafat",
-      "aliases": [],
+      "aliases": [
+        "Jehoshaphat"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Judá aliado de Acab; o el cronista hijo de Ahilud.",
+      "properName": true,
+      "related": [
+        {
+          "id": "safat",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "acab",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "joram",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "josheb-bashebet",
       "term": "Josheb-bashebet",
-      "aliases": [],
+      "aliases": [
+        "Josheb-Basshebeth",
+        "Adino"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "El principal de los tres valientes de David.",
+      "properName": true,
+      "related": []
     },
     {
       "id": "josue",
       "term": "Josué",
-      "aliases": [],
+      "aliases": [
+        "Joshua"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Sucesor de Moisés; recordado al echar suertes y al pacto.",
+      "properName": true,
+      "related": [
+        {
+          "id": "abiram",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "betel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "hiel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "josias",
       "term": "Josías",
-      "aliases": [],
+      "aliases": [
+        "Josiah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Judá que halló el libro de la ley y quitó ídolos.",
+      "properName": true,
+      "related": [
+        {
+          "id": "hulda",
+          "rel": "consultó a"
+        },
+        {
+          "id": "hilcias",
+          "rel": "el libro hallado"
+        },
+        {
+          "id": "necao",
+          "rel": "murió frente a"
+        }
+      ]
     },
     {
       "id": "jotam",
       "term": "Jotam",
-      "aliases": [],
+      "aliases": [
+        "Jotham"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Judá, hijo de Uzías.",
+      "properName": true,
+      "related": [
+        {
+          "id": "cis",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jerusalen",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "lugares-altos",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "joas",
       "term": "Joás",
-      "aliases": [],
+      "aliases": [
+        "Joash",
+        "Jehoash"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Judá salvado por Josaba, o rey de Israel hijo de Joacaz.",
+      "properName": true,
+      "related": [
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jacob",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "juda",
       "term": "Judá",
-      "aliases": [],
+      "aliases": [
+        "Judah"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Tribu y reino del sur, con capital en Jerusalén.",
+      "properName": true,
+      "related": [
+        {
+          "id": "israel",
+          "rel": "el reino hermano"
+        },
+        {
+          "id": "jerusalen",
+          "rel": "su capital"
+        },
+        {
+          "id": "david",
+          "rel": "casa de"
+        }
+      ]
     },
     {
       "id": "kir",
       "term": "Kir",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Lugar a donde Tiglat-pileser llevó a la gente de Damasco.",
+      "properName": true,
+      "related": [
+        {
+          "id": "asiria",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "damasco",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "rezin",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "laquis",
       "term": "Laquis",
-      "aliases": [],
+      "aliases": [
+        "Lachish"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad fortificada de Judá; Senaquerib la sitió.",
+      "properName": true,
+      "related": [
+        {
+          "id": "amasias",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "aquis",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "levitas",
       "term": "levitas",
       "aliases": [
-        "levita"
+        "levita",
+        "Levites"
       ],
       "kind": "persona",
-      "note": ""
+      "note": "Tribu de Leví al servicio del arca, el templo y el canto.",
+      "properName": true,
+      "related": [
+        {
+          "id": "jeroboam",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "levi",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "roboam",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "levi",
       "term": "Leví",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Tribu sacerdotal de Moisés, Aarón y los levitas.",
+      "properName": true,
+      "related": [
+        {
+          "id": "jeroboam",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "levitas",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "roboam",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "libna",
       "term": "Libna",
-      "aliases": [],
+      "aliases": [
+        "Libnah"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad de Judá que se rebeló en días de Joram.",
+      "properName": true,
+      "related": [
+        {
+          "id": "edom",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "juda",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "lugares-altos",
       "term": "lugares altos",
-      "aliases": [],
+      "aliases": [
+        "high places",
+        "altos"
+      ],
       "kind": "concepto",
-      "note": ""
+      "note": "Santuarios locales que muchos reyes no quitaron.",
+      "properName": false,
+      "related": [
+        {
+          "id": "ela",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ezequias",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "libano",
       "term": "Líbano",
-      "aliases": [],
+      "aliases": [
+        "Lebanon"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Monte de cedros que Hiram envió a Salomón.",
+      "properName": true,
+      "related": [
+        {
+          "id": "joas",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "hiram",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "maaca",
       "term": "Maaca",
-      "aliases": [],
+      "aliases": [
+        "Maacah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Esposa de David, madre de Absalón; o reina madre en Judá.",
+      "properName": true,
+      "related": [
+        {
+          "id": "amon",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "bet-rehob",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "tob",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "mahanaim",
       "term": "Mahanaim",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad de Galaad; Is-boset reinó allí y David huyó de Absalón allí.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "dan",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "manahem",
       "term": "Manahem",
-      "aliases": [],
+      "aliases": [
+        "Menahem"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Israel que mató a Salum y pagó tributo a Pul.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "samaria",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "peka",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "manases",
       "term": "Manasés",
-      "aliases": [],
+      "aliases": [
+        "Manasseh"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Judá que llenó Jerusalén de ídolos; o la tribu.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jerusalen",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ezequias",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "mar-de-bronce",
       "term": "mar de bronce",
-      "aliases": [],
+      "aliases": [
+        "mar de fundición",
+        "bronze sea"
+      ],
       "kind": "concepto",
-      "note": ""
+      "note": "El gran recipiente de bronce del templo, sobre doce bueyes.",
+      "properName": false,
+      "related": [
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "templo",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "matanias",
       "term": "Matanías",
-      "aliases": [],
+      "aliases": [
+        "Mattaniah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Tío de Joaquín a quien Nabucodonosor puso por rey como Sedequías.",
+      "properName": true,
+      "related": [
+        {
+          "id": "joaquin",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "matan",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "sedequias",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "matri",
       "term": "Matri",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Clan de Benjamín al que pertenecía Saúl.",
+      "properName": true,
+      "related": [
+        {
+          "id": "benjamin",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "cis",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "samuel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "matan",
       "term": "Matán",
-      "aliases": [],
+      "aliases": [
+        "Mattan"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "sacerdote de Baal que Joiada mandó matar.",
+      "properName": true,
+      "related": [
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "baal",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "abiatar",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "mefiboset",
       "term": "Mefiboset",
-      "aliases": [],
+      "aliases": [
+        "Mephibosheth",
+        "Merib-baal"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de Jonatán, cojo; David le dio la mesa del rey.",
+      "properName": true,
+      "related": [
+        {
+          "id": "jonatan",
+          "rel": "hijo"
+        },
+        {
+          "id": "david",
+          "rel": "comió a su mesa"
+        },
+        {
+          "id": "ziba",
+          "rel": "siervo de su casa"
+        }
+      ]
     },
     {
       "id": "meguido",
       "term": "Meguido",
-      "aliases": [],
+      "aliases": [
+        "Megiddo"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad del valle donde murió Josías frente a Necao.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "gezer",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "hazor",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "mical",
       "term": "Mical",
-      "aliases": [],
+      "aliases": [
+        "Michal"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Hija de Saúl, esposa de David; lo salvó y luego lo despreció al danzar.",
+      "properName": true,
+      "related": [
+        {
+          "id": "saul",
+          "rel": "hija"
+        },
+        {
+          "id": "david",
+          "rel": "esposa"
+        }
+      ]
     },
     {
       "id": "micmas",
       "term": "Micmas",
-      "aliases": [],
+      "aliases": [
+        "Michmash"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Paso donde Jonatán atacó a la guarnición filistea.",
+      "properName": true,
+      "related": [
+        {
+          "id": "cis",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "filisteos",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "milcom",
       "term": "Milcom",
-      "aliases": [],
+      "aliases": [
+        "Molech"
+      ],
       "kind": "concepto",
-      "note": ""
+      "note": "Dios de Amón, abominación que Salomón honró.",
+      "properName": false,
+      "related": [
+        {
+          "id": "amon",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "astoret",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "salomon",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "milo",
       "term": "Milo",
-      "aliases": [],
+      "aliases": [
+        "Millo"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Fortificación de Jerusalén que David y Salomón reforzaron.",
+      "properName": true,
+      "related": [
+        {
+          "id": "amon",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "gezer",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "miqueas",
       "term": "Miqueas",
-      "aliases": [],
+      "aliases": [
+        "Micaiah",
+        "Micah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de Imlá; profetizó la derrota de Acab en Ramot.",
+      "properName": true,
+      "related": [
+        {
+          "id": "acab",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "elat",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ela",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "mizpa",
       "term": "Mizpa",
-      "aliases": [],
+      "aliases": [
+        "Mizpah",
+        "Mizpeh"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Lugar de reunión de Samuel; más tarde sede de Gedalías.",
+      "properName": true,
+      "related": [
+        {
+          "id": "samuel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jacob",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "moab",
       "term": "Moab",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Nación al este del mar Muerto; David los sometió; Rut era moabita.",
+      "properName": true,
+      "related": [
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jacob",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "filisteos",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "moises",
       "term": "Moisés",
-      "aliases": [],
+      "aliases": [
+        "Moses"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "El siervo del Señor que sacó a Israel de Egipto y dio la ley.",
+      "properName": true,
+      "related": [
+        {
+          "id": "aaron",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jacob",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "moloc",
       "term": "Moloc",
-      "aliases": [],
+      "aliases": [
+        "Molech",
+        "Moloch"
+      ],
       "kind": "concepto",
-      "note": ""
+      "note": "Ídolo al que se quemaban hijos en el valle de Hinom.",
+      "properName": false,
+      "related": [
+        {
+          "id": "jerusalen",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "lugares-altos",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "quemos",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "naaman",
       "term": "Naamán",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "General sirio sanado de lepra por Eliseo en el Jordán.",
+      "properName": true,
+      "related": [
+        {
+          "id": "eliseo",
+          "rel": "sanado por"
+        },
+        {
+          "id": "siria",
+          "rel": "general de"
+        },
+        {
+          "id": "jordan",
+          "rel": "se bañó"
+        }
+      ]
     },
     {
       "id": "nabat",
       "term": "Nabat",
-      "aliases": [],
+      "aliases": [
+        "Nebat"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Padre de Jeroboam, efrateo de Zereda.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ahias",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "nabot",
       "term": "Nabot",
-      "aliases": [],
+      "aliases": [
+        "Naboth"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Jezreelita cuya viña Acab y Jezabel usurparon.",
+      "properName": true,
+      "related": [
+        {
+          "id": "acab",
+          "rel": "su viña"
+        },
+        {
+          "id": "jezabel",
+          "rel": "lo hizo matar"
+        },
+        {
+          "id": "jezreel",
+          "rel": "de Jezreel"
+        }
+      ]
     },
     {
       "id": "nabucodonosor",
       "term": "Nabucodonosor",
-      "aliases": [],
+      "aliases": [
+        "Nebuchadnezzar"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Babilonia que tomó Jerusalén y llevó cautivos.",
+      "properName": true,
+      "related": [
+        {
+          "id": "babilonia",
+          "rel": "rey de"
+        },
+        {
+          "id": "sedequias",
+          "rel": "lo venció"
+        },
+        {
+          "id": "joaquin",
+          "rel": "lo llevó cautivo"
+        }
+      ]
     },
     {
       "id": "nabuzaradan",
       "term": "Nabuzaradán",
-      "aliases": [],
+      "aliases": [
+        "Nebuzaradan"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Capitán de la guardia de Nabucodonosor; quemó el templo.",
+      "properName": true,
+      "related": [
+        {
+          "id": "dan",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "uza",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ahicam",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "nadab",
       "term": "Nadab",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de Jeroboam; rey breve de Israel, muerto por Baasa.",
+      "properName": true,
+      "related": [
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jeroboam",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "roboam",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "nahas",
       "term": "Nahas",
-      "aliases": [],
+      "aliases": [
+        "Nahash"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey amonita que amenazó a Jabes; Saúl lo venció.",
+      "properName": true,
+      "related": [
+        {
+          "id": "amon",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jacob",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "naiot",
       "term": "Naiot",
-      "aliases": [],
+      "aliases": [
+        "Naioth"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "En Ramá, donde Samuel y David estuvieron y el Espíritu vino sobre Saúl.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "saul",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "natan",
       "term": "Natán",
-      "aliases": [],
+      "aliases": [
+        "Nathan"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Profeta que reprendió a David por Betsabé y apoyó a Salomón.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "profeta de"
+        },
+        {
+          "id": "salomon",
+          "rel": "lo apoyó"
+        }
+      ]
     },
     {
       "id": "necao",
       "term": "Necao",
-      "aliases": [],
+      "aliases": [
+        "Neco",
+        "Necho",
+        "Faraón Necao"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Faraón de Egipto que mató a Josías en Meguido.",
+      "properName": true,
+      "related": [
+        {
+          "id": "acaz",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "egipto",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eliaquim",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "neftali",
       "term": "Neftalí",
-      "aliases": [],
+      "aliases": [
+        "Naphtali"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Tribu del norte; Hazor y Kedes en su tierra.",
+      "properName": true,
+      "related": [
+        {
+          "id": "hiram",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "templo",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "tiro",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "nehustan",
       "term": "Nehustán",
-      "aliases": [],
+      "aliases": [
+        "Nehushtan"
+      ],
       "kind": "concepto",
-      "note": ""
+      "note": "Nombre que Ezequías dio a la serpiente de bronce al destruirla.",
+      "properName": false,
+      "related": [
+        {
+          "id": "ela",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ezequias",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "lugares-altos",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "ner",
       "term": "Ner",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Padre de Abner, de la casa de Saúl.",
+      "properName": true,
+      "related": [
+        {
+          "id": "abner",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "nergal",
       "term": "Nergal",
       "aliases": [],
       "kind": "concepto",
-      "note": ""
+      "note": "Dios de Cuta que los colonos pusieron en Samaria.",
+      "properName": false,
+      "related": [
+        {
+          "id": "adramelec",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "anamelec",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "netanias",
       "term": "Netanías",
-      "aliases": [],
+      "aliases": [
+        "Nethaniah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Padre de Ismael, de linaje real, que mató a Gedalías.",
+      "properName": true,
+      "related": [
+        {
+          "id": "gedalias",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ismael",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "mizpa",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "nibhaz",
       "term": "Nibhaz",
       "aliases": [],
       "kind": "concepto",
-      "note": ""
+      "note": "Ídolo de los aveos en Samaria.",
+      "properName": false,
+      "related": [
+        {
+          "id": "adramelec",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "anamelec",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "nimsi",
       "term": "Nimsi",
-      "aliases": [],
+      "aliases": [
+        "Nimshi"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Abuelo de Jehú (Jehú hijo de Josafat hijo de Nimsi).",
+      "properName": true,
+      "related": [
+        {
+          "id": "jehu",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jezreel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eliseo",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "nisroc",
       "term": "Nisroc",
-      "aliases": [],
+      "aliases": [
+        "Nisroch"
+      ],
       "kind": "concepto",
-      "note": ""
+      "note": "Dios de Senaquerib; lo mataron sus hijos en ese templo.",
+      "properName": false,
+      "related": [
+        {
+          "id": "adramelec",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "esar-hadon",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "nob",
       "term": "Nob",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad de sacerdotes; David huyó allí; Doeg masacró a los sacerdotes.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "saul",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ahimelec",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "ninive",
       "term": "Nínive",
-      "aliases": [],
+      "aliases": [
+        "Nineveh"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Capital asiria; Jonás fue enviado a ella.",
+      "properName": true,
+      "related": [
+        {
+          "id": "senaquerib",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "obed-edom",
       "term": "Obed-edom",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Gateo en cuya casa el arca trajo bendición antes de subir a Jerusalén.",
+      "properName": true,
+      "related": [
+        {
+          "id": "arca",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "ocozias",
       "term": "Ocozías",
-      "aliases": [],
+      "aliases": [
+        "Ahaziah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Israel (hijo de Acab) o de Judá; cayó por la reja o huyó de Jehú.",
+      "properName": true,
+      "related": [
+        {
+          "id": "juda",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "joram",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "ofir",
       "term": "Ofir",
-      "aliases": [],
+      "aliases": [
+        "Ophir"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Tierra del oro que la flota de Salomón traía.",
+      "properName": true,
+      "related": [
+        {
+          "id": "hiram",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "ofni",
       "term": "Ofni",
-      "aliases": [],
+      "aliases": [
+        "Hophni"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de Elí, sacerdote corrupto; murió en la batalla del arca.",
+      "properName": true,
+      "related": [
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "finees",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "omri",
       "term": "Omri",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Israel, padre de Acab; compró el monte de Samaria.",
+      "properName": true,
+      "related": [
+        {
+          "id": "acab",
+          "rel": "padre"
+        },
+        {
+          "id": "samaria",
+          "rel": "fundó la capital"
+        },
+        {
+          "id": "tibni",
+          "rel": "rival"
+        }
+      ]
     },
     {
       "id": "oseas",
       "term": "Oseas",
-      "aliases": [],
+      "aliases": [
+        "Hoshea",
+        "Hosea"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Último rey de Israel; Salmanasar lo sitió y llevó cautivo el norte.",
+      "properName": true,
+      "related": [
+        {
+          "id": "samaria",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asiria",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "siria",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "pacto",
       "term": "pacto",
-      "aliases": [],
+      "aliases": [
+        "covenant"
+      ],
       "kind": "concepto",
-      "note": ""
+      "note": "La alianza del Señor con Israel, representada también por el arca.",
+      "properName": false,
+      "related": [
+        {
+          "id": "arca",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jonatan",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "pas-damim",
       "term": "Pas-damim",
-      "aliases": [],
+      "aliases": [
+        "Pas Dammim",
+        "Ephes-dammim"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Campo de batalla donde Eleazar hijo de Dodo peleó.",
+      "properName": true,
+      "related": [
+        {
+          "id": "dodo",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eleazar",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "peka",
       "term": "Peka",
-      "aliases": [],
+      "aliases": [
+        "Pekah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Israel, hijo de Remalías; aliado de Rezín contra Acaz.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "manahem",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "remalias",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "penina",
       "term": "Penina",
-      "aliases": [],
+      "aliases": [
+        "Peninnah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Otra esposa de Elcaná, que provocaba a Ana.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "elcana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ner",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "pul",
       "term": "Pul",
-      "aliases": [],
+      "aliases": [
+        "Tiglat-pileser"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Nombre de Tiglat-pileser de Asiria, a quien Manahem pagó tributo.",
+      "properName": true,
+      "related": [
+        {
+          "id": "tiglat-pileser",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "saul",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "perez-uza",
       "term": "Pérez-uza",
-      "aliases": [],
+      "aliases": [
+        "Perez Uzzah"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Lugar donde Uza murió por tocar el arca: «estallido contra Uza».",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "uza",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "quemos",
       "term": "Quemós",
-      "aliases": [],
+      "aliases": [
+        "Chemosh"
+      ],
       "kind": "concepto",
-      "note": ""
+      "note": "Dios de Moab, abominación que Salomón honró.",
+      "properName": false,
+      "related": [
+        {
+          "id": "jerusalen",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "lugares-altos",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "moloc",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "querit",
       "term": "Querit",
-      "aliases": [],
+      "aliases": [
+        "Kerith"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Arroyo donde Elías se escondió y los cuervos lo alimentaron.",
+      "properName": true,
+      "related": [
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "elias",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "querubines",
       "term": "querubines",
       "aliases": [
-        "querubín"
+        "querubín",
+        "cherubim"
       ],
       "kind": "concepto",
-      "note": ""
+      "note": "Figuras sobre el arca y en el templo, donde el Señor se manifiesta.",
+      "properName": false,
+      "related": [
+        {
+          "id": "arca",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "quiriat-jearim",
       "term": "Quiriat-jearim",
-      "aliases": [],
+      "aliases": [
+        "Kiriath Jearim"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad de Judá donde el arca estuvo en casa de Abinadab.",
+      "properName": true,
+      "related": [
+        {
+          "id": "arca",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ela",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "filisteos",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "rabsaces",
       "term": "Rabsaces",
-      "aliases": [],
+      "aliases": [
+        "Rabshakeh"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Portavoz asirio de Senaquerib que insultó a Jerusalén.",
+      "properName": true,
+      "related": [
+        {
+          "id": "eliaquim",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "siria",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "ramot",
       "term": "Ramot",
-      "aliases": [],
+      "aliases": [
+        "Ramoth",
+        "Ramot de Galaad"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Ramot de Galaad, ciudad de refugio; Acab murió peleando allí.",
+      "properName": true,
+      "related": [
+        {
+          "id": "galaad",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "juda",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "acab",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "rama",
       "term": "Ramá",
-      "aliases": [],
+      "aliases": [
+        "Ramah"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Pueblo de Samuel (Ramá de Zuf); también frontera que Baasa fortificó.",
+      "properName": true,
+      "related": [
+        {
+          "id": "samuel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "saul",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "raquel",
       "term": "Raquel",
-      "aliases": [],
+      "aliases": [
+        "Rachel"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Esposa de Jacob; su sepulcro se nombra cerca de Belén/Zelza.",
+      "properName": true,
+      "related": [
+        {
+          "id": "pul",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "samuel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "saul",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "ratones",
       "term": "ratones",
       "aliases": [
-        "ratones de oro"
+        "ratones de oro",
+        "mice",
+        "tumors models"
       ],
       "kind": "concepto",
-      "note": ""
+      "note": "Figuras de oro que los filisteos enviaron con el arca como ofrenda por la plaga.",
+      "properName": false,
+      "related": [
+        {
+          "id": "arca",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "filisteos",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "tumores",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "recab",
       "term": "Recab",
-      "aliases": [],
+      "aliases": [
+        "Rechab"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Padre o antepasado de Jehonadab, aliado de Jehú.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "baana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "reina-de-saba",
       "term": "reina de Sabá",
-      "aliases": [],
+      "aliases": [
+        "queen of Sheba",
+        "reina de Sheba"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Reina de Sabá que visitó a Salomón para probar su sabiduría.",
+      "properName": true,
+      "related": [
+        {
+          "id": "saba",
+          "rel": "reina de"
+        },
+        {
+          "id": "salomon",
+          "rel": "lo visitó"
+        }
+      ]
     },
     {
       "id": "remalias",
       "term": "Remalías",
-      "aliases": [],
+      "aliases": [
+        "Remaliah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Padre de Peka, rey de Israel.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "manahem",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "peka",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "rezin",
       "term": "Rezín",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Siria aliado de Peka contra Acaz.",
+      "properName": true,
+      "related": [
+        {
+          "id": "siria",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "acaz",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "rezon",
       "term": "Rezón",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Adversario de Salomón, rey en Damasco.",
+      "properName": true,
+      "related": [
+        {
+          "id": "damasco",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eliada",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "ribla",
       "term": "Ribla",
-      "aliases": [],
+      "aliases": [
+        "Riblah"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "En Hamat; allí Nabucodonosor juzgó a Sedequías.",
+      "properName": true,
+      "related": [
+        {
+          "id": "babilonia",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ela",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "acaz",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "rimon",
       "term": "Rimón",
-      "aliases": [],
+      "aliases": [
+        "Rimmon"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Dios de Damasco (casa de Rimón) que Naamán menciona; o un pueblo.",
+      "properName": true,
+      "related": [
+        {
+          "id": "naaman",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "templo",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "rizpa",
       "term": "Rizpa",
-      "aliases": [],
+      "aliases": [
+        "Rizpah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Concubina de Saúl; veló los cuerpos de sus hijos.",
+      "properName": true,
+      "related": [
+        {
+          "id": "armoni",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "gad",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "roboam",
       "term": "Roboam",
-      "aliases": [],
+      "aliases": [
+        "Rehoboam"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de Salomón; al endurecerse se dividió el reino.",
+      "properName": true,
+      "related": [
+        {
+          "id": "salomon",
+          "rel": "hijo"
+        },
+        {
+          "id": "jeroboam",
+          "rel": "se le fue el norte"
+        },
+        {
+          "id": "siquem",
+          "rel": "allí se dividió el reino"
+        }
+      ]
     },
     {
       "id": "ruben",
       "term": "Rubén",
-      "aliases": [],
+      "aliases": [
+        "Reuben"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Tribu al este del Jordán.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "dan",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "gad",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "saba",
       "term": "Sabá",
-      "aliases": [],
+      "aliases": [
+        "Sheba"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Reino de la reina que visitó a Salomón (Sabá / Sheba).",
+      "properName": true,
+      "related": [
+        {
+          "id": "reina-de-saba",
+          "rel": "su reina"
+        },
+        {
+          "id": "salomon",
+          "rel": "comercio y visita"
+        }
+      ]
     },
     {
       "id": "sadoc",
       "term": "Sadoc",
       "aliases": [
-        "Zadok"
+        "Zadok",
+        "Sadoq",
+        "Zadoc"
       ],
       "kind": "persona",
-      "note": ""
+      "note": "Sacerdote fiel a David y Salomón; linaje aarónico.",
+      "properName": true,
+      "related": [
+        {
+          "id": "abiatar",
+          "rel": "sacerdote junto a"
+        },
+        {
+          "id": "david",
+          "rel": "fiel a"
+        },
+        {
+          "id": "salomon",
+          "rel": "lo ungió"
+        },
+        {
+          "id": "aaron",
+          "rel": "linaje"
+        }
+      ]
     },
     {
       "id": "safat",
       "term": "Safat",
-      "aliases": [],
+      "aliases": [
+        "Shaphat"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Padre de Eliseo, de Abel-mehola.",
+      "properName": true,
+      "related": [
+        {
+          "id": "josafat",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "acab",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "joram",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "safan",
       "term": "Safán",
-      "aliases": [],
+      "aliases": [
+        "Shaphan"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Escriba de Josías; su familia ayudó al libro de la ley.",
+      "properName": true,
+      "related": [
+        {
+          "id": "acbor",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ahicam",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "salmanasar",
       "term": "Salmanasar",
-      "aliases": [],
+      "aliases": [
+        "Shalmaneser"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Asiria que sitió Samaria en días de Oseas.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asiria",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "salomon",
       "term": "Salomón",
-      "aliases": [],
+      "aliases": [
+        "Solomon"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de David y Betsabé; rey sabio, edificó el templo.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "hijo"
+        },
+        {
+          "id": "betsabe",
+          "rel": "hijo"
+        },
+        {
+          "id": "natan",
+          "rel": "apoyado por"
+        },
+        {
+          "id": "templo",
+          "rel": "lo edificó"
+        },
+        {
+          "id": "reina-de-saba",
+          "rel": "la recibió"
+        }
+      ]
     },
     {
       "id": "salum",
       "term": "Salum",
-      "aliases": [],
+      "aliases": [
+        "Shallum"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Israel que mató a Zacarías; o el que tomó el trono brevemente.",
+      "properName": true,
+      "related": [
+        {
+          "id": "jabes",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jeroboam",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "roboam",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "samaria",
       "term": "Samaria",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Capital del reino del norte, fundada por Omri.",
+      "properName": true,
+      "related": [
+        {
+          "id": "omri",
+          "rel": "la fundó"
+        },
+        {
+          "id": "acab",
+          "rel": "capital de"
+        },
+        {
+          "id": "asiria",
+          "rel": "la tomó"
+        }
+      ]
     },
     {
       "id": "samuel",
       "term": "Samuel",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Profeta y juez; nació por la oración de Ana; ungió a Saúl y a David.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ana",
+          "rel": "hijo"
+        },
+        {
+          "id": "elcana",
+          "rel": "hijo"
+        },
+        {
+          "id": "eli",
+          "rel": "criado en Silo"
+        },
+        {
+          "id": "saul",
+          "rel": "lo ungió"
+        },
+        {
+          "id": "david",
+          "rel": "lo ungió"
+        }
+      ]
     },
     {
       "id": "sarepta",
       "term": "Sarepta",
-      "aliases": [],
+      "aliases": [
+        "Zarephath"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Pueblo de Sidón; Elías habitó con la viuda.",
+      "properName": true,
+      "related": [
+        {
+          "id": "sidon",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "sarezer",
       "term": "Sarezer",
-      "aliases": [],
+      "aliases": [
+        "Sharezer"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de Senaquerib que mató a su padre.",
+      "properName": true,
+      "related": [
+        {
+          "id": "adramelec",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "esar-hadon",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "sarvia",
       "term": "Sarvia",
-      "aliases": [],
+      "aliases": [
+        "Zeruiah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Hermana de David, madre de Joab, Abisai y Asael.",
+      "properName": true,
+      "related": [
+        {
+          "id": "joab",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "saul",
       "term": "Saúl",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Primer rey de Israel, hijo de Cis; rechazado; murió en Gilboa.",
+      "properName": true,
+      "related": [
+        {
+          "id": "cis",
+          "rel": "hijo"
+        },
+        {
+          "id": "jonatan",
+          "rel": "padre"
+        },
+        {
+          "id": "mical",
+          "rel": "padre"
+        },
+        {
+          "id": "is-boset",
+          "rel": "padre"
+        },
+        {
+          "id": "david",
+          "rel": "lo persiguió"
+        },
+        {
+          "id": "samuel",
+          "rel": "ungido por"
+        }
+      ]
     },
     {
       "id": "seba",
       "term": "Seba",
-      "aliases": [],
+      "aliases": [
+        "Sheba"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Benjamita hijo de Bicri que se rebeló contra David.",
+      "properName": true,
+      "related": [
+        {
+          "id": "beerseba",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "samuel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "sebna",
       "term": "Sebna",
-      "aliases": [],
+      "aliases": [
+        "Shebna"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Mayordomo o escriba de Ezequías ante el Rabsaces.",
+      "properName": true,
+      "related": [
+        {
+          "id": "eliaquim",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "hilcias",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "sedequias",
       "term": "Sedequías",
-      "aliases": [],
+      "aliases": [
+        "Zedekiah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Último rey de Judá; Nabucodonosor lo cegó en Ribla.",
+      "properName": true,
+      "related": [
+        {
+          "id": "matanias",
+          "rel": "su nombre primero"
+        },
+        {
+          "id": "nabucodonosor",
+          "rel": "vasallo de"
+        },
+        {
+          "id": "ribla",
+          "rel": "juzgado allí"
+        }
+      ]
     },
     {
       "id": "sefarvaim",
       "term": "Sefarvaim",
-      "aliases": [],
+      "aliases": [
+        "Sepharvaim"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad cuyos dioses Adramelec y Anamelec se honraron en Samaria.",
+      "properName": true,
+      "related": [
+        {
+          "id": "asiria",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ava",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "babilonia",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "segub",
       "term": "Segub",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo menor de Hiel; murió al poner las puertas de Jericó.",
+      "properName": true,
+      "related": [
+        {
+          "id": "abiram",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "betel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "hiel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "sela",
       "term": "Sela",
-      "aliases": [],
+      "aliases": [
+        "Petra"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad de Edom que Amasías tomó (el Peñasco).",
+      "properName": true,
+      "related": [
+        {
+          "id": "edom",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ela",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "semaias",
       "term": "Semaías",
-      "aliases": [],
+      "aliases": [
+        "Shemaiah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Profeta que detuvo a Roboam de pelear contra Israel.",
+      "properName": true,
+      "related": [
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jacob",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "roboam",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "semer",
       "term": "Semer",
-      "aliases": [],
+      "aliases": [
+        "Shemer"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Dueño del monte que Omri compró para Samaria.",
+      "properName": true,
+      "related": [
+        {
+          "id": "omri",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "samaria",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "senaquerib",
       "term": "Senaquerib",
-      "aliases": [],
+      "aliases": [
+        "Sennacherib"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Asiria que sitió a Ezequías; el Señor hirió su ejército.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ezequias",
+          "rel": "sitió a"
+        },
+        {
+          "id": "asiria",
+          "rel": "rey de"
+        },
+        {
+          "id": "esar-hadon",
+          "rel": "padre de"
+        }
+      ]
     },
     {
       "id": "seraias",
       "term": "Seraías",
-      "aliases": [],
+      "aliases": [
+        "Seraiah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Sumo sacerdote que Nabuzaradán ejecutó; o un escriba de David.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ahilud",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "josafat",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "safat",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "sidon",
       "term": "Sidón",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad fenicia; Etbaal y Jezabel; Elías a Sarepta de Sidón.",
+      "properName": true,
+      "related": [
+        {
+          "id": "acab",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "baal",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "etbaal",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "sila",
       "term": "Sila",
-      "aliases": [],
+      "aliases": [
+        "Silla"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Lugar cerca de Milo donde Joás de Judá fue herido.",
+      "properName": true,
+      "related": [
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "arca",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eliseo",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "silo",
       "term": "Silo",
-      "aliases": [],
+      "aliases": [
+        "Shiloh"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Santuario donde estaba el arca con Elí y Samuel.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ela",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "simei",
       "term": "Simei",
-      "aliases": [],
+      "aliases": [
+        "Shimei"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Benjamita de Bahurim que maldijo a David; Salomón lo restringió.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "saul",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "siquem",
       "term": "Siquem",
-      "aliases": [],
+      "aliases": [
+        "Shechem"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad de Efraín donde Israel hizo rey a Roboam y se dividió el reino.",
+      "properName": true,
+      "related": [
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jacob",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "roboam",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "siria",
       "term": "Siria",
-      "aliases": [],
+      "aliases": [
+        "Syria",
+        "Aram"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Aram; Damasco; enemigos y a veces aliados de Israel.",
+      "properName": true,
+      "related": [
+        {
+          "id": "asiria",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jacob",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "sisac",
       "term": "Sisac",
-      "aliases": [],
+      "aliases": [
+        "Shishak"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Faraón que saqueó el templo en días de Roboam.",
+      "properName": true,
+      "related": [
+        {
+          "id": "salomon",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "templo",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "egipto",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "sucot",
       "term": "Sucot",
-      "aliases": [],
+      "aliases": [
+        "Succoth"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Pueblo cerca del Jordán, en el relato de fundición del bronce.",
+      "properName": true,
+      "related": [
+        {
+          "id": "adramelec",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "anamelec",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "sucot-benot",
       "term": "Sucot-benot",
-      "aliases": [],
+      "aliases": [
+        "Succoth Benoth"
+      ],
       "kind": "concepto",
-      "note": ""
+      "note": "Ídolo que los de Babilonia pusieron en Samaria.",
+      "properName": false,
+      "related": [
+        {
+          "id": "adramelec",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "anamelec",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "sisara",
       "term": "Sísara",
-      "aliases": [],
+      "aliases": [
+        "Sisera"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Capitán cananeo vencido en días de Débora y Barac.",
+      "properName": true,
+      "related": [
+        {
+          "id": "astoret",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "baal",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "filisteos",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "tabernaculo",
       "term": "tabernáculo",
-      "aliases": [],
+      "aliases": [
+        "tabernacle",
+        "tienda de reunión"
+      ],
       "kind": "concepto",
-      "note": ""
+      "note": "La tienda de reunión / morada del Señor antes del templo.",
+      "properName": false,
+      "related": [
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "arca",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "tabor",
       "term": "Tabor",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Monte; en el relato de Saúl y las ofrendas.",
+      "properName": true,
+      "related": [
+        {
+          "id": "betel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "saul",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "talmai",
       "term": "Talmai",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Gesur, padre de Maaca, abuelo de Absalón.",
+      "properName": true,
+      "related": [
+        {
+          "id": "absalon",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "amiud",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "amnon",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "tamar",
       "term": "Tamar",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Hija de David, hermana de Absalón; Amnón la violó.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "hija"
+        },
+        {
+          "id": "absalon",
+          "rel": "hermana"
+        },
+        {
+          "id": "amnon",
+          "rel": "víctima de"
+        }
+      ]
     },
     {
       "id": "tarsis",
       "term": "Tarsis",
-      "aliases": [],
+      "aliases": [
+        "Tarshish"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Destino lejano de las naves de Salomón y Josafat.",
+      "properName": true,
+      "related": []
     },
     {
       "id": "tartac",
       "term": "Tartac",
-      "aliases": [],
+      "aliases": [
+        "Tartak"
+      ],
       "kind": "concepto",
-      "note": ""
+      "note": "Ídolo de los aveos en Samaria.",
+      "properName": false,
+      "related": [
+        {
+          "id": "adramelec",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "anamelec",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "tecoa",
       "term": "Tecoa",
-      "aliases": [],
+      "aliases": [
+        "Tekoah",
+        "Tekoa"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Pueblo de Judá; la mujer sabia que Joab envió a David.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "joab",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "cuta",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "templo",
       "term": "templo",
-      "aliases": [],
+      "aliases": [
+        "templo de Jerusalén",
+        "casa del Señor"
+      ],
       "kind": "concepto",
-      "note": ""
+      "note": "La casa del Señor que Salomón edificó en Jerusalén.",
+      "properName": false,
+      "related": [
+        {
+          "id": "salomon",
+          "rel": "lo construyó"
+        },
+        {
+          "id": "jerusalen",
+          "rel": "en"
+        },
+        {
+          "id": "querubines",
+          "rel": "en el lugar santísimo"
+        }
+      ]
     },
     {
       "id": "tibni",
       "term": "Tibni",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Rival de Omri por el trono de Israel.",
+      "properName": true,
+      "related": [
+        {
+          "id": "omri",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "tifsa",
       "term": "Tifsa",
-      "aliases": [],
+      "aliases": [
+        "Tiphsah"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad junto al Éufrates que Salomón dominó.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "manahem",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "tiglat-pileser",
       "term": "Tiglat-pileser",
-      "aliases": [],
+      "aliases": [
+        "Tiglath-Pileser",
+        "Pul"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Asiria (Pul) que intervino en Israel y Damasco.",
+      "properName": true,
+      "related": [
+        {
+          "id": "pul",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "saul",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "tiro",
       "term": "Tiro",
-      "aliases": [],
+      "aliases": [
+        "Tyre"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Ciudad de Hiram, aliada de David y Salomón.",
+      "properName": true,
+      "related": [
+        {
+          "id": "hiram",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "neftali",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "tirsa",
       "term": "Tirsa",
-      "aliases": [],
+      "aliases": [
+        "Tirzah"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Primera capital de Jeroboam y Baasa antes de Samaria.",
+      "properName": true,
+      "related": [
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "baasa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "arsa",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "tob",
       "term": "Tob",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Tierra de donde tomaron mercenarios contra David.",
+      "properName": true,
+      "related": [
+        {
+          "id": "amon",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "bet-rehob",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "maaca",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "tumores",
       "term": "tumores",
-      "aliases": [],
+      "aliases": [
+        "tumors",
+        "hemorroides"
+      ],
       "kind": "concepto",
-      "note": ""
+      "note": "Plaga que hirió a los filisteos mientras tenían el arca.",
+      "properName": false,
+      "related": [
+        {
+          "id": "afec",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "arca",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asdod",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "ungido",
       "term": "ungido",
       "aliases": [
         "unción",
-        "ungió"
+        "ungió",
+        "anointed",
+        "mesías"
       ],
       "kind": "concepto",
-      "note": ""
+      "note": "El elegido del Señor (Saúl, David); no tocar al ungido.",
+      "properName": false,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jacob",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "samuel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "urias",
       "term": "Urías",
-      "aliases": [],
+      "aliases": [
+        "Uriah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Hitita, esposo de Betsabé, a quien David mandó matar.",
+      "properName": true,
+      "related": [
+        {
+          "id": "betsabe",
+          "rel": "esposo"
+        },
+        {
+          "id": "david",
+          "rel": "lo mandó matar"
+        }
+      ]
     },
     {
       "id": "uza",
       "term": "Uza",
-      "aliases": [],
+      "aliases": [
+        "Uzzah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Hijo de Abinadab; murió por tocar el arca.",
+      "properName": true,
+      "related": [
+        {
+          "id": "dan",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "nabuzaradan",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "uzias",
       "term": "Uzías",
-      "aliases": [],
+      "aliases": [
+        "Uzziah",
+        "Azarías"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Judá (Azarías) que reinó largo tiempo.",
+      "properName": true,
+      "related": [
+        {
+          "id": "azarias",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "amasias",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "cis",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "zacarias",
       "term": "Zacarías",
-      "aliases": [],
+      "aliases": [
+        "Zechariah"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Rey de Israel, hijo de Jeroboam II; o el hijo de Joiada.",
+      "properName": true,
+      "related": [
+        {
+          "id": "jabes",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jeroboam",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "roboam",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "zaretan",
       "term": "Zaretán",
-      "aliases": [],
+      "aliases": [
+        "Zarethan"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Lugar cerca del Jordán, en la fundición del bronce.",
+      "properName": true,
+      "related": [
+        {
+          "id": "dan",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jordan",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "sucot",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "zereda",
       "term": "Zereda",
-      "aliases": [],
+      "aliases": [
+        "Zeredah"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Pueblo de Jeroboam hijo de Nabat.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ahias",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "eli",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "israel",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "ziba",
       "term": "Ziba",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Siervo de la casa de Saúl; David le encargó las tierras de Mefiboset.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "asa",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jonatan",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "zimri",
       "term": "Zimri",
       "aliases": [],
       "kind": "persona",
-      "note": ""
+      "note": "Oficial que mató a Ela y reinó siete días en Tirsa.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jezabel",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "arsa",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "zoba",
       "term": "Zoba",
-      "aliases": [],
+      "aliases": [
+        "Zobah"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Reino arameo de Hadad-ezer, vencido por David.",
+      "properName": true,
+      "related": [
+        {
+          "id": "amon",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "bet-rehob",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "maaca",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "zohelet",
       "term": "Zohélet",
-      "aliases": [],
+      "aliases": [
+        "Zoheleth"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Piedra junto a En-rogel, en el banquete de Adonías.",
+      "properName": true,
+      "related": [
+        {
+          "id": "adonias",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "natan",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "zuf",
       "term": "Zuf",
-      "aliases": [],
+      "aliases": [
+        "Zuph"
+      ],
       "kind": "persona",
-      "note": ""
+      "note": "Región de Efraín de donde era Elcaná; Ramá de Zuf.",
+      "properName": true,
+      "related": [
+        {
+          "id": "ana",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "efrain",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "elat",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "eufrates",
       "term": "Éufrates",
-      "aliases": [],
+      "aliases": [
+        "Euphrates"
+      ],
       "kind": "lugar",
-      "note": ""
+      "note": "Gran río, límite nordeste del dominio de David y Salomón.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "hadad",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "hadad-ezer",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     },
     {
       "id": "ezel",
       "term": "Ézel",
       "aliases": [],
       "kind": "lugar",
-      "note": ""
+      "note": "Piedra donde David se escondió de Saúl, según lo acordado con Jonatán.",
+      "properName": true,
+      "related": [
+        {
+          "id": "david",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "jonatan",
+          "rel": "aparece en las mismas tarjetas"
+        },
+        {
+          "id": "natan",
+          "rel": "aparece en las mismas tarjetas"
+        }
+      ]
     }
   ]
 }

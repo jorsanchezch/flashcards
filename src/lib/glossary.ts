@@ -1,8 +1,13 @@
-import { NTV_CITATION_RE } from '@/lib/bibleGateway'
+import { NTV_CITATION_RE, bibleGatewayNtvKeywordUrl } from '@/lib/bibleGateway'
 import type { Flashcard } from '@/lib/parseFlashcard'
 
 export const GLOSSARY_KINDS = ['persona', 'lugar', 'concepto'] as const
 export type GlossaryKind = (typeof GLOSSARY_KINDS)[number]
+
+export type GlossaryRelated = {
+  id: string
+  rel: string
+}
 
 export type GlossaryEntry = {
   id: string
@@ -12,6 +17,7 @@ export type GlossaryEntry = {
   note: string
   /** When true, matching is case-sensitive. Accents and hyphen variants are still ignored. */
   properName: boolean
+  related: GlossaryRelated[]
 }
 
 export type GlossaryOverlay = {
@@ -19,7 +25,10 @@ export type GlossaryOverlay = {
   updates: Record<
     string,
     Partial<
-      Pick<GlossaryEntry, 'term' | 'aliases' | 'kind' | 'note' | 'properName'>
+      Pick<
+        GlossaryEntry,
+        'term' | 'aliases' | 'kind' | 'note' | 'properName' | 'related'
+      >
     >
   >
   hiddenIds: string[]
@@ -77,6 +86,22 @@ export function isCustomGlossaryId(id: string): boolean {
   return id.startsWith('local-')
 }
 
+function cleanRelated(raw: unknown): GlossaryRelated[] {
+  if (!Array.isArray(raw)) return []
+  const out: GlossaryRelated[] = []
+  const seen = new Set<string>()
+  for (const item of raw) {
+    if (!item || typeof item !== 'object') continue
+    const row = item as Partial<GlossaryRelated>
+    const id = typeof row.id === 'string' ? row.id.trim() : ''
+    const rel = typeof row.rel === 'string' ? row.rel.trim() : ''
+    if (!id || !rel || seen.has(id)) continue
+    seen.add(id)
+    out.push({ id, rel })
+  }
+  return out
+}
+
 function cleanAliases(term: string, aliases: unknown): string[] {
   if (!Array.isArray(aliases)) return []
   const seen = new Set<string>([term.trim().toLocaleLowerCase('es')])
@@ -106,6 +131,9 @@ export function normalizeGlossaryEntry(
   if (!id) return null
   const kind = isGlossaryKind(raw.kind) ? raw.kind : 'concepto'
   const note = typeof raw.note === 'string' ? raw.note.trim() : ''
+  const related = cleanRelated(
+    (raw as Partial<GlossaryEntry> & { related?: unknown }).related,
+  )
   return {
     id,
     term,
@@ -113,7 +141,20 @@ export function normalizeGlossaryEntry(
     kind,
     note,
     properName: raw.properName === true,
+    related: related.filter((item) => item.id !== id),
   }
+}
+
+export function glossarySearchTerms(
+  entry: Pick<GlossaryEntry, 'term' | 'aliases'>,
+): string[] {
+  return [entry.term, ...entry.aliases]
+}
+
+export function glossaryBibleSearchUrl(
+  entry: Pick<GlossaryEntry, 'term' | 'aliases'>,
+): string {
+  return bibleGatewayNtvKeywordUrl(glossarySearchTerms(entry))
 }
 
 export function parseGlossaryFile(data: unknown): GlossaryEntry[] {
@@ -159,6 +200,7 @@ export function normalizeGlossaryOverlay(raw: unknown): GlossaryOverlay {
       if (isGlossaryKind(patch.kind)) next.kind = patch.kind
       if (typeof patch.note === 'string') next.note = patch.note.trim()
       if (typeof patch.properName === 'boolean') next.properName = patch.properName
+      if (Array.isArray(patch.related)) next.related = cleanRelated(patch.related)
       if (Object.keys(next).length) updates[id] = next
     }
   }
@@ -200,6 +242,10 @@ export function mergeGlossary(
       note: patch.note !== undefined ? patch.note : entry.note,
       properName:
         patch.properName !== undefined ? patch.properName : entry.properName,
+      related:
+        patch.related !== undefined
+          ? cleanRelated(patch.related)
+          : entry.related,
     })
   }
 

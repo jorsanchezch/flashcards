@@ -13,8 +13,7 @@ import { DeckSessionPrompt } from '@/components/DeckSessionPrompt'
 import { UserPickerView } from '@/components/UserPickerView'
 import { useUser } from '@/context/UserContext'
 import { getCardStatus, getReviewHistory } from '@/lib/progress'
-import { cardsInBookChapterRange } from '@/lib/studyPool'
-import { applyDeckGroupings } from '@/lib/deckFilter'
+import { applyDeckGroupings, getBookRange } from '@/lib/deckFilter'
 import { defaultUserConfig, isBuiltInCardEdited } from '@/lib/userData'
 import { useGlossary } from '@/context/GlossaryContext'
 import { CardEditorDialog } from '@/components/CardEditorDialog'
@@ -23,7 +22,6 @@ import { DeckFilterBar } from '@/components/DeckFilterBar'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
 import {
   Card,
   CardDescription,
@@ -90,12 +88,6 @@ function buildBookGroups(list: Flashcard[]): BookGroup[] {
   return books
 }
 
-function bookIdFromLabel(cards: Flashcard[], label: string | null): string {
-  if (!label) return 'all'
-  const match = cards.find((c) => c.bookLabel === label)
-  return match?.bookId ?? 'all'
-}
-
 export function BrowseView({
   cards,
   baseCards,
@@ -120,9 +112,6 @@ export function BrowseView({
   const { matchers } = useGlossary()
   const [localConfig, setLocalConfig] = useState(defaultUserConfig)
   const [query, setQuery] = useState('')
-  const [bookFilter, setBookFilter] = useState<string>('all')
-  const [chapterFilter, setChapterFilter] = useState<number | 'all'>('all')
-  const [filtersReady, setFiltersReady] = useState(false)
   const [editorOpen, setEditorOpen] = useState(false)
   const [editorMode, setEditorMode] = useState<'add' | 'edit'>('add')
   const [editingCard, setEditingCard] = useState<Flashcard | null>(null)
@@ -132,8 +121,6 @@ export function BrowseView({
   const [pendingAction, setPendingAction] = useState<(() => void) | null>(null)
   const [selectionMode, setSelectionMode] = useState(false)
   const [selectedIds, setSelectedIds] = useState<Set<string>>(() => new Set())
-  const [rangeFrom, setRangeFrom] = useState('')
-  const [rangeTo, setRangeTo] = useState('')
   const [bulkConfirm, setBulkConfirm] = useState<{
     title: string
     detail: string
@@ -162,43 +149,6 @@ export function BrowseView({
     setSessionPromptOpen(true)
   }
 
-  useEffect(() => {
-    if (!userDoc || filtersReady) return
-    const bookId = bookIdFromLabel(cards, userDoc.config.lastBook)
-    setBookFilter(bookId)
-    const ch = userDoc.config.lastChapter
-    setChapterFilter(
-      bookId !== 'all' && ch != null ? ch : 'all',
-    )
-    setFiltersReady(true)
-  }, [userDoc, cards, filtersReady])
-
-  useEffect(() => {
-    setFiltersReady(false)
-  }, [userDoc?.userId])
-
-  const booksInDeck = useMemo(() => {
-    const map = new Map<string, { label: string; canonIndex: number }>()
-    for (const c of cards) {
-      map.set(c.bookId, { label: c.bookLabel, canonIndex: c.canonIndex })
-    }
-    return [...map.entries()]
-      .map(([id, meta]) => ({ id, ...meta }))
-      .sort(
-        (a, b) =>
-          bookSortKey(a.id, a.canonIndex) - bookSortKey(b.id, b.canonIndex),
-      )
-  }, [cards])
-
-  const chaptersForBook = useMemo(() => {
-    if (bookFilter === 'all') return []
-    const set = new Set<number>()
-    for (const c of cards) {
-      if (c.bookId === bookFilter) set.add(c.chapter)
-    }
-    return [...set].sort((a, b) => a - b)
-  }, [cards, bookFilter])
-
   const filterConfig = userDoc?.config ?? localConfig
   const patchFilters = (patch: Parameters<typeof patchConfig>[0]) => {
     if (userDoc) patchConfig(patch)
@@ -208,19 +158,16 @@ export function BrowseView({
   const filtered = useMemo(() => {
     const grouped = applyDeckGroupings(cards, filterConfig.groupings, matchers)
     const q = query.trim().toLowerCase()
-    return grouped.filter((c) => {
-      if (bookFilter !== 'all' && c.bookId !== bookFilter) return false
-      if (chapterFilter !== 'all' && c.chapter !== chapterFilter) return false
-      if (!q) return true
-      return (
+    if (!q) return grouped
+    return grouped.filter(
+      (c) =>
         c.question.toLowerCase().includes(q) ||
         c.answer.toLowerCase().includes(q) ||
         c.bookLabel.toLowerCase().includes(q) ||
         c.chapterTitle.toLowerCase().includes(q) ||
-        String(c.chapter).includes(q)
-      )
-    })
-  }, [cards, query, bookFilter, chapterFilter, filterConfig.groupings, matchers])
+        String(c.chapter).includes(q),
+    )
+  }, [cards, query, filterConfig.groupings, matchers])
 
   const grouped = useMemo(() => buildBookGroups(filtered), [filtered])
 
@@ -228,38 +175,15 @@ export function BrowseView({
     ? cards.filter((c) => getCardStatus(userDoc, c.id) === 'known').length
     : 0
 
-  const persistBrowseFilters = (bookId: string, chapter: number | 'all') => {
-    if (!userDoc) return
-    if (bookId === 'all') {
-      patchConfig({ lastBook: null, lastChapter: null })
-      return
-    }
-    const label = booksInDeck.find((b) => b.id === bookId)?.label ?? null
-    patchConfig({
-      lastBook: label,
-      lastChapter: chapter === 'all' ? null : chapter,
-    })
-  }
-
-  const selectBook = (bookId: string) => {
-    setBookFilter(bookId)
-    setChapterFilter('all')
-    persistBrowseFilters(bookId, 'all')
-  }
-
-  const selectChapter = (ch: number | 'all') => {
-    setChapterFilter(ch)
-    persistBrowseFilters(bookFilter, ch)
-  }
-
   const editorDefaults = useMemo(() => {
-    const bookId = bookFilter === 'all' ? '1-samuel' : bookFilter
+    const range = getBookRange(filterConfig.groupings)
+    const bookId = range?.bookId ?? '1-samuel'
     const chapter =
-      chapterFilter === 'all'
-        ? cards.find((c) => c.bookId === bookId)?.chapter ?? 1
-        : chapterFilter
+      range?.from ??
+      cards.find((c) => c.bookId === bookId)?.chapter ??
+      1
     return { bookId, chapter }
-  }, [bookFilter, chapterFilter, cards])
+  }, [filterConfig.groupings, cards])
 
   const openAdd = () => {
     requireSession(() => {
@@ -317,24 +241,6 @@ export function BrowseView({
     run()
   }
 
-  const parseRangeChapter = (value: string): number | null => {
-    const n = Number.parseInt(value, 10)
-    return Number.isFinite(n) && n > 0 ? n : null
-  }
-
-  const rangeCards = useMemo(() => {
-    if (bookFilter === 'all') return []
-    const from = parseRangeChapter(rangeFrom)
-    const to = parseRangeChapter(rangeTo)
-    if (from == null || to == null) return []
-    const lo = Math.min(from, to)
-    const hi = Math.max(from, to)
-    return cardsInBookChapterRange(cards, bookFilter, lo, hi)
-  }, [cards, bookFilter, rangeFrom, rangeTo])
-
-  const bookLabel =
-    booksInDeck.find((b) => b.id === bookFilter)?.label ?? 'Libro'
-
   const startStudyGroup = (pool: Flashcard[], label: string) => {
     if (!pool.length) return
     requireSession(() => {
@@ -342,15 +248,6 @@ export function BrowseView({
       setSelectionMode(false)
       clearSelection()
       onStartStudyGroup?.()
-    })
-  }
-
-  const markRangeReviewed = () => {
-    requireSession(() => {
-      runBulkReviewed(
-        rangeCards.map((c) => c.id),
-        `${bookLabel}, capítulos ${rangeFrom}–${rangeTo}.`,
-      )
     })
   }
 
@@ -370,13 +267,6 @@ export function BrowseView({
       pool.length === 1
         ? '1 tarjeta elegida'
         : `${pool.length} tarjetas elegidas`,
-    )
-  }
-
-  const studyRange = () => {
-    startStudyGroup(
-      rangeCards,
-      `${bookLabel} · cap. ${rangeFrom}–${rangeTo}`,
     )
   }
 
@@ -457,47 +347,6 @@ export function BrowseView({
         </div>
       )}
 
-      {bookFilter !== 'all' && (
-        <div className="mb-6 rounded-xl border bg-card/50 p-4">
-          <p className="mb-2 text-sm font-medium">Rango por capítulo</p>
-          <p className="mb-3 text-xs text-muted-foreground">
-            En {bookLabel}: marca como revisadas o arma un grupo de estudio.
-          </p>
-          <div className="flex flex-wrap items-end gap-3">
-            <div>
-              <Label className="text-xs">Desde cap.</Label>
-              <Input
-                type="number"
-                min={1}
-                className="mt-1 w-24"
-                value={rangeFrom}
-                onChange={(e) => setRangeFrom(e.target.value)}
-              />
-            </div>
-            <div>
-              <Label className="text-xs">Hasta cap.</Label>
-              <Input
-                type="number"
-                min={1}
-                className="mt-1 w-24"
-                value={rangeTo}
-                onChange={(e) => setRangeTo(e.target.value)}
-              />
-            </div>
-          </div>
-          {rangeCards.length > 0 && (
-            <div className="mt-3 flex flex-wrap gap-2">
-              <Button type="button" size="sm" variant="outline" onClick={markRangeReviewed}>
-                Revisadas · {rangeCards.length} tarjetas
-              </Button>
-              <Button type="button" size="sm" onClick={studyRange}>
-                Estudiar cap. {rangeFrom}–{rangeTo}
-              </Button>
-            </div>
-          )}
-        </div>
-      )}
-
       {hasStudyGroup && userDoc?.config.studyGroupLabel && (
         <div className="mb-4 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-primary/30 bg-primary/5 px-4 py-3 text-sm">
           <span>
@@ -529,66 +378,6 @@ export function BrowseView({
           />
         </div>
       </div>
-
-      <div className="mb-3">
-        <p className="mb-2 text-xs font-medium text-muted-foreground">Libro</p>
-        <div className="flex flex-wrap gap-2">
-          <Badge
-            asChild
-            variant={bookFilter === 'all' ? 'default' : 'outline'}
-            className="cursor-pointer"
-          >
-            <button type="button" onClick={() => selectBook('all')}>
-              Todos
-            </button>
-          </Badge>
-          {booksInDeck.map((book) => (
-            <Badge
-              key={book.id}
-              asChild
-              variant={bookFilter === book.id ? 'default' : 'outline'}
-              className="cursor-pointer"
-            >
-              <button type="button" onClick={() => selectBook(book.id)}>
-                {book.label}
-              </button>
-            </Badge>
-          ))}
-        </div>
-      </div>
-
-      {bookFilter !== 'all' && chaptersForBook.length > 0 && (
-        <div className="mb-6">
-          <p className="mb-2 text-xs font-medium text-muted-foreground">
-            Capítulo
-          </p>
-          <div className="flex flex-wrap gap-2">
-            <Badge
-              asChild
-              variant={chapterFilter === 'all' ? 'default' : 'outline'}
-              className="cursor-pointer"
-            >
-              <button type="button" onClick={() => selectChapter('all')}>
-                Todos
-              </button>
-            </Badge>
-            {chaptersForBook.map((ch) => (
-              <Badge
-                key={ch}
-                asChild
-                variant={chapterFilter === ch ? 'default' : 'outline'}
-                className="cursor-pointer"
-              >
-                <button type="button" onClick={() => selectChapter(ch)}>
-                  {ch}
-                </button>
-              </Badge>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {bookFilter === 'all' && <div className="mb-6" />}
 
       {filtered.length === 0 ? (
         <Card>

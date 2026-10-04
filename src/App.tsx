@@ -185,6 +185,11 @@ function FlashcardsApp() {
                 glossaryTermId={glossaryTermId}
                 onSelectGlossaryTerm={setGlossaryTermId}
                 onOpenCardInStudy={(id) => openCardInStudy(id, true)}
+                onStudyWithFilter={() => {
+                  setStudyCardId(null)
+                  setReturnToGlossary(true)
+                  setTab('study')
+                }}
                 suggestedUserId={suggestedUserId}
               />
             </TabsContent>

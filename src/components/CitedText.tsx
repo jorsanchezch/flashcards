@@ -10,6 +10,8 @@ import type { ReactNode } from 'react'
 type CitedTextProps = {
   text: string
   className?: string
+  /** When `plain`, citations stay as text (use CitationLinks beside them). */
+  citeStyle?: 'inline' | 'plain'
 }
 
 function HighlightedPlain({
@@ -40,13 +42,20 @@ function HighlightedPlain({
   return <>{nodes}</>
 }
 
-export function CitedText({ text, className }: CitedTextProps) {
+export function CitedText({
+  text,
+  className,
+  citeStyle = 'inline',
+}: CitedTextProps) {
   const { matchers } = useGlossary()
   const parts = splitCitedText(text)
   return (
     <span className={className}>
       {parts.map((part, i) =>
         part.type === 'cite' ? (
+          citeStyle === 'plain' ? (
+            <span key={`${part.href}-${i}`}>{part.value}</span>
+          ) : (
           <a
             key={`${part.href}-${i}`}
             href={part.href}
@@ -58,6 +67,7 @@ export function CitedText({ text, className }: CitedTextProps) {
           >
             {part.value}
           </a>
+          )
         ) : (
           <span key={i}>
             <HighlightedPlain text={part.value} matchers={matchers} />

@@ -8,25 +8,32 @@ export function shuffleIds(ids: string[]): string[] {
   return arr
 }
 
+/** A new permutation of `ids`, different from `previous` when possible. */
+export function shuffleIdsFresh(
+  ids: string[],
+  previous?: string[] | null,
+): string[] {
+  if (ids.length <= 1) return [...ids]
+  let next = shuffleIds(ids)
+  for (let attempt = 0; attempt < 12; attempt++) {
+    if (
+      !previous ||
+      previous.length !== next.length ||
+      next.some((id, i) => id !== previous[i])
+    ) {
+      return next
+    }
+    next = shuffleIds(ids)
+  }
+  return next
+}
+
 /**
- * Reshuffles the deck and picks an index whose card differs from `currentId`
- * when more than one card exists.
+ * Reshuffles the deck. Starts at the first card of the new order.
  */
 export function reshuffleStudyOrder(
   order: string[],
-  currentId: string | undefined,
+  _currentId?: string,
 ): { order: string[]; index: number } {
-  const shuffled = shuffleIds(order)
-  if (shuffled.length <= 1) {
-    return { order: shuffled, index: 0 }
-  }
-  if (!currentId) {
-    return { order: shuffled, index: 0 }
-  }
-  const otherIndices = shuffled
-    .map((id, i) => (id !== currentId ? i : -1))
-    .filter((i) => i >= 0)
-  const index =
-    otherIndices[Math.floor(Math.random() * otherIndices.length)] ?? 0
-  return { order: shuffled, index }
+  return { order: shuffleIdsFresh(order, order), index: 0 }
 }

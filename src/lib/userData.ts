@@ -7,9 +7,14 @@ import {
   type GlossaryOverlay,
 } from '@/lib/glossary'
 import {
+  normalizeCoursePaceSettings,
+  type CoursePaceSettings,
+} from '@/lib/coursePace'
+import {
   parseDeckGroupings,
   setBookRangeGrouping,
   setCardIdsGrouping,
+  getBookRange,
   type DeckGrouping,
 } from '@/lib/deckFilter'
 
@@ -28,6 +33,12 @@ export type CardProgressEntry = {
   reviewedAt: string[]
 }
 
+export type StudyBookCursor = {
+  order: string[] | null
+  index: number
+  shuffle: boolean
+}
+
 export type UserConfig = {
   /** Active grouping clauses (book range, glossary words, …). AND between kinds. */
   groupings: DeckGrouping[]
@@ -39,6 +50,10 @@ export type UserConfig = {
   studySessionOrder: string[] | null
   /** 0-based index in studySessionOrder. */
   studySessionIndex: number
+  /** Per Libro filter: Todos (`all`) and each book id keep their own cursor. */
+  studyCursors: Record<string, StudyBookCursor>
+  /** Ritmo del curso (fechas, libros, días). */
+  coursePace?: CoursePaceSettings
   /** @deprecated migrated into groupings */
   shuffleByChapter?: boolean
   studyChapterFrom?: number | null
@@ -150,6 +165,105 @@ export function defaultUserConfig(): UserConfig {
     lastChapter: null,
     studySessionOrder: null,
     studySessionIndex: 0,
+    studyCursors: {},
+  }
+}
+
+export function studyBookCursorKey(groupings: DeckGrouping[]): string {
+  return getBookRange(groupings)?.bookId ?? 'all'
+}
+
+export function emptyStudyBookCursor(): StudyBookCursor {
+  return { order: null, index: 0, shuffle: false }
+}
+
+export function parseStudyCursors(raw: unknown): Record<string, StudyBookCursor> {
+  if (!raw || typeof raw !== 'object') return {}
+  const out: Record<string, StudyBookCursor> = {}
+  for (const [key, value] of Object.entries(raw as Record<string, unknown>)) {
+    if (!key || !value || typeof value !== 'object') continue
+    const row = value as Partial<StudyBookCursor>
+    const order = Array.isArray(row.order)
+      ? row.order.filter((id): id is string => typeof id === 'string' && id.length > 0)
+      : null
+    const index =
+      typeof row.index === 'number' && Number.isFinite(row.index)
+        ? Math.max(0, Math.floor(row.index))
+        : 0
+    out[key] = {
+      order: order && order.length ? order : null,
+      index,
+      shuffle: Boolean(row.shuffle),
+    }
+  }
+  return out
+}
+
+export function rememberStudyCursor(
+  config: UserConfig,
+): Record<string, StudyBookCursor> {
+  const key = studyBookCursorKey(config.groupings)
+  return {
+    ...config.studyCursors,
+    [key]: {
+      order: config.studySessionOrder,
+      index: config.studySessionIndex,
+      shuffle: config.shuffle,
+    },
+  }
+}
+
+/** Switch groupings without wiping another book's saved Tarjeta N / shuffle. */
+export function groupingsPatch(
+  config: UserConfig,
+  nextGroupings: DeckGrouping[],
+): Partial<UserConfig> {
+  const cursors = rememberStudyCursor(config)
+  const fromKey = studyBookCursorKey(config.groupings)
+  const toKey = studyBookCursorKey(nextGroupings)
+  if (fromKey === toKey) {
+    return { groupings: nextGroupings, studyCursors: cursors }
+  }
+  const saved = cursors[toKey] ?? emptyStudyBookCursor()
+  return {
+    groupings: nextGroupings,
+    studyCursors: cursors,
+    shuffle: saved.shuffle,
+    studySessionOrder: saved.order,
+    studySessionIndex: saved.index,
+  }
+}
+
+export function shuffleConfigPatch(
+  config: UserConfig,
+  order: string[],
+  index = 0,
+): Partial<UserConfig> {
+  const key = studyBookCursorKey(config.groupings)
+  return {
+    shuffle: true,
+    studySessionOrder: order,
+    studySessionIndex: index,
+    studyCursors: {
+      ...config.studyCursors,
+      [key]: { order, index, shuffle: true },
+    },
+  }
+}
+
+export function stopShuffleConfigPatch(
+  config: UserConfig,
+  canonicalOrder: string[],
+): Partial<UserConfig> {
+  const key = studyBookCursorKey(config.groupings)
+  return {
+    shuffle: false,
+    studySessionOrder: canonicalOrder,
+    studySessionIndex: 0,
+    studyCursors: {
+      ...config.studyCursors,
+      [key]: { order: canonicalOrder, index: 0, shuffle: false },
+    },
   }
 }
 
@@ -219,6 +333,27 @@ export function loadUserDocument(user: RosterUser): UserDocument {
   } catch {
     return createEmptyUserDocument(user)
   }
+}
+
+function seedStudyCursors(
+  rawConfig: Partial<UserConfig>,
+  groupings: DeckGrouping[],
+  sessionOrder: string[] | null,
+  sessionIndex: number,
+): Record<string, StudyBookCursor> {
+  const cursors = parseStudyCursors(rawConfig.studyCursors)
+  const key = studyBookCursorKey(groupings)
+  if (
+    !cursors[key] &&
+    (sessionOrder?.length || sessionIndex > 0 || rawConfig.shuffle)
+  ) {
+    cursors[key] = {
+      order: sessionOrder,
+      index: sessionIndex,
+      shuffle: Boolean(rawConfig.shuffle),
+    }
+  }
+  return cursors
 }
 
 function migrateLegacyGroupings(raw: Partial<UserConfig>): DeckGrouping[] {
@@ -301,6 +436,16 @@ function normalizeUserDocument(
     shuffle: Boolean(rawConfig.shuffle),
     studySessionOrder: sessionOrder?.length ? sessionOrder : null,
     studySessionIndex: sessionIndex,
+    studyCursors: seedStudyCursors(
+      rawConfig,
+      groupings,
+      sessionOrder?.length ? sessionOrder : null,
+      sessionIndex,
+    ),
+    coursePace:
+      rawConfig.coursePace && typeof rawConfig.coursePace === 'object'
+        ? normalizeCoursePaceSettings(rawConfig.coursePace)
+        : undefined,
   }
   const progress: Record<string, CardProgressEntry> = {}
   if (parsed.progress && typeof parsed.progress === 'object') {
@@ -708,6 +853,7 @@ export function saveGlossaryEntry(
     kind: normalized.kind,
     note: normalized.note,
     properName: normalized.properName,
+    related: normalized.related,
   }
   return touch({ ...doc, glossary })
 }

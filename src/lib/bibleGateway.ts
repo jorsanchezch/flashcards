@@ -50,6 +50,27 @@ export function bibleGatewayNtvUrl(search: string): string {
   return `https://www.biblegateway.com/passage/?${params.toString()}`
 }
 
+/** One NTV keyword search covering a word and its other spellings. */
+export function bibleGatewayNtvKeywordUrl(terms: string[]): string {
+  const seen = new Set<string>()
+  const unique: string[] = []
+  for (const raw of terms) {
+    const term = raw.trim()
+    if (!term) continue
+    const key = term.toLocaleLowerCase('es')
+    if (seen.has(key)) continue
+    seen.add(key)
+    unique.push(term)
+  }
+  const query =
+    unique.length <= 1 ? unique[0] ?? '' : unique.map((t) => `"${t}"`).join(' OR ')
+  const params = new URLSearchParams()
+  params.set('search', query)
+  params.set('version', 'NTV')
+  params.set('searchtype', 'all')
+  return `https://www.biblegateway.com/keyword/?${params.toString()}`
+}
+
 export function citationToGatewaySearch(innerWithNtv: string): string | null {
   const body = innerWithNtv.replace(/,?\s*NTV\s*$/i, '').trim()
   if (!body) return null
