@@ -147,6 +147,18 @@ export function parseCitationFromText(text: string): { bookText: string; chapter
 }
 
 function inferFromFolderSlug(slug: string): { bookText: string; chapter: number } | null {
+  if (slug.startsWith('2-reyes-')) {
+    const m = slug.match(/^2-reyes-(\d+)/)
+    if (m) {
+      return { bookText: '2 Reyes', chapter: Number.parseInt(m[1], 10) }
+    }
+  }
+  if (slug.startsWith('1-reyes-')) {
+    const m = slug.match(/^1-reyes-(\d+)/)
+    if (m) {
+      return { bookText: '1 Reyes', chapter: Number.parseInt(m[1], 10) }
+    }
+  }
   if (slug.startsWith('2-samuel-')) {
     const m = slug.match(/^2-samuel-(\d+)/)
     if (m) {

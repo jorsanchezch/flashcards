@@ -16,9 +16,17 @@ export function FlipCard({
   className,
 }: FlipCardProps) {
   return (
-    <button
-      type="button"
+    <div
+      role="button"
+      tabIndex={0}
       onClick={onFlip}
+      onKeyDown={(e) => {
+        if (e.target !== e.currentTarget) return
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          onFlip()
+        }
+      }}
       className={cn(
         'group relative mx-auto h-[min(52vh,420px)] w-full max-w-2xl cursor-pointer perspective-[1200px] text-left',
         className,
@@ -56,6 +64,6 @@ export function FlipCard({
           </div>
         </div>
       </div>
-    </button>
+    </div>
   )
 }

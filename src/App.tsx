@@ -3,6 +3,7 @@ import { BookOpen, Loader2, RefreshCw } from 'lucide-react'
 import { BrowseView } from '@/components/BrowseView'
 import { StudyView } from '@/components/StudyView'
 import { StudySessionGate } from '@/components/StudySessionGate'
+import { StudyMaterialsView } from '@/components/StudyMaterialsView'
 import { TeamSummaryView } from '@/components/TeamSummaryView'
 import { UserMenu } from '@/components/UserMenu'
 import { Button } from '@/components/ui/button'
@@ -13,13 +14,14 @@ import { useEffectiveFlashcards } from '@/hooks/useEffectiveFlashcards'
 import { useUsersRoster } from '@/hooks/useUsersRoster'
 import { isGuestSessionId, loadLastUserId } from '@/lib/userData'
 
-type Tab = 'study' | 'browse' | 'team'
+type Tab = 'study' | 'browse' | 'team' | 'material'
 
 function FlashcardsApp() {
   const { state, reload } = useFlashcards()
   const {
     roster,
     userDoc,
+    groupDoc,
     hasSession,
     isGuest,
     selectUser,
@@ -52,7 +54,7 @@ function FlashcardsApp() {
               <BookOpen className="size-5" />
             </div>
             <h1 className="text-lg font-semibold leading-tight">
-              Flashcards — 1 Samuel
+              Flashcards — Samuel y Reyes
             </h1>
           </div>
           {hasSession && <UserMenu />}
@@ -60,16 +62,6 @@ function FlashcardsApp() {
       </header>
 
       <main>
-        {state.status === 'loading' && (
-          <div
-            className="flex flex-col items-center justify-center gap-3 py-24 text-muted-foreground"
-            role="status"
-          >
-            <Loader2 className="size-8 animate-spin" />
-            <p>Cargando tarjetas…</p>
-          </div>
-        )}
-
         {state.status === 'error' && (
           <div className="mx-auto max-w-md px-4 py-16 text-center">
             <p className="mb-2 font-medium text-destructive">
@@ -85,28 +77,31 @@ function FlashcardsApp() {
           </div>
         )}
 
-        {state.status === 'ready' && state.cards.length === 0 && (
-          <p className="py-24 text-center text-muted-foreground">
-            No hay tarjetas disponibles.
-          </p>
-        )}
-
-        {cardsReady && (
+        {state.status !== 'error' && (
           <Tabs
             value={tab}
             onValueChange={(v) => setTab(v as Tab)}
             className="mx-auto max-w-3xl"
           >
             <div className="px-4 pt-4">
-              <TabsList className="grid w-full grid-cols-3">
+              <TabsList className="grid h-auto w-full grid-cols-2 gap-1 sm:grid-cols-4">
                 <TabsTrigger value="study">Estudiar</TabsTrigger>
                 <TabsTrigger value="browse">Explorar</TabsTrigger>
                 <TabsTrigger value="team">Equipo</TabsTrigger>
+                <TabsTrigger value="material">Material</TabsTrigger>
               </TabsList>
             </div>
 
             <TabsContent value="study">
-              {!hasSession || !userDoc ? (
+              {state.status === 'loading' ? (
+                <div
+                  className="flex flex-col items-center justify-center gap-3 py-24 text-muted-foreground"
+                  role="status"
+                >
+                  <Loader2 className="size-8 animate-spin" />
+                  <p>Cargando tarjetas…</p>
+                </div>
+              ) : !hasSession || !userDoc ? (
                 <StudySessionGate
                   users={roster}
                   suggestedUserId={suggestedUserId}
@@ -125,17 +120,27 @@ function FlashcardsApp() {
             </TabsContent>
 
             <TabsContent value="browse">
-              <BrowseView
-                key={userDoc ? sessionKey : 'browse-anon'}
-                cards={userDoc ? effectiveCards : baseCards}
-                baseCards={baseCards}
-                suggestedUserId={suggestedUserId}
-                onSelectCard={openCardInStudy}
-                onStartStudyGroup={() => {
-                  setStudyCardId(null)
-                  setTab('study')
-                }}
-              />
+              {state.status === 'loading' ? (
+                <div
+                  className="flex flex-col items-center justify-center gap-3 py-24 text-muted-foreground"
+                  role="status"
+                >
+                  <Loader2 className="size-8 animate-spin" />
+                  <p>Cargando tarjetas…</p>
+                </div>
+              ) : (
+                <BrowseView
+                  key={userDoc ? sessionKey : 'browse-anon'}
+                  cards={userDoc ? effectiveCards : baseCards}
+                  baseCards={baseCards}
+                  suggestedUserId={suggestedUserId}
+                  onSelectCard={openCardInStudy}
+                  onStartStudyGroup={() => {
+                    setStudyCardId(null)
+                    setTab('study')
+                  }}
+                />
+              )}
             </TabsContent>
 
             <TabsContent value="team">
@@ -143,9 +148,14 @@ function FlashcardsApp() {
                 roster={roster}
                 totalCards={totalCards}
                 userDoc={userDoc}
+                groupDoc={groupDoc}
                 isGuest={isGuest}
                 currentUserDisplayName={userDoc?.displayName ?? null}
               />
+            </TabsContent>
+
+            <TabsContent value="material">
+              <StudyMaterialsView />
             </TabsContent>
           </Tabs>
         )}

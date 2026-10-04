@@ -70,7 +70,8 @@ export function StudySessionGate({
             Continuar sin ID
           </span>
           <span className="text-sm font-normal text-muted-foreground">
-            Practica sin nombre; tu mazo y marcas quedan solo para ti aquí.
+            Practica sin nombre. Las marcas La sé, Repasar y Revisada son del
+            equipo y se ven en Equipo.
           </span>
         </Button>
 

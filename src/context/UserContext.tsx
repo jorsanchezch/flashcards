@@ -13,7 +13,7 @@ import {
   guestRosterUser,
   isGuestDocument,
   isGuestSessionId,
-  loadGuestDocument,
+  loadGroupDocument,
   loadLastUserId,
   loadUserDocument,
   parseImportedUserDocument,
@@ -40,11 +40,16 @@ import {
 import { createUserAddedCard } from '@/lib/deckCustomize'
 import { BIBLE_BOOKS } from '@/lib/biblical'
 import { applyCardReview, applyCardStatus, type CardStatus } from '@/lib/progress'
+import {
+  loadPublishedTeamProgress,
+  mergeGroupDocWithPublished,
+} from '@/lib/teamProgress'
 
 type UserContextValue = {
   roster: RosterUser[]
   currentUser: RosterUser | null
   userDoc: UserDocument | null
+  groupDoc: UserDocument
   isGuest: boolean
   hasSession: boolean
   continueAsGuest: () => void
@@ -91,31 +96,67 @@ type UserProviderProps = {
 export function UserProvider({ roster, children }: UserProviderProps) {
   const [currentUser, setCurrentUser] = useState<RosterUser | null>(null)
   const [userDoc, setUserDoc] = useState<UserDocument | null>(null)
+  const [groupDoc, setGroupDoc] = useState<UserDocument>(() =>
+    loadGroupDocument(),
+  )
 
   const rosterById = useMemo(
     () => new Map(roster.map((u) => [u.id, u])),
     [roster],
   )
 
+  const commitDoc = useCallback((next: UserDocument) => {
+    saveUserDocument(next)
+    if (isGuestDocument(next)) {
+      const normalized: UserDocument = {
+        ...next,
+        userId: next.userId,
+        displayName: next.displayName,
+      }
+      setGroupDoc(normalized)
+    }
+    return next
+  }, [])
+
   useEffect(() => {
     if (!roster.length) return
-    const lastId = loadLastUserId()
-    if (!lastId) return
-    if (isGuestSessionId(lastId)) {
-      setCurrentUser(null)
-      setUserDoc(loadGuestDocument())
-      return
+    let cancelled = false
+    const boot = async () => {
+      let group = loadGroupDocument()
+      const published = await loadPublishedTeamProgress()
+      if (published) {
+        const merged = mergeGroupDocWithPublished(group, published)
+        if (merged !== group) {
+          saveUserDocument(merged)
+          group = merged
+        }
+      }
+      if (cancelled) return
+      setGroupDoc(group)
+      const lastId = loadLastUserId()
+      if (!lastId) return
+      if (isGuestSessionId(lastId)) {
+        setCurrentUser(null)
+        setUserDoc(group)
+        return
+      }
+      const user = rosterById.get(lastId)
+      if (!user) return
+      setCurrentUser(user)
+      setUserDoc(loadUserDocument(user))
     }
-    const user = rosterById.get(lastId)
-    if (!user) return
-    setCurrentUser(user)
-    setUserDoc(loadUserDocument(user))
+    void boot()
+    return () => {
+      cancelled = true
+    }
   }, [roster.length, rosterById])
 
   const continueAsGuest = useCallback(() => {
     saveGuestSession()
+    const latest = loadGroupDocument()
     setCurrentUser(null)
-    setUserDoc(loadGuestDocument())
+    setGroupDoc(latest)
+    setUserDoc(latest)
   }, [])
 
   const selectUser = useCallback((user: RosterUser) => {
@@ -134,25 +175,26 @@ export function UserProvider({ roster, children }: UserProviderProps) {
     (cardId: string, status: CardStatus | null) => {
       setUserDoc((doc) => {
         if (!doc) return doc
-        return applyCardStatus(doc, cardId, status)
+        const next = applyCardStatus(doc, cardId, status)
+        return commitDoc(next)
       })
     },
-    [],
+    [commitDoc],
   )
 
   const recordCardReview = useCallback((cardId: string) => {
     setUserDoc((doc) => {
       if (!doc) return doc
-      return applyCardReview(doc, cardId)
+      const next = applyCardReview(doc, cardId)
+      return commitDoc(next)
     })
-  }, [])
+  }, [commitDoc])
 
   const markManyReviewed = useCallback((cardIds: string[]) => {
     setUserDoc((doc) => {
       if (!doc) return doc
       const next = markCardsReviewed(doc, cardIds)
-      saveUserDocument(next)
-      return next
+      return commitDoc(next)
     })
   }, [])
 
@@ -160,8 +202,7 @@ export function UserProvider({ roster, children }: UserProviderProps) {
     setUserDoc((doc) => {
       if (!doc) return doc
       const next = setStudyGroupInDoc(doc, cardIds, label)
-      saveUserDocument(next)
-      return next
+      return commitDoc(next)
     })
   }, [])
 
@@ -169,8 +210,7 @@ export function UserProvider({ roster, children }: UserProviderProps) {
     setUserDoc((doc) => {
       if (!doc) return doc
       const next = clearStudyGroupInDoc(doc)
-      saveUserDocument(next)
-      return next
+      return commitDoc(next)
     })
   }, [])
 
@@ -178,15 +218,14 @@ export function UserProvider({ roster, children }: UserProviderProps) {
     setUserDoc((doc) => {
       if (!doc) return doc
       const next = updateUserConfig(doc, patch)
-      saveUserDocument(next)
-      return next
+      return commitDoc(next)
     })
   }, [])
 
   const replaceDocument = useCallback((doc: UserDocument) => {
-    saveUserDocument(doc)
+    commitDoc(doc)
     setUserDoc(doc)
-  }, [])
+  }, [commitDoc])
 
   const exportDocument = useCallback(() => {
     if (!userDoc) return
@@ -196,11 +235,9 @@ export function UserProvider({ roster, children }: UserProviderProps) {
   const applyReset = useCallback((fn: (doc: UserDocument) => UserDocument) => {
     setUserDoc((doc) => {
       if (!doc) return doc
-      const next = fn(doc)
-      saveUserDocument(next)
-      return next
+      return commitDoc(fn(doc))
     })
-  }, [])
+  }, [commitDoc])
 
   const resetProgress = useCallback(() => {
     applyReset(resetDocumentProgress)
@@ -234,8 +271,7 @@ export function UserProvider({ roster, children }: UserProviderProps) {
           answer,
           original,
         )
-        saveUserDocument(next)
-        return next
+        return commitDoc(next)
       })
     },
     [],
@@ -245,8 +281,7 @@ export function UserProvider({ roster, children }: UserProviderProps) {
     setUserDoc((doc) => {
       if (!doc) return doc
       const next = revertCardContentOverride(doc, cardId)
-      saveUserDocument(next)
-      return next
+      return commitDoc(next)
     })
   }, [])
 
@@ -263,8 +298,7 @@ export function UserProvider({ roster, children }: UserProviderProps) {
       setUserDoc((doc) => {
         if (!doc) return doc
         const next = addCardToDeck(doc, card)
-        saveUserDocument(next)
-        return next
+        return commitDoc(next)
       })
       return card.id
     },
@@ -275,8 +309,7 @@ export function UserProvider({ roster, children }: UserProviderProps) {
     setUserDoc((doc) => {
       if (!doc) return doc
       const next = hideCardFromDeck(doc, cardId)
-      saveUserDocument(next)
-      return next
+      return commitDoc(next)
     })
   }, [])
 
@@ -306,6 +339,7 @@ export function UserProvider({ roster, children }: UserProviderProps) {
       roster,
       currentUser,
       userDoc,
+      groupDoc,
       isGuest,
       hasSession,
       continueAsGuest,
@@ -333,6 +367,7 @@ export function UserProvider({ roster, children }: UserProviderProps) {
       roster,
       currentUser,
       userDoc,
+      groupDoc,
       isGuest,
       hasSession,
       continueAsGuest,

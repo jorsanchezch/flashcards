@@ -26,6 +26,7 @@ type TeamSummaryViewProps = {
   roster: RosterUser[]
   totalCards: number
   userDoc: UserDocument | null
+  groupDoc: UserDocument | null
   isGuest?: boolean
   currentUserDisplayName?: string | null
 }
@@ -39,6 +40,7 @@ export function TeamSummaryView({
   roster,
   totalCards,
   userDoc,
+  groupDoc,
   isGuest = false,
   currentUserDisplayName,
 }: TeamSummaryViewProps) {
@@ -68,10 +70,9 @@ export function TeamSummaryView({
     )
   }, [filteredRows])
 
-  const guestStats =
-    isGuest && userDoc
-      ? computeStatsFromUserDoc(userDoc, totalCards)
-      : null
+  const groupStats = groupDoc
+    ? computeStatsFromUserDoc(groupDoc, totalCards)
+    : null
 
   const handleExportTeam = () => {
     if (state.status !== 'ready') return
@@ -80,15 +81,16 @@ export function TeamSummaryView({
       roster,
       totalCards,
       userDoc,
+      groupDoc,
     )
     downloadTeamProgressFile(file)
     if (isGuest) {
       setExportHint(
-        'Listo. La copia del equipo no incluye sesiones sin ID. Pásala a quien actualice el resumen del grupo.',
+        'Listo. Esta copia incluye el avance compartido del equipo (sesión sin ID). Pásala a quien actualice el resumen del grupo para que todos lo vean.',
       )
     } else if (userDoc && !isGuestDocument(userDoc)) {
       setExportHint(
-        `Listo. Incluye tu avance (${currentUserDisplayName}). Pásala a quien actualice el resumen del grupo para que todos lo vean.`,
+        `Listo. Incluye tu avance (${currentUserDisplayName}) y el avance compartido del equipo. Pásala a quien actualice el resumen del grupo para que todos lo vean.`,
       )
     } else {
       setExportHint(
@@ -137,10 +139,10 @@ export function TeamSummaryView({
           <p className="text-sm text-muted-foreground">
             {roster.length} integrantes · {totalCards} tarjetas por persona
           </p>
-          {isGuest && userDoc && (
+          {isGuest && (
             <p className="mt-1 text-xs text-muted-foreground">
-              Sin ID: tu avance abajo es solo tuyo y no cuenta en la lista del
-              equipo.
+              Sin ID: las marcas La sé, Repasar y Revisada actualizan el avance
+              compartido del equipo (abajo).
             </p>
           )}
           {userDoc && !isGuest && (
@@ -171,31 +173,43 @@ export function TeamSummaryView({
         </Card>
       )}
 
-      {guestStats && (
-        <Card className="mb-6 border-dashed">
+      {groupStats && (
+        <Card className="mb-6 border-primary/30">
           <CardHeader className="pb-2">
-            <CardTitle className="text-base">Tu sesión sin ID</CardTitle>
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <CardTitle className="text-base">Equipo (sin ID)</CardTitle>
+              {isGuest && (
+                <Badge variant="secondary" className="text-[10px]">
+                  En vivo
+                </Badge>
+              )}
+            </div>
             <CardDescription className="text-xs">
-              No aparece en la lista de las 13 personas del equipo.
+              Marcas compartidas cuando se estudia sin elegir nombre. Las
+              personas identificadas conservan su propio avance.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2 text-sm">
             <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
               <span>
                 Conocidas:{' '}
-                <strong className="text-foreground">{guestStats.known}</strong>
+                <strong className="text-foreground">{groupStats.known}</strong>
               </span>
               <span>
                 Repasar:{' '}
-                <strong className="text-foreground">{guestStats.unknown}</strong>
+                <strong className="text-foreground">{groupStats.unknown}</strong>
+              </span>
+              <span>
+                Revisadas:{' '}
+                <strong className="text-foreground">{groupStats.reviewed}</strong>
               </span>
               <span>
                 Sin marcar:{' '}
-                <strong className="text-foreground">{guestStats.unseen}</strong>
+                <strong className="text-foreground">{groupStats.unseen}</strong>
               </span>
             </div>
             <Progress
-              value={percent(guestStats.known, guestStats.total)}
+              value={percent(groupStats.known, groupStats.total)}
               className="h-2"
             />
           </CardContent>
@@ -305,6 +319,12 @@ export function TeamSummaryView({
                       Sin marcar:{' '}
                       <strong className="text-foreground">
                         {row.stats.unseen}
+                      </strong>
+                    </span>
+                    <span>
+                      Revisadas:{' '}
+                      <strong className="text-foreground">
+                        {row.stats.reviewed}
                       </strong>
                     </span>
                   </div>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { CitationLinks } from '@/components/CitedText'
 import { BIBLE_BOOKS } from '@/lib/biblical'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -194,6 +195,7 @@ export function CardEditorDialog({
               onChange={(e) => setQuestion(e.target.value)}
               autoFocus
             />
+            <CitationLinks text={question} />
           </div>
           <div>
             <Label htmlFor="card-a">Respuesta</Label>
@@ -203,6 +205,7 @@ export function CardEditorDialog({
               value={answer}
               onChange={(e) => setAnswer(e.target.value)}
             />
+            <CitationLinks text={answer} />
           </div>
           {mode === 'add' && (
             <>

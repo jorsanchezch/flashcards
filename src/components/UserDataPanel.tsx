@@ -26,7 +26,9 @@ export function UserDataPanel() {
 
   if (!userDoc) return null
 
-  const subject = isGuest ? 'tu sesión sin ID' : `tu perfil (${userDoc.displayName})`
+  const subject = isGuest
+    ? 'el avance compartido del equipo'
+    : `tu perfil (${userDoc.displayName})`
 
   const confirm = () => {
     if (pending === 'progress') resetProgress()
@@ -41,7 +43,7 @@ export function UserDataPanel() {
     pending === 'progress'
       ? {
           title: '¿Borrar todas las marcas de tarjetas?',
-          body: `Se quitarán las marcas de revisada y repasar de ${subject}. No afecta a nadie más.`,
+          body: `Se quitarán las marcas de revisada y repasar de ${subject}. Las personas identificadas conservan las suyas.`,
         }
       : pending === 'config'
         ? {
@@ -66,7 +68,7 @@ export function UserDataPanel() {
         <CardTitle className="text-sm">Mis datos</CardTitle>
         <CardDescription className="text-xs">
           {isGuest
-            ? 'Sesión sin ID: solo cuenta para ti en este teléfono o computadora.'
+            ? 'Sesión sin ID: las marcas La sé, Repasar y Revisada son del equipo y se ven en Equipo.'
             : 'Solo puedes borrar o restablecer tu propio avance.'}
         </CardDescription>
       </CardHeader>

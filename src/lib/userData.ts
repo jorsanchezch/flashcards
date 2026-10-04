@@ -65,22 +65,35 @@ const LEGACY_PROGRESS_KEY = 'olympics-flashcards-progress-v1'
 /** Stored in LAST_USER_KEY when the user chose “Continuar sin ID”. */
 export const GUEST_SESSION_ID = '__guest__'
 
-/** userId inside the guest JSON document (not a roster member). */
+/** Legacy guest silo (migrated to the shared Equipo document). */
 export const GUEST_DOCUMENT_USER_ID = 'guest-anonymous'
 
 export const GUEST_DISPLAY_NAME = 'Invitado (sin ID)'
 
+/** Shared group deck status used when no named user is selected. */
+export const GROUP_DOCUMENT_USER_ID = 'equipo'
+export const GROUP_DISPLAY_NAME = 'Equipo'
+
 export const guestRosterUser: RosterUser = {
-  id: GUEST_DOCUMENT_USER_ID,
-  displayName: GUEST_DISPLAY_NAME,
+  id: GROUP_DOCUMENT_USER_ID,
+  displayName: GROUP_DISPLAY_NAME,
 }
+
+export const groupRosterUser: RosterUser = guestRosterUser
 
 export function isGuestSessionId(sessionId: string | null): boolean {
   return sessionId === GUEST_SESSION_ID
 }
 
+export function isGroupDocument(doc: UserDocument | null): boolean {
+  return (
+    doc?.userId === GROUP_DOCUMENT_USER_ID ||
+    doc?.userId === GUEST_DOCUMENT_USER_ID
+  )
+}
+
 export function isGuestDocument(doc: UserDocument | null): boolean {
-  return doc?.userId === GUEST_DOCUMENT_USER_ID
+  return isGroupDocument(doc)
 }
 
 export function userDocStorageKey(userId: string) {
@@ -132,14 +145,36 @@ function touch(doc: UserDocument): UserDocument {
 }
 
 export function loadGuestDocument(): UserDocument {
+  return loadGroupDocument()
+}
+
+function readStoredDocument(userId: string, user: RosterUser): UserDocument | null {
   try {
-    const raw = localStorage.getItem(userDocStorageKey(GUEST_DOCUMENT_USER_ID))
-    if (!raw) return createEmptyUserDocument(guestRosterUser)
+    const raw = localStorage.getItem(userDocStorageKey(userId))
+    if (!raw) return null
     const parsed = JSON.parse(raw) as UserDocument
-    return normalizeUserDocument(parsed, guestRosterUser)
+    return normalizeUserDocument(parsed, user)
   } catch {
-    return createEmptyUserDocument(guestRosterUser)
+    return null
   }
+}
+
+export function loadGroupDocument(): UserDocument {
+  const grupo = readStoredDocument(GROUP_DOCUMENT_USER_ID, groupRosterUser)
+  if (grupo && Object.keys(grupo.progress).length > 0) {
+    return grupo
+  }
+  const legacy = readStoredDocument(GUEST_DOCUMENT_USER_ID, groupRosterUser)
+  if (legacy && Object.keys(legacy.progress).length > 0) {
+    const migrated: UserDocument = {
+      ...legacy,
+      userId: GROUP_DOCUMENT_USER_ID,
+      displayName: GROUP_DISPLAY_NAME,
+    }
+    saveUserDocument(migrated)
+    return migrated
+  }
+  return grupo ?? createEmptyUserDocument(groupRosterUser)
 }
 
 export function saveGuestSession() {
@@ -302,9 +337,16 @@ function migrateLegacyProgress(user: RosterUser): UserDocument | null {
 }
 
 export function saveUserDocument(doc: UserDocument) {
+  const stored: UserDocument = isGroupDocument(doc)
+    ? {
+        ...doc,
+        userId: GROUP_DOCUMENT_USER_ID,
+        displayName: GROUP_DISPLAY_NAME,
+      }
+    : doc
   localStorage.setItem(
-    userDocStorageKey(doc.userId),
-    JSON.stringify(touch(doc)),
+    userDocStorageKey(stored.userId),
+    JSON.stringify(touch(stored)),
   )
 }
 
@@ -414,9 +456,16 @@ export function parseImportedUserDocument(
   try {
     const parsed = JSON.parse(raw) as Partial<UserDocument>
     if (parsed.userId && parsed.userId !== expectedUser.id) {
-      return {
-        ok: false,
-        message: 'Esa copia es de otra persona del equipo.',
+      const expectedIsGroup =
+        expectedUser.id === GROUP_DOCUMENT_USER_ID
+      const incomingIsGroup =
+        parsed.userId === GROUP_DOCUMENT_USER_ID ||
+        parsed.userId === GUEST_DOCUMENT_USER_ID
+      if (!(expectedIsGroup && incomingIsGroup)) {
+        return {
+          ok: false,
+          message: 'Esa copia es de otra persona del equipo.',
+        }
       }
     }
     const doc = normalizeUserDocument(parsed, expectedUser)

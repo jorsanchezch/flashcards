@@ -16,6 +16,7 @@ import { buildStudyOrder, reshuffleWithinChapter } from '@/lib/studyOrder'
 import { resolveStudyPool } from '@/lib/studyPool'
 import { reshuffleStudyOrder } from '@/lib/shuffle'
 import { CardEditorDialog } from '@/components/CardEditorDialog'
+import { CitedText } from '@/components/CitedText'
 import { FlipCard } from '@/components/FlipCard'
 import { ReviewedMarkButton } from '@/components/ReviewedMarkButton'
 import { Badge } from '@/components/ui/badge'
@@ -58,7 +59,7 @@ export function StudyView({
   const studyPool = useMemo(() => {
     if (!userDoc) return cards
     return resolveStudyPool(cards, userDoc.config)
-  }, [cards, userDoc])
+  }, [cards, userDoc?.config])
 
   const cardMap = useMemo(
     () => new Map(studyPool.map((c) => [c.id, c])),
@@ -78,6 +79,8 @@ export function StudyView({
   const [index, setIndex] = useState(0)
   const [flipped, setFlipped] = useState(false)
   const [sessionMarked, setSessionMarked] = useState(0)
+  const [indexDraft, setIndexDraft] = useState('1')
+  const [indexFocused, setIndexFocused] = useState(false)
 
   const activeUserId = userDoc?.userId
   const shuffleByChapter = userDoc?.config.shuffleByChapter ?? false
@@ -115,6 +118,31 @@ export function StudyView({
     },
     [order.length],
   )
+
+  const jumpToCardNumber = useCallback(
+    (raw: string) => {
+      if (!order.length) return
+      const trimmed = raw.trim()
+      if (trimmed === '') {
+        setIndexDraft(String(index + 1))
+        return
+      }
+      const n = Number.parseInt(trimmed, 10)
+      if (!Number.isFinite(n)) {
+        setIndexDraft(String(index + 1))
+        return
+      }
+      const clamped = Math.min(order.length, Math.max(1, n))
+      setFlipped(false)
+      setIndex(clamped - 1)
+      setIndexDraft(String(clamped))
+    },
+    [index, order.length],
+  )
+
+  useEffect(() => {
+    if (!indexFocused) setIndexDraft(String(index + 1))
+  }, [index, indexFocused])
 
   const applyShuffle = useCallback(() => {
     const currentId = order[index]
@@ -223,9 +251,43 @@ export function StudyView({
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h2 className="text-xl font-semibold tracking-tight">Modo estudio</h2>
-          <p className="text-sm text-muted-foreground">
-            Tarjeta {index + 1} de {order.length}
-            {sessionMarked > 0 && ` · ${sessionMarked} marcadas esta sesión`}
+          <p className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-muted-foreground">
+            <label htmlFor="study-card-number" className="shrink-0">
+              Tarjeta
+            </label>
+            <Input
+              id="study-card-number"
+              type="text"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              enterKeyHint="go"
+              autoComplete="off"
+              aria-label="Número de tarjeta"
+              className="h-11 min-h-11 w-16 px-2 text-center text-base tabular-nums md:text-base"
+              value={indexDraft}
+              onFocus={(e) => {
+                setIndexFocused(true)
+                e.currentTarget.select()
+              }}
+              onChange={(e) =>
+                setIndexDraft(e.target.value.replace(/[^\d]/g, ''))
+              }
+              onBlur={() => {
+                setIndexFocused(false)
+                jumpToCardNumber(indexDraft)
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault()
+                  jumpToCardNumber(indexDraft)
+                  e.currentTarget.blur()
+                }
+              }}
+            />
+            <span>
+              de {order.length}
+              {sessionMarked > 0 && ` · ${sessionMarked} marcadas esta sesión`}
+            </span>
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -368,8 +430,8 @@ export function StudyView({
       </div>
 
       <FlipCard
-        front={current.question}
-        back={current.answer}
+        front={<CitedText text={current.question} />}
+        back={<CitedText text={current.answer} />}
         flipped={flipped}
         onFlip={() => setFlipped((f) => !f)}
       />

@@ -16,6 +16,7 @@ import { getCardStatus, getReviewHistory } from '@/lib/progress'
 import { cardsInBookChapterRange } from '@/lib/studyPool'
 import { isBuiltInCardEdited } from '@/lib/userData'
 import { CardEditorDialog } from '@/components/CardEditorDialog'
+import { CitationLinks } from '@/components/CitedText'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -617,6 +618,7 @@ export function BrowseView({
                                   )}
                                 </button>
                               )}
+                              <div className="min-w-0 flex-1">
                               <button
                                 type="button"
                                 onClick={() => {
@@ -626,7 +628,7 @@ export function BrowseView({
                                   }
                                   onSelectCard(card.id)
                                 }}
-                                className="min-w-0 flex-1 rounded-lg px-2 py-2 text-left transition-colors hover:bg-accent/40"
+                                className="w-full rounded-lg px-2 py-2 text-left transition-colors hover:bg-accent/40"
                               >
                                 <div className="mb-1 flex flex-wrap items-center gap-2">
                                   <span className="text-xs text-muted-foreground">
@@ -670,6 +672,12 @@ export function BrowseView({
                                   {card.question}
                                 </p>
                               </button>
+                              <CitationLinks
+                                text={`${card.question}\n${card.answer}`}
+                                compact
+                                className="mt-0 px-2 pb-1"
+                              />
+                              </div>
                               <div className="flex shrink-0 flex-col gap-1">
                                 <Button
                                   type="button"
