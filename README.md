@@ -22,7 +22,7 @@ npm run dev
 
 El servidor de Vite escucha en **http://127.0.0.1:18480/** (IPv4 `0.0.0.0`). Si Safari no abre el loopback, usa la URL de red que imprime Vite (`http://<lan>:18480/`).
 
-En **local**, las tarjetas y el glosario se leen de SQLite (`/private/tmp/flashcards/data/flashcards.db`) a través de `/api/local/*`. `npm run db:import-bible` carga los dumps SQL en `bible_passages`. `npm run build` exporta JSON estático a `public/data/` para GitHub Pages (sin texto bíblico).
+En **local**, las tarjetas y el glosario se leen de SQLite en [`data/flashcards.db`](data/flashcards.db) (si el clone está bajo `/tmp`, la app usa `~/Library/Application Support/flashcards/flashcards.db`). Dumps públicos KJV/ASV: [`data/bible-dumps/`](data/bible-dumps/). `npm run db:import-bible` recarga esos dumps. `npm run build` exporta JSON estático a `public/data/` para GitHub Pages (sin texto bíblico). NTV es la versión por defecto; el texto NTV no está en el `.db` hasta que haya un dump con licencia.
 
 ## Build
 

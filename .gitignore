@@ -24,9 +24,37 @@ dist-ssr
 __pycache__/
 scripts/__pycache__/
 
-# Local SQLite (Pages uses exported JSON)
-data/*.db
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+__pycache__/
+scripts/__pycache__/
+
+# SQLite sidecars only — flashcards.db and bible dumps are tracked
 data/*.db-*
 data/*.db-wal
-data/bible-dumps/
+data/*.db-shm
+data/*.db
+!data/flashcards.db
+
 
