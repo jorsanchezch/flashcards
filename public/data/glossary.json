@@ -35,7 +35,15 @@
       "related": [
         {
           "id": "acab",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "su rey"
+        },
+        {
+          "id": "jezabel",
+          "rel": "de quien escondió profetas"
+        },
+        {
+          "id": "elias",
+          "rel": "contemporáneo"
         }
       ]
     },
@@ -52,15 +60,15 @@
       "related": [
         {
           "id": "joab",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "maaca",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "quien la sitió"
         },
         {
           "id": "seba",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "sitiado allí"
+        },
+        {
+          "id": "bicri",
+          "rel": "padre de Seba"
         }
       ]
     },
@@ -76,16 +84,16 @@
       "properName": true,
       "related": [
         {
-          "id": "abias",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "roboam",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "padre"
         },
         {
-          "id": "ahias",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jeroboam",
+          "rel": "rival"
+        },
+        {
+          "id": "juda",
+          "rel": "su reino"
         }
       ]
     },
@@ -126,16 +134,16 @@
       "properName": true,
       "related": [
         {
-          "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "quiriat-jearim",
+          "rel": "su pueblo"
         },
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "arca",
+          "rel": "en su casa"
         },
         {
           "id": "eleazar",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hijo"
         }
       ]
     },
@@ -149,15 +157,15 @@
       "related": [
         {
           "id": "betel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del relato"
         },
         {
           "id": "hiel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "padre o madre"
         },
         {
-          "id": "josue",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ner",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -173,15 +181,11 @@
       "related": [
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "rey a quien cuidó"
         },
         {
           "id": "adonias",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "salomon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "quien la pidió"
         }
       ]
     },
@@ -196,16 +200,16 @@
       "properName": true,
       "related": [
         {
-          "id": "isai",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "sarvia",
+          "rel": "madre"
         },
         {
           "id": "joab",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hermano"
         },
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "su rey"
         }
       ]
     },
@@ -278,16 +282,16 @@
       "properName": true,
       "related": [
         {
-          "id": "abiam",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "ahias",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "jeroboam",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "padre o madre"
+        },
+        {
+          "id": "roboam",
+          "rel": "en el mismo relato"
+        },
+        {
+          "id": "abiam",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -338,16 +342,16 @@
       "properName": true,
       "related": [
         {
-          "id": "joacaz",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "damasco",
+          "rel": "lugar del relato"
         },
         {
-          "id": "cis",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "asiria",
+          "rel": "lugar del relato"
         },
         {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "siria",
+          "rel": "lugar del relato"
         }
       ]
     },
@@ -362,16 +366,16 @@
       "properName": true,
       "related": [
         {
-          "id": "ahicam",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "josias",
+          "rel": "su rey"
         },
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "hulda",
+          "rel": "a quien consultó"
         },
         {
-          "id": "asaias",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "hilcias",
+          "rel": "compañero"
         }
       ]
     },
@@ -386,16 +390,16 @@
       "properName": true,
       "related": [
         {
-          "id": "gad",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salomon",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "roboam",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -438,16 +442,12 @@
       "properName": false,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "sefarvaim",
+          "rel": "ligado en el relato"
         },
         {
-          "id": "anamelec",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "asima",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "senaquerib",
+          "rel": "padre o madre"
         }
       ]
     },
@@ -463,11 +463,7 @@
       "related": [
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "belen",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "quien se escondió allí"
         }
       ]
     },
@@ -483,15 +479,15 @@
       "related": [
         {
           "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado a ese lugar"
         },
         {
-          "id": "asdod",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "israel",
+          "rel": "lugar del mismo relato"
         },
         {
-          "id": "tumores",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jacob",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -505,11 +501,11 @@
       "related": [
         {
           "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "quien lo perdonó"
         },
         {
           "id": "samuel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "quien lo ejecutó"
         }
       ]
     },
@@ -524,16 +520,12 @@
       "properName": true,
       "related": [
         {
-          "id": "dan",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "gedalias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hijo"
         },
         {
-          "id": "nabuzaradan",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "safan",
+          "rel": "padre o madre"
         }
       ]
     },
@@ -547,15 +539,7 @@
       "related": [
         {
           "id": "josafat",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "safat",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "seraias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hijo (el cronista)"
         }
       ]
     },
@@ -598,16 +582,12 @@
       "properName": true,
       "related": [
         {
-          "id": "absalon",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "su rey"
         },
         {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "absalon",
+          "rel": "a quien se pasó"
         }
       ]
     },
@@ -623,15 +603,15 @@
       "related": [
         {
           "id": "jeroboam",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
         },
         {
           "id": "roboam",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
         },
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "silo",
+          "rel": "su rey o pueblo"
         }
       ]
     },
@@ -644,16 +624,16 @@
       "properName": true,
       "related": [
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "tío"
         },
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "absalon",
+          "rel": "a quien sirvió"
         },
         {
           "id": "joab",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "quien lo asesinó"
         }
       ]
     },
@@ -668,16 +648,16 @@
       "properName": true,
       "related": [
         {
-          "id": "juda",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "israel",
+          "rel": "lugar del relato"
         },
         {
-          "id": "jerusalen",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jacob",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "aquis",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "edom",
+          "rel": "lugar del relato"
         }
       ]
     },
@@ -692,16 +672,12 @@
       "properName": true,
       "related": [
         {
-          "id": "araba",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jonas",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "hamat",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "gat",
+          "rel": "lugar del relato"
         }
       ]
     },
@@ -716,16 +692,12 @@
       "properName": true,
       "related": [
         {
-          "id": "absalon",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "amnon",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "talmai",
+          "rel": "hijo"
         },
         {
           "id": "gesur",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "su reino"
         }
       ]
     },
@@ -764,12 +736,12 @@
       "properName": true,
       "related": [
         {
-          "id": "isai",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "isaias",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "isaias",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "isai",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -784,16 +756,16 @@
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jordan",
+          "rel": "lugar del mismo relato"
         },
         {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "josias",
+          "rel": "hijo"
         },
         {
-          "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "juda",
+          "rel": "su reino"
         }
       ]
     },
@@ -837,16 +809,8 @@
       "properName": false,
       "related": [
         {
-          "id": "adramelec",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "asima",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "sefarvaim",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -861,16 +825,12 @@
       "properName": true,
       "related": [
         {
+          "id": "benjamin",
+          "rel": "lugar del mismo relato"
+        },
+        {
           "id": "abiatar",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "salomon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -905,16 +865,16 @@
       "properName": true,
       "related": [
         {
+          "id": "filisteos",
+          "rel": "en el mismo relato"
+        },
+        {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
         },
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "ner",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "gat",
+          "rel": "su reino"
         }
       ]
     },
@@ -929,16 +889,8 @@
       "properName": true,
       "related": [
         {
-          "id": "sedequias",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jordan",
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -953,16 +905,16 @@
       "properName": true,
       "related": [
         {
-          "id": "siria",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "hadad-ezer",
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "eliaquim",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ben-adad",
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "damasco",
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -979,11 +931,7 @@
       "related": [
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "ner",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -1026,16 +974,16 @@
       "properName": true,
       "related": [
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "gabaonitas",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "gad",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "rizpa",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "mefiboset",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "saul",
+          "rel": "padre o madre"
         }
       ]
     },
@@ -1050,16 +998,16 @@
       "properName": true,
       "related": [
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "ela",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "tirsa",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del relato"
+        },
+        {
+          "id": "zimri",
+          "rel": "mató"
+        },
+        {
+          "id": "asa",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -1072,16 +1020,12 @@
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "baasa",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "templo",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "juda",
+          "rel": "su reino"
         }
       ]
     },
@@ -1096,16 +1040,16 @@
       "properName": true,
       "related": [
         {
-          "id": "abisai",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "gabaon",
+          "rel": "lugar del relato"
         },
         {
           "id": "abner",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lo mató"
         },
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "joab",
+          "rel": "hermano"
         }
       ]
     },
@@ -1120,16 +1064,12 @@
       "properName": true,
       "related": [
         {
-          "id": "acbor",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "josias",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "ahicam",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "hulda",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -1145,16 +1085,16 @@
       "properName": true,
       "related": [
         {
-          "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "gat",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
+        },
+        {
+          "id": "dagon",
+          "rel": "ligado en el relato"
+        },
+        {
+          "id": "arca",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -1169,16 +1109,16 @@
       "properName": false,
       "related": [
         {
+          "id": "israel",
+          "rel": "ligado en el relato"
+        },
+        {
+          "id": "jacob",
+          "rel": "ligado en el relato"
+        },
+        {
           "id": "baal",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "templo",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -1193,16 +1133,12 @@
       "properName": false,
       "related": [
         {
-          "id": "adramelec",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "samaria",
+          "rel": "ligado en el relato"
         },
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "anamelec",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "hamat",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -1217,16 +1153,16 @@
       "properName": true,
       "related": [
         {
-          "id": "siria",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ezequias",
+          "rel": "en el relato del lugar"
         },
         {
           "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del mismo relato"
+        },
+        {
+          "id": "jacob",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -1242,16 +1178,16 @@
       "properName": false,
       "related": [
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salomon",
+          "rel": "ligado en el relato"
         },
         {
-          "id": "samuel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "israel",
+          "rel": "ligado en el relato"
         },
         {
-          "id": "baal",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jacob",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -1266,16 +1202,16 @@
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "samaria",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del mismo relato"
+        },
+        {
+          "id": "asiria",
+          "rel": "ligado a ese lugar"
+        },
+        {
+          "id": "siria",
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -1292,15 +1228,11 @@
       "related": [
         {
           "id": "uzias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
         },
         {
-          "id": "natan",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "sadoc",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "juda",
+          "rel": "lugar del relato"
         }
       ]
     },
@@ -1313,16 +1245,16 @@
       "properName": false,
       "related": [
         {
-          "id": "asera",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jezabel",
+          "rel": "ligado en el relato"
         },
         {
           "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
+        },
+        {
+          "id": "jacob",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -1338,15 +1270,15 @@
       "related": [
         {
           "id": "absalon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado a ese lugar"
+        },
+        {
+          "id": "efrain",
+          "rel": "lugar del mismo relato"
         },
         {
           "id": "amnon",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "baal",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "muerto por él/ella"
         }
       ]
     },
@@ -1361,16 +1293,12 @@
       "properName": true,
       "related": [
         {
-          "id": "baal",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "filisteos",
+          "rel": "en el relato del lugar"
         },
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado a ese lugar"
         }
       ]
     },
@@ -1385,16 +1313,16 @@
       "properName": false,
       "related": [
         {
-          "id": "baal",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ocozias",
+          "rel": "ligado en el relato"
         },
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "israel",
+          "rel": "ligado en el relato"
         },
         {
-          "id": "elias",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jacob",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -1409,16 +1337,16 @@
       "properName": true,
       "related": [
         {
-          "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "baal",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "quiriat-jearim",
+          "rel": "lugar del mismo relato"
         },
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado a ese lugar"
+        },
+        {
+          "id": "arca",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -1433,16 +1361,12 @@
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "is-boset",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "recab",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salomon",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -1457,16 +1381,16 @@
       "properName": true,
       "related": [
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "israel",
+          "rel": "su reino"
         },
         {
-          "id": "jeroboam",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jacob",
+          "rel": "su reino"
         },
         {
-          "id": "roboam",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "nadab",
+          "rel": "muerto por él/ella"
         }
       ]
     },
@@ -1482,16 +1406,12 @@
       "properName": true,
       "related": [
         {
-          "id": "joaquin",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "nabucodonosor",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "evil-merodac",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jerusalen",
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -1504,16 +1424,16 @@
       "properName": true,
       "related": [
         {
+          "id": "benjamin",
+          "rel": "su pueblo"
+        },
+        {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "gera",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "simei",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -1526,16 +1446,12 @@
       "properName": true,
       "related": [
         {
-          "id": "babilonia",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "berodac-baladan",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hijo"
         },
         {
-          "id": "dan",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "babilonia",
+          "rel": "su reino"
         }
       ]
     },
@@ -1550,16 +1466,12 @@
       "properName": true,
       "related": [
         {
-          "id": "baal",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "sisara",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "egipto",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "jefte",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "elat",
+          "rel": "lugar del relato"
         }
       ]
     },
@@ -1574,16 +1486,16 @@
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "mahanaim",
+          "rel": "lugar del relato"
         },
         {
           "id": "galaad",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del relato"
         },
         {
-          "id": "salomon",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -1598,16 +1510,12 @@
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "gabaonitas",
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "baana",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "recab",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "is-boset",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -1623,16 +1531,16 @@
       "properName": true,
       "related": [
         {
+          "id": "juda",
+          "rel": "lugar del mismo relato"
+        },
+        {
           "id": "seba",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "samuel",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "dan",
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -1648,16 +1556,16 @@
       "properName": true,
       "related": [
         {
-          "id": "isai",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "samuel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "isai",
+          "rel": "su ciudad"
+        },
+        {
+          "id": "juda",
+          "rel": "su pueblo"
         }
       ]
     },
@@ -1673,16 +1581,16 @@
       "properName": true,
       "related": [
         {
-          "id": "siria",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "hazael",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del relato"
+        },
+        {
+          "id": "jacob",
+          "rel": "en el mismo relato"
+        },
+        {
+          "id": "siria",
+          "rel": "lugar del relato"
         }
       ]
     },
@@ -1695,16 +1603,16 @@
       "properName": true,
       "related": [
         {
+          "id": "jerusalen",
+          "rel": "lugar del mismo relato"
+        },
+        {
+          "id": "gabaa",
+          "rel": "lugar del mismo relato"
+        },
+        {
           "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "samuel",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -1721,15 +1629,11 @@
       "related": [
         {
           "id": "babilonia",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "su reino"
         },
         {
-          "id": "baladan",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "dan",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ezequias",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -1744,16 +1648,16 @@
       "properName": true,
       "related": [
         {
-          "id": "amon",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "maaca",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "aram",
+          "rel": "lugar del mismo relato"
         },
         {
-          "id": "tob",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "siria",
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -1768,16 +1672,16 @@
       "properName": true,
       "related": [
         {
-          "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "carreta",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         },
         {
-          "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "arca",
+          "rel": "ligado en el relato"
+        },
+        {
+          "id": "juda",
+          "rel": "su pueblo"
         }
       ]
     },
@@ -1794,15 +1698,15 @@
       "related": [
         {
           "id": "jeroboam",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
+        },
+        {
+          "id": "eliseo",
+          "rel": "en el relato del lugar"
         },
         {
           "id": "roboam",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "juda",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -1847,15 +1751,15 @@
       "related": [
         {
           "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del mismo relato"
         },
         {
           "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jabes",
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -1871,15 +1775,11 @@
       "related": [
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
         },
         {
           "id": "seba",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "benjamin",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hijo"
         }
       ]
     },
@@ -1894,8 +1794,12 @@
       "properName": true,
       "related": [
         {
-          "id": "jaquin",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salomon",
+          "rel": "en el mismo relato"
+        },
+        {
+          "id": "templo",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -1911,11 +1815,15 @@
       "related": [
         {
           "id": "jedida",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "madre de Josías"
         },
         {
           "id": "josias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hijo"
+        },
+        {
+          "id": "juda",
+          "rel": "su pueblo"
         }
       ]
     },
@@ -1928,8 +1836,16 @@
       "properName": true,
       "related": [
         {
+          "id": "galilea",
+          "rel": "lugar del mismo relato"
+        },
+        {
+          "id": "salomon",
+          "rel": "en el relato del lugar"
+        },
+        {
           "id": "hiram",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -1945,16 +1861,16 @@
       "properName": true,
       "related": [
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "eliseo",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "elias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado a ese lugar"
+        },
+        {
+          "id": "baal",
+          "rel": "ligado en el relato"
+        },
+        {
+          "id": "eli",
+          "rel": "ligado a ese lugar"
         }
       ]
     },
@@ -1969,16 +1885,12 @@
       "properName": false,
       "related": [
         {
+          "id": "filisteos",
+          "rel": "ligado en el relato"
+        },
+        {
           "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -1994,15 +1906,11 @@
       "related": [
         {
           "id": "jerusalen",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del mismo relato"
         },
         {
-          "id": "asera",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "baal",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "asa",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -2037,16 +1945,16 @@
       "properName": true,
       "related": [
         {
+          "id": "carmelo",
+          "rel": "lugar del mismo relato"
+        },
+        {
+          "id": "elias",
+          "rel": "ligado a ese lugar"
+        },
+        {
           "id": "baal",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "cis",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -2062,16 +1970,16 @@
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "samaria",
+          "rel": "lugar del mismo relato"
         },
         {
-          "id": "gabaonitas",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "asiria",
+          "rel": "ligado a ese lugar"
         },
         {
-          "id": "gabaon",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "siria",
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -2084,16 +1992,16 @@
       "properName": false,
       "related": [
         {
+          "id": "filisteos",
+          "rel": "ligado en el relato"
+        },
+        {
+          "id": "asdod",
+          "rel": "ligado en el relato"
+        },
+        {
           "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "templo",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "ela",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -2108,16 +2016,16 @@
       "properName": true,
       "related": [
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "hadad-ezer",
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "eliseo",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "hazael",
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "ben-adad",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "hadad",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -2130,16 +2038,12 @@
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jeroboam",
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "jordan",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "roboam",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -2207,11 +2111,11 @@
       "related": [
         {
           "id": "eleazar",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hijo"
         },
         {
-          "id": "pas-damim",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "su rey"
         }
       ]
     },
@@ -2224,16 +2128,16 @@
       "properName": true,
       "related": [
         {
-          "id": "edom",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "su rey"
         },
         {
-          "id": "nob",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ahimelec",
+          "rel": "a quien denunció"
+        },
+        {
+          "id": "edom",
+          "rel": "su pueblo"
         }
       ]
     },
@@ -2249,11 +2153,7 @@
       "related": [
         {
           "id": "eliseo",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -2269,16 +2169,12 @@
       "properName": true,
       "related": [
         {
+          "id": "samuel",
+          "rel": "en el relato del lugar"
+        },
+        {
           "id": "afec",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -2293,16 +2189,16 @@
       "properName": true,
       "related": [
         {
-          "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "baal-zebub",
+          "rel": "ligado en el relato"
         },
         {
           "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "gat",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ocozias",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -2317,16 +2213,12 @@
       "properName": true,
       "related": [
         {
-          "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "ela",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "juda",
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -2341,16 +2233,16 @@
       "properName": false,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "goliat",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         },
         {
-          "id": "nob",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "samuel",
+          "rel": "ligado en el relato"
+        },
+        {
+          "id": "david",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -2365,16 +2257,12 @@
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "elat",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "absalon",
+          "rel": "en el relato del lugar"
         },
         {
           "id": "elcana",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -2390,15 +2278,15 @@
       "related": [
         {
           "id": "salomon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "roboam",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "necao",
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "sisac",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -2414,16 +2302,8 @@
       "properName": true,
       "related": [
         {
-          "id": "ela",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ezion-geber",
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -2465,15 +2345,15 @@
       "related": [
         {
           "id": "abinadab",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "padre o madre"
+        },
+        {
+          "id": "nadab",
+          "rel": "en el mismo relato"
         },
         {
           "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -2486,16 +2366,12 @@
       "properName": true,
       "related": [
         {
-          "id": "damasco",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jerusalen",
+          "rel": "lugar del relato"
         },
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "rezon",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "padre o madre"
         }
       ]
     },
@@ -2526,16 +2402,16 @@
       "properName": true,
       "related": [
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ezequias",
+          "rel": "su rey"
         },
         {
           "id": "rabsaces",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
         },
         {
           "id": "hilcias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "padre o madre"
         }
       ]
     },
@@ -2578,16 +2454,16 @@
       "properName": true,
       "related": [
         {
-          "id": "elat",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "israel",
+          "rel": "su reino"
         },
         {
-          "id": "samuel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jacob",
+          "rel": "su reino"
         },
         {
-          "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "baasa",
+          "rel": "padre o madre"
         }
       ]
     },
@@ -2660,16 +2536,12 @@
       "properName": true,
       "related": [
         {
-          "id": "abiatar",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jerusalen",
+          "rel": "lugar del mismo relato"
         },
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "husai",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "adonias",
+          "rel": "ligado a ese lugar"
         }
       ]
     },
@@ -2700,12 +2572,12 @@
       "properName": true,
       "related": [
         {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salomon",
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "templo",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -2742,11 +2614,11 @@
       "related": [
         {
           "id": "babilonia",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "su reino"
         },
         {
           "id": "joaquin",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -2785,16 +2657,12 @@
       "properName": true,
       "related": [
         {
+          "id": "salomon",
+          "rel": "en el relato del lugar"
+        },
+        {
           "id": "elat",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "ela",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "hiram",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -2865,16 +2733,12 @@
       "properName": true,
       "related": [
         {
-          "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "benjamin",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del mismo relato"
         },
         {
-          "id": "elat",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "saul",
+          "rel": "su pueblo"
         }
       ]
     },
@@ -2891,15 +2755,15 @@
       "related": [
         {
           "id": "gabaon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del relato"
+        },
+        {
+          "id": "david",
+          "rel": "en el mismo relato"
         },
         {
           "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -2914,16 +2778,16 @@
       "properName": true,
       "related": [
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "salomon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "gabaonitas",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "abner",
+          "rel": "en el relato del lugar"
+        },
+        {
+          "id": "joab",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -2936,16 +2800,12 @@
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jordan",
+          "rel": "lugar del relato"
         },
         {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "su rey o pueblo"
         }
       ]
     },
@@ -2958,16 +2818,16 @@
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "gad",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "manahem",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hijo"
+        },
+        {
+          "id": "tirsa",
+          "rel": "lugar del relato"
+        },
+        {
+          "id": "ana",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -2982,16 +2842,16 @@
       "properName": true,
       "related": [
         {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "barzilai",
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "mahanaim",
+          "rel": "lugar del mismo relato"
         },
         {
-          "id": "jabes",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jordan",
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -3006,12 +2866,16 @@
       "properName": true,
       "related": [
         {
-          "id": "hiram",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salomon",
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "salomon",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "israel",
+          "rel": "lugar del mismo relato"
+        },
+        {
+          "id": "jacob",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -3026,16 +2890,16 @@
       "properName": true,
       "related": [
         {
-          "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "asdod",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "goliat",
+          "rel": "su ciudad"
+        },
+        {
+          "id": "aquis",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -3048,16 +2912,12 @@
       "properName": true,
       "related": [
         {
-          "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "benjamin",
+          "rel": "su pueblo"
         },
         {
-          "id": "jonatan",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "natan",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "micmas",
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -3070,16 +2930,16 @@
       "properName": true,
       "related": [
         {
-          "id": "geba",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salomon",
+          "rel": "en el relato del lugar"
         },
         {
           "id": "hiram",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "salomon",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "geba",
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -3094,16 +2954,16 @@
       "properName": true,
       "related": [
         {
+          "id": "nabucodonosor",
+          "rel": "en el mismo relato"
+        },
+        {
           "id": "ahicam",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "padre o madre"
         },
         {
-          "id": "dan",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "nabuzaradan",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ismael",
+          "rel": "lo mató"
         }
       ]
     },
@@ -3116,16 +2976,12 @@
       "properName": true,
       "related": [
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "bahurim",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del relato"
         },
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "simei",
+          "rel": "hijo"
         }
       ]
     },
@@ -3141,15 +2997,15 @@
       "related": [
         {
           "id": "absalon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "nieto"
         },
         {
-          "id": "amiud",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "talmai",
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "amnon",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "aram",
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -3163,15 +3019,7 @@
       "related": [
         {
           "id": "salomon",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "hazor",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -3186,16 +3034,12 @@
       "properName": true,
       "related": [
         {
-          "id": "naaman",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "eliseo",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "su señor"
         },
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "naaman",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -3208,16 +3052,16 @@
       "properName": true,
       "related": [
         {
+          "id": "jerusalen",
+          "rel": "lugar del mismo relato"
+        },
+        {
           "id": "salomon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "natan",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "sadoc",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ana",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -3232,16 +3076,16 @@
       "properName": true,
       "related": [
         {
+          "id": "eliseo",
+          "rel": "en el relato del lugar"
+        },
+        {
           "id": "samuel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado a ese lugar"
         },
         {
-          "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "betel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "elias",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -3279,15 +3123,15 @@
       "related": [
         {
           "id": "asiria",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado a ese lugar"
         },
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "israel",
+          "rel": "lugar del mismo relato"
         },
         {
-          "id": "habor",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jacob",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -3302,16 +3146,12 @@
       "properName": true,
       "related": [
         {
-          "id": "benjamin",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "gabaa",
+          "rel": "lugar del mismo relato"
         },
         {
-          "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "jonatan",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "saul",
+          "rel": "su pueblo"
         }
       ]
     },
@@ -3324,16 +3164,16 @@
       "properName": true,
       "related": [
         {
-          "id": "asiria",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "israel",
+          "rel": "lugar del mismo relato"
         },
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jacob",
+          "rel": "en el relato del lugar"
         },
         {
           "id": "gozan",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -3346,16 +3186,16 @@
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salomon",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "hadad-ezer",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "aram",
+          "rel": "lugar del relato"
         },
         {
           "id": "edom",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del relato"
         }
       ]
     },
@@ -3371,15 +3211,11 @@
       "related": [
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
         },
         {
-          "id": "hadad",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "damasco",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "zoba",
+          "rel": "su reino"
         }
       ]
     },
@@ -3412,16 +3248,12 @@
       "properName": true,
       "related": [
         {
-          "id": "asiria",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "israel",
+          "rel": "lugar del mismo relato"
         },
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "gozan",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jacob",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -3436,16 +3268,12 @@
       "properName": true,
       "related": [
         {
-          "id": "asiria",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salomon",
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "ava",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "babilonia",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -3458,16 +3286,12 @@
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "siria",
+          "rel": "lugar del relato"
         },
         {
           "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "baasa",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -3481,15 +3305,15 @@
       "related": [
         {
           "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del relato"
         },
         {
           "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
         },
         {
-          "id": "eliseo",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ungido",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -3502,16 +3326,8 @@
       "properName": true,
       "related": [
         {
-          "id": "absalon",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "amnon",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "baal",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salomon",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -3525,15 +3341,11 @@
       "related": [
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "abner",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "ner",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "juda",
+          "rel": "su ciudad"
         }
       ]
     },
@@ -3550,7 +3362,7 @@
       "related": [
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado a ese lugar"
         }
       ]
     },
@@ -3563,16 +3375,12 @@
       "properName": true,
       "related": [
         {
-          "id": "abiram",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "betel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "su pueblo"
         },
         {
-          "id": "josue",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "abiram",
+          "rel": "hijo"
         }
       ]
     },
@@ -3587,16 +3395,8 @@
       "properName": true,
       "related": [
         {
-          "id": "templo",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "eliaquim",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "josias",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -3637,15 +3437,15 @@
       "related": [
         {
           "id": "salomon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         },
         {
           "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         },
         {
           "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -3660,12 +3460,12 @@
       "properName": true,
       "related": [
         {
-          "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "elias",
+          "rel": "ligado a ese lugar"
         },
         {
-          "id": "moises",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "eli",
+          "rel": "ligado a ese lugar"
         }
       ]
     },
@@ -3680,16 +3480,12 @@
       "properName": true,
       "related": [
         {
+          "id": "josias",
+          "rel": "rey a quien habló"
+        },
+        {
           "id": "jerusalen",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "juda",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "acbor",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "donde profetizó"
         }
       ]
     },
@@ -3704,16 +3500,12 @@
       "properName": true,
       "related": [
         {
-          "id": "dan",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ahitofel",
+          "rel": "en el mismo relato"
         },
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "absalon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "amigo"
         }
       ]
     },
@@ -3726,16 +3518,16 @@
       "properName": true,
       "related": [
         {
-          "id": "juda",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "meguido",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del mismo relato"
         },
         {
           "id": "ocozias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
+        },
+        {
+          "id": "juda",
+          "rel": "huyó"
         }
       ]
     },
@@ -3770,16 +3562,12 @@
       "properName": true,
       "related": [
         {
-          "id": "acab",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "josafat",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "miqueas",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hijo"
+        },
+        {
+          "id": "acab",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -3820,16 +3608,12 @@
       "properName": true,
       "related": [
         {
-          "id": "ahias",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "baasa",
+          "rel": "en el relato del lugar"
         },
         {
           "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "baasa",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -3860,16 +3644,12 @@
       "properName": true,
       "related": [
         {
-          "id": "isai",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ezequias",
+          "rel": "su rey"
         },
         {
-          "id": "asiria",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "siria",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "amoz",
+          "rel": "padre o madre"
         }
       ]
     },
@@ -3885,15 +3665,15 @@
       "related": [
         {
           "id": "gedalias",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "mizpa",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "muerto por él/ella"
         },
         {
           "id": "netanias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "padre o madre"
+        },
+        {
+          "id": "mizpa",
+          "rel": "lugar del relato"
         }
       ]
     },
@@ -3932,16 +3712,16 @@
       "properName": true,
       "related": [
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "padre o madre"
         },
         {
           "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "padre o madre"
+        },
+        {
+          "id": "elat",
+          "rel": "lugar del relato"
         }
       ]
     },
@@ -3956,16 +3736,16 @@
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "abisai",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "absalon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
+        },
+        {
+          "id": "david",
+          "rel": "en el mismo relato"
+        },
+        {
+          "id": "gat",
+          "rel": "lugar del relato"
         }
       ]
     },
@@ -3981,16 +3761,12 @@
       "properName": true,
       "related": [
         {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "galaad",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del mismo relato"
+        },
+        {
+          "id": "saul",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -4006,15 +3782,11 @@
       "related": [
         {
           "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del relato"
         },
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "samuel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "arca",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -4029,8 +3801,12 @@
       "properName": true,
       "related": [
         {
+          "id": "templo",
+          "rel": "ligado en el relato"
+        },
+        {
           "id": "boaz",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -4046,11 +3822,11 @@
       "related": [
         {
           "id": "boscat",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del relato"
         },
         {
           "id": "josias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hijo"
         }
       ]
     },
@@ -4065,16 +3841,12 @@
       "properName": true,
       "related": [
         {
-          "id": "baal",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "galaad",
+          "rel": "lugar del relato"
         },
         {
-          "id": "barac",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "egipto",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "elat",
+          "rel": "lugar del relato"
         }
       ]
     },
@@ -4144,15 +3916,7 @@
       "related": [
         {
           "id": "baal",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "barac",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "egipto",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -4218,15 +3982,11 @@
       "related": [
         {
           "id": "acab",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "su ciudad"
         },
         {
-          "id": "jezabel",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "nabot",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jehu",
+          "rel": "ejecutó"
         }
       ]
     },
@@ -4268,16 +4028,16 @@
       "properName": true,
       "related": [
         {
-          "id": "acaz",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "cis",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "egipto",
+          "rel": "lugar del relato"
         },
         {
           "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "su reino"
+        },
+        {
+          "id": "jacob",
+          "rel": "su reino"
         }
       ]
     },
@@ -4292,16 +4052,16 @@
       "properName": true,
       "related": [
         {
-          "id": "acaz",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "nabucodonosor",
+          "rel": "su señor"
         },
         {
-          "id": "egipto",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "josias",
+          "rel": "padre o madre"
         },
         {
-          "id": "eliaquim",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "juda",
+          "rel": "su reino"
         }
       ]
     },
@@ -4317,16 +4077,16 @@
       "properName": true,
       "related": [
         {
-          "id": "babilonia",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "evil-merodac",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
         },
         {
-          "id": "jerusalen",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "babilonia",
+          "rel": "lugar del relato"
+        },
+        {
+          "id": "juda",
+          "rel": "su reino"
         }
       ]
     },
@@ -4339,16 +4099,16 @@
       "properName": true,
       "related": [
         {
-          "id": "abiam",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "abias",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "beerseba",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del relato"
+        },
+        {
+          "id": "haguit",
+          "rel": "hijo"
+        },
+        {
+          "id": "samuel",
+          "rel": "padre o madre"
         }
       ]
     },
@@ -4363,16 +4123,12 @@
       "properName": true,
       "related": [
         {
-          "id": "templo",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "josaba",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "adonias",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "salomon",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "joas",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -4387,16 +4143,16 @@
       "properName": true,
       "related": [
         {
-          "id": "nadab",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "amnon",
+          "rel": "amigo"
         },
         {
-          "id": "jehu",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "nadab",
+          "rel": "en el mismo relato"
         },
         {
           "id": "recab",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "padre o madre"
         }
       ]
     },
@@ -4436,15 +4192,15 @@
       "related": [
         {
           "id": "amitai",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "padre o madre"
         },
         {
-          "id": "araba",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ninive",
+          "rel": "lugar del relato"
         },
         {
-          "id": "hamat",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "itai",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -4459,16 +4215,16 @@
       "properName": true,
       "related": [
         {
-          "id": "juda",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "josafat",
+          "rel": "padre o madre"
         },
         {
           "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "su reino"
         },
         {
           "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "su reino"
         }
       ]
     },
@@ -4481,16 +4237,16 @@
       "properName": true,
       "related": [
         {
-          "id": "dan",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "eliseo",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "israel",
+          "rel": "lugar del mismo relato"
+        },
+        {
+          "id": "jacob",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -4505,16 +4261,12 @@
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "joram",
+          "rel": "padre o madre"
         },
         {
           "id": "joas",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -4529,16 +4281,16 @@
       "properName": true,
       "related": [
         {
-          "id": "safat",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ahilud",
+          "rel": "padre o madre"
         },
         {
-          "id": "joram",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "acab",
+          "rel": "en el mismo relato"
         },
         {
           "id": "juda",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "su reino"
         }
       ]
     },
@@ -4552,7 +4304,12 @@
       "kind": "persona",
       "note": "El principal de los tres valientes de David.",
       "properName": true,
-      "related": []
+      "related": [
+        {
+          "id": "david",
+          "rel": "su rey"
+        }
+      ]
     },
     {
       "id": "josue",
@@ -4565,16 +4322,12 @@
       "properName": true,
       "related": [
         {
-          "id": "abiram",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "moises",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "betel",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "hiel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "pacto",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -4614,15 +4367,15 @@
       "related": [
         {
           "id": "azarias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "padre o madre"
         },
         {
           "id": "uzias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "padre o madre"
         },
         {
-          "id": "cis",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "juda",
+          "rel": "su reino"
         }
       ]
     },
@@ -4639,15 +4392,15 @@
       "related": [
         {
           "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "su reino"
         },
         {
           "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "su reino"
         },
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "joacaz",
+          "rel": "padre o madre"
         }
       ]
     },
@@ -4684,16 +4437,16 @@
       "properName": true,
       "related": [
         {
-          "id": "asiria",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "pul",
+          "rel": "ligado a ese lugar"
+        },
+        {
+          "id": "tiglat-pileser",
+          "rel": "ligado a ese lugar"
         },
         {
           "id": "damasco",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "rezin",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -4708,12 +4461,12 @@
       "properName": true,
       "related": [
         {
-          "id": "amasias",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "senaquerib",
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "aquis",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "juda",
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -4729,16 +4482,16 @@
       "properName": true,
       "related": [
         {
-          "id": "jeroboam",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "templo",
+          "rel": "ligado en el relato"
+        },
+        {
+          "id": "arca",
+          "rel": "ligado en el relato"
         },
         {
           "id": "levi",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "roboam",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del relato"
         }
       ]
     },
@@ -4751,16 +4504,16 @@
       "properName": true,
       "related": [
         {
-          "id": "jeroboam",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "levitas",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "roboam",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "moises",
+          "rel": "en el relato del lugar"
+        },
+        {
+          "id": "aaron",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -4775,12 +4528,12 @@
       "properName": true,
       "related": [
         {
-          "id": "edom",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "joram",
+          "rel": "en el relato del lugar"
         },
         {
           "id": "juda",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "su ciudad"
         }
       ]
     },
@@ -4797,15 +4550,15 @@
       "related": [
         {
           "id": "jerusalen",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         },
         {
           "id": "ela",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         },
         {
           "id": "ezequias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -4820,16 +4573,12 @@
       "properName": true,
       "related": [
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salomon",
+          "rel": "en el relato del lugar"
         },
         {
           "id": "hiram",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "salomon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -4844,16 +4593,16 @@
       "properName": true,
       "related": [
         {
-          "id": "amon",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "absalon",
+          "rel": "hijo"
         },
         {
-          "id": "bet-rehob",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "esposo"
         },
         {
-          "id": "tob",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "juda",
+          "rel": "lugar del relato"
         }
       ]
     },
@@ -4866,16 +4615,16 @@
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "is-boset",
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "dan",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "absalon",
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "galaad",
+          "rel": "su ciudad"
         }
       ]
     },
@@ -4890,16 +4639,16 @@
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "israel",
+          "rel": "su reino"
         },
         {
-          "id": "samaria",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jacob",
+          "rel": "su reino"
         },
         {
-          "id": "gad",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salum",
+          "rel": "muerto por él/ella"
         }
       ]
     },
@@ -4931,12 +4680,8 @@
       "properName": false,
       "related": [
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "templo",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -4951,16 +4696,16 @@
       "properName": true,
       "related": [
         {
-          "id": "joaquin",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "matan",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "nabucodonosor",
+          "rel": "en el mismo relato"
         },
         {
           "id": "sedequias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
+        },
+        {
+          "id": "joaquin",
+          "rel": "sobrino"
         }
       ]
     },
@@ -4974,15 +4719,11 @@
       "related": [
         {
           "id": "benjamin",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del relato"
         },
         {
-          "id": "cis",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "samuel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "saul",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -4997,16 +4738,12 @@
       "properName": true,
       "related": [
         {
-          "id": "joaquin",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "joiada",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "matanias",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "sedequias",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "baal",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -5047,15 +4784,11 @@
       "related": [
         {
           "id": "josias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         },
         {
           "id": "necao",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -5090,16 +4823,16 @@
       "properName": true,
       "related": [
         {
-          "id": "cis",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jonatan",
+          "rel": "ligado a ese lugar"
+        },
+        {
+          "id": "natan",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -5114,16 +4847,12 @@
       "properName": false,
       "related": [
         {
-          "id": "amon",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "astoret",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "salomon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
+        },
+        {
+          "id": "amon",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -5138,16 +4867,16 @@
       "properName": true,
       "related": [
         {
-          "id": "amon",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jerusalen",
+          "rel": "lugar del mismo relato"
+        },
+        {
+          "id": "salomon",
+          "rel": "en el relato del lugar"
         },
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -5163,16 +4892,16 @@
       "properName": true,
       "related": [
         {
+          "id": "ramot",
+          "rel": "lugar del relato"
+        },
+        {
           "id": "acab",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
         },
         {
           "id": "imla",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "josafat",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "padre o madre"
         }
       ]
     },
@@ -5188,16 +4917,12 @@
       "properName": true,
       "related": [
         {
+          "id": "gedalias",
+          "rel": "en el relato del lugar"
+        },
+        {
           "id": "samuel",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -5210,16 +4935,8 @@
       "properName": true,
       "related": [
         {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -5252,15 +4969,15 @@
       "related": [
         {
           "id": "jerusalen",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         },
         {
           "id": "lugares-altos",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         },
         {
           "id": "quemos",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -5361,16 +5078,12 @@
       "properName": true,
       "related": [
         {
-          "id": "dan",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "nabucodonosor",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "uza",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "ahicam",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "templo",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -5383,16 +5096,16 @@
       "properName": true,
       "related": [
         {
-          "id": "jonadab",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "jeroboam",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "padre o madre"
+        },
+        {
+          "id": "israel",
+          "rel": "lugar del relato"
+        },
+        {
+          "id": "jacob",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -5407,16 +5120,12 @@
       "properName": true,
       "related": [
         {
-          "id": "amon",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "galaad",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "jabes",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del relato"
+        },
+        {
+          "id": "saul",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -5431,12 +5140,16 @@
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "samuel",
+          "rel": "ligado a ese lugar"
         },
         {
-          "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "en el relato del lugar"
+        },
+        {
+          "id": "rama",
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -5473,16 +5186,16 @@
       "properName": true,
       "related": [
         {
-          "id": "josias",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "meguido",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del relato"
         },
         {
-          "id": "acaz",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "egipto",
+          "rel": "lugar del relato"
+        },
+        {
+          "id": "josias",
+          "rel": "muerto por él/ella"
         }
       ]
     },
@@ -5497,16 +5210,8 @@
       "properName": true,
       "related": [
         {
-          "id": "hiram",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "templo",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "tiro",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "hazor",
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -5521,16 +5226,8 @@
       "properName": false,
       "related": [
         {
-          "id": "ela",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "ezequias",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "lugares-altos",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -5565,16 +5262,12 @@
       "properName": false,
       "related": [
         {
-          "id": "adramelec",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "samaria",
+          "rel": "ligado en el relato"
         },
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "anamelec",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "cuta",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -5590,15 +5283,11 @@
       "related": [
         {
           "id": "gedalias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "muerto por él/ella"
         },
         {
           "id": "ismael",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "mizpa",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hijo"
         }
       ]
     },
@@ -5611,16 +5300,8 @@
       "properName": false,
       "related": [
         {
-          "id": "adramelec",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "anamelec",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "samaria",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -5651,16 +5332,12 @@
       "properName": false,
       "related": [
         {
-          "id": "adramelec",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "senaquerib",
+          "rel": "ligado en el relato"
         },
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "esar-hadon",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "templo",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -5674,15 +5351,15 @@
       "related": [
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "huyó"
         },
         {
-          "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "doeg",
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "efod",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "asa",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -5697,8 +5374,16 @@
       "properName": true,
       "related": [
         {
-          "id": "senaquerib",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "asiria",
+          "rel": "lugar del mismo relato"
+        },
+        {
+          "id": "jonas",
+          "rel": "en el relato del lugar"
+        },
+        {
+          "id": "siria",
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -5711,16 +5396,16 @@
       "properName": true,
       "related": [
         {
+          "id": "jerusalen",
+          "rel": "lugar del relato"
+        },
+        {
           "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         },
         {
           "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -5735,16 +5420,16 @@
       "properName": true,
       "related": [
         {
-          "id": "juda",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "israel",
+          "rel": "su reino"
         },
         {
-          "id": "joram",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jacob",
+          "rel": "su reino"
         },
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "acab",
+          "rel": "padre o madre"
         }
       ]
     },
@@ -5759,8 +5444,8 @@
       "properName": true,
       "related": [
         {
-          "id": "hiram",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salomon",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -5818,16 +5503,16 @@
       "properName": true,
       "related": [
         {
-          "id": "samaria",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salmanasar",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "asiria",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "israel",
+          "rel": "su reino"
         },
         {
-          "id": "siria",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jacob",
+          "rel": "su reino"
         }
       ]
     },
@@ -5842,16 +5527,16 @@
       "properName": false,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "israel",
+          "rel": "ligado en el relato"
         },
         {
-          "id": "jonatan",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jacob",
+          "rel": "ligado en el relato"
         },
         {
-          "id": "natan",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "arca",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -5867,12 +5552,12 @@
       "properName": true,
       "related": [
         {
-          "id": "dodo",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "eleazar",
+          "rel": "ligado a ese lugar"
         },
         {
-          "id": "eleazar",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "dodo",
+          "rel": "padre o madre"
         }
       ]
     },
@@ -5887,16 +5572,16 @@
       "properName": true,
       "related": [
         {
-          "id": "ela",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "remalias",
+          "rel": "padre o madre"
         },
         {
-          "id": "oseas",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "israel",
+          "rel": "su reino"
         },
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jacob",
+          "rel": "su reino"
         }
       ]
     },
@@ -5932,15 +5617,15 @@
       "related": [
         {
           "id": "tiglat-pileser",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
         },
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "manahem",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "asiria",
+          "rel": "lugar del relato"
         }
       ]
     },
@@ -5955,12 +5640,12 @@
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "arca",
+          "rel": "ligado en el relato"
         },
         {
           "id": "uza",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado a ese lugar"
         }
       ]
     },
@@ -5975,16 +5660,12 @@
       "properName": false,
       "related": [
         {
-          "id": "jerusalen",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salomon",
+          "rel": "ligado en el relato"
         },
         {
-          "id": "lugares-altos",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "moloc",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "moab",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -5999,12 +5680,12 @@
       "properName": true,
       "related": [
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "elias",
+          "rel": "ligado a ese lugar"
         },
         {
-          "id": "elias",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "eli",
+          "rel": "ligado a ese lugar"
         }
       ]
     },
@@ -6020,8 +5701,12 @@
       "properName": false,
       "related": [
         {
+          "id": "templo",
+          "rel": "ligado en el relato"
+        },
+        {
           "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -6037,15 +5722,11 @@
       "related": [
         {
           "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "que descansó allí"
         },
         {
           "id": "abinadab",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "dueño de la casa"
         }
       ]
     },
@@ -6060,16 +5741,12 @@
       "properName": true,
       "related": [
         {
-          "id": "eliaquim",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "senaquerib",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "siria",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jerusalen",
+          "rel": "lugar del relato"
         }
       ]
     },
@@ -6086,15 +5763,11 @@
       "related": [
         {
           "id": "galaad",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "juda",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del mismo relato"
         },
         {
           "id": "acab",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -6110,15 +5783,15 @@
       "related": [
         {
           "id": "samuel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "su pueblo"
         },
         {
-          "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "baasa",
+          "rel": "en el relato del lugar"
         },
         {
           "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -6133,16 +5806,16 @@
       "properName": true,
       "related": [
         {
+          "id": "belen",
+          "rel": "lugar del relato"
+        },
+        {
+          "id": "jacob",
+          "rel": "esposo"
+        },
+        {
           "id": "pul",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "samuel",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -6159,16 +5832,12 @@
       "properName": false,
       "related": [
         {
-          "id": "tumores",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "filisteos",
+          "rel": "ligado en el relato"
         },
         {
           "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -6183,16 +5852,16 @@
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jonadab",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "baana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "nadab",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jehu",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -6228,16 +5897,16 @@
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "israel",
+          "rel": "su reino"
         },
         {
-          "id": "manahem",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jacob",
+          "rel": "su reino"
         },
         {
           "id": "peka",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hijo"
         }
       ]
     },
@@ -6251,15 +5920,15 @@
       "related": [
         {
           "id": "siria",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "su reino"
         },
         {
           "id": "acaz",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
         },
         {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "peka",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -6273,15 +5942,11 @@
       "related": [
         {
           "id": "damasco",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del relato"
         },
         {
-          "id": "eliada",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salomon",
+          "rel": "rey en Damasco"
         }
       ]
     },
@@ -6296,16 +5961,16 @@
       "properName": true,
       "related": [
         {
-          "id": "babilonia",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "nabucodonosor",
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "ela",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "sedequias",
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "acaz",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "hamat",
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -6320,16 +5985,16 @@
       "properName": true,
       "related": [
         {
+          "id": "damasco",
+          "rel": "lugar del mismo relato"
+        },
+        {
           "id": "naaman",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "templo",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "asa",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -6344,16 +6009,12 @@
       "properName": true,
       "related": [
         {
+          "id": "saul",
+          "rel": "su señor"
+        },
+        {
           "id": "armoni",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "gad",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hijo"
         }
       ]
     },
@@ -6392,16 +6053,8 @@
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "dan",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "gad",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jordan",
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -6482,16 +6135,8 @@
       "properName": true,
       "related": [
         {
-          "id": "hilcias",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "ner",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "templo",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "josias",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -6506,16 +6151,16 @@
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "samaria",
+          "rel": "lugar del relato"
         },
         {
           "id": "asiria",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "su reino"
+        },
+        {
+          "id": "oseas",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -6566,16 +6211,16 @@
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "zacarias",
+          "rel": "muerto por él/ella"
         },
         {
-          "id": "gad",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "israel",
+          "rel": "su reino"
         },
         {
-          "id": "gadi",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jacob",
+          "rel": "su reino"
         }
       ]
     },
@@ -6642,8 +6287,16 @@
       "properName": true,
       "related": [
         {
+          "id": "elias",
+          "rel": "en el relato del lugar"
+        },
+        {
           "id": "sidon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "su pueblo"
+        },
+        {
+          "id": "eli",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -6658,16 +6311,8 @@
       "properName": true,
       "related": [
         {
-          "id": "adramelec",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "esar-hadon",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "senaquerib",
+          "rel": "padre o madre"
         }
       ]
     },
@@ -6740,16 +6385,16 @@
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "beerseba",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "bicri",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "padre"
+        },
+        {
+          "id": "david",
+          "rel": "rey contra quien se rebeló"
+        },
+        {
+          "id": "joab",
+          "rel": "quien lo persiguió"
         }
       ]
     },
@@ -6764,16 +6409,12 @@
       "properName": true,
       "related": [
         {
-          "id": "eliaquim",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ezequias",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "hilcias",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "rabsaces",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -6812,16 +6453,16 @@
       "properName": true,
       "related": [
         {
-          "id": "asiria",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "adramelec",
+          "rel": "ligado en el relato"
         },
         {
-          "id": "ava",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "anamelec",
+          "rel": "ligado en el relato"
         },
         {
-          "id": "babilonia",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "samaria",
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -6834,16 +6475,12 @@
       "properName": true,
       "related": [
         {
-          "id": "abiram",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "betel",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "hiel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
+        },
+        {
+          "id": "ner",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -6858,12 +6495,12 @@
       "properName": true,
       "related": [
         {
-          "id": "edom",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "amasias",
+          "rel": "tomó"
         },
         {
-          "id": "ela",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "edom",
+          "rel": "su ciudad"
         }
       ]
     },
@@ -6879,15 +6516,15 @@
       "related": [
         {
           "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del relato"
         },
         {
           "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
         },
         {
           "id": "roboam",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -6902,12 +6539,12 @@
       "properName": true,
       "related": [
         {
-          "id": "omri",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "samaria",
+          "rel": "lugar del relato"
         },
         {
-          "id": "samaria",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "omri",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -6946,16 +6583,16 @@
       "properName": true,
       "related": [
         {
-          "id": "ahilud",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "nabuzaradan",
+          "rel": "ejecutó"
         },
         {
-          "id": "josafat",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "safat",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "uza",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -6968,16 +6605,16 @@
       "properName": true,
       "related": [
         {
-          "id": "amon",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jezabel",
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "astoret",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "sarepta",
+          "rel": "lugar del mismo relato"
         },
         {
-          "id": "milcom",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "etbaal",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -6992,16 +6629,16 @@
       "properName": true,
       "related": [
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "joas",
+          "rel": "ligado a ese lugar"
         },
         {
-          "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "juda",
+          "rel": "lugar del mismo relato"
         },
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "milo",
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -7016,16 +6653,16 @@
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "samuel",
+          "rel": "en el relato del lugar"
+        },
+        {
+          "id": "arca",
+          "rel": "ligado en el relato"
         },
         {
           "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "ela",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -7040,16 +6677,16 @@
       "properName": true,
       "related": [
         {
+          "id": "bahurim",
+          "rel": "lugar del relato"
+        },
+        {
+          "id": "salomon",
+          "rel": "en el mismo relato"
+        },
+        {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "jerusalen",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -7064,16 +6701,16 @@
       "properName": true,
       "related": [
         {
+          "id": "efrain",
+          "rel": "su ciudad"
+        },
+        {
           "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado a ese lugar"
         },
         {
           "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "roboam",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado a ese lugar"
         }
       ]
     },
@@ -7089,16 +6726,16 @@
       "properName": true,
       "related": [
         {
-          "id": "asiria",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "damasco",
+          "rel": "lugar del mismo relato"
         },
         {
           "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del mismo relato"
         },
         {
           "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -7113,16 +6750,12 @@
       "properName": true,
       "related": [
         {
-          "id": "salomon",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "roboam",
+          "rel": "en el mismo relato"
         },
         {
           "id": "templo",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "egipto",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -7137,16 +6770,12 @@
       "properName": true,
       "related": [
         {
-          "id": "adramelec",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jordan",
+          "rel": "lugar del mismo relato"
         },
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "anamelec",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "elat",
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -7161,16 +6790,12 @@
       "properName": false,
       "related": [
         {
-          "id": "adramelec",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "babilonia",
+          "rel": "ligado en el relato"
         },
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "anamelec",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "samaria",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -7185,16 +6810,12 @@
       "properName": true,
       "related": [
         {
-          "id": "astoret",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "barac",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "baal",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ana",
+          "rel": "en el mismo relato"
         }
       ]
     },
@@ -7210,16 +6831,8 @@
       "properName": false,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "templo",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -7232,12 +6845,12 @@
       "properName": true,
       "related": [
         {
-          "id": "betel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "elat",
+          "rel": "lugar del mismo relato"
         },
         {
           "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -7251,15 +6864,15 @@
       "related": [
         {
           "id": "absalon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "nieto"
         },
         {
-          "id": "amiud",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "gesur",
+          "rel": "su reino"
         },
         {
-          "id": "amnon",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "maaca",
+          "rel": "hijo"
         }
       ]
     },
@@ -7294,7 +6907,20 @@
       "kind": "lugar",
       "note": "Destino lejano de las naves de Salomón y Josafat.",
       "properName": true,
-      "related": []
+      "related": [
+        {
+          "id": "josafat",
+          "rel": "en el relato del lugar"
+        },
+        {
+          "id": "salomon",
+          "rel": "en el relato del lugar"
+        },
+        {
+          "id": "safat",
+          "rel": "en el relato del lugar"
+        }
+      ]
     },
     {
       "id": "tartac",
@@ -7307,16 +6933,8 @@
       "properName": false,
       "related": [
         {
-          "id": "adramelec",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "anamelec",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "samaria",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -7333,15 +6951,15 @@
       "related": [
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "cuta",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         },
         {
           "id": "joab",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
+        },
+        {
+          "id": "juda",
+          "rel": "su pueblo"
         }
       ]
     },
@@ -7380,7 +6998,11 @@
       "related": [
         {
           "id": "omri",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "rival"
+        },
+        {
+          "id": "israel",
+          "rel": "trono que disputó"
         }
       ]
     },
@@ -7395,12 +7017,12 @@
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "eufrates",
+          "rel": "lugar del mismo relato"
         },
         {
-          "id": "manahem",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salomon",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -7416,16 +7038,16 @@
       "properName": true,
       "related": [
         {
-          "id": "pul",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "damasco",
+          "rel": "lugar del relato"
         },
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "asiria",
+          "rel": "su reino"
         },
         {
-          "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "israel",
+          "rel": "lugar del relato"
         }
       ]
     },
@@ -7440,16 +7062,16 @@
       "properName": true,
       "related": [
         {
-          "id": "hiram",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salomon",
+          "rel": "en el relato del lugar"
         },
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "neftali",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "hiram",
+          "rel": "su ciudad"
         }
       ]
     },
@@ -7464,16 +7086,16 @@
       "properName": true,
       "related": [
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jeroboam",
+          "rel": "su reino"
         },
         {
-          "id": "baasa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "samaria",
+          "rel": "lugar del mismo relato"
         },
         {
-          "id": "arsa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "roboam",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -7486,16 +7108,8 @@
       "properName": true,
       "related": [
         {
-          "id": "amon",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "bet-rehob",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "maaca",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -7511,16 +7125,12 @@
       "properName": false,
       "related": [
         {
-          "id": "afec",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "filisteos",
+          "rel": "ligado en el relato"
         },
         {
           "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "ratones",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -7539,15 +7149,11 @@
       "related": [
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "samuel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         },
         {
           "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -7582,16 +7188,16 @@
       "properName": true,
       "related": [
         {
-          "id": "dan",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "abinadab",
+          "rel": "padre o madre"
         },
         {
-          "id": "nabuzaradan",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "nadab",
+          "rel": "en el mismo relato"
         },
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "arca",
+          "rel": "ligado en el relato"
         }
       ]
     },
@@ -7608,15 +7214,11 @@
       "related": [
         {
           "id": "azarias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el mismo relato"
         },
         {
-          "id": "natan",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "sadoc",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "juda",
+          "rel": "su reino"
         }
       ]
     },
@@ -7631,16 +7233,16 @@
       "properName": true,
       "related": [
         {
-          "id": "jabes",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "jeroboam",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "padre o madre"
         },
         {
-          "id": "roboam",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "israel",
+          "rel": "su reino"
+        },
+        {
+          "id": "jacob",
+          "rel": "su reino"
         }
       ]
     },
@@ -7655,16 +7257,8 @@
       "properName": true,
       "related": [
         {
-          "id": "dan",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "jordan",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "sucot",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del mismo relato"
         }
       ]
     },
@@ -7679,16 +7273,16 @@
       "properName": true,
       "related": [
         {
-          "id": "ahias",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jeroboam",
+          "rel": "su pueblo"
         },
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "roboam",
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "nabat",
+          "rel": "padre o madre"
         }
       ]
     },
@@ -7701,16 +7295,16 @@
       "properName": true,
       "related": [
         {
+          "id": "saul",
+          "rel": "señor de su casa"
+        },
+        {
+          "id": "mefiboset",
+          "rel": "a quien sirvió"
+        },
+        {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "jonatan",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "quien le encargó tierras"
         }
       ]
     },
@@ -7723,16 +7317,8 @@
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "jezabel",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "arsa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "tirsa",
+          "rel": "lugar del relato"
         }
       ]
     },
@@ -7747,16 +7333,16 @@
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "hadad-ezer",
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "en el relato del lugar"
         },
         {
           "id": "hadad",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -7771,16 +7357,12 @@
       "properName": true,
       "related": [
         {
+          "id": "en-rogel",
+          "rel": "lugar del mismo relato"
+        },
+        {
           "id": "adonias",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "natan",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -7795,16 +7377,16 @@
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "efrain",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lugar del relato"
         },
         {
-          "id": "elat",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "elcana",
+          "rel": "en el mismo relato"
+        },
+        {
+          "id": "rama",
+          "rel": "lugar del relato"
         }
       ]
     },
@@ -7819,16 +7401,12 @@
       "properName": true,
       "related": [
         {
+          "id": "salomon",
+          "rel": "en el relato del lugar"
+        },
+        {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "hadad",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "hadad-ezer",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         }
       ]
     },
@@ -7841,16 +7419,16 @@
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jonatan",
+          "rel": "en el relato del lugar"
         },
         {
-          "id": "jonatan",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "ligado a ese lugar"
         },
         {
           "id": "natan",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en el relato del lugar"
         }
       ]
     }

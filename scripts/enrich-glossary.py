@@ -930,6 +930,28 @@ REL: dict[str, list[tuple[str, str]]] = {
         ("jeroboam", "primer rey del norte"),
     ],
     "juda": [("israel", "el reino hermano"), ("jerusalen", "su capital"), ("david", "casa de")],
+    # Extra contextual links for terms that only had co-occurrence labels.
+    # Labels describe the related term relative to the entry (UI: "Other — label").
+    "abdias": [("acab", "su rey"), ("jezabel", "de quien escondió profetas"), ("elias", "contemporáneo")],
+    "abel-bet-maaca": [("joab", "quien la sitió"), ("seba", "sitiado allí"), ("bicri", "padre de Seba")],
+    "abisag": [("david", "rey a quien cuidó"), ("adonias", "quien la pidió"), ("sunem", "su pueblo")],
+    "abisai": [("sarvia", "madre"), ("joab", "hermano"), ("david", "su rey")],
+    "agag": [("saul", "quien lo perdonó"), ("samuel", "quien lo ejecutó")],
+    "adulam": [("david", "quien se escondió allí")],
+    "ahitofel": [("david", "su rey"), ("absalon", "a quien se pasó")],
+    "amasa": [("david", "tío"), ("absalon", "a quien sirvió"), ("joab", "quien lo asesinó")],
+    "doeg": [("saul", "su rey"), ("ahimelec", "a quien denunció"), ("edom", "su pueblo")],
+    "hiel": [("betel", "su pueblo"), ("abiram", "hijo"), ("jerico", "ciudad que reconstruyó")],
+    "hulda": [("josias", "rey a quien habló"), ("jerusalen", "donde profetizó")],
+    "rizpa": [("saul", "su señor"), ("armoni", "hijo")],
+    "ziba": [("saul", "señor de su casa"), ("mefiboset", "a quien sirvió"), ("david", "quien le encargó tierras")],
+    "tibni": [("omri", "rival"), ("israel", "trono que disputó")],
+    "seba": [("bicri", "padre"), ("david", "rey contra quien se rebeló"), ("joab", "quien lo persiguió")],
+    "quiriat-jearim": [("arca", "que descansó allí"), ("abinadab", "dueño de la casa")],
+    "abiam": [("roboam", "padre"), ("jeroboam", "rival"), ("juda", "su reino")],
+    "ahilud": [("josafat", "hijo (el cronista)")],
+    "abinadab": [("quiriat-jearim", "su pueblo"), ("arca", "en su casa"), ("eleazar", "hijo")],
+    "acbor": [("josias", "su rey"), ("hulda", "a quien consultó"), ("hilcias", "compañero")],
 }
 
 
@@ -1005,6 +1027,214 @@ def load_cards() -> list[tuple[str, str, str]]:
     return out
 
 
+def entry_forms(entry: dict) -> list[str]:
+    forms = [entry.get("term") or ""]
+    forms.extend(entry.get("aliases") or [])
+    # Longest first so "Abel-bet-maaca" wins over shorter fragments.
+    return sorted({f.strip() for f in forms if f and f.strip()}, key=len, reverse=True)
+
+
+def find_form_span(text: str, forms: list[str]) -> tuple[str, int, int] | None:
+    if not text:
+        return None
+    best: tuple[str, int, int] | None = None
+    for form in forms:
+        for m in re.finditer(re.escape(form), text, flags=re.IGNORECASE):
+            span = (form, m.start(), m.end())
+            if best is None or (span[2] - span[1]) > (best[2] - best[1]):
+                best = span
+            break
+    return best
+
+
+def clean_rel_label(label: str, limit: int = 42) -> str:
+    label = re.sub(r"\s+", " ", label).strip(" .;,:")
+    label = re.sub(r"^(que|y|o|en|de|del|la|el|los|las)\s+", "", label, flags=re.I)
+    if len(label) <= limit:
+        return label
+    cut = label[: limit - 1]
+    if " " in cut:
+        cut = cut.rsplit(" ", 1)[0]
+    return cut + "…"
+
+
+def rel_from_entry_note(note: str, form: str, start: int, end: int) -> str | None:
+    """Infer how the mentioned other relates to this entry, from the entry note."""
+    before = note[:start]
+    after = note[end:]
+    window_before = before[-56:]
+    window_after = after[:40]
+    paired = [
+        (r"hijo(?:s)? de\s+$", "padre o madre"),
+        (r"hija(?:s)? de\s+$", "padre o madre"),
+        (r"padre de\s+$", "hijo"),
+        (r"madre de\s+$", "hijo"),
+        (r"esposo de\s+$", "esposa"),
+        (r"esposa(?:\s+sidonia)?\s+de\s+$", "esposo"),
+        (r"hermano de\s+$", "hermano"),
+        (r"hermana de\s+$", "hermana"),
+        (r"nieto de\s+$", "abuelo"),
+        (r"abuelo de\s+$", "nieto"),
+        (r"concubina de\s+$", "su señor"),
+        (r"mayordomo de\s+$", "su rey"),
+        (r"siervo(?:s)? de\s+$", "su señor"),
+        (r"criado de\s+$", "su señor"),
+        (r"general de\s+$", "su rey"),
+        (r"consejero de\s+$", "su rey"),
+        (r"profeta de\s+$", "su rey o pueblo"),
+        (r"rey(?:\s+filisteo|\s+amalecita|\s+arameo)?\s+de\s+$", "su reino"),
+        (r"reina de\s+$", "su reino"),
+        (r"capital de\s+$", "su reino"),
+        (r"ciudad(?:\s+filistea)?\s+de\s+$", "su ciudad"),
+        (r"pueblo de\s+$", "su pueblo"),
+        (r"cueva donde\s+$", "allí en el relato"),
+        (r"donde\s+$", "ligado a ese lugar"),
+        (r"sitió a\s+$", "sitiado allí"),
+        (r"mató a\s+$", "muerto por él/ella"),
+        (r"perdonó a\s+$", "perdonado por él"),
+        (r"ungió a\s+$", "ungido por él"),
+        (r"enfrentó a\s+$", "enfrentado por él"),
+        (r"ayudó a\s+$", "ayudado por él"),
+        (r"rival de\s+$", "su rival"),
+        (r"amigo de\s+$", "amigo"),
+        (r"valiente(?:s)? de\s+$", "su rey"),
+        (r"sobrino de\s+$", "tío o tía"),
+        (r"tío de\s+$", "sobrino"),
+    ]
+    for pat, rel in paired:
+        if re.search(pat, window_before, flags=re.IGNORECASE):
+            return rel
+
+    # Action that starts right after the name: "Joab sitió…", "Samuel ejecutó…"
+    m = re.match(
+        r"^\s*,?\s*(sitió|mató|ungió|escondió|ayudó|enfrentó|tomó|fundó|"
+        r"gobernó|huyó|pidió|cuidó|denunció|perdonó|ejecutó|asesinó|"
+        r"reconstruyó|anunció|veló|encargó|se\s+pasó|se\s+rebeló|"
+        r"se\s+escondió|lo\s+mató|la\s+pidió)",
+        window_after,
+        flags=re.IGNORECASE,
+    )
+    if m:
+        return clean_rel_label(m.group(1))
+
+    # Relative clause: "a quien Saúl perdonó"
+    if re.search(r"\ba quien\s+$", window_before, flags=re.IGNORECASE):
+        m = re.match(
+            r"^\s*(perdonó|ejecutó|mató|ungió|sitió|enfrentó|ayudó|asesinó)",
+            window_after,
+            flags=re.IGNORECASE,
+        )
+        if m:
+            return clean_rel_label(m.group(1))
+
+    # Trailing apposition after comma: "Sarvia, madre de Joab"
+    m = re.match(
+        r"^\s*,\s*((?:padre|madre|hijo|hija|hermano|hermana|esposo|esposa|"
+        r"rey|reina|profeta|general|mayordomo|siervo|concubina)"
+        r"(?:\s+[a-záéíóúüñ]+){0,4})",
+        window_after,
+        flags=re.IGNORECASE,
+    )
+    if m:
+        return clean_rel_label(m.group(1))
+
+    return None
+
+
+def rel_from_other_note(other_note: str, entry_form: str, start: int) -> str | None:
+    """If the other note describes this entry, invert common kinship phrases."""
+    before = other_note[:start]
+    window_before = before[-48:]
+    paired = [
+        (r"hijo(?:s)? de\s+$", "hijo"),
+        (r"hija(?:s)? de\s+$", "hija"),
+        (r"padre de\s+$", "padre"),
+        (r"madre de\s+$", "madre"),
+        (r"esposo de\s+$", "esposo"),
+        (r"esposa de\s+$", "esposa"),
+        (r"hermano de\s+$", "hermano"),
+        (r"hermana de\s+$", "hermana"),
+        (r"mayordomo de\s+$", "su mayordomo"),
+        (r"general de\s+$", "su general"),
+        (r"profeta de\s+$", "su profeta"),
+        (r"rey de\s+$", "su rey"),
+    ]
+    for pat, rel in paired:
+        if re.search(pat, window_before, flags=re.IGNORECASE):
+            return rel
+    return None
+
+
+def kind_fallback_rel(entry: dict, other: dict) -> str:
+    ek, ok = entry.get("kind"), other.get("kind")
+    if ek == "lugar" and ok == "persona":
+        return "en el relato del lugar"
+    if ek == "persona" and ok == "lugar":
+        return "lugar del relato"
+    if ek == "persona" and ok == "persona":
+        return "en el mismo relato"
+    if ek == "concepto" or ok == "concepto":
+        return "ligado en el relato"
+    if ek == "lugar" and ok == "lugar":
+        return "lugar del mismo relato"
+    return "en el mismo relato"
+
+
+def contextual_rel(entry: dict, other: dict) -> str:
+    """Label for UI '{other} — {rel}' under entry."""
+    note = entry.get("note") or ""
+    span = find_form_span(note, entry_forms(other))
+    if span:
+        form, start, end = span
+        inferred = rel_from_entry_note(note, form, start, end)
+        if inferred:
+            return inferred
+
+    other_note = other.get("note") or ""
+    span = find_form_span(other_note, entry_forms(entry))
+    if span:
+        form, start, _end = span
+        inferred = rel_from_other_note(other_note, form, start)
+        if inferred:
+            return inferred
+
+    return kind_fallback_rel(entry, other)
+
+
+def seed_related_from_notes(entries: list[dict]) -> None:
+    """For entries without explicit REL, link terms named in their note."""
+    for e in entries:
+        if e.get("related"):
+            continue
+        note = e.get("note") or ""
+        if not note:
+            continue
+        scored: list[tuple[int, str, str]] = []
+        for other in entries:
+            if other["id"] == e["id"]:
+                continue
+            span = find_form_span(note, entry_forms(other))
+            if not span:
+                continue
+            form, start, end = span
+            # Skip tiny accidental hits (e.g. Ana inside Anatot handled by longest form).
+            if len(form) < 3:
+                continue
+            rel = rel_from_entry_note(note, form, start, end) or kind_fallback_rel(e, other)
+            scored.append((len(form), other["id"], rel))
+        scored.sort(key=lambda row: -row[0])
+        seen: set[str] = set()
+        related = []
+        for _n, oid, rel in scored:
+            if oid in seen:
+                continue
+            seen.add(oid)
+            related.append({"id": oid, "rel": rel})
+            if len(related) >= 3:
+                break
+        e["related"] = related
+
+
 def main() -> None:
     data = json.loads(GLOSSARY.read_text(encoding="utf-8"))
     entries = data["entries"]
@@ -1050,7 +1280,11 @@ def main() -> None:
             related.append({"id": oid, "rel": rel})
         e["related"] = related
 
-    # For remaining terms, link other glossary words that share a card.
+    # Derive relations from notes when REL has no row for the term.
+    seed_related_from_notes(entries)
+
+    # For remaining terms, link other glossary words that share a card,
+    # with a contextual label instead of a generic co-occurrence phrase.
     by_id = {e["id"]: e for e in entries}
     folded_forms: list[tuple[str, str]] = []
     for e in entries:
@@ -1080,7 +1314,7 @@ def main() -> None:
             other = by_id.get(oid)
             if not other:
                 continue
-            related.append({"id": oid, "rel": "aparece en las mismas tarjetas"})
+            related.append({"id": oid, "rel": contextual_rel(e, other)})
         e["related"] = related
 
     GLOSSARY.write_text(
@@ -1090,8 +1324,15 @@ def main() -> None:
     with_note = sum(1 for e in entries if e.get("note"))
     with_aka = sum(1 for e in entries if e.get("aliases"))
     with_rel = sum(1 for e in entries if e.get("related"))
+    generic = sum(
+        1
+        for e in entries
+        for r in e.get("related") or []
+        if r.get("rel") == "aparece en las mismas tarjetas"
+    )
     print(
-        f"Wrote {len(entries)} entries: {with_note} notes, {with_aka} with aliases, {with_rel} with related"
+        f"Wrote {len(entries)} entries: {with_note} notes, {with_aka} with aliases, "
+        f"{with_rel} with related, {generic} generic co-occurrence labels"
     )
 
 
