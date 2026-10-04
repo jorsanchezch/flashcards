@@ -21,6 +21,10 @@ export type UserConfig = {
   studyGroupLabel: string | null
   lastBook: string | null
   lastChapter: number | null
+  /** Saved study-queue order (card ids) for this session. */
+  studySessionOrder: string[] | null
+  /** 0-based index in studySessionOrder. */
+  studySessionIndex: number
 }
 
 export type CardContentOverride = {
@@ -126,6 +130,8 @@ export function defaultUserConfig(): UserConfig {
     studyGroupLabel: null,
     lastBook: '1 Samuel',
     lastChapter: 1,
+    studySessionOrder: null,
+    studySessionIndex: 0,
   }
 }
 
@@ -207,6 +213,16 @@ function normalizeUserDocument(
         (id): id is string => typeof id === 'string' && id.length > 0,
       )
     : null
+  const sessionOrder = Array.isArray(rawConfig.studySessionOrder)
+    ? rawConfig.studySessionOrder.filter(
+        (id): id is string => typeof id === 'string' && id.length > 0,
+      )
+    : null
+  const rawIndex = rawConfig.studySessionIndex
+  const sessionIndex =
+    typeof rawIndex === 'number' && Number.isFinite(rawIndex)
+      ? Math.max(0, Math.floor(rawIndex))
+      : 0
   const config: UserConfig = {
     ...base.config,
     ...rawConfig,
@@ -216,6 +232,8 @@ function normalizeUserDocument(
       rawConfig.studyGroupLabel.trim()
         ? rawConfig.studyGroupLabel.trim()
         : null,
+    studySessionOrder: sessionOrder?.length ? sessionOrder : null,
+    studySessionIndex: sessionIndex,
   }
   const progress: Record<string, CardProgressEntry> = {}
   if (parsed.progress && typeof parsed.progress === 'object') {

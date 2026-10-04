@@ -12,7 +12,7 @@ import {
 import type { Flashcard } from '@/lib/parseFlashcard'
 import { useUser } from '@/context/UserContext'
 import { getCardStatus, getReviewHistory, type CardStatus } from '@/lib/progress'
-import { buildStudyOrder, reshuffleWithinChapter } from '@/lib/studyOrder'
+import { buildStudyOrder, reshuffleWithinChapter, restoreStudyCursor } from '@/lib/studyOrder'
 import { resolveStudyPool } from '@/lib/studyPool'
 import { reshuffleStudyOrder } from '@/lib/shuffle'
 import { CardEditorDialog } from '@/components/CardEditorDialog'
@@ -59,12 +59,20 @@ export function StudyView({
   const studyPool = useMemo(() => {
     if (!userDoc) return cards
     return resolveStudyPool(cards, userDoc.config)
-  }, [cards, userDoc?.config])
+  }, [
+    cards,
+    userDoc?.config.studyGroupCardIds,
+    userDoc?.config.studyChapterFrom,
+    userDoc?.config.studyChapterTo,
+  ])
 
   const cardMap = useMemo(
     () => new Map(studyPool.map((c) => [c.id, c])),
     [studyPool],
   )
+
+  const poolIds = useMemo(() => studyPool.map((c) => c.id), [studyPool])
+  const poolSignature = poolIds.join('\n')
 
   const defaultOrder = useMemo(
     () =>
@@ -75,11 +83,19 @@ export function StudyView({
     [studyPool, userDoc?.config.shuffle, userDoc?.config.shuffleByChapter],
   )
 
-  const [order, setOrder] = useState<string[]>(defaultOrder)
-  const [index, setIndex] = useState(0)
+  const initialCursor = restoreStudyCursor({
+    poolIds,
+    defaultOrder,
+    savedOrder: userDoc?.config.studySessionOrder,
+    savedIndex: userDoc?.config.studySessionIndex,
+    initialCardId,
+  })
+
+  const [order, setOrder] = useState<string[]>(initialCursor.order)
+  const [index, setIndex] = useState(initialCursor.index)
   const [flipped, setFlipped] = useState(false)
   const [sessionMarked, setSessionMarked] = useState(0)
-  const [indexDraft, setIndexDraft] = useState('1')
+  const [indexDraft, setIndexDraft] = useState(String(initialCursor.index + 1))
   const [indexFocused, setIndexFocused] = useState(false)
 
   const activeUserId = userDoc?.userId
@@ -87,16 +103,35 @@ export function StudyView({
 
   useEffect(() => {
     if (!activeUserId) return
-    setOrder(defaultOrder)
-    setIndex(0)
+    const next = restoreStudyCursor({
+      poolIds,
+      defaultOrder,
+      savedOrder: userDoc?.config.studySessionOrder,
+      savedIndex: userDoc?.config.studySessionIndex,
+      initialCardId,
+    })
+    setOrder(next.order)
+    setIndex(next.index)
     setFlipped(false)
-  }, [activeUserId, defaultOrder])
+    // Restore when the person or the study pool changes — not when marks update.
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- defaultOrder is random when shuffle is on
+  }, [activeUserId, poolSignature, initialCardId])
 
   useEffect(() => {
-    if (!initialCardId) return
-    const idx = order.indexOf(initialCardId)
-    if (idx >= 0) setIndex(idx)
-  }, [initialCardId, order])
+    if (!userDoc || !order.length) return
+    const saved = userDoc.config.studySessionOrder
+    const sameOrder =
+      Boolean(saved) &&
+      saved!.length === order.length &&
+      saved!.every((id, i) => id === order[i])
+    if (sameOrder && userDoc.config.studySessionIndex === index) return
+    patchConfig({
+      studySessionOrder: order,
+      studySessionIndex: index,
+    })
+    // Persist cursor; skip looping on userDoc identity after save.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [order, index, patchConfig])
 
   const current = cardMap.get(order[index])
   const status: CardStatus | undefined =

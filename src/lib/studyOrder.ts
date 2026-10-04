@@ -38,6 +38,48 @@ export function buildStudyOrder(
   return result
 }
 
+export function orderCoversPool(
+  order: string[] | null | undefined,
+  poolIds: string[],
+): boolean {
+  if (!order || order.length !== poolIds.length || poolIds.length === 0) {
+    return false
+  }
+  const pool = new Set(poolIds)
+  const seen = new Set<string>()
+  for (const id of order) {
+    if (!pool.has(id) || seen.has(id)) return false
+    seen.add(id)
+  }
+  return seen.size === pool.size
+}
+
+export function restoreStudyCursor(options: {
+  poolIds: string[]
+  defaultOrder: string[]
+  savedOrder: string[] | null | undefined
+  savedIndex: number | null | undefined
+  initialCardId?: string | null
+}): { order: string[]; index: number } {
+  const { poolIds, defaultOrder, savedOrder, savedIndex, initialCardId } =
+    options
+  const order = orderCoversPool(savedOrder, poolIds)
+    ? [...savedOrder!]
+    : defaultOrder
+  let index = 0
+  if (initialCardId) {
+    const fromBrowse = order.indexOf(initialCardId)
+    if (fromBrowse >= 0) index = fromBrowse
+  } else if (
+    typeof savedIndex === 'number' &&
+    Number.isFinite(savedIndex) &&
+    order.length > 0
+  ) {
+    index = Math.min(order.length - 1, Math.max(0, Math.floor(savedIndex)))
+  }
+  return { order, index }
+}
+
 export function reshuffleWithinChapter(
   order: string[],
   cardMap: Map<string, Flashcard>,

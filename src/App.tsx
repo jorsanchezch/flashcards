@@ -80,7 +80,11 @@ function FlashcardsApp() {
         {state.status !== 'error' && (
           <Tabs
             value={tab}
-            onValueChange={(v) => setTab(v as Tab)}
+            onValueChange={(v) => {
+              const next = v as Tab
+              if (next !== 'study') setStudyCardId(null)
+              setTab(next)
+            }}
             className="mx-auto max-w-3xl"
           >
             <div className="px-4 pt-4">
@@ -110,7 +114,7 @@ function FlashcardsApp() {
                 />
               ) : (
                 <StudyView
-                  key={`${sessionKey}-${studyCardId ?? 'deck'}`}
+                  key={sessionKey}
                   cards={effectiveCards}
                   baseCards={baseCards}
                   initialCardId={studyCardId}
