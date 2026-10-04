@@ -116,6 +116,44 @@ export function splitCitedText(text: string): CitedPart[] {
   return parts.length ? parts : [{ type: 'text', value: text }]
 }
 
+export function extractCitationSearches(text: string): string[] {
+  const out: string[] = []
+  const re = new RegExp(NTV_CITATION_RE.source, 'gi')
+  let match: RegExpExecArray | null
+  while ((match = re.exec(text))) {
+    const search = citationToGatewaySearch(match[1])
+    if (search) out.push(search)
+  }
+  return out
+}
+
+export function uniqueCitationSearches(texts: string[]): string[] {
+  const seen = new Set<string>()
+  const out: string[] = []
+  for (const text of texts) {
+    for (const search of extractCitationSearches(text)) {
+      const key = search.toLocaleLowerCase('es').replace(/\s+/g, '')
+      if (seen.has(key)) continue
+      seen.add(key)
+      out.push(search)
+    }
+  }
+  return out
+}
+
+const MAX_PASSAGES_PER_LINK = 12
+
+/** One or more passage URLs. BibleGateway accepts `;` between passages. */
+export function bibleGatewayNtvPassagesUrls(searches: string[]): string[] {
+  if (!searches.length) return []
+  const urls: string[] = []
+  for (let i = 0; i < searches.length; i += MAX_PASSAGES_PER_LINK) {
+    const chunk = searches.slice(i, i + MAX_PASSAGES_PER_LINK)
+    urls.push(bibleGatewayNtvUrl(chunk.join(';')))
+  }
+  return urls
+}
+
 export function extractCitationHrefs(text: string): { label: string; href: string }[] {
   return splitCitedText(text)
     .filter((p): p is Extract<CitedPart, { type: 'cite' }> => p.type === 'cite')

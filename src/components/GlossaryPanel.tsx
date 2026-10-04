@@ -7,11 +7,12 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { useBibleStatus } from '@/hooks/useBibleStatus'
 import { useGlossary } from '@/context/GlossaryContext'
 import { useUser } from '@/context/UserContext'
 import {
   cardsForGlossaryTerm,
-  glossaryBibleSearchUrl,
+  glossaryCardBibleLinks,
   glossaryKindLabel,
   GLOSSARY_KINDS,
   isCustomGlossaryId,
@@ -485,6 +486,11 @@ function GlossaryDetailsModal({
   onDelete: () => void
   onOpenCardInStudy: (cardId: string) => void
 }) {
+  const bible = useBibleStatus()
+  const cardBible = glossaryCardBibleLinks(references)
+  const cardHref = cardBible.hrefs[0] ?? null
+  const extraHrefs = cardBible.hrefs.slice(1)
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-4 sm:items-center"
@@ -566,16 +572,43 @@ function GlossaryDetailsModal({
               </ul>
             </div>
           )}
-          <Button asChild className="min-h-11 w-full sm:w-auto">
-            <a
-              href={glossaryBibleSearchUrl(entry)}
-              target="_blank"
-              rel="noopener noreferrer"
+          {cardHref ? (
+            <div className="space-y-2">
+              <Button asChild className="min-h-11 w-full sm:w-auto">
+                <a href={cardHref} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="size-4" />
+                  Ver en la Biblia (NTV)
+                </a>
+              </Button>
+              {extraHrefs.map((href, i) => (
+                <Button key={href} asChild variant="outline" className="min-h-11 w-full sm:w-auto">
+                  <a href={href} target="_blank" rel="noopener noreferrer">
+                    Más pasajes {i + 2}
+                  </a>
+                </Button>
+              ))}
+              <p className="text-xs text-muted-foreground">
+                {cardBible.searches.length === 1
+                  ? '1 pasaje citado en las tarjetas de esta palabra.'
+                  : `${cardBible.searches.length} pasajes citados en las tarjetas de esta palabra.`}
+              </p>
+            </div>
+          ) : (
+            <p className="text-sm text-muted-foreground">
+              No hay citas NTV en las tarjetas de esta palabra.
+            </p>
+          )}
+          {bible.enabled && (
+            <Button
+              type="button"
+              variant="outline"
+              className="min-h-11 w-full sm:w-auto"
+              disabled
+              title="Pronto: ocurrencias en el texto bíblico guardado"
             >
-              <ExternalLink className="size-4" />
-              Ver en la Biblia (NTV)
-            </a>
-          </Button>
+              En todo el texto bíblico
+            </Button>
+          )}
           <p className="text-sm text-muted-foreground">
             {references.length === 1
               ? '1 tarjeta menciona esta palabra.'

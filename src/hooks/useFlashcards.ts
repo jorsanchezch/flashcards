@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { compareFlashcardsByCanon } from '@/lib/biblical'
-import { cardsCatalogUrl } from '@/lib/localCatalog'
+import { resolveCatalogConnector } from '@/lib/connectors'
 import { parseFlashcardMarkdown, type Flashcard } from '@/lib/parseFlashcard'
 
 type LoadState =
@@ -19,19 +19,11 @@ export function useFlashcards() {
   const reload = useCallback(async () => {
     setState({ status: 'loading' })
     try {
-      const base = import.meta.env.BASE_URL
-      const catalogRes = await fetch(cardsCatalogUrl())
-      if (catalogRes.ok) {
-        const payload: unknown = await catalogRes.json()
-        const list = Array.isArray(payload)
-          ? payload
-          : payload &&
-              typeof payload === 'object' &&
-              Array.isArray((payload as { cards?: unknown }).cards)
-            ? (payload as { cards: Flashcard[] }).cards
-            : []
+      const connector = await resolveCatalogConnector()
+      try {
+        const list = await connector.loadCards()
         if (list.length) {
-          const cards = (list as Flashcard[]).map((row) => ({
+          const cards = list.map((row) => ({
             ...row,
             originalNumber:
               typeof row.originalNumber === 'number' ? row.originalNumber : 0,
@@ -43,8 +35,11 @@ export function useFlashcards() {
           setState({ status: 'ready', cards })
           return
         }
+      } catch {
+        /* JSON/SQLite catalog missing: fall back to markdown files */
       }
 
+      const base = import.meta.env.BASE_URL
       const manifestRes = await fetch(`${base}flashcards/manifest.json`)
       if (!manifestRes.ok) {
         throw new Error(

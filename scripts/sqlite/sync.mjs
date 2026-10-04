@@ -293,6 +293,34 @@ export async function exportStatic(db) {
   return { cards: cards.length, glossary: entries.length }
 }
 
+export function bibleStatusFromDb(db) {
+  const row = db.prepare('SELECT COUNT(*) AS n FROM bible_passages').get()
+  const versions = db
+    .prepare(
+      `SELECT id, label, gateway_param AS gatewayParam FROM bible_versions ORDER BY id`,
+    )
+    .all()
+  return {
+    enabled: Boolean(row?.n),
+    source: 'sqlite',
+    verseCount: row?.n ?? 0,
+    versions,
+  }
+}
+
+export function searchBibleFromDb(db, query, versionId = 'kjv') {
+  const q = String(query ?? '').trim()
+  if (q.length < 2) return []
+  return db
+    .prepare(
+      `SELECT version_id AS versionId, book_id AS bookId, chapter, verse, text
+       FROM bible_passages
+       WHERE version_id = ? AND text LIKE ? ESCAPE '\\'
+       LIMIT 40`,
+    )
+    .all(versionId, `%${q.replace(/[%_]/g, '\\$&')}%`)
+}
+
 async function main() {
   const mode = process.argv[2] ?? 'all'
   await mkdir(dbDir, { recursive: true })

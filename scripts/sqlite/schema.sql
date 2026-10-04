@@ -57,6 +57,13 @@ CREATE TABLE IF NOT EXISTS glossary_related (
   FOREIGN KEY (related_id) REFERENCES glossary_entries(id)
 );
 
+CREATE TABLE IF NOT EXISTS bible_books (
+  canon INTEGER PRIMARY KEY,
+  book_id TEXT NOT NULL UNIQUE,
+  name_en TEXT,
+  name_es TEXT
+);
+
 CREATE TABLE IF NOT EXISTS bible_passages (
   version_id TEXT NOT NULL,
   book_id TEXT NOT NULL,
@@ -67,7 +74,9 @@ CREATE TABLE IF NOT EXISTS bible_passages (
   FOREIGN KEY (version_id) REFERENCES bible_versions(id)
 );
 
--- Later: hits of a glossary form in bible_passages for a version. Empty until ingested.
+CREATE INDEX IF NOT EXISTS idx_bible_passages_lookup
+  ON bible_passages (version_id, book_id, chapter);
+
 CREATE TABLE IF NOT EXISTS glossary_bible_hits (
   entry_id TEXT NOT NULL,
   version_id TEXT NOT NULL,

@@ -1,4 +1,4 @@
-import { NTV_CITATION_RE, bibleGatewayNtvKeywordUrl } from '@/lib/bibleGateway'
+import { NTV_CITATION_RE, bibleGatewayNtvKeywordUrl, uniqueCitationSearches, bibleGatewayNtvPassagesUrls } from '@/lib/bibleGateway'
 import type { Flashcard } from '@/lib/parseFlashcard'
 
 export const GLOSSARY_KINDS = ['persona', 'lugar', 'concepto'] as const
@@ -157,6 +157,16 @@ export function glossaryBibleSearchUrl(
   entry: Pick<GlossaryEntry, 'term' | 'aliases'>,
 ): string {
   return bibleGatewayNtvKeywordUrl(glossarySearchTerms(entry))
+}
+
+/** Passages cited on cards that mention this term (same parser as flashcards). */
+export function glossaryCardBibleLinks(
+  cards: { question: string; answer: string }[],
+): { searches: string[]; hrefs: string[] } {
+  const searches = uniqueCitationSearches(
+    cards.flatMap((card) => [card.question, card.answer]),
+  )
+  return { searches, hrefs: bibleGatewayNtvPassagesUrls(searches) }
 }
 
 export function parseGlossaryFile(data: unknown): GlossaryEntry[] {

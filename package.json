@@ -9,6 +9,7 @@
     "prebuild": "node scripts/generate-flashcard-manifest.mjs && node scripts/sqlite/sync.mjs all",
     "build": "tsc -b && vite build",
     "db:sync": "node scripts/sqlite/sync.mjs all",
+    "db:import-bible": "node scripts/sqlite/import-bible-dumps.mjs",
     "lint": "oxlint",
     "preview": "vite preview --host 0.0.0.0 --port 18480 --strictPort",
     "preview:static": "node scripts/serve-static.mjs"

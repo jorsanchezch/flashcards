@@ -6,9 +6,11 @@ import react from '@vitejs/plugin-react'
 import { defineConfig, type Plugin } from 'vite'
 import {
   applySchema,
+  bibleStatusFromDb,
   cardsFromDb,
   glossaryFromDb,
   openFlashcardsDb,
+  searchBibleFromDb,
   seedDatabase,
 } from './scripts/sqlite/sync.mjs'
 
@@ -37,14 +39,44 @@ function sqliteLocalApi(): Plugin {
     name: 'sqlite-local-api',
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
-        const url = (req.url ?? '').split('?')[0]
-        if (url !== '/api/local/cards' && url !== '/api/local/glossary' && url !== '/api/local/bible-search') {
+        const rawUrl = req.url ?? ''
+        const url = rawUrl.split('?')[0]
+        if (!url.startsWith('/api/local/')) {
           next()
           return
         }
-        if (url === '/api/local/bible-search') {
+        const send = (data) => {
           res.setHeader('Content-Type', 'application/json; charset=utf-8')
-          res.end(JSON.stringify({ hits: [], version: 'ntv' }))
+          res.end(JSON.stringify(data))
+        }
+        try {
+          const db = openFlashcardsDb()
+          applySchema(db)
+          if (url === '/api/local/bible-status') {
+            send(bibleStatusFromDb(db))
+            db.close()
+            return
+          }
+          if (url === '/api/local/bible-search') {
+            const params = new URL(rawUrl, 'http://127.0.0.1').searchParams
+            send({
+              hits: searchBibleFromDb(
+                db,
+                params.get('q') ?? '',
+                params.get('version') ?? 'kjv',
+              ),
+            })
+            db.close()
+            return
+          }
+          db.close()
+        } catch (err) {
+          res.statusCode = 500
+          res.end(String(err))
+          return
+        }
+        if (url !== '/api/local/cards' && url !== '/api/local/glossary') {
+          next()
           return
         }
         void handle(url, res).catch((err) => {
