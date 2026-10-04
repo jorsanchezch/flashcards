@@ -5,13 +5,31 @@
  */
 import { DatabaseSync } from 'node:sqlite'
 import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises'
-import { readFileSync } from 'node:fs'
+import { mkdirSync, readFileSync } from 'node:fs'
+import { homedir } from 'node:os'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..')
 const dbDir = path.join(root, 'data')
-const dbPath = path.join(dbDir, 'flashcards.db')
+
+/** Repo clones under /tmp are ephemeral; keep the live DB in Application Support. */
+export function resolveFlashcardsDbPath() {
+  if (process.env.FLASHCARDS_SQLITE) return process.env.FLASHCARDS_SQLITE
+  const underTmp = root.startsWith('/tmp/') || root.startsWith('/private/tmp/')
+  if (underTmp) {
+    return path.join(
+      homedir(),
+      'Library',
+      'Application Support',
+      'flashcards',
+      'flashcards.db',
+    )
+  }
+  return path.join(dbDir, 'flashcards.db')
+}
+
+const dbPath = resolveFlashcardsDbPath()
 const schemaPath = path.join(root, 'scripts', 'sqlite', 'schema.sql')
 const publicFlashcards = path.join(root, 'public', 'flashcards')
 const publicData = path.join(root, 'public', 'data')
@@ -25,6 +43,7 @@ const BOOK_PREFIXES = [
 ]
 
 export function openFlashcardsDb(file = dbPath) {
+  mkdirSync(path.dirname(file), { recursive: true })
   const db = new DatabaseSync(file)
   db.exec('PRAGMA foreign_keys = ON;')
   return db
