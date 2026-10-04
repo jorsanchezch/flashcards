@@ -19,13 +19,13 @@ export default defineConfig({
     },
   },
   server: {
-    host: '127.0.0.1',
-    port: 4321,
+    host: '::',
+    port: 18765,
     strictPort: true,
   },
   preview: {
-    host: '127.0.0.1',
-    port: 4321,
+    host: '::',
+    port: 18765,
     strictPort: true,
   },
 })

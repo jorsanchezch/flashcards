@@ -20,7 +20,7 @@ npm install
 npm run dev
 ```
 
-El servidor de Vite escucha en **http://127.0.0.1:4321/** (puerto fijo).
+El servidor de Vite escucha en **http://127.0.0.1:18765/** (todas las interfaces, IPv4 e IPv6).
 
 ## Build
 
