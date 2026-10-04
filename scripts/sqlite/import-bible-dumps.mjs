@@ -21,6 +21,10 @@ const CANON_IDS = [
   '1-juan', '2-juan', '3-juan', 'judas', 'apocalipsis',
 ]
 
+/** Public-domain English dumps that match PREFIX_books / PREFIX_verses.
+ *  NTV and RVR1960 are copyrighted — do not import pirate dumps as those ids.
+ *  Keep `ntv` as the default version row even when passages are empty.
+ */
 const DUMPS = [
   {
     file: 'KJV.sql',
@@ -37,22 +41,6 @@ const DUMPS = [
     label: 'American Standard Version',
     gateway: 'ASV',
     lang: 'en',
-  },
-  {
-    file: 'SpaRV.sql',
-    prefix: 'SpaRV',
-    versionId: 'rvr',
-    label: 'Reina Valera',
-    gateway: 'RVR1960',
-    lang: 'es',
-  },
-  {
-    file: 'SpaPlatense.sql',
-    prefix: 'SpaPlatense',
-    versionId: 'platense',
-    label: 'Biblia Platense',
-    gateway: 'NVI',
-    lang: 'es',
   },
 ]
 
@@ -154,9 +142,11 @@ async function main() {
   const db = openFlashcardsDb()
   applySchema(db)
   db.prepare(
-    `INSERT OR IGNORE INTO bible_versions (id, label, gateway_param, is_default)
+    `INSERT OR REPLACE INTO bible_versions (id, label, gateway_param, is_default)
      VALUES ('ntv', 'Nueva Traducción Viviente', 'NTV', 1)`,
   ).run()
+  db.prepare(`DELETE FROM bible_passages WHERE version_id IN ('platense', 'rvr')`).run()
+  db.prepare(`DELETE FROM bible_versions WHERE id IN ('platense', 'rvr')`).run()
   for (const spec of DUMPS) {
     const result = await importDump(db, spec)
     console.log(
