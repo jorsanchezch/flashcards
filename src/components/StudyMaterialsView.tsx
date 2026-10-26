@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ExternalLink, FileText, Map } from 'lucide-react'
 import { CitationLinks } from '@/components/CitedText'
 import { CoursePacePanel } from '@/components/CoursePacePanel'
+import { KingsTimelinePanel } from '@/components/KingsTimelinePanel'
 import {
   GlossaryMaterialRow,
   GlossaryPanel,
@@ -24,7 +25,7 @@ const ARK_MAP_SRC = `${import.meta.env.BASE_URL}viaje-del-arca.png`
 const ARK_CONTEXT =
   'Después de la derrota en Eben-ezer, los filisteos se llevaron el arca a Asdod y la pusieron en el templo de Dagón; allí Dagón cayó y la ciudad sufrió tumores. La enviaron a Gat y luego a Ecrón, y el mismo azote las siguió. A los siete meses la devolvieron en una carreta nueva, con ofrendas, y las vacas fueron derecho a Bet-semes. Algunos de Bet-semes miraron dentro del arca y murieron; entonces la llevaron a Quiriat-jearim, a la casa de Abinadab, donde permaneció unos veinte años mientras Israel se volvía al Señor. (1 Samuel 4:11; 5:1-12; 6:1-16; 6:19-21; 7:1-2, NTV)'
 
-export type MaterialRow = 'doc' | 'ark' | 'pace' | 'glossary' | null
+export type MaterialRow = 'doc' | 'ark' | 'pace' | 'glossary' | 'kings' | null
 
 type StudyMaterialsViewProps = {
   cards: Flashcard[]
@@ -69,7 +70,7 @@ export function StudyMaterialsView({
         Material de estudio
       </h2>
       <p className="mt-1 text-sm text-muted-foreground">
-        Documentos, mapa, glosario y ritmo del curso para 1–2 Samuel y 1–2 Reyes.
+        Documentos, mapa, línea de reyes, glosario y ritmo del curso para 1–2 Samuel y 1–2 Reyes.
       </p>
 
       <ul className="mt-6 flex flex-col gap-3">
@@ -193,6 +194,11 @@ export function StudyMaterialsView({
             </Card>
           )}
         </li>
+
+        <KingsTimelinePanel
+          open={openRow === 'kings'}
+          onToggle={() => toggle('kings')}
+        />
 
         <CoursePacePanel
           cards={cards}
