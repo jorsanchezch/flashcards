@@ -1,5 +1,7 @@
 /** Reyes de Israel, Judá y potencias vecinas en 1–2 Reyes (cronología convencional aproximada). */
 
+import { applyKingEnrichment } from '@/lib/kingsTimelineEnrichment'
+
 export type KingdomId =
   | 'united'
   | 'judah'
@@ -24,6 +26,14 @@ export const KINGDOMS: KingdomMeta[] = [
   { id: 'egypt', label: 'Egipto', shortLabel: 'Egipto', color: 'hsl(45 80% 42%)' },
 ]
 
+export type KingAges = {
+  accessionAge?: number
+  reignYears?: number
+  deathAge?: number
+}
+
+export type LordStand = 'righteous' | 'evil' | 'mixed' | 'not_applicable'
+
 export type KingRecord = {
   id: string
   name: string
@@ -34,7 +44,10 @@ export type KingRecord = {
   endBc: number
   predecessor?: string
   father?: string
-  notes?: string
+  ages?: KingAges
+  lordStand?: LordStand
+  /** Redacción cercana a la evaluación de 1–2 Reyes (NTV). */
+  lordVerdict?: string
   events: string
   /** Referencias en español (NTV en Bible Gateway). */
   passages: string[]
@@ -44,7 +57,7 @@ export type KingRecord = {
 export const TIMELINE_START_BC = 993
 export const TIMELINE_END_BC = 580
 
-export const KINGS: KingRecord[] = [
+const KINGS_BASE: KingRecord[] = [
   {
     id: 'solomon',
     name: 'Salomón',
@@ -526,3 +539,5 @@ export const KINGS: KingRecord[] = [
     passages: ['1 Reyes 20:1', '2 Reyes 6:24', '2 Reyes 8:7-15'],
   },
 ]
+
+export const KINGS: KingRecord[] = applyKingEnrichment(KINGS_BASE)

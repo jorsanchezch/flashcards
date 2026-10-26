@@ -6,6 +6,7 @@ import {
   TIMELINE_START_BC,
   type KingRecord,
   type KingdomId,
+  type LordStand,
 } from '@/lib/kingsTimelineData'
 
 export {
@@ -13,9 +14,72 @@ export {
   KINGS,
   TIMELINE_END_BC,
   TIMELINE_START_BC,
+  type KingAges,
   type KingRecord,
   type KingdomId,
+  type LordStand,
 } from '@/lib/kingsTimelineData'
+
+export type LordStandMeta = {
+  label: string
+  shortLabel: string
+  barClass: string
+  badgeClass: string
+}
+
+const LORD_STAND_META: Record<LordStand, LordStandMeta> = {
+  righteous: {
+    label: 'Recto ante el Señor',
+    shortLabel: 'Recto',
+    barClass: 'ring-2 ring-emerald-400/80',
+    badgeClass: 'border-emerald-500/40 bg-emerald-500/15 text-emerald-900 dark:text-emerald-100',
+  },
+  evil: {
+    label: 'Malo ante el Señor',
+    shortLabel: 'Malo',
+    barClass: 'ring-2 ring-rose-400/80',
+    badgeClass: 'border-rose-500/40 bg-rose-500/15 text-rose-900 dark:text-rose-100',
+  },
+  mixed: {
+    label: 'Recto y malo (según el relato)',
+    shortLabel: 'Mixto',
+    barClass: 'ring-2 ring-amber-400/80',
+    badgeClass: 'border-amber-500/40 bg-amber-500/15 text-amber-950 dark:text-amber-100',
+  },
+  not_applicable: {
+    label: 'Sin fórmula de evaluación',
+    shortLabel: 'Extranjero',
+    barClass: 'ring-1 ring-border',
+    badgeClass: 'border-border bg-muted text-muted-foreground',
+  },
+}
+
+export function lordStandMeta(stand?: LordStand): LordStandMeta | null {
+  if (!stand) return null
+  return LORD_STAND_META[stand]
+}
+
+export function formatKingAges(ages?: KingRecord['ages']): string | null {
+  if (!ages) return null
+  const parts: string[] = []
+  if (ages.accessionAge != null) {
+    parts.push(`${ages.accessionAge} años al comenzar a reinar`)
+  }
+  if (ages.reignYears != null) {
+    const y = ages.reignYears
+    parts.push(
+      y === 0 ? 'reinado muy breve (semanas o meses)' : `${y} años de reinado`,
+    )
+  }
+  if (ages.deathAge != null) {
+    parts.push(`${ages.deathAge} años al morir`)
+  }
+  return parts.length ? parts.join(' · ') : null
+}
+
+export function kingsChronological(): KingRecord[] {
+  return [...KINGS].sort((a, b) => b.startBc - a.startBc)
+}
 
 const REYES_TO_GATEWAY: Record<string, string> = {
   '1 Reyes': '1 Kings',
