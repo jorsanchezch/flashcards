@@ -1,3 +1,5 @@
+import { sha256Hex } from '@/lib/sha256'
+
 const PEPPER = 'flashcards-admin:v1:'
 const LOCAL_HASH_PREFIX = 'flashcards-admin-hash-v1:'
 
@@ -13,11 +15,7 @@ type AdminsFile = {
 let cachedAdmins: AdminRecord[] | null = null
 
 export async function hashAdminSecret(secret: string): Promise<string> {
-  const data = new TextEncoder().encode(`${PEPPER}${secret}`)
-  const buf = await crypto.subtle.digest('SHA-256', data)
-  return [...new Uint8Array(buf)]
-    .map((b) => b.toString(16).padStart(2, '0'))
-    .join('')
+  return sha256Hex(`${PEPPER}${secret}`)
 }
 
 export async function loadAdminRecords(): Promise<AdminRecord[]> {
@@ -80,7 +78,7 @@ export async function verifyAdminSecret(
 ): Promise<boolean> {
   const expected = publishedHashFor(userId, admins) ?? readLocalAdminHash(userId)
   if (!expected) return false
-  const actual = await hashAdminSecret(secret)
+  const actual = await hashAdminSecret(secret.trim())
   return actual === expected
 }
 

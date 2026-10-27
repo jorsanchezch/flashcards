@@ -3,6 +3,7 @@ import {
   ChevronDown,
   ChevronUp,
   ClipboardList,
+  Database,
   Download,
   LogOut,
   MoreVertical,
@@ -10,6 +11,7 @@ import {
   UserRound,
 } from 'lucide-react'
 import { usePreferences } from '@/context/PreferencesContext'
+import { readUseLocalDb, writeLocalDbPreference } from '@/lib/localDb'
 import { useUser } from '@/context/UserContext'
 import { UserDataPanel } from '@/components/UserDataPanel'
 import { PendingChangesDialog } from '@/components/PendingChangesDialog'
@@ -29,6 +31,7 @@ export function UserMenu() {
   const [importMessage, setImportMessage] = useState<string | null>(null)
   const [showDataPanel, setShowDataPanel] = useState(false)
   const [pendingOpen, setPendingOpen] = useState(false)
+  const [useLocalDb, setUseLocalDb] = useState(() => readUseLocalDb())
 
   if (!userDoc) return null
 
@@ -84,7 +87,7 @@ export function UserMenu() {
                 <MoreVertical className="size-4" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
+            <DropdownMenuContent align="end" className="w-72">
               <DropdownMenuItem onClick={() => exportDocument()}>
                 <Download className="size-4" />
                 Guardar copia
@@ -96,6 +99,19 @@ export function UserMenu() {
               <DropdownMenuItem onClick={() => setPendingOpen(true)}>
                 <ClipboardList className="size-4" />
                 Cambios pendientes
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => {
+                  const next = !useLocalDb
+                  writeLocalDbPreference(next ? 'sqlite' : 'json')
+                  setUseLocalDb(next)
+                  window.location.reload()
+                }}
+              >
+                <Database className="size-4" />
+                {useLocalDb
+                  ? 'Base local activa — usar datos publicados'
+                  : 'Usar base de datos local'}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

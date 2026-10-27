@@ -1,4 +1,5 @@
 import type { Flashcard } from '@/lib/parseFlashcard'
+import { readLocalDbPreference } from '@/lib/localDb'
 import {
   BIBLE_VERSIONS,
   withBibleLanguage,
@@ -138,6 +139,9 @@ export const sqliteConnector: CatalogConnector = {
 }
 
 export async function resolveCatalogConnector(): Promise<CatalogConnector> {
+  const preference = readLocalDbPreference()
+  if (preference === 'json') return jsonConnector
+  if (preference === 'sqlite') return sqliteConnector
   if (!import.meta.env.DEV) return jsonConnector
   try {
     const status = await sqliteConnector.bibleStatus()

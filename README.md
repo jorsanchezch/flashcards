@@ -55,11 +55,12 @@ Haz push a `main`: el workflow [`.github/workflows/deploy-pages.yml`](.github/wo
 
 ## Funciones
 
-- **Entrada al estudio**: continuar sin ID o identificarse. Jorge Sanchez pide clave. Sin ID, las marcas La sé, Repasar y Revisada son del equipo.
+- **Entrada al estudio**: continuar sin ID o identificarse. Jorge Sanchez pide clave (la comprobación no usa `crypto.subtle`, así que funciona en `http://` de la red local). Sin ID, las marcas La sé, Repasar y Revisada son del equipo.
+- **Base local**: con la cuenta de administración, el menú `…` tiene **Usar base de datos local**. Activa SQLite (`/api/local`, búsqueda bíblica incluida) y recarga. La otra opción vuelve al JSON publicado. En el sitio de Pages no hay servidor SQLite; ahí el catálogo sigue siendo el JSON publicado salvo que se active esa opción a propósito.
 - **Estudiar**: volteo, salto al número de cola, filtros compartidos (libro/capítulo y glosario), mezclar, marcar sin avanzar de tarjeta; citas NTV en pregunta y respuesta; número original arriba a la derecha en las dos caras. Siguiente/Anterior desde la respuesta muestran al instante la pregunta siguiente, sin animación de volteo.
 - **Lista**: misma barra de filtros; búsqueda; número original de cada tarjeta.
 - **Equipo**: integrantes ordenados por avance (La sé + Revisada).
-- **Material**: inventario, mapa del arca, ritmo del curso y glosario (palabras, referencias, filtro y edición).
+- **Material**: inventario, mapa del arca, línea de reyes (1–2 Reyes: edades y evaluación ante el Señor), ritmo del curso y glosario (palabras, referencias, filtro y edición).
 - **Mazo**: quienes no administran editan solo su copia; la administración puede pasar esos cambios al mazo del curso.
 
 ## Stack
