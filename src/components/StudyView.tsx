@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
   ChevronLeft,
   ChevronRight,
@@ -23,6 +23,7 @@ import { Input } from '@/components/ui/input'
 import { Progress } from '@/components/ui/progress'
 import { isBuiltInCardEdited, rememberStudyCursor } from '@/lib/userData'
 import { useGlossary } from '@/context/GlossaryContext'
+import { cn } from '@/lib/utils'
 
 type StudyViewProps = {
   cards: Flashcard[]
@@ -96,6 +97,8 @@ export function StudyView({
   const [sessionMarked, setSessionMarked] = useState(0)
   const [indexDraft, setIndexDraft] = useState(String(initialCursor.index + 1))
   const [indexFocused, setIndexFocused] = useState(false)
+  const [draggingProgress, setDraggingProgress] = useState(false)
+  const progressBarRef = useRef<HTMLDivElement>(null)
 
   const activeUserId = userDoc?.userId
   const filterSignature = groupingsSignature(userDoc?.config.groupings ?? [])
@@ -215,6 +218,72 @@ export function StudyView({
     [index, order.length, showQuestionInstantly],
   )
 
+  const seekFromClientX = useCallback(
+    (clientX: number) => {
+      const el = progressBarRef.current
+      if (!el || !order.length) return
+      const rect = el.getBoundingClientRect()
+      if (rect.width <= 0) return
+      const ratio = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width))
+      const nextIndex =
+        order.length === 1 ? 0 : Math.round(ratio * (order.length - 1))
+      showQuestionInstantly()
+      setIndex(nextIndex)
+    },
+    [order.length, showQuestionInstantly],
+  )
+
+  const onProgressPointerDown = useCallback(
+    (e: React.PointerEvent<HTMLDivElement>) => {
+      if (e.button !== 0) return
+      e.preventDefault()
+      e.currentTarget.setPointerCapture(e.pointerId)
+      setDraggingProgress(true)
+      seekFromClientX(e.clientX)
+    },
+    [seekFromClientX],
+  )
+
+  const onProgressPointerMove = useCallback(
+    (e: React.PointerEvent<HTMLDivElement>) => {
+      if (!e.currentTarget.hasPointerCapture(e.pointerId)) return
+      seekFromClientX(e.clientX)
+    },
+    [seekFromClientX],
+  )
+
+  const onProgressPointerUp = useCallback(
+    (e: React.PointerEvent<HTMLDivElement>) => {
+      if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+        e.currentTarget.releasePointerCapture(e.pointerId)
+      }
+      setDraggingProgress(false)
+    },
+    [],
+  )
+
+  const onProgressKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (!order.length) return
+      if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+        e.preventDefault()
+        go(index + 1)
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+        e.preventDefault()
+        go(index - 1)
+      } else if (e.key === 'Home') {
+        e.preventDefault()
+        showQuestionInstantly()
+        setIndex(0)
+      } else if (e.key === 'End') {
+        e.preventDefault()
+        showQuestionInstantly()
+        setIndex(order.length - 1)
+      }
+    },
+    [go, index, order.length, showQuestionInstantly],
+  )
+
   useEffect(() => {
     if (!indexFocused) setIndexDraft(String(index + 1))
   }, [index, indexFocused])
@@ -260,8 +329,16 @@ export function StudyView({
   }
 
   useEffect(() => {
+    if (editorOpen) return
     const onKey = (e: KeyboardEvent) => {
-      if (e.target instanceof HTMLInputElement) return
+      if (
+        e.target instanceof HTMLInputElement ||
+        e.target instanceof HTMLTextAreaElement ||
+        e.target instanceof HTMLSelectElement ||
+        (e.target instanceof HTMLElement && e.target.isContentEditable)
+      ) {
+        return
+      }
       if (e.key === ' ' || e.key === 'Enter') {
         e.preventDefault()
         setFlipped((f) => !f)
@@ -283,7 +360,7 @@ export function StudyView({
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [applyShuffle, current, go, index])
+  }, [applyShuffle, current, editorOpen, go, index])
 
   if (!userDoc) {
     return (
@@ -310,7 +387,9 @@ export function StudyView({
   }
 
   const sessionPercent =
-    order.length > 0 ? Math.round(((index + 1) / order.length) * 100) : 0
+    order.length <= 1
+      ? 100
+      : Math.round((index / (order.length - 1)) * 100)
 
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 py-6">
@@ -380,7 +459,39 @@ export function StudyView({
 
       <DeckFilterBar cards={cards} config={userDoc.config} onPatch={patchConfig} />
 
-      <Progress value={sessionPercent} className="h-2" />
+      <div
+        ref={progressBarRef}
+        role="slider"
+        tabIndex={0}
+        aria-label="Posición en la sesión"
+        aria-valuemin={1}
+        aria-valuemax={order.length}
+        aria-valuenow={index + 1}
+        aria-valuetext={`Tarjeta ${index + 1} de ${order.length}`}
+        className="relative touch-none cursor-ew-resize py-2 outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
+        onPointerDown={onProgressPointerDown}
+        onPointerMove={onProgressPointerMove}
+        onPointerUp={onProgressPointerUp}
+        onPointerCancel={onProgressPointerUp}
+        onKeyDown={onProgressKeyDown}
+      >
+        <Progress
+          value={sessionPercent}
+          className={cn(
+            'pointer-events-none h-2',
+            draggingProgress &&
+              '[&_[data-slot=progress-indicator]]:transition-none',
+          )}
+        />
+        <span
+          aria-hidden
+          className={cn(
+            'pointer-events-none absolute top-1/2 size-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-background bg-primary shadow-sm',
+            !draggingProgress && 'transition-[left]',
+          )}
+          style={{ left: `${sessionPercent}%` }}
+        />
+      </div>
 
       <div className="flex flex-wrap justify-center gap-2">
         <Badge variant="secondary">{current.chapterTitle}</Badge>
@@ -453,8 +564,8 @@ export function StudyView({
       </div>
 
       <p className="text-center text-xs text-muted-foreground">
-        Atajos: ← → navegar · Espacio voltear · S mezclar · K la sé · R
-        revisada · U repasar
+        Atajos: ← → navegar · arrastra la barra · Espacio voltear · S mezclar ·
+        K la sé · R revisada · U repasar
       </p>
 
       <CardEditorDialog
