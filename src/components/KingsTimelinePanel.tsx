@@ -203,12 +203,12 @@ export function KingsTimelinePanel({ open, onToggle }: KingsTimelinePanelProps) 
               })}
             </div>
 
-            <div className="grid gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-start">
-              <div className="overflow-x-auto rounded-xl border bg-background/60 p-2 shadow-inner sm:p-3">
-                <p className="mb-2 text-center text-[11px] text-muted-foreground sm:text-left">
-                  Desliza horizontalmente en el móvil · años en a. C.
+            <div className="flex flex-col gap-4">
+              <div className="w-full rounded-xl border bg-background/60 p-2 shadow-inner sm:p-3">
+                <p className="mb-2 text-[11px] text-muted-foreground">
+                  Años en a. C.
                 </p>
-                <div className="min-w-[min(100%,38rem)] sm:min-w-[42rem]">
+                <div className="w-full">
                   <div className="relative mb-2 h-7 border-b border-dashed border-border/80 text-[10px] text-muted-foreground sm:text-xs">
                     {axisTickYears().map((year) => {
                       const left =
@@ -277,7 +277,7 @@ export function KingsTimelinePanel({ open, onToggle }: KingsTimelinePanelProps) 
                 </div>
               </div>
 
-              <div className="lg:sticky lg:top-4">
+              <div className="w-full">
                 {selected ? (
                   <KingDetail
                     king={selected}
@@ -393,7 +393,7 @@ function KingDetail({
         </blockquote>
       )}
 
-      <dl className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
+      <dl className="mt-3 grid grid-cols-1 gap-2 text-sm">
         {king.father && (
           <div className="rounded-md bg-muted/40 px-2 py-1.5">
             <dt className="text-xs text-muted-foreground">Padre</dt>

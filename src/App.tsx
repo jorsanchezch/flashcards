@@ -76,7 +76,13 @@ function FlashcardsApp() {
     <GlossaryProvider onOpenTerm={openGlossaryTerm}>
     <div className="min-h-svh bg-background">
       <header className="border-b bg-card/60 backdrop-blur">
-        <div className="mx-auto flex max-w-3xl flex-col gap-3 px-4 py-4 sm:flex-row sm:items-start sm:justify-between">
+        <div
+          className={`mx-auto flex w-full flex-col gap-3 px-4 py-4 sm:flex-row sm:items-start sm:justify-between ${
+            tab === 'material' && materialRow === 'kings'
+              ? 'max-w-[max(48rem,80vw)]'
+              : 'max-w-3xl'
+          }`}
+        >
           <div className="flex items-center gap-3 text-left">
             <div className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
               <BookOpen className="size-5" />
@@ -146,7 +152,11 @@ function FlashcardsApp() {
               if (next !== 'material') setReturnToGlossary(false)
               setTab(next)
             }}
-            className="mx-auto max-w-3xl"
+            className={`mx-auto w-full ${
+              tab === 'material' && materialRow === 'kings'
+                ? 'max-w-[max(48rem,80vw)]'
+                : 'max-w-3xl'
+            }`}
           >
             <div className="px-4 pt-4">
               <TabsList className="grid h-auto w-full grid-cols-2 gap-1 sm:grid-cols-4">

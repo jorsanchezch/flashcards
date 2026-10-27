@@ -65,7 +65,11 @@ export function StudyMaterialsView({
   }
 
   return (
-    <div className="mx-auto w-full max-w-3xl px-4 py-6">
+    <div
+      className={`mx-auto w-full px-4 py-6 ${
+        openRow === 'kings' ? 'max-w-none' : 'max-w-3xl'
+      }`}
+    >
       <h2 className="text-xl font-semibold tracking-tight">
         Material de estudio
       </h2>
