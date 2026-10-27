@@ -9,16 +9,30 @@ import { UserMenu } from '@/components/UserMenu'
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { GlossaryProvider } from '@/context/GlossaryContext'
+import {
+  PreferencesProvider,
+  useOptionalPreferences,
+  usePreferences,
+} from '@/context/PreferencesContext'
 import { UserProvider, useUser } from '@/context/UserContext'
 import { useFlashcards } from '@/hooks/useFlashcards'
 import { useEffectiveFlashcards } from '@/hooks/useEffectiveFlashcards'
 import { useUsersRoster } from '@/hooks/useUsersRoster'
+import { UI_LOCALES } from '@/lib/i18n'
 import { isGuestSessionId, loadLastUserId } from '@/lib/userData'
 
 type Tab = 'study' | 'browse' | 'team' | 'material'
 
 function FlashcardsApp() {
   const { state, reload } = useFlashcards()
+  const {
+    t,
+    uiLocale,
+    setUiLocale,
+    bibleVersionId,
+    setBibleVersionId,
+    bibleVersions,
+  } = usePreferences()
   const {
     roster,
     userDoc,
@@ -67,30 +81,58 @@ function FlashcardsApp() {
             <div className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
               <BookOpen className="size-5" />
             </div>
-            <h1 className="text-lg font-semibold leading-tight">
-              Flashcards — Samuel y Reyes
-            </h1>
+            <h1 className="text-lg font-semibold leading-tight">{t.appTitle}</h1>
           </div>
-          {hasSession && (
-            <div className="flex w-full justify-end sm:w-auto">
-              <UserMenu />
+          <div className="flex w-full flex-col items-stretch gap-2 sm:w-auto sm:items-end">
+            <div className="flex flex-wrap items-center justify-end gap-2">
+              <label className="sr-only" htmlFor="header-ui-locale">
+                {t.language}
+              </label>
+              <select
+                id="header-ui-locale"
+                className="h-9 rounded-md border border-input bg-background px-2 text-xs"
+                value={uiLocale}
+                onChange={(e) => setUiLocale(e.target.value as 'es' | 'en')}
+                aria-label={t.language}
+              >
+                {UI_LOCALES.map((locale) => (
+                  <option key={locale.id} value={locale.id}>
+                    {locale.label}
+                  </option>
+                ))}
+              </select>
+              <label className="sr-only" htmlFor="header-bible-version">
+                {t.bibleVersion}
+              </label>
+              <select
+                id="header-bible-version"
+                className="h-9 min-w-[7.5rem] rounded-md border border-input bg-background px-2 text-xs"
+                value={bibleVersionId}
+                onChange={(e) => setBibleVersionId(e.target.value)}
+                aria-label={t.bibleVersion}
+              >
+                {bibleVersions.map((version) => (
+                  <option key={version.id} value={version.id}>
+                    {version.gatewayParam} · {version.language === 'es' ? 'ES' : 'EN'}
+                  </option>
+                ))}
+              </select>
             </div>
-          )}
+            {hasSession && <UserMenu />}
+          </div>
         </div>
       </header>
 
       <main>
         {state.status === 'error' && (
           <div className="mx-auto max-w-md px-4 py-16 text-center">
-            <p className="mb-2 font-medium text-destructive">
-              No se pudieron cargar las tarjetas
-            </p>
+            <p className="mb-2 font-medium text-destructive">{t.cardsLoadError}</p>
             <p className="mb-6 text-sm text-muted-foreground">
               {state.message}
             </p>
             <Button onClick={() => void reload()}>
               <RefreshCw className="size-4" />
-              Reintentar
+              {t.retry}
             </Button>
           </div>
         )}
@@ -108,10 +150,10 @@ function FlashcardsApp() {
           >
             <div className="px-4 pt-4">
               <TabsList className="grid h-auto w-full grid-cols-2 gap-1 sm:grid-cols-4">
-                <TabsTrigger value="study">Estudiar</TabsTrigger>
-                <TabsTrigger value="browse">Lista</TabsTrigger>
-                <TabsTrigger value="team">Equipo</TabsTrigger>
-                <TabsTrigger value="material">Material</TabsTrigger>
+                <TabsTrigger value="study">{t.tabs.study}</TabsTrigger>
+                <TabsTrigger value="browse">{t.tabs.browse}</TabsTrigger>
+                <TabsTrigger value="team">{t.tabs.team}</TabsTrigger>
+                <TabsTrigger value="material">{t.tabs.material}</TabsTrigger>
               </TabsList>
             </div>
 
@@ -122,7 +164,7 @@ function FlashcardsApp() {
                   role="status"
                 >
                   <Loader2 className="size-8 animate-spin" />
-                  <p>Cargando tarjetas…</p>
+                  <p>{t.loadingCards}</p>
                 </div>
               ) : !hasSession || !userDoc ? (
                 <StudySessionGate
@@ -158,7 +200,7 @@ function FlashcardsApp() {
                   role="status"
                 >
                   <Loader2 className="size-8 animate-spin" />
-                  <p>Cargando tarjetas…</p>
+                  <p>{t.loadingCards}</p>
                 </div>
               ) : (
                 <BrowseView
@@ -214,12 +256,13 @@ function FlashcardsApp() {
 
 function App() {
   const rosterState = useUsersRoster()
+  const { t } = useOptionalPreferences()
 
   if (rosterState.state.status === 'loading') {
     return (
       <div className="flex min-h-svh flex-col items-center justify-center gap-3 text-muted-foreground">
         <Loader2 className="size-8 animate-spin" />
-        <p>Cargando…</p>
+        <p>{t.loading}</p>
       </div>
     )
   }
@@ -227,15 +270,13 @@ function App() {
   if (rosterState.state.status === 'error') {
     return (
       <div className="mx-auto flex min-h-svh max-w-md flex-col items-center justify-center px-4 text-center">
-        <p className="mb-2 font-medium text-destructive">
-          No se pudo cargar la lista de usuarios
-        </p>
+        <p className="mb-2 font-medium text-destructive">{t.rosterLoadError}</p>
         <p className="mb-6 text-sm text-muted-foreground">
           {rosterState.state.message}
         </p>
         <Button onClick={() => void rosterState.reload()}>
           <RefreshCw className="size-4" />
-          Reintentar
+          {t.retry}
         </Button>
       </div>
     )
@@ -243,7 +284,9 @@ function App() {
 
   return (
     <UserProvider roster={rosterState.state.users}>
-      <FlashcardsApp />
+      <PreferencesProvider>
+        <FlashcardsApp />
+      </PreferencesProvider>
     </UserProvider>
   )
 }

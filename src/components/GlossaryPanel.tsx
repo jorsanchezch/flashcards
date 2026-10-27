@@ -9,6 +9,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { useBibleStatus } from '@/hooks/useBibleStatus'
 import { useGlossary } from '@/context/GlossaryContext'
+import { usePreferences } from '@/context/PreferencesContext'
 import { useUser } from '@/context/UserContext'
 import {
   cardsForGlossaryTerm,
@@ -487,7 +488,11 @@ function GlossaryDetailsModal({
   onOpenCardInStudy: (cardId: string) => void
 }) {
   const bible = useBibleStatus()
-  const cardBible = glossaryCardBibleLinks(references)
+  const { bibleVersion, t, format } = usePreferences()
+  const cardBible = glossaryCardBibleLinks(
+    references,
+    bibleVersion.gatewayParam,
+  )
   const cardHref = cardBible.hrefs[0] ?? null
   const extraHrefs = cardBible.hrefs.slice(1)
 
@@ -577,7 +582,9 @@ function GlossaryDetailsModal({
               <Button asChild className="min-h-11 w-full sm:w-auto">
                 <a href={cardHref} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="size-4" />
-                  Ver en la Biblia (NTV)
+                  {format(t.viewInBible, {
+                    version: bibleVersion.gatewayParam,
+                  })}
                 </a>
               </Button>
               {extraHrefs.map((href, i) => (
@@ -594,9 +601,7 @@ function GlossaryDetailsModal({
               </p>
             </div>
           ) : (
-            <p className="text-sm text-muted-foreground">
-              No hay citas NTV en las tarjetas de esta palabra.
-            </p>
+            <p className="text-sm text-muted-foreground">{t.noCitations}</p>
           )}
           {bible.enabled && (
             <Button

@@ -1,4 +1,4 @@
-/** Bible Gateway NTV links for verse citations shown on cards. */
+/** Bible Gateway links for verse citations shown on cards. */
 
 const GATEWAY_BOOKS: { id: string; label: string; query: string; pattern: RegExp }[] =
   [
@@ -40,18 +40,29 @@ const GATEWAY_BOOKS: { id: string; label: string; query: string; pattern: RegExp
 export const NTV_CITATION_RE = /\(([^()\n]*\d+\s*:\s*\d+[^()\n]*,\s*NTV)\)/gi
 
 export type CitedPart =
-  | { type: 'text'; value: string }
-  | { type: 'cite'; value: string; href: string }
+  | { type: 'text', value: string }
+  | { type: 'cite', value: string; href: string }
 
-export function bibleGatewayNtvUrl(search: string): string {
+export function bibleGatewayPassageUrl(
+  search: string,
+  gatewayParam = 'NTV',
+): string {
   const params = new URLSearchParams()
   params.set('search', search)
-  params.set('version', 'NTV')
+  params.set('version', gatewayParam)
   return `https://www.biblegateway.com/passage/?${params.toString()}`
 }
 
-/** One NTV keyword search covering a word and its other spellings. */
-export function bibleGatewayNtvKeywordUrl(terms: string[]): string {
+/** @deprecated Prefer bibleGatewayPassageUrl */
+export function bibleGatewayNtvUrl(search: string): string {
+  return bibleGatewayPassageUrl(search, 'NTV')
+}
+
+/** Keyword search covering a word and its other spellings. */
+export function bibleGatewayKeywordUrl(
+  terms: string[],
+  gatewayParam = 'NTV',
+): string {
   const seen = new Set<string>()
   const unique: string[] = []
   for (const raw of terms) {
@@ -66,9 +77,14 @@ export function bibleGatewayNtvKeywordUrl(terms: string[]): string {
     unique.length <= 1 ? unique[0] ?? '' : unique.map((t) => `"${t}"`).join(' OR ')
   const params = new URLSearchParams()
   params.set('search', query)
-  params.set('version', 'NTV')
+  params.set('version', gatewayParam)
   params.set('searchtype', 'all')
   return `https://www.biblegateway.com/keyword/?${params.toString()}`
+}
+
+/** @deprecated Prefer bibleGatewayKeywordUrl */
+export function bibleGatewayNtvKeywordUrl(terms: string[]): string {
+  return bibleGatewayKeywordUrl(terms, 'NTV')
 }
 
 export function citationToGatewaySearch(innerWithNtv: string): string | null {
@@ -88,7 +104,10 @@ export function citationToGatewaySearch(innerWithNtv: string): string | null {
   return null
 }
 
-export function splitCitedText(text: string): CitedPart[] {
+export function splitCitedText(
+  text: string,
+  gatewayParam = 'NTV',
+): CitedPart[] {
   const parts: CitedPart[] = []
   const re = new RegExp(NTV_CITATION_RE.source, 'gi')
   let last = 0
@@ -103,7 +122,7 @@ export function splitCitedText(text: string): CitedPart[] {
       parts.push({
         type: 'cite',
         value: match[0],
-        href: bibleGatewayNtvUrl(search),
+        href: bibleGatewayPassageUrl(search, gatewayParam),
       })
     } else {
       parts.push({ type: 'text', value: match[0] })
@@ -144,18 +163,29 @@ export function uniqueCitationSearches(texts: string[]): string[] {
 const MAX_PASSAGES_PER_LINK = 12
 
 /** One or more passage URLs. BibleGateway accepts `;` between passages. */
-export function bibleGatewayNtvPassagesUrls(searches: string[]): string[] {
+export function bibleGatewayPassagesUrls(
+  searches: string[],
+  gatewayParam = 'NTV',
+): string[] {
   if (!searches.length) return []
   const urls: string[] = []
   for (let i = 0; i < searches.length; i += MAX_PASSAGES_PER_LINK) {
     const chunk = searches.slice(i, i + MAX_PASSAGES_PER_LINK)
-    urls.push(bibleGatewayNtvUrl(chunk.join(';')))
+    urls.push(bibleGatewayPassageUrl(chunk.join(';'), gatewayParam))
   }
   return urls
 }
 
-export function extractCitationHrefs(text: string): { label: string; href: string }[] {
-  return splitCitedText(text)
+/** @deprecated Prefer bibleGatewayPassagesUrls */
+export function bibleGatewayNtvPassagesUrls(searches: string[]): string[] {
+  return bibleGatewayPassagesUrls(searches, 'NTV')
+}
+
+export function extractCitationHrefs(
+  text: string,
+  gatewayParam = 'NTV',
+): { label: string; href: string }[] {
+  return splitCitedText(text, gatewayParam)
     .filter((p): p is Extract<CitedPart, { type: 'cite' }> => p.type === 'cite')
     .map((p) => ({ label: p.value, href: p.href }))
 }

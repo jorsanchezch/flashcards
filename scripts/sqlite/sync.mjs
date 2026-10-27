@@ -304,12 +304,25 @@ export async function exportStatic(db) {
     path.join(publicData, 'glossary.json'),
     `${JSON.stringify({ entries }, null, 2)}\n`,
   )
-  const versions = db.prepare(`SELECT id, label, gateway_param as gatewayParam, is_default as isDefault FROM bible_versions`).all()
+  const versions = db
+    .prepare(
+      `SELECT id, label, gateway_param as gatewayParam, is_default as isDefault FROM bible_versions`,
+    )
+    .all()
+    .map((v) => ({
+      ...v,
+      language: v.id === 'ntv' || String(v.id).startsWith('rvr') ? 'es' : 'en',
+    }))
   await writeFile(
     path.join(publicData, 'bible-versions.json'),
     `${JSON.stringify({ versions, selected: DEFAULT_VERSION }, null, 2)}\n`,
   )
   return { cards: cards.length, glossary: entries.length }
+}
+
+function languageForVersionId(id) {
+  if (id === 'ntv' || String(id).startsWith('rvr')) return 'es'
+  return 'en'
 }
 
 export function bibleStatusFromDb(db) {
@@ -319,6 +332,7 @@ export function bibleStatusFromDb(db) {
       `SELECT id, label, gateway_param AS gatewayParam FROM bible_versions ORDER BY id`,
     )
     .all()
+    .map((v) => ({ ...v, language: languageForVersionId(v.id) }))
   return {
     enabled: Boolean(row?.n),
     source: 'sqlite',

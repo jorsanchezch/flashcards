@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { Eraser, Settings2, Trash2 } from 'lucide-react'
+import { LanguagePreferences } from '@/components/LanguagePreferences'
+import { usePreferences } from '@/context/PreferencesContext'
 import { useUser } from '@/context/UserContext'
 import { Button } from '@/components/ui/button'
 import {
@@ -22,6 +24,7 @@ export function UserDataPanel() {
     resetDeckToOriginal,
     resetAllLocalData,
   } = useUser()
+  const { t } = usePreferences()
   const [pending, setPending] = useState<PendingAction>(null)
   const [doneMessage, setDoneMessage] = useState<string | null>(null)
 
@@ -66,7 +69,7 @@ export function UserDataPanel() {
   return (
     <Card className="mt-3 w-full max-w-md border-dashed">
       <CardHeader className="pb-2">
-        <CardTitle className="text-sm">Mis datos</CardTitle>
+        <CardTitle className="text-sm">{t.myData}</CardTitle>
         <CardDescription className="text-xs">
           {isGuest
             ? 'Sesión sin ID: las marcas La sé, Repasar y Revisada son del equipo y se ven en Equipo.'
@@ -74,6 +77,7 @@ export function UserDataPanel() {
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-2">
+        <LanguagePreferences className="mb-2 rounded-lg border p-3" />
         {!pending && (
           <>
             <Button

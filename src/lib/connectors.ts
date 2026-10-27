@@ -1,4 +1,9 @@
 import type { Flashcard } from '@/lib/parseFlashcard'
+import {
+  BIBLE_VERSIONS,
+  withBibleLanguage,
+  type BibleLanguage,
+} from '@/lib/bibleVersions'
 
 export type DataSource = 'sqlite' | 'json'
 
@@ -6,7 +11,12 @@ export type BibleStatus = {
   enabled: boolean
   source: DataSource
   verseCount: number
-  versions: { id: string; label: string; gatewayParam: string }[]
+  versions: {
+    id: string
+    label: string
+    gatewayParam: string
+    language: BibleLanguage
+  }[]
 }
 
 export type BibleHit = {
@@ -59,7 +69,17 @@ export const jsonConnector: CatalogConnector = {
     return readJson(`${baseUrl()}data/glossary.json`)
   },
   async bibleStatus() {
-    return { enabled: false, source: 'json', verseCount: 0, versions: [] }
+    return {
+      enabled: false,
+      source: 'json',
+      verseCount: 0,
+      versions: BIBLE_VERSIONS.map((v) => ({
+        id: v.id,
+        label: v.label,
+        gatewayParam: v.gatewayParam,
+        language: v.language,
+      })),
+    }
   },
   async searchBible() {
     return []
@@ -76,15 +96,36 @@ export const sqliteConnector: CatalogConnector = {
   },
   async bibleStatus() {
     try {
-      const raw = (await readJson(`${baseUrl()}api/local/bible-status`)) as BibleStatus
+      const raw = (await readJson(`${baseUrl()}api/local/bible-status`)) as {
+        verseCount?: number
+        versions?: {
+          id: string
+          label: string
+          gatewayParam: string
+          language?: BibleLanguage
+        }[]
+      }
+      const versions = (raw.versions?.length ? raw.versions : BIBLE_VERSIONS).map(
+        (row) => withBibleLanguage(row),
+      )
       return {
         enabled: Boolean(raw.verseCount),
         source: 'sqlite',
         verseCount: raw.verseCount ?? 0,
-        versions: raw.versions ?? [],
+        versions,
       }
     } catch {
-      return { enabled: false, source: 'sqlite', verseCount: 0, versions: [] }
+      return {
+        enabled: false,
+        source: 'sqlite',
+        verseCount: 0,
+        versions: BIBLE_VERSIONS.map((v) => ({
+          id: v.id,
+          label: v.label,
+          gatewayParam: v.gatewayParam,
+          language: v.language,
+        })),
+      }
     }
   },
   async searchBible(query: string, versionId = 'ntv') {

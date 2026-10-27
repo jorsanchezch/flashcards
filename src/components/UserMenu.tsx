@@ -9,6 +9,7 @@ import {
   Upload,
   UserRound,
 } from 'lucide-react'
+import { usePreferences } from '@/context/PreferencesContext'
 import { useUser } from '@/context/UserContext'
 import { UserDataPanel } from '@/components/UserDataPanel'
 import { PendingChangesDialog } from '@/components/PendingChangesDialog'
@@ -23,6 +24,7 @@ import {
 export function UserMenu() {
   const { userDoc, isGuest, isAdmin, signOut, exportDocument, importDocument } =
     useUser()
+  const { t } = usePreferences()
   const fileRef = useRef<HTMLInputElement>(null)
   const [importMessage, setImportMessage] = useState<string | null>(null)
   const [showDataPanel, setShowDataPanel] = useState(false)
@@ -48,7 +50,7 @@ export function UserMenu() {
     <div className="flex w-full flex-col items-end gap-1 sm:w-auto">
       <div className="flex flex-wrap items-center justify-end gap-2">
         <span className="hidden text-xs text-muted-foreground sm:inline">
-          {isGuest ? 'Modo' : 'Estudiando como'}
+          {isGuest ? t.mode : t.studyingAs}
         </span>
         <Button variant="secondary" size="sm" className="max-w-[12rem] truncate">
           <UserRound className="size-4 shrink-0" />
@@ -65,11 +67,11 @@ export function UserMenu() {
           ) : (
             <ChevronDown className="size-4" />
           )}
-          <span className="hidden sm:inline">Mis datos</span>
+          <span className="hidden sm:inline">{t.myData}</span>
         </Button>
         <Button variant="ghost" size="sm" onClick={signOut}>
           <LogOut className="size-4" />
-          Cambiar
+          {t.changeUser}
         </Button>
         {isAdmin && (
           <DropdownMenu>

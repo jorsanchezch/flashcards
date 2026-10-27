@@ -4,6 +4,7 @@ import {
   type CompiledGlossaryForm,
 } from '@/lib/glossary'
 import { useGlossary } from '@/context/GlossaryContext'
+import { usePreferences } from '@/context/PreferencesContext'
 import { cn } from '@/lib/utils'
 import type { ReactNode } from 'react'
 
@@ -67,7 +68,8 @@ export function CitedText({
   citeStyle = 'inline',
 }: CitedTextProps) {
   const { matchers } = useGlossary()
-  const parts = splitCitedText(text)
+  const { bibleVersion } = usePreferences()
+  const parts = splitCitedText(text, bibleVersion.gatewayParam)
   return (
     <span className={className}>
       {parts.map((part, i) =>
@@ -109,7 +111,8 @@ export function CitationLinks({
   className,
   compact = false,
 }: CitationLinksProps) {
-  const links = extractCitationHrefs(text)
+  const { bibleVersion, t, format } = usePreferences()
+  const links = extractCitationHrefs(text, bibleVersion.gatewayParam)
   if (!links.length) return null
   return (
     <p className={cn('mt-2 flex flex-wrap gap-2', className)}>
@@ -130,7 +133,10 @@ export function CitationLinks({
         >
           {compact
             ? link.label.replace(/^\(|\)$/g, '')
-            : `Abrir ${link.label.replace(/^\(|\)$/g, '')} en NTV`}
+            : format(t.openCitation, {
+                label: link.label.replace(/^\(|\)$/g, ''),
+                version: bibleVersion.gatewayParam,
+              })}
         </a>
       ))}
     </p>

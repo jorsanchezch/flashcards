@@ -17,6 +17,8 @@ import {
   getBookRange,
   type DeckGrouping,
 } from '@/lib/deckFilter'
+import { DEFAULT_BIBLE_VERSION_ID, bibleVersionMeta } from '@/lib/bibleVersions'
+import { DEFAULT_UI_LOCALE, isUiLocale, type UiLocale } from '@/lib/i18n'
 
 export type { GlossaryEntry, GlossaryOverlay }
 
@@ -54,6 +56,10 @@ export type UserConfig = {
   studyCursors: Record<string, StudyBookCursor>
   /** Ritmo del curso (fechas, libros, días). */
   coursePace?: CoursePaceSettings
+  /** Interface language (chrome). Course cards stay Spanish/NTV. */
+  uiLocale?: UiLocale
+  /** Preferred BibleGateway / local-search version id (ntv, kjv, asv, …). */
+  bibleVersionId?: string
   /** @deprecated migrated into groupings */
   shuffleByChapter?: boolean
   studyChapterFrom?: number | null
@@ -166,6 +172,8 @@ export function defaultUserConfig(): UserConfig {
     studySessionOrder: null,
     studySessionIndex: 0,
     studyCursors: {},
+    uiLocale: DEFAULT_UI_LOCALE,
+    bibleVersionId: DEFAULT_BIBLE_VERSION_ID,
   }
 }
 
@@ -446,6 +454,14 @@ function normalizeUserDocument(
       rawConfig.coursePace && typeof rawConfig.coursePace === 'object'
         ? normalizeCoursePaceSettings(rawConfig.coursePace)
         : undefined,
+    uiLocale: isUiLocale(rawConfig.uiLocale)
+      ? rawConfig.uiLocale
+      : base.config.uiLocale,
+    bibleVersionId: bibleVersionMeta(
+      typeof rawConfig.bibleVersionId === 'string'
+        ? rawConfig.bibleVersionId
+        : base.config.bibleVersionId,
+    ).id,
   }
   const progress: Record<string, CardProgressEntry> = {}
   if (parsed.progress && typeof parsed.progress === 'object') {
