@@ -900,6 +900,11 @@ def main() -> None:
             related.append({"id": oid, "rel": "aparece en las mismas tarjetas"})
         e["related"] = related
 
+    # Places: geography + why each character belongs there. Overrides co-occurrence.
+    from place_geography import apply_place_geography
+
+    apply_place_geography(entries)
+
     GLOSSARY.write_text(
         json.dumps({"entries": entries}, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",

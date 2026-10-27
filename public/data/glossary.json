@@ -47,20 +47,36 @@
         "Abel Beth Maacah"
       ],
       "kind": "lugar",
-      "note": "Ciudad del norte donde Joab sitió a Seba hijo de Bicri.",
+      "note": "Ciudad del extremo norte de Israel, al norte de Dan, en la frontera con Aram. Joab la sitió porque Seba hijo de Bicri se refugió allí tras rebelarse contra David; una mujer de la ciudad entregó la cabeza de Seba.",
       "properName": true,
       "related": [
         {
-          "id": "joab",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "dan",
+          "rel": "queda al sur; Abel-bet-maaca está más al norte, en la frontera"
         },
         {
-          "id": "maaca",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "aram",
+          "rel": "país vecino, al otro lado de la frontera norte"
+        },
+        {
+          "id": "israel",
+          "rel": "en su extremo norte"
         },
         {
           "id": "seba",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "se refugió aquí al rebelarse contra David"
+        },
+        {
+          "id": "bicri",
+          "rel": "padre de Seba, el rebelde buscado en la ciudad"
+        },
+        {
+          "id": "joab",
+          "rel": "sitió la ciudad hasta que entregaron a Seba"
+        },
+        {
+          "id": "david",
+          "rel": "Seba se había levantado contra su reino"
         }
       ]
     },
@@ -454,16 +470,28 @@
         "Adullam"
       ],
       "kind": "lugar",
-      "note": "Cueva donde David se escondió y reunió a su gente.",
+      "note": "Cueva en las colinas de Judá, al suroeste de Belén, entre la sierra y la Sefela. David se escondió aquí huyendo de Saúl; se le unieron sus hermanos y unos cuatrocientos hombres en apuros.",
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "juda",
+          "rel": "en la ladera occidental de Judá"
         },
         {
           "id": "belen",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "al suroeste del pueblo de Isaí y de David"
+        },
+        {
+          "id": "david",
+          "rel": "se refugió en la cueva y reunió allí a su gente"
+        },
+        {
+          "id": "saul",
+          "rel": "David huía de él cuando llegó a Adulam"
+        },
+        {
+          "id": "isai",
+          "rel": "sus otros hijos bajaron a la cueva con David"
         }
       ]
     },
@@ -474,20 +502,44 @@
         "Aphek"
       ],
       "kind": "lugar",
-      "note": "Lugar donde filisteos y Siria pelearon contra Israel.",
+      "note": "Hay más de un Afec. El de Samuel está en la llanura costera, frente a Ebenezer: allí acamparon los filisteos y se llevaron el arca; Ofni y Finees murieron, y Elí cayó al saberlo. Otro Afec es el campamento desde el que Aquis despidió a David camino de Jezreel. En Reyes, Ben-adad de Siria volvió a pelear contra Acab en un Afec de la llanura del norte.",
       "properName": true,
       "related": [
         {
-          "id": "asdod",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "filisteos",
+          "rel": "acamparon aquí y derrotaron a Israel"
         },
         {
-          "id": "tumores",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ebenezer",
+          "rel": "el campamento de Israel quedaba frente a este Afec"
         },
         {
-          "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "eli",
+          "rel": "murió al oír que el arca se había perdido en esa batalla"
+        },
+        {
+          "id": "ofni",
+          "rel": "murió en el combate que salió de Afec"
+        },
+        {
+          "id": "finees",
+          "rel": "murió con Ofni cuando el arca fue tomada"
+        },
+        {
+          "id": "aquis",
+          "rel": "desde otro Afec despidió a David antes de la batalla"
+        },
+        {
+          "id": "david",
+          "rel": "los filisteos no lo dejaron subir con ellos desde Afec"
+        },
+        {
+          "id": "ben-adad",
+          "rel": "en el Afec de Reyes peleó de nuevo contra Israel"
+        },
+        {
+          "id": "acab",
+          "rel": "enfrentó a Ben-adad en ese Afec del norte"
         }
       ]
     },
@@ -776,20 +828,44 @@
         "Ammon"
       ],
       "kind": "lugar",
-      "note": "Nación al este del Jordán; también un rey de Judá, padre de Josías.",
+      "note": "Nación al este del Jordán y de Galaad, al noreste del mar Muerto. Nahas sitió Jabes de Galaad y Saúl lo venció; más tarde David y Joab tomaron Rabá de Amón. El mismo nombre es el de un rey de Judá, hijo de Manasés y padre de Josías, que reinó en Jerusalén y no en este país.",
       "properName": true,
       "related": [
         {
+          "id": "galaad",
+          "rel": "Amón queda al este de esta meseta"
+        },
+        {
+          "id": "jordan",
+          "rel": "al este del río"
+        },
+        {
+          "id": "jabes",
+          "rel": "Nahas la sitió y Saúl la liberó"
+        },
+        {
+          "id": "nahas",
+          "rel": "rey amonita que amenazó a Jabes"
+        },
+        {
+          "id": "saul",
+          "rel": "venció a Nahas y salvó a Jabes"
+        },
+        {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "sometió Amón y tomó su capital"
         },
         {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "joab",
+          "rel": "mandó el ejército en la guerra contra Amón"
         },
         {
-          "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "manases",
+          "rel": "padre del rey Amón de Judá, distinto de esta nación"
+        },
+        {
+          "id": "josias",
+          "rel": "hijo de ese rey Amón de Jerusalén"
         }
       ]
     },
@@ -853,20 +929,32 @@
         "Anathoth"
       ],
       "kind": "lugar",
-      "note": "Pueblo de sacerdotes en Benjamín; origen de Abiatar y Jeremías.",
+      "note": "Pueblo de sacerdotes en Benjamín, unos kilómetros al noreste de Jerusalén. Salomón confinó aquí a Abiatar por haber apoyado a Adonías. Más adelante es la patria de Jeremías.",
       "properName": true,
       "related": [
         {
-          "id": "abiatar",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "benjamin",
+          "rel": "en el territorio de Benjamín"
         },
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jerusalen",
+          "rel": "al noreste de la ciudad"
+        },
+        {
+          "id": "abiatar",
+          "rel": "Salomón lo envió a sus tierras de Anatot"
         },
         {
           "id": "salomon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lo apartó del sacerdocio y lo confinó aquí"
+        },
+        {
+          "id": "adonias",
+          "rel": "Abiatar había apoyado su intento de reinar"
+        },
+        {
+          "id": "david",
+          "rel": "Abiatar había cargado el arca delante de él"
         }
       ]
     },
@@ -921,20 +1009,28 @@
         "Arabah"
       ],
       "kind": "lugar",
-      "note": "La depresión del Jordán, hacia el sur.",
+      "note": "La gran depresión que baja desde el mar de Galilea por el Jordán y el mar Muerto hasta el golfo de Elat, al sur. Elías y Eliseo cruzaron el Jordán, que corre por el Arabá; el camino a Edom y a Ezión-geber sigue esta hondonada.",
       "properName": true,
       "related": [
         {
-          "id": "eliseo",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jordan",
+          "rel": "el río que recorre el Arabá"
         },
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "edom",
+          "rel": "el Arabá del sur bordea la tierra de Edom"
+        },
+        {
+          "id": "elat",
+          "rel": "el extremo sur de la depresión, en el mar Rojo"
         },
         {
           "id": "elias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "cruzó el Jordán con Eliseo por esta depresión"
+        },
+        {
+          "id": "eliseo",
+          "rel": "partió las aguas del Jordán al volver del Arabá"
         }
       ]
     },
@@ -945,20 +1041,40 @@
         "Syria"
       ],
       "kind": "lugar",
-      "note": "Siria; Damasco y sus reyes (Hadad-ezer, Ben-adad, Hazael, Rezín).",
+      "note": "Siria, al norte y al noreste de Israel, con capital en Damasco; incluye Zoba, Bet-rehob y Gesur. David venció a Hadad-ezer. Después Ben-adad, Hazael y Rezín pelearon contra Israel y Judá desde Aram.",
       "properName": true,
       "related": [
         {
-          "id": "siria",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "damasco",
+          "rel": "capital de Aram"
         },
         {
-          "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "siria",
+          "rel": "el mismo país con el otro nombre"
         },
         {
           "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "vecino del sur, enemigo y a veces aliado"
+        },
+        {
+          "id": "hadad-ezer",
+          "rel": "rey de Zoba, en Aram, vencido por David"
+        },
+        {
+          "id": "david",
+          "rel": "derrotó a los reyes arameos que ayudaban a Amón"
+        },
+        {
+          "id": "ben-adad",
+          "rel": "nombre de reyes de Aram que pelearon con Israel"
+        },
+        {
+          "id": "hazael",
+          "rel": "rey de Aram que hostigó a Israel"
+        },
+        {
+          "id": "rezin",
+          "rel": "rey de Aram aliado de Peka contra Acaz"
         }
       ]
     },
@@ -1137,20 +1253,24 @@
         "Azoto"
       ],
       "kind": "lugar",
-      "note": "Ciudad filistea; el arca derribó a Dagón allí.",
+      "note": "Ciudad filistea de la costa, entre Gaza y el territorio de Judá, al oeste de la sierra. Llevaron el arca al templo de Dagón; el ídolo cayó roto y la ciudad sufrió tumores, así que pasaron el arca a Gat.",
       "properName": true,
       "related": [
         {
-          "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "filisteos",
+          "rel": "una de sus cinco ciudades de la costa"
+        },
+        {
+          "id": "juda",
+          "rel": "al oeste de la sierra de Judá"
         },
         {
           "id": "gat",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ciudad hermana adonde enviaron el arca"
         },
         {
-          "id": "afec",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "dagon",
+          "rel": "su ídolo cayó delante del arca en Asdod"
         }
       ]
     },
@@ -1209,20 +1329,44 @@
         "Assyria"
       ],
       "kind": "lugar",
-      "note": "Imperio que se llevó a Israel y amenazó a Judá en días de Ezequías.",
+      "note": "Imperio al noreste, más allá del Éufrates, con capital en Nínive. Tiglat-pileser, Salmanasar y Senaquerib sometieron el reino del norte y amenazaron a Ezequías en Judá; deportaron a Israel hacia Halah, Habor y Gozán.",
       "properName": true,
       "related": [
         {
-          "id": "siria",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ninive",
+          "rel": "su capital, junto al Tigris"
         },
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "eufrates",
+          "rel": "el gran río que hay que cruzar para llegar a Asiria"
         },
         {
-          "id": "samaria",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "israel",
+          "rel": "se llevó cautivo el reino del norte"
+        },
+        {
+          "id": "juda",
+          "rel": "amenazó a Jerusalén en días de Ezequías"
+        },
+        {
+          "id": "tiglat-pileser",
+          "rel": "intervino en Israel y se llevó gente de Damasco"
+        },
+        {
+          "id": "salmanasar",
+          "rel": "sitió Samaria"
+        },
+        {
+          "id": "senaquerib",
+          "rel": "sitió las ciudades de Judá y desafió a Ezequías"
+        },
+        {
+          "id": "ezequias",
+          "rel": "resistió el asedio asirio confiando en el Señor"
+        },
+        {
+          "id": "oseas",
+          "rel": "último rey de Israel, vencido por Asiria"
         }
       ]
     },
@@ -1258,20 +1402,28 @@
         "Avva"
       ],
       "kind": "lugar",
-      "note": "Lugar de donde Asiria trajo gente a Samaria.",
+      "note": "Ciudad de Mesopotamia, en la órbita de Asiria, no en Canaán. Tras la caída de Samaria, Asiria trajo gente de Ava, junto con la de Cuta y Sefarvaim, para habitar el norte.",
       "properName": true,
       "related": [
         {
+          "id": "asiria",
+          "rel": "desde aquí trasladó colonos"
+        },
+        {
           "id": "samaria",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "destino de esa gente en el antiguo reino del norte"
         },
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "cuta",
+          "rel": "otra ciudad de origen de los mismos colonos"
         },
         {
-          "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "sefarvaim",
+          "rel": "otro grupo asentado en Samaria con los de Ava"
+        },
+        {
+          "id": "salmanasar",
+          "rel": "al caer Samaria, el rey de Asiria trajo colonos de Ava"
         }
       ]
     },
@@ -1329,20 +1481,28 @@
         "Baal Hazor"
       ],
       "kind": "lugar",
-      "note": "Lugar cerca de Efraín donde Absalón mató a Amnón.",
+      "note": "Altor en la sierra de Efraín, al norte de Jerusalén, cerca de la frontera con Benjamín. Absalón invitó allí a los hijos del rey al esquileo y ordenó matar a Amnón.",
       "properName": true,
       "related": [
         {
+          "id": "efrain",
+          "rel": "en la sierra de Efraín"
+        },
+        {
+          "id": "jerusalen",
+          "rel": "al norte de la ciudad de David"
+        },
+        {
           "id": "absalon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "organizó el esquileo y mandó matar a su hermano"
         },
         {
           "id": "amnon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "fue asesinado en ese banquete"
         },
         {
-          "id": "baal",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "sus hijos estaban reunidos aquí cuando murió Amnón"
         }
       ]
     },
@@ -1353,20 +1513,24 @@
         "Baal Perazim"
       ],
       "kind": "lugar",
-      "note": "Sitio donde David venció a los filisteos: «el Señor irrumpió».",
+      "note": "Cerca de Jerusalén, en el camino de los filisteos por el valle de Refaim, al suroeste de la ciudad. David los venció aquí y llamó al lugar «el Señor irrumpió».",
       "properName": true,
       "related": [
         {
-          "id": "baal",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jerusalen",
+          "rel": "en las afueras del suroeste, valle de Refaim"
+        },
+        {
+          "id": "juda",
+          "rel": "en la subida hacia la sierra de Judá"
         },
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "venció aquí a los filisteos"
         },
         {
           "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "subían contra Jerusalén y fueron derrotados"
         }
       ]
     },
@@ -1401,20 +1565,36 @@
         "Baalah"
       ],
       "kind": "lugar",
-      "note": "Otro nombre de Quiriat-jearim, de donde David trajo el arca.",
+      "note": "Otro nombre de Quiriat-jearim, en la frontera de Judá con Benjamín, al oeste de Jerusalén. David sacó de aquí el arca, de casa de Abinadab; Uza murió al tocarla en el camino.",
       "properName": true,
       "related": [
         {
-          "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "quiriat-jearim",
+          "rel": "es el mismo lugar con otro nombre"
         },
         {
-          "id": "baal",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "juda",
+          "rel": "en el territorio de Judá"
+        },
+        {
+          "id": "jerusalen",
+          "rel": "al oeste de la ciudad, de donde David quiso subir el arca"
         },
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "vino a Baala a buscar el arca"
+        },
+        {
+          "id": "abinadab",
+          "rel": "el arca estaba en su casa"
+        },
+        {
+          "id": "uza",
+          "rel": "murió por sostener el arca al salir de aquí"
+        },
+        {
+          "id": "eleazar",
+          "rel": "hijo de Abinadab, había cuidado el arca"
         }
       ]
     },
@@ -1474,20 +1654,36 @@
         "Babel"
       ],
       "kind": "lugar",
-      "note": "Imperio de Nabucodonosor que tomó Jerusalén y llevó al exilio.",
+      "note": "Imperio al este, en la llanura del Éufrates, lejos de Judá. Nabucodonosor tomó Jerusalén, llevó cautivo a Joaquín y cegó a Sedequías. Evil-merodac sacó luego a Joaquín de la prisión en Babilonia.",
       "properName": true,
       "related": [
         {
-          "id": "joaquin",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "eufrates",
+          "rel": "el río de su llanura"
+        },
+        {
+          "id": "jerusalen",
+          "rel": "la ciudad que Nabucodonosor tomó y vació"
         },
         {
           "id": "nabucodonosor",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "rey que deportó a Judá"
         },
         {
-          "id": "isai",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "joaquin",
+          "rel": "estuvo preso en Babilonia"
+        },
+        {
+          "id": "sedequias",
+          "rel": "fue juzgado y llevado al exilio"
+        },
+        {
+          "id": "evil-merodac",
+          "rel": "lo libertó y lo sentó a la mesa del rey"
+        },
+        {
+          "id": "berodac-baladan",
+          "rel": "rey de Babilonia que envió mensajeros a Ezequías"
         }
       ]
     },
@@ -1496,20 +1692,36 @@
       "term": "Bahurim",
       "aliases": [],
       "kind": "lugar",
-      "note": "Pueblo de Benjamín; Simei maldijo a David allí.",
+      "note": "Pueblo de Benjamín, en la bajada del oriente de Jerusalén hacia el Jordán. Simei hijo de Gera salió de aquí y maldijo a David cuando huía de Absalón. En este pueblo también escondieron a los mensajeros que iban a avisar a David.",
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "benjamin",
+          "rel": "en Benjamín"
         },
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jerusalen",
+          "rel": "al este, en el camino que baja al Jordán"
+        },
+        {
+          "id": "jordan",
+          "rel": "la bajada desde Jerusalén pasa por Bahurim"
+        },
+        {
+          "id": "simei",
+          "rel": "maldijo a David desde este pueblo"
         },
         {
           "id": "gera",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "padre de Simei, de Bahurim"
+        },
+        {
+          "id": "david",
+          "rel": "pasó huyendo de Absalón y oyó la maldición"
+        },
+        {
+          "id": "absalon",
+          "rel": "su rebelión empujó a David por este camino"
         }
       ]
     },
@@ -1590,20 +1802,32 @@
         "Beeroth"
       ],
       "kind": "lugar",
-      "note": "Pueblo gabaonita; origen de los asesinos de Is-boset.",
+      "note": "Pueblo gabaonita en Benjamín, al norte de Jerusalén y cerca de Gabaón. De Beerot eran Recab y Baana, que asesinaron a Is-boset mientras dormía.",
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "gabaon",
+          "rel": "pueblo vecino del mismo grupo gabaonita"
         },
         {
-          "id": "baana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "benjamin",
+          "rel": "en Benjamín, al norte de Jerusalén"
+        },
+        {
+          "id": "jerusalen",
+          "rel": "al norte de la ciudad"
         },
         {
           "id": "recab",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "de Beerot; mató a Is-boset"
+        },
+        {
+          "id": "baana",
+          "rel": "de Beerot; mató a Is-boset con Recab"
+        },
+        {
+          "id": "is-boset",
+          "rel": "lo asesinaron estos dos hombres de Beerot"
         }
       ]
     },
@@ -1615,20 +1839,24 @@
         "Beer-sheba"
       ],
       "kind": "lugar",
-      "note": "Ciudad del sur de Judá; «desde Dan hasta Beerseba».",
+      "note": "Ciudad del extremo sur de Judá, en el Néguev. Con Dan marca el país de punta a punta: «desde Dan hasta Beerseba». Joel y Abías, hijos de Samuel, juzgaban aquí.",
       "properName": true,
       "related": [
         {
-          "id": "seba",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "juda",
+          "rel": "en el sur de Judá"
+        },
+        {
+          "id": "dan",
+          "rel": "el otro extremo, al norte, del mismo dicho"
         },
         {
           "id": "samuel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "sus hijos juzgaban en Beerseba"
         },
         {
-          "id": "abiam",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "joel",
+          "rel": "hijo mayor de Samuel, juez aquí"
         }
       ]
     },
@@ -1640,20 +1868,36 @@
         "Belén de Judá"
       ],
       "kind": "lugar",
-      "note": "Pueblo de Judá, ciudad de Isaí y David.",
+      "note": "Pueblo de la sierra de Judá, unos kilómetros al sur de Jerusalén. Ciudad de Isaí y de David; Samuel ungió aquí a David entre sus hermanos. El sepulcro de Raquel se nombra en el camino de esta zona.",
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "juda",
+          "rel": "en la sierra de Judá"
+        },
+        {
+          "id": "jerusalen",
+          "rel": "al sur de la capital"
+        },
+        {
+          "id": "hebron",
+          "rel": "Hebrón queda más al sur, en la misma sierra"
         },
         {
           "id": "isai",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "vivía en Belén"
         },
         {
-          "id": "adulam",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "nació aquí y Samuel lo ungió en casa de su padre"
+        },
+        {
+          "id": "samuel",
+          "rel": "vino a Belén a ungir al hijo de Isaí"
+        },
+        {
+          "id": "raquel",
+          "rel": "su sepulcro se nombra cerca de Belén"
         }
       ]
     },
@@ -1687,20 +1931,32 @@
       "term": "Benjamín",
       "aliases": [],
       "kind": "lugar",
-      "note": "Tribu y territorio de Saúl, Gabaa y Jerusalén al norte.",
+      "note": "Territorio entre Judá al sur y Efraín al norte, en la sierra alrededor de Jerusalén. Tierra de Saúl: Gabaa, Geba, Micmas, Ramá, Nob, Anatot y Bahurim están en Benjamín.",
       "properName": true,
       "related": [
         {
+          "id": "juda",
+          "rel": "limita al sur"
+        },
+        {
+          "id": "efrain",
+          "rel": "limita al norte"
+        },
+        {
+          "id": "jerusalen",
+          "rel": "en el borde sur de Benjamín, junto a Judá"
+        },
+        {
           "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "benjamita, de Gabaa"
         },
         {
-          "id": "samuel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "gabaa",
+          "rel": "su pueblo dentro de este territorio"
         },
         {
-          "id": "ela",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jonatan",
+          "rel": "hijo de Saúl, de esta tierra"
         }
       ]
     },
@@ -1736,20 +1992,32 @@
         "Beth Rehob"
       ],
       "kind": "lugar",
-      "note": "Región aramea de donde tomaron mercenarios contra David.",
+      "note": "Región aramea del norte, cerca de Dan y del valle que sube hacia Hamat. Los amonitas tomaron de aquí mercenarios contra David; Joab enfrentó esa coalición.",
       "properName": true,
       "related": [
         {
+          "id": "aram",
+          "rel": "región aramea"
+        },
+        {
+          "id": "dan",
+          "rel": "cerca del extremo norte de Israel"
+        },
+        {
+          "id": "hamat",
+          "rel": "hacia la entrada de Hamat"
+        },
+        {
           "id": "amon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "sus reyes contrataron tropas de Bet-rehob"
         },
         {
-          "id": "maaca",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "era el rey contra quien se aliaron"
         },
         {
-          "id": "tob",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "joab",
+          "rel": "mandó el ejército de David en esa guerra"
         }
       ]
     },
@@ -1760,20 +2028,28 @@
         "Beth Shemesh"
       ],
       "kind": "lugar",
-      "note": "Pueblo de Judá adonde volvió el arca en la carreta; allí murieron hombres por mirar dentro.",
+      "note": "Pueblo de Judá en la Sefela, en el límite con la llanura filistea, al oeste de Jerusalén. El arca llegó aquí en la carreta de las vacas desde Ecrón; murieron hombres por mirar dentro, y el arca siguió a Quiriat-jearim.",
       "properName": true,
       "related": [
         {
-          "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "juda",
+          "rel": "en la Sefela de Judá"
         },
         {
-          "id": "carreta",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jerusalen",
+          "rel": "al oeste de la sierra"
         },
         {
-          "id": "holocausto",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ecron",
+          "rel": "el arca venía de esta ciudad filistea"
+        },
+        {
+          "id": "quiriat-jearim",
+          "rel": "de Bet-semes llevaron el arca a esa ciudad"
+        },
+        {
+          "id": "filisteos",
+          "rel": "devolvieron el arca en la carreta hacia Bet-semes"
         }
       ]
     },
@@ -1785,20 +2061,36 @@
         "Bethel"
       ],
       "kind": "lugar",
-      "note": "Santuario del norte; Jeroboam puso un becerro; Elías y Eliseo pasaron por allí.",
+      "note": "Santuario de la sierra, en el límite de Efraín y Benjamín, al norte de Jerusalén y al sur de Silo. Jeroboam puso aquí uno de los becerros. Elías y Eliseo pasaron por Betel camino del Jordán. Hiel de Betel reedificó Jericó.",
       "properName": true,
       "related": [
         {
+          "id": "efrain",
+          "rel": "en la frontera de la sierra de Efraín"
+        },
+        {
+          "id": "benjamin",
+          "rel": "también se cuenta en el borde de Benjamín"
+        },
+        {
+          "id": "silo",
+          "rel": "Silo queda más al norte, en la misma sierra"
+        },
+        {
           "id": "jeroboam",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "puso aquí un becerro de oro"
         },
         {
-          "id": "roboam",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "elias",
+          "rel": "pasó por Betel camino de su partida"
         },
         {
-          "id": "juda",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "eliseo",
+          "rel": "iba con Elías y volvió por este camino"
+        },
+        {
+          "id": "hiel",
+          "rel": "era de Betel y reedificó Jericó a costa de sus hijos"
         }
       ]
     },
@@ -1838,20 +2130,24 @@
         "Bezek"
       ],
       "kind": "lugar",
-      "note": "Lugar donde Saúl reunió a Israel para socorrer a Jabes.",
+      "note": "Lugar de reunión en la sierra al oeste del Jordán, frente al camino que baja a Galaad. Saúl contó aquí el ejército de Israel y de Judá antes de cruzar a liberar Jabes.",
       "properName": true,
       "related": [
         {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jordan",
+          "rel": "al oeste del río, antes del cruce a Galaad"
         },
         {
-          "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "galaad",
+          "rel": "desde Bezec se bajaba a socorrer esa región"
+        },
+        {
+          "id": "jabes",
+          "rel": "la ciudad que Saúl iba a liberar"
         },
         {
           "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "reunió aquí a Israel antes de la batalla"
         }
       ]
     },
@@ -1902,16 +2198,24 @@
         "Bozkath"
       ],
       "kind": "lugar",
-      "note": "Pueblo de Judá, origen de Jedida, madre de Josías.",
+      "note": "Pueblo de la Sefela de Judá, en el sur, en la zona de Laquis. De Boscat era Jedida, madre del rey Josías.",
       "properName": true,
       "related": [
         {
+          "id": "juda",
+          "rel": "en la Sefela del sur"
+        },
+        {
+          "id": "laquis",
+          "rel": "ciudad fortificada de la misma región"
+        },
+        {
           "id": "jedida",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "era de Boscat"
         },
         {
           "id": "josias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "su madre Jedida era de este pueblo"
         }
       ]
     },
@@ -1920,12 +2224,28 @@
       "term": "Cabul",
       "aliases": [],
       "kind": "lugar",
-      "note": "Región de Galilea que Salomón dio a Hiram y no le agradó.",
+      "note": "Distrito de Galilea, en el norte, cerca de la frontera con Tiro. Salomón dio a Hiram veinte ciudades de esta región, y a Hiram no le agradaron.",
       "properName": true,
       "related": [
         {
+          "id": "galilea",
+          "rel": "en Galilea"
+        },
+        {
+          "id": "neftali",
+          "rel": "en el norte, tierra cercana a esta tribu"
+        },
+        {
+          "id": "tiro",
+          "rel": "en la frontera con la ciudad de Hiram"
+        },
+        {
+          "id": "salomon",
+          "rel": "entregó estas ciudades"
+        },
+        {
           "id": "hiram",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "las recibió y las rechazó"
         }
       ]
     },
@@ -1937,20 +2257,36 @@
         "Monte Carmelo"
       ],
       "kind": "lugar",
-      "note": "Monte donde Elías enfrentó a los profetas de Baal.",
+      "note": "El monte de la costa, sobre el Mediterráneo, entre el mar y el valle de Jezreel. Elías retó aquí a los profetas de Baal delante de Acab, y al pie corre el Cisón. También hay un Carmelo en el sur de Judá: de allí era Nabal, a quien David pidió ayuda.",
       "properName": true,
       "related": [
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jezreel",
+          "rel": "el valle que el monte cierra por el oeste"
         },
         {
-          "id": "eliseo",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "cison",
+          "rel": "arroyo al pie del monte"
         },
         {
           "id": "elias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "enfrentó en el monte a los profetas de Baal"
+        },
+        {
+          "id": "acab",
+          "rel": "subió al Carmelo y luego bajó a Jezreel"
+        },
+        {
+          "id": "eliseo",
+          "rel": "también anduvo por este monte"
+        },
+        {
+          "id": "baal",
+          "rel": "sus profetas fueron vencidos en el Carmelo"
+        },
+        {
+          "id": "david",
+          "rel": "en el Carmelo de Judá trató con Nabal"
         }
       ]
     },
@@ -1985,20 +2321,28 @@
         "Kidron"
       ],
       "kind": "lugar",
-      "note": "Arroyo al oriente de Jerusalén; Asa y otros echaron allí ídolos.",
+      "note": "Arroyo y valle al oriente de Jerusalén, entre la ciudad y el monte de los Olivos. David lo cruzó al huir de Absalón. Asa quemó aquí la imagen de la reina madre, y Josías quemó en el Cedrón los utensilios de los ídolos.",
       "properName": true,
       "related": [
         {
           "id": "jerusalen",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "corre al este de la ciudad"
         },
         {
-          "id": "asera",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "lo cruzó descalzo al huir"
         },
         {
-          "id": "baal",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "absalon",
+          "rel": "David salía de la ciudad por su rebelión"
+        },
+        {
+          "id": "asa",
+          "rel": "quemó en el Cedrón el ídolo de la reina madre"
+        },
+        {
+          "id": "josias",
+          "rel": "quemó aquí los utensilios de Baal y de otros cultos"
         }
       ]
     },
@@ -2033,20 +2377,24 @@
         "Kishon"
       ],
       "kind": "lugar",
-      "note": "Arroyo al pie del Carmelo donde Elías degolló a los profetas de Baal.",
+      "note": "Arroyo que baja del Carmelo hacia el valle de Jezreel y el mar. Elías hizo degollar junto al Cisón a los profetas de Baal, y Acab subió de allí hacia Jezreel.",
       "properName": true,
       "related": [
         {
-          "id": "baal",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "carmelo",
+          "rel": "corre al pie del monte"
         },
         {
-          "id": "cis",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jezreel",
+          "rel": "desagua hacia ese valle"
         },
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "elias",
+          "rel": "degolló aquí a los profetas de Baal"
+        },
+        {
+          "id": "acab",
+          "rel": "subió del Cisón a Jezreel delante de la lluvia"
         }
       ]
     },
@@ -2058,20 +2406,28 @@
         "Cutha"
       ],
       "kind": "lugar",
-      "note": "Lugar de donde Asiria trajo colonos a Samaria.",
+      "note": "Ciudad de Mesopotamia, no de Canaán. Asiria trajo colonos de Cuta a Samaria después de deportar a Israel. Esa gente puso en Samaria al dios Nergal.",
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "asiria",
+          "rel": "los trasladó al territorio conquistado"
         },
         {
-          "id": "asiria",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "samaria",
+          "rel": "se asentaron en las ciudades del norte"
         },
         {
           "id": "ava",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "otro origen de los mismos colonos"
+        },
+        {
+          "id": "nergal",
+          "rel": "dios que los de Cuta pusieron en Samaria"
+        },
+        {
+          "id": "salmanasar",
+          "rel": "tras su conquista de Samaria llegaron los colonos de Cuta"
         }
       ]
     },
@@ -2104,20 +2460,48 @@
         "Damascus"
       ],
       "kind": "lugar",
-      "note": "Capital de Siria; Hadad-ezer, Rezín, Hazael.",
+      "note": "Capital de Aram, al noreste de Israel, oasis del camino hacia Hamat. Rezón se hizo rey aquí contra Salomón. Ben-adad, Hazael y Rezín reinaron en Damasco. Naamán era general de su rey; Tiglat-pileser se llevó a la gente de la ciudad a Kir.",
       "properName": true,
       "related": [
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "ben-adad",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "aram",
+          "rel": "es la capital de Aram"
         },
         {
           "id": "siria",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "capital del mismo reino"
+        },
+        {
+          "id": "hamat",
+          "rel": "Hamat queda más al norte, camino seguido"
+        },
+        {
+          "id": "rezon",
+          "rel": "adversario de Salomón, rey en Damasco"
+        },
+        {
+          "id": "salomon",
+          "rel": "Rezón lo hostigó desde esta ciudad"
+        },
+        {
+          "id": "ben-adad",
+          "rel": "rey de Damasco en la guerra con Acab y con Asa"
+        },
+        {
+          "id": "hazael",
+          "rel": "Eliseo anunció que reinaría en Damasco"
+        },
+        {
+          "id": "rezin",
+          "rel": "rey de Damasco aliado de Peka contra Acaz"
+        },
+        {
+          "id": "naaman",
+          "rel": "general del rey de Damasco, sanado por Eliseo"
+        },
+        {
+          "id": "tiglat-pileser",
+          "rel": "tomó Damasco y deportó a su gente"
         }
       ]
     },
@@ -2126,20 +2510,28 @@
       "term": "Dan",
       "aliases": [],
       "kind": "lugar",
-      "note": "Ciudad y tribu del extremo norte; Jeroboam puso el otro becerro.",
+      "note": "Ciudad del extremo norte de Israel, al pie del Hermón, y también el nombre de la tribu. Jeroboam puso aquí el otro becerro, pareja del de Betel. «Desde Dan hasta Beerseba» recorre todo el país.",
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "israel",
+          "rel": "su límite norte"
         },
         {
-          "id": "jordan",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "neftali",
+          "rel": "en la región del lejano norte"
         },
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "beerseba",
+          "rel": "el límite sur del mismo dicho"
+        },
+        {
+          "id": "betel",
+          "rel": "Jeroboam puso el otro becerro en el sur del reino"
+        },
+        {
+          "id": "jeroboam",
+          "rel": "puso un becerro en Dan"
         }
       ]
     },
@@ -2220,16 +2612,24 @@
         "Dothan"
       ],
       "kind": "lugar",
-      "note": "Ciudad donde el ejército sirio rodeó a Eliseo.",
+      "note": "Ciudad del camino que baja de la sierra central hacia Jezreel, al norte de Siquem. El ejército de Siria rodeó aquí a Eliseo; su criado vio luego los carros del Señor.",
       "properName": true,
       "related": [
         {
-          "id": "eliseo",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "siquem",
+          "rel": "al norte de Siquem, en el camino del valle"
         },
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jezreel",
+          "rel": "hacia ese valle baja el camino"
+        },
+        {
+          "id": "siria",
+          "rel": "su ejército cercó la ciudad"
+        },
+        {
+          "id": "eliseo",
+          "rel": "estaba en Dotán cuando lo rodearon"
         }
       ]
     },
@@ -2241,20 +2641,28 @@
         "Eben Ezer"
       ],
       "kind": "lugar",
-      "note": "«Piedra de ayuda»: memorial de Samuel; también campamento frente a Afec.",
+      "note": "Hay dos momentos. El primer Ebenezer fue el campamento de Israel frente a Afec, en la llanura: allí se perdió el arca y murieron los hijos de Elí. Años después Samuel alzó una piedra entre Mizpa y Sen, en la sierra, y la llamó Ebenezer: «el Señor nos ha ayudado».",
       "properName": true,
       "related": [
         {
-          "id": "samuel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "afec",
+          "rel": "el primer campamento miraba al Afec filisteo"
         },
         {
-          "id": "afec",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "mizpa",
+          "rel": "Samuel alzó la piedra de ayuda junto a Mizpa"
+        },
+        {
+          "id": "samuel",
+          "rel": "levantó la piedra después de la victoria"
+        },
+        {
+          "id": "filisteos",
+          "rel": "la piedra recuerda que el Señor los venció"
         },
         {
           "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "sus hijos murieron en el desastre del primer Ebenezer"
         }
       ]
     },
@@ -2265,20 +2673,32 @@
         "Ekron"
       ],
       "kind": "lugar",
-      "note": "Ciudad filistea; el arca llegó allí y Ocozías consultó a Baal-zebub.",
+      "note": "Ciudad filistea del interior de la llanura, al noroeste de Judá. El arca llegó aquí y la devolvieron en una carreta hacia Bet-semes. Más tarde Ocozías de Israel consultó a Baal-zebub de Ecrón, y Elías lo reprendió.",
       "properName": true,
       "related": [
         {
-          "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "una de sus ciudades"
         },
         {
-          "id": "gat",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "juda",
+          "rel": "al noroeste de la sierra de Judá"
+        },
+        {
+          "id": "bet-semes",
+          "rel": "la carreta del arca salió hacia ese pueblo de Judá"
+        },
+        {
+          "id": "baal-zebub",
+          "rel": "dios de Ecrón"
+        },
+        {
+          "id": "ocozias",
+          "rel": "envió a consultar a Baal-zebub"
+        },
+        {
+          "id": "elias",
+          "rel": "le anunció que moriría por esa consulta"
         }
       ]
     },
@@ -2289,20 +2709,40 @@
         "Seir"
       ],
       "kind": "lugar",
-      "note": "Nación al sur de Judá, descendientes de Esaú; David puso guarniciones.",
+      "note": "Nación al sur de Judá y del mar Muerto, en la serranía de Seir, camino del Arabá y de Elat. David puso guarniciones en Edom. Hadad edomita adversó a Salomón. Amasías tomó Sela.",
       "properName": true,
       "related": [
         {
-          "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "juda",
+          "rel": "al sur de Judá"
         },
         {
-          "id": "ela",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "araba",
+          "rel": "el Arabá meridional bordea Edom"
+        },
+        {
+          "id": "elat",
+          "rel": "puerto al sur, en la costa de esta región"
+        },
+        {
+          "id": "sela",
+          "rel": "ciudad de Edom que Amasías tomó"
         },
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "puso guarniciones en Edom"
+        },
+        {
+          "id": "hadad",
+          "rel": "edomita que se levantó contra Salomón"
+        },
+        {
+          "id": "salomon",
+          "rel": "Hadad lo hostigó todos sus días"
+        },
+        {
+          "id": "amasias",
+          "rel": "tomó Sela en una campaña contra Edom"
         }
       ]
     },
@@ -2337,20 +2777,44 @@
         "Ephraim"
       ],
       "kind": "lugar",
-      "note": "Tribu y monte; bosque donde murió Absalón; Elcaná era de la sierra de Efraín.",
+      "note": "Tribu y sierra central, al norte de Benjamín y al sur del valle de Jezreel. Elcaná y Ana eran de Ramá, en esta sierra, y de ahí subían a Silo. El bosque llamado de Efraín, donde Joab mató a Absalón, queda en cambio al este del Jordán, cerca de Mahanaim.",
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "benjamin",
+          "rel": "al sur de la sierra de Efraín"
         },
         {
-          "id": "elat",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "silo",
+          "rel": "santuario de esta sierra"
+        },
+        {
+          "id": "rama",
+          "rel": "pueblo de Elcaná en la sierra de Efraín"
+        },
+        {
+          "id": "mahanaim",
+          "rel": "el bosque de la muerte de Absalón queda cerca, al este del Jordán"
         },
         {
           "id": "elcana",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "era de la sierra de Efraín"
+        },
+        {
+          "id": "ana",
+          "rel": "de la misma casa, subía con él a Silo"
+        },
+        {
+          "id": "samuel",
+          "rel": "hijo de esa familia de la sierra"
+        },
+        {
+          "id": "absalon",
+          "rel": "murió en el bosque llamado de Efraín, al este del Jordán"
+        },
+        {
+          "id": "joab",
+          "rel": "lo mató en ese bosque"
         }
       ]
     },
@@ -2361,20 +2825,44 @@
         "Egypt"
       ],
       "kind": "lugar",
-      "note": "Tierra del éxodo; Salomón se emparentó con Faraón; refugio y amenaza (Sisac, Necao).",
+      "note": "Tierra al suroeste, más allá del desierto, el país del éxodo. Moisés sacó de aquí a Israel. El faraón dio Gezer a Salomón como dote. Sisac saqueó el templo en días de Roboam. Necao mató a Josías en Meguido y depuso a Joacaz.",
       "properName": true,
       "related": [
         {
+          "id": "gezer",
+          "rel": "el faraón la tomó y la dio a Salomón"
+        },
+        {
+          "id": "jerusalen",
+          "rel": "Sisac saqueó el templo"
+        },
+        {
+          "id": "moises",
+          "rel": "sacó a Israel de Egipto"
+        },
+        {
           "id": "salomon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "se emparentó con el faraón"
         },
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "sisac",
+          "rel": "subió contra Jerusalén y se llevó los tesoros"
         },
         {
-          "id": "samuel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "roboam",
+          "rel": "reinaba cuando Sisac saqueó el templo"
+        },
+        {
+          "id": "necao",
+          "rel": "mató a Josías y encadenó a Joacaz"
+        },
+        {
+          "id": "josias",
+          "rel": "murió enfrentándolo en Meguido"
+        },
+        {
+          "id": "joacaz",
+          "rel": "Necao lo depuso y lo llevó a Egipto"
         }
       ]
     },
@@ -2386,20 +2874,36 @@
         "Ezion"
       ],
       "kind": "lugar",
-      "note": "Puerto al sur, junto a Ezión-geber, en el mar Rojo.",
+      "note": "Puerto en el extremo sur del Arabá, en el golfo del mar Rojo, junto a Ezión-geber y al sur de Edom. Salomón armó allí su flota hacia Ofir. Josafat quiso naves en esa costa. Más tarde Edom recuperó Elat.",
       "properName": true,
       "related": [
         {
-          "id": "ela",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ezion-geber",
+          "rel": "puerto vecino, en la misma costa"
         },
         {
-          "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "araba",
+          "rel": "al sur de la gran depresión"
         },
         {
-          "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "edom",
+          "rel": "en el extremo sur de su región"
+        },
+        {
+          "id": "ofir",
+          "rel": "destino del oro que salía de esta costa"
+        },
+        {
+          "id": "salomon",
+          "rel": "tenía la flota en Ezión-geber, junto a Elat"
+        },
+        {
+          "id": "josafat",
+          "rel": "quiso rehacer ese comercio por el mar"
+        },
+        {
+          "id": "hiram",
+          "rel": "sus marineros iban con la flota de Salomón"
         }
       ]
     },
@@ -2640,20 +3144,44 @@
         "En Rogel"
       ],
       "kind": "lugar",
-      "note": "Fuente cerca de Jerusalén donde Adonías hizo banquete.",
+      "note": "Fuente al sur de Jerusalén, junto a la piedra de Zohélet, cerca de donde se juntan el Cedrón y el valle de Hinom. Adonías banquetó aquí para proclamarse rey, mientras a Salomón lo ungían en Gihón.",
       "properName": true,
       "related": [
         {
+          "id": "jerusalen",
+          "rel": "en el límite sur de la ciudad"
+        },
+        {
+          "id": "zohelet",
+          "rel": "la piedra junto a la fuente"
+        },
+        {
+          "id": "cedron",
+          "rel": "cerca de ese arroyo"
+        },
+        {
+          "id": "gihon",
+          "rel": "el otro manantial, donde ungían a Salomón al mismo tiempo"
+        },
+        {
+          "id": "adonias",
+          "rel": "hizo aquí el banquete y se proclamó rey"
+        },
+        {
+          "id": "salomon",
+          "rel": "era ungido en Gihón mientras Adonías comía aquí"
+        },
+        {
+          "id": "natan",
+          "rel": "avisó a Betsabé de este banquete"
+        },
+        {
           "id": "abiatar",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "estaba con Adonías en En-rogel"
         },
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "husai",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "aún vivía y no había autorizado a Adonías"
         }
       ]
     },
@@ -2688,16 +3216,20 @@
         "Ethanim"
       ],
       "kind": "lugar",
-      "note": "Mes séptimo, cuando Salomón dedicó el templo.",
+      "note": "No es un lugar del mapa: es el mes séptimo, hacia septiembre. En Etanim, durante la fiesta, Salomón dedicó el templo en Jerusalén.",
       "properName": true,
       "related": [
         {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jerusalen",
+          "rel": "la dedicación fue en la ciudad del templo"
         },
         {
-          "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salomon",
+          "rel": "dedicó el templo en el mes de Etanim"
+        },
+        {
+          "id": "templo",
+          "rel": "la casa que se inauguró en esa fiesta"
         }
       ]
     },
@@ -2777,20 +3309,32 @@
         "Ezion Geber"
       ],
       "kind": "lugar",
-      "note": "Puerto de Salomón en el mar Rojo, junto a Elat.",
+      "note": "Puerto de Salomón junto a Elat, en el mar Rojo, al sur del Arabá. De aquí salía la flota hacia Ofir, con marineros de Hiram. Las naves de Josafat se rompieron en Ezión-geber.",
       "properName": true,
       "related": [
         {
           "id": "elat",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "puerto vecino en el mismo golfo"
         },
         {
-          "id": "ela",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "araba",
+          "rel": "al sur de la depresión"
+        },
+        {
+          "id": "ofir",
+          "rel": "destino del oro"
+        },
+        {
+          "id": "salomon",
+          "rel": "armó aquí su flota"
         },
         {
           "id": "hiram",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "puso marineros que conocían el mar"
+        },
+        {
+          "id": "josafat",
+          "rel": "sus naves naufragaron en Ezión-geber"
         }
       ]
     },
@@ -2857,20 +3401,36 @@
         "Gabaa de Benjamín"
       ],
       "kind": "lugar",
-      "note": "Pueblo de Saúl en Benjamín.",
+      "note": "Pueblo de Saúl en la sierra de Benjamín, al norte de Jerusalén. Desde Gabaa reinaba. Los mensajeros de Jabes llegaron aquí cuando Saúl volvía del campo con las vacas, y el Espíritu lo impulsó a convocar a Israel.",
       "properName": true,
       "related": [
         {
-          "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "benjamin",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en Benjamín"
         },
         {
-          "id": "elat",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jerusalen",
+          "rel": "al norte de la ciudad"
+        },
+        {
+          "id": "guibea",
+          "rel": "otro nombre de este mismo pueblo"
+        },
+        {
+          "id": "saul",
+          "rel": "su pueblo y su corte"
+        },
+        {
+          "id": "cis",
+          "rel": "su padre, benjamita de esta tierra"
+        },
+        {
+          "id": "jonatan",
+          "rel": "hijo de Saúl, de Gabaa"
+        },
+        {
+          "id": "jabes",
+          "rel": "sus mensajeros trajeron aquí el pedido de auxilio"
         }
       ]
     },
@@ -2906,20 +3466,40 @@
         "Gibeon"
       ],
       "kind": "lugar",
-      "note": "Ciudad donde el sol se detuvo en la memoria; estanque de Abner y Joab; Salomón ofreció allí.",
+      "note": "Ciudad de Benjamín, al noroeste de Jerusalén. En su estanque se enfrentaron los hombres de Abner y de Joab, y Asael murió en la persecución. Salomón ofreció aquí sacrificios y pidió sabiduría. David entregó a los gabaonitas descendientes de Saúl, porque Saúl los había perseguido.",
       "properName": true,
       "related": [
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "benjamin",
+          "rel": "en Benjamín"
         },
         {
-          "id": "salomon",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jerusalen",
+          "rel": "al noroeste de la ciudad"
+        },
+        {
+          "id": "abner",
+          "rel": "sus hombres pelearon en el estanque"
         },
         {
           "id": "joab",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "mandó a los de David en ese duelo"
+        },
+        {
+          "id": "asael",
+          "rel": "murió persiguiendo a Abner desde Gabaón"
+        },
+        {
+          "id": "salomon",
+          "rel": "pidió sabiduría en el altar de Gabaón"
+        },
+        {
+          "id": "saul",
+          "rel": "había perseguido a los gabaonitas"
+        },
+        {
+          "id": "david",
+          "rel": "les entregó hijos de la casa de Saúl"
         }
       ]
     },
@@ -2974,20 +3554,40 @@
         "Gilead"
       ],
       "kind": "lugar",
-      "note": "Región al este del Jordán; Jabes, Ramot, Mahanaim, Barzilai.",
+      "note": "Meseta al este del Jordán, entre el Jaboc y el Arnón, frente a la sierra de Israel. Aquí están Jabes, Ramot y Mahanaim. Barzilai el galaadita sostuvo a David cuando huía de Absalón. Jefté es el juez que el relato recuerda de Galaad.",
       "properName": true,
       "related": [
         {
+          "id": "jordan",
+          "rel": "al este del río"
+        },
+        {
           "id": "jabes",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "ciudad de Galaad"
         },
         {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ramot",
+          "rel": "Ramot de Galaad, en la frontera con Aram"
         },
         {
-          "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "mahanaim",
+          "rel": "ciudad donde reinó Is-boset y se refugió David"
+        },
+        {
+          "id": "barzilai",
+          "rel": "galaadita que proveyó a David"
+        },
+        {
+          "id": "david",
+          "rel": "huyó a Galaad cuando Absalón tomó Jerusalén"
+        },
+        {
+          "id": "jefte",
+          "rel": "juez de Galaad, nombrado en la memoria del relato"
+        },
+        {
+          "id": "absalon",
+          "rel": "su rebelión empujó a David al este del Jordán"
         }
       ]
     },
@@ -2998,16 +3598,32 @@
         "Galilee"
       ],
       "kind": "lugar",
-      "note": "Norte de Israel; Cabul, que Salomón dio a Hiram.",
+      "note": "Región del norte de Israel, al oeste del mar de Galilea y al sur del Líbano. Cabul, las ciudades que Salomón dio a Hiram y que Hiram rechazó, está en Galilea.",
       "properName": true,
       "related": [
         {
-          "id": "hiram",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "cabul",
+          "rel": "el distrito que Salomón entregó"
+        },
+        {
+          "id": "neftali",
+          "rel": "tribu del norte de Galilea"
+        },
+        {
+          "id": "libano",
+          "rel": "la cordillera que cierra el norte"
+        },
+        {
+          "id": "tiro",
+          "rel": "la ciudad fenicia al oeste"
         },
         {
           "id": "salomon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "dio veinte ciudades de Galilea"
+        },
+        {
+          "id": "hiram",
+          "rel": "no le agradaron esas ciudades"
         }
       ]
     },
@@ -3018,20 +3634,40 @@
         "Gath"
       ],
       "kind": "lugar",
-      "note": "Ciudad filistea de Goliat y de Aquís; el arca pasó por allí.",
+      "note": "Ciudad filistea del interior, al oeste de Judá, en la Sefela. Patria de Goliat y corte de Aquis. El arca pasó por Gat. David se fingió loco ante Aquis y más tarde fue su vasallo. Itai y Obed-edom eran de Gat.",
       "properName": true,
       "related": [
         {
-          "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "filisteos",
+          "rel": "una de sus ciudades"
+        },
+        {
+          "id": "juda",
+          "rel": "al oeste de la sierra, en la Sefela"
         },
         {
           "id": "asdod",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "desde Asdod trajeron el arca a Gat"
         },
         {
-          "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "goliat",
+          "rel": "era de Gat"
+        },
+        {
+          "id": "aquis",
+          "rel": "rey de Gat"
+        },
+        {
+          "id": "david",
+          "rel": "huyó aquí, se fingió loco y luego sirvió a Aquis"
+        },
+        {
+          "id": "itai",
+          "rel": "gateo que se quedó con David en la huida"
+        },
+        {
+          "id": "obed-edom",
+          "rel": "gateo en cuya casa el arca trajo bendición"
         }
       ]
     },
@@ -3040,20 +3676,32 @@
       "term": "Geba",
       "aliases": [],
       "kind": "lugar",
-      "note": "Pueblo de Benjamín, frontera con Micmas.",
+      "note": "Pueblo de Benjamín, al norte de Jerusalén, frente a Micmas, al otro lado del paso. Saúl estaba en Geba. Jonatán salió de este lado y atacó la guarnición filistea del paso.",
       "properName": true,
       "related": [
         {
-          "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "benjamin",
+          "rel": "en Benjamín"
+        },
+        {
+          "id": "micmas",
+          "rel": "al otro lado del desfiladero"
+        },
+        {
+          "id": "jerusalen",
+          "rel": "al norte de la ciudad"
+        },
+        {
+          "id": "saul",
+          "rel": "estaba en Geba con el pueblo"
         },
         {
           "id": "jonatan",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "atacó la guarnición desde este paso"
         },
         {
-          "id": "natan",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "filisteos",
+          "rel": "tenían el puesto frente a Geba"
         }
       ]
     },
@@ -3062,20 +3710,32 @@
       "term": "Gebal",
       "aliases": [],
       "kind": "lugar",
-      "note": "Canteros de Gebal ayudaron a Hiram y Salomón.",
+      "note": "Puerto fenicio de la costa del Líbano, al norte de Sidón, fuera de Israel. Sus canteros labraron piedras con la gente de Hiram para el templo de Salomón.",
       "properName": true,
       "related": [
         {
-          "id": "geba",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "libano",
+          "rel": "en esa costa, al norte"
+        },
+        {
+          "id": "sidon",
+          "rel": "más al sur, en la misma costa fenicia"
+        },
+        {
+          "id": "tiro",
+          "rel": "Hiram coordinaba la obra desde Tiro"
         },
         {
           "id": "hiram",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "aliado que envió artesanos junto con los de Gebal"
         },
         {
           "id": "salomon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "el templo se hizo con esa piedra y esos cedros"
+        },
+        {
+          "id": "templo",
+          "rel": "labraron piedras para la casa del Señor"
         }
       ]
     },
@@ -3132,20 +3792,36 @@
         "Geshur"
       ],
       "kind": "lugar",
-      "note": "Reino arameo; Talmai, abuelo de Absalón, que huyó allí.",
+      "note": "Reino arameo al noreste del mar de Galilea, al este del Jordán. Talmai era su rey. Su hija Maaca fue esposa de David y madre de Absalón. Absalón huyó a Gesur después de matar a Amnón y estuvo allí tres años.",
       "properName": true,
       "related": [
         {
-          "id": "absalon",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "aram",
+          "rel": "reino arameo"
         },
         {
-          "id": "amiud",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jordan",
+          "rel": "al este del río, junto al mar de Galilea"
+        },
+        {
+          "id": "talmai",
+          "rel": "rey de Gesur, abuelo de Absalón"
+        },
+        {
+          "id": "maaca",
+          "rel": "hija de Talmai, esposa de David"
+        },
+        {
+          "id": "david",
+          "rel": "suegro político de Talmai por Maaca"
+        },
+        {
+          "id": "absalon",
+          "rel": "huyó a casa de su abuelo en Gesur"
         },
         {
           "id": "amnon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "Absalón huyó después de matarlo"
         }
       ]
     },
@@ -3154,20 +3830,24 @@
       "term": "Gezer",
       "aliases": [],
       "kind": "lugar",
-      "note": "Ciudad que Faraón dio a Salomón como dote.",
+      "note": "Ciudad de la Sefela, en el límite occidental de Efraín, frente a la llanura filistea. El faraón de Egipto la tomó, echó a los cananeos y se la dio a Salomón como dote de su hija. Salomón la fortificó.",
       "properName": true,
       "related": [
         {
+          "id": "efrain",
+          "rel": "en su frontera oeste"
+        },
+        {
+          "id": "egipto",
+          "rel": "el faraón la conquistó y la entregó"
+        },
+        {
+          "id": "filisteos",
+          "rel": "en el borde de su llanura"
+        },
+        {
           "id": "salomon",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "hazor",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "la recibió como dote y la reconstruyó"
         }
       ]
     },
@@ -3200,20 +3880,40 @@
       "term": "Gihón",
       "aliases": [],
       "kind": "lugar",
-      "note": "Manantial de Jerusalén donde ungieron a Salomón.",
+      "note": "Manantial al este de la ciudad de David, en Jerusalén, en el valle del Cedrón. Por orden de David, Sadoc y Natán ungieron aquí a Salomón mientras Adonías banquetaba en En-rogel.",
       "properName": true,
       "related": [
         {
-          "id": "salomon",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jerusalen",
+          "rel": "el manantial de la ciudad de David"
         },
         {
-          "id": "natan",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "cedron",
+          "rel": "en ese valle, al oriente"
+        },
+        {
+          "id": "en-rogel",
+          "rel": "la otra fuente, donde estaba Adonías"
+        },
+        {
+          "id": "salomon",
+          "rel": "fue ungido rey en Gihón"
+        },
+        {
+          "id": "david",
+          "rel": "ordenó la unción"
         },
         {
           "id": "sadoc",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lo ungió"
+        },
+        {
+          "id": "natan",
+          "rel": "lo acompañó y confirmó el mandato de David"
+        },
+        {
+          "id": "adonias",
+          "rel": "se proclamaba al mismo tiempo en En-rogel"
         }
       ]
     },
@@ -3224,20 +3924,32 @@
         "Guilgal"
       ],
       "kind": "lugar",
-      "note": "Santuario donde Samuel y Saúl se encontraron; Elías y Eliseo pasaron.",
+      "note": "Santuario en el valle del Jordán, cerca del río y de Jericó, al este de la sierra. Samuel confirmó aquí a Saúl como rey y luego lo rechazó porque ofreció el holocausto y porque perdonó a Agag. Elías y Eliseo pasaron por Gilgal camino del Jordán.",
       "properName": true,
       "related": [
         {
+          "id": "jordan",
+          "rel": "cerca del cruce del río"
+        },
+        {
           "id": "samuel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "unió y luego apartó a Saúl en Gilgal"
         },
         {
-          "id": "betel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "saul",
+          "rel": "fue hecho rey aquí y desobedeció aquí"
         },
         {
-          "id": "mizpa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "agag",
+          "rel": "Saúl lo perdonó, y Samuel lo ejecutó en Gilgal"
+        },
+        {
+          "id": "elias",
+          "rel": "pasó por Gilgal con Eliseo"
+        },
+        {
+          "id": "eliseo",
+          "rel": "iba con él hacia el Jordán"
         }
       ]
     },
@@ -3270,20 +3982,28 @@
       "term": "Gozán",
       "aliases": [],
       "kind": "lugar",
-      "note": "Río o región a donde Asiria deportó a Israel.",
+      "note": "Región del norte de Mesopotamia, en Asiria, no en Canaán. El río Habor es el río de Gozán. Salmanasar deportó aquí a las tribus del reino del norte.",
       "properName": true,
       "related": [
         {
           "id": "asiria",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "destino del destierro, dentro del imperio"
         },
         {
           "id": "habor",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "el río de Gozán"
+        },
+        {
+          "id": "halah",
+          "rel": "otro distrito del mismo destierro"
+        },
+        {
+          "id": "israel",
+          "rel": "el reino del norte fue llevado a Gozán"
+        },
+        {
+          "id": "salmanasar",
+          "rel": "sitió Samaria y deportó a su gente"
         }
       ]
     },
@@ -3294,20 +4014,32 @@
         "Gibeah"
       ],
       "kind": "lugar",
-      "note": "Otra forma de Gabaa, pueblo de Saúl.",
+      "note": "Otro nombre de Gabaa, el pueblo de Saúl en la sierra de Benjamín, al norte de Jerusalén. Desde aquí salió la historia de Jonatán y de la guerra con los filisteos del paso.",
       "properName": true,
       "related": [
         {
-          "id": "benjamin",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "gabaa",
+          "rel": "es el mismo pueblo"
         },
         {
-          "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "benjamin",
+          "rel": "en Benjamín"
+        },
+        {
+          "id": "jerusalen",
+          "rel": "al norte de la ciudad"
+        },
+        {
+          "id": "saul",
+          "rel": "su ciudad"
         },
         {
           "id": "jonatan",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "desde esta tierra atacó a los filisteos"
+        },
+        {
+          "id": "filisteos",
+          "rel": "Jonatán atacó su puesto en el paso de Geba y Micmas, en esta tierra"
         }
       ]
     },
@@ -3316,20 +4048,28 @@
       "term": "Habor",
       "aliases": [],
       "kind": "lugar",
-      "note": "Río de Gozán, destino del destierro de Israel.",
+      "note": "Río de Gozán, en el norte de Mesopotamia, dentro de Asiria. A sus orillas asentaron a los israelitas que Salmanasar deportó del reino del norte.",
       "properName": true,
       "related": [
         {
-          "id": "asiria",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "gozan",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "Habor es el río de esa región"
+        },
+        {
+          "id": "asiria",
+          "rel": "país del destierro"
+        },
+        {
+          "id": "halah",
+          "rel": "se nombra junto con Habor entre los lugares del exilio"
+        },
+        {
+          "id": "israel",
+          "rel": "los llevaron a vivir junto a este río"
+        },
+        {
+          "id": "salmanasar",
+          "rel": "ordenó esa deportación"
         }
       ]
     },
@@ -3404,20 +4144,32 @@
       "term": "Halah",
       "aliases": [],
       "kind": "lugar",
-      "note": "Lugar del destierro asirio de Israel.",
+      "note": "Distrito de Asiria, en Mesopotamia, nombrado junto con Habor y Gozán. Parte de Israel fue deportada a Halah cuando cayó Samaria.",
       "properName": true,
       "related": [
         {
           "id": "asiria",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en su territorio"
         },
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "habor",
+          "rel": "lugar vecino del mismo destierro"
         },
         {
           "id": "gozan",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "el tercer nombre de ese destierro"
+        },
+        {
+          "id": "samaria",
+          "rel": "desde la capital caída salió la deportación"
+        },
+        {
+          "id": "israel",
+          "rel": "las tribus del norte fueron llevadas a Halah"
+        },
+        {
+          "id": "salmanasar",
+          "rel": "deportó a Israel hacia Halah"
         }
       ]
     },
@@ -3428,20 +4180,36 @@
         "Hamath"
       ],
       "kind": "lugar",
-      "note": "Ciudad-estado al norte; frontera de David y Salomón.",
+      "note": "Ciudad-estado del valle del Orontes, al norte de Damasco. «Hasta la entrada de Hamat» marca el límite norte de David y de Salomón. Ribla, donde Nabucodonosor juzgó a Sedequías, está en tierra de Hamat.",
       "properName": true,
       "related": [
         {
-          "id": "amitai",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "damasco",
+          "rel": "Hamat queda más al norte"
         },
         {
-          "id": "araba",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ribla",
+          "rel": "en tierra de Hamat"
         },
         {
           "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "frontera norte del dominio de David y Salomón"
+        },
+        {
+          "id": "david",
+          "rel": "su frontera llegó hasta la entrada de Hamat"
+        },
+        {
+          "id": "salomon",
+          "rel": "también dominó hasta esa entrada"
+        },
+        {
+          "id": "nabucodonosor",
+          "rel": "acampó en Ribla de Hamat"
+        },
+        {
+          "id": "sedequias",
+          "rel": "fue juzgado en Ribla, dentro de esta tierra"
         }
       ]
     },
@@ -3494,20 +4262,24 @@
       "term": "Hazor",
       "aliases": [],
       "kind": "lugar",
-      "note": "Ciudad del norte que Salomón fortificó.",
+      "note": "Ciudad grande del norte, en Neftalí, sobre la llanura al norte del mar de Galilea. Josué la quemó en la conquista. Salomón la fortificó como ciudad de carros.",
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "neftali",
+          "rel": "en la tierra de esta tribu"
         },
         {
-          "id": "gezer",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "galilea",
+          "rel": "en el norte de Galilea"
         },
         {
-          "id": "jerusalen",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salomon",
+          "rel": "la reconstruyó y la fortificó"
+        },
+        {
+          "id": "josue",
+          "rel": "la quemó cuando era cabeza de los reyes cananeos"
         }
       ]
     },
@@ -3516,20 +4288,36 @@
       "term": "Hebrón",
       "aliases": [],
       "kind": "lugar",
-      "note": "Ciudad de Judá; David reinó allí siete años.",
+      "note": "Ciudad de la sierra de Judá, al sur de Belén y de Jerusalén. David reinó aquí siete años sobre Judá antes de subir a Jerusalén. Joab mató a Abner en Hebrón. Absalón se proclamó rey en Hebrón.",
       "properName": true,
       "related": [
         {
+          "id": "juda",
+          "rel": "en la sierra de Judá"
+        },
+        {
+          "id": "belen",
+          "rel": "Belén queda al norte, en la misma sierra"
+        },
+        {
+          "id": "jerusalen",
+          "rel": "David pasó de Hebrón a Jerusalén"
+        },
+        {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "capital de sus primeros siete años"
         },
         {
           "id": "abner",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "Joab lo asesinó a la puerta de Hebrón"
         },
         {
-          "id": "ner",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "joab",
+          "rel": "mató a Abner aquí"
+        },
+        {
+          "id": "absalon",
+          "rel": "se hizo proclamar rey en Hebrón"
         }
       ]
     },
@@ -3541,12 +4329,32 @@
         "Hereth"
       ],
       "kind": "lugar",
-      "note": "Bosque donde David se escondió.",
+      "note": "Bosque en Judá, en la ladera oeste de la sierra. El profeta Gad dijo a David que no se quedara en Moab; David dejó Adulam y se escondió en Heret mientras Saúl lo buscaba.",
       "properName": true,
       "related": [
         {
+          "id": "juda",
+          "rel": "en la tierra de Judá"
+        },
+        {
+          "id": "adulam",
+          "rel": "David venía de la cueva"
+        },
+        {
+          "id": "moab",
+          "rel": "Gad le dijo que no se quedara al otro lado, con el rey de Moab"
+        },
+        {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "se ocultó en este bosque"
+        },
+        {
+          "id": "gad",
+          "rel": "el profeta que le mandó volver a Judá"
+        },
+        {
+          "id": "saul",
+          "rel": "seguía persiguiéndolo"
         }
       ]
     },
@@ -3652,16 +4460,24 @@
         "Sinaí"
       ],
       "kind": "lugar",
-      "note": "Monte de Dios donde Elías oyó la voz suave.",
+      "note": "El monte de Dios, en el sur, en el ámbito del Sinaí, lejos de Israel. Moisés recibió aquí la ley. Elías caminó cuarenta días desde Jezreel hasta Horeb y oyó la voz suave.",
       "properName": true,
       "related": [
         {
-          "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "moises",
+          "rel": "el monte donde recibió la ley"
         },
         {
-          "id": "moises",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "elias",
+          "rel": "huyó hasta Horeb después del Carmelo"
+        },
+        {
+          "id": "jezabel",
+          "rel": "su amenaza empujó a Elías fuera de Israel"
+        },
+        {
+          "id": "acab",
+          "rel": "Elías venía de enfrentarlo en el Carmelo"
         }
       ]
     },
@@ -3718,20 +4534,24 @@
       "term": "Ibleam",
       "aliases": [],
       "kind": "lugar",
-      "note": "Ciudad cerca de Meguido; Ocozías de Judá huyó herido hacia allí.",
+      "note": "Ciudad en el paso hacia el valle de Jezreel, cerca de Meguido. Jehú hirió a Ocozías de Judá en la subida de Gur, junto a Ibleam; Ocozías huyó herido hasta Meguido y allí murió.",
       "properName": true,
       "related": [
         {
-          "id": "juda",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "meguido",
+          "rel": "ciudad vecina, donde Ocozías murió"
         },
         {
-          "id": "meguido",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jezreel",
+          "rel": "en el corredor de ese valle"
         },
         {
           "id": "ocozias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "huyó herido por el camino de Ibleam"
+        },
+        {
+          "id": "jehu",
+          "rel": "lo hirió en esa subida"
         }
       ]
     },
@@ -3816,20 +4636,28 @@
         "Issachar"
       ],
       "kind": "lugar",
-      "note": "Tribu; Baasa era de Isacar.",
+      "note": "Tribu del valle de Jezreel, al norte de Efraín y al sur del mar de Galilea. No es una sola ciudad. Baasa, que mató a Nadab y reinó sobre Israel, era de Isacar.",
       "properName": true,
       "related": [
         {
-          "id": "ahias",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jezreel",
+          "rel": "su valle"
         },
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "efrain",
+          "rel": "al sur de Isacar"
+        },
+        {
+          "id": "israel",
+          "rel": "tribu del reino del norte"
         },
         {
           "id": "baasa",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "rey de Israel, de la tribu de Isacar"
+        },
+        {
+          "id": "nadab",
+          "rel": "Baasa lo mató y le quitó el trono"
         }
       ]
     },
@@ -3910,20 +4738,32 @@
       "term": "Israel",
       "aliases": [],
       "kind": "lugar",
-      "note": "El pueblo y el reino del norte (diez tribus) frente a Judá.",
+      "note": "El pueblo de las doce tribus y, después de Salomón, el reino del norte: Efraín, el valle de Jezreel, Galilea y Galaad, con capital en Samaria. Judá quedó al sur, con Jerusalén. Jeroboam fue el primer rey de ese norte.",
       "properName": true,
       "related": [
         {
-          "id": "juda",
-          "rel": "el otro reino"
+          "id": "samaria",
+          "rel": "capital del reino del norte"
         },
         {
-          "id": "samaria",
-          "rel": "su capital del norte"
+          "id": "juda",
+          "rel": "el reino del sur, separado tras Salomón"
+        },
+        {
+          "id": "efrain",
+          "rel": "corazón de la sierra del norte"
         },
         {
           "id": "jeroboam",
           "rel": "primer rey del norte"
+        },
+        {
+          "id": "roboam",
+          "rel": "al endurecerse, se le fue Israel"
+        },
+        {
+          "id": "salomon",
+          "rel": "a su muerte se partió el reino"
         }
       ]
     },
@@ -3985,20 +4825,32 @@
         "Jabes de Galaad"
       ],
       "kind": "lugar",
-      "note": "Jabes de Galaad, a la que Saúl salvó; luego rescató su cuerpo.",
+      "note": "Jabes de Galaad, al este del Jordán. Nahas el amonita la sitió; Saúl reunió a Israel en Bezec, cruzó de noche y la liberó. Cuando Saúl murió en Gilboa, los de Jabes bajaron a Bet-sán, rescataron su cuerpo y lo enterraron aquí.",
       "properName": true,
       "related": [
         {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
           "id": "galaad",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en Galaad"
+        },
+        {
+          "id": "jordan",
+          "rel": "al este del río"
+        },
+        {
+          "id": "bezec",
+          "rel": "Saúl reunió el ejército al oeste antes de cruzar"
+        },
+        {
+          "id": "nahas",
+          "rel": "rey amonita que amenazó con sacarles el ojo derecho"
+        },
+        {
+          "id": "saul",
+          "rel": "la salvó; luego ellos rescataron su cuerpo"
+        },
+        {
+          "id": "david",
+          "rel": "bendijo a Jabes por haber enterrado a Saúl"
         }
       ]
     },
@@ -4171,20 +5023,28 @@
         "Jerusalem"
       ],
       "kind": "lugar",
-      "note": "Ciudad de David y del templo; capital de Judá.",
+      "note": "En la sierra, en el límite de Judá y Benjamín. David la tomó a los jebuseos, la hizo su ciudad y subió el arca. Salomón edificó aquí el templo. Después de la división fue la capital de Judá.",
       "properName": true,
       "related": [
         {
+          "id": "juda",
+          "rel": "capital del reino del sur"
+        },
+        {
+          "id": "benjamin",
+          "rel": "en su borde sur"
+        },
+        {
           "id": "david",
-          "rel": "la tomó"
+          "rel": "la conquistó y la llamó ciudad de David"
         },
         {
           "id": "salomon",
-          "rel": "el templo"
+          "rel": "edificó el templo"
         },
         {
-          "id": "juda",
-          "rel": "capital de"
+          "id": "templo",
+          "rel": "la casa del Señor está en Jerusalén"
         }
       ]
     },
@@ -4221,20 +5081,36 @@
       "term": "Jezreel",
       "aliases": [],
       "kind": "lugar",
-      "note": "Valle y ciudad de Acab; Jehú ejecutó allí el juicio.",
+      "note": "Ciudad y valle en el norte, entre el Carmelo y el Gilboa. Acab y Jezabel tenían aquí su palacio, y aquí estaba la viña de Nabot. Jehú ejecutó en Jezreel el juicio sobre Jezabel y la casa de Acab.",
       "properName": true,
       "related": [
         {
-          "id": "acab",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "israel",
+          "rel": "en el reino del norte"
         },
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "carmelo",
+          "rel": "el monte que cierra el valle por el oeste"
+        },
+        {
+          "id": "acab",
+          "rel": "su palacio y la viña que usurpó"
         },
         {
           "id": "jezabel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "la echaron desde la ventana de Jezreel"
+        },
+        {
+          "id": "nabot",
+          "rel": "jezreelita; su viña estaba junto al palacio"
+        },
+        {
+          "id": "jehu",
+          "rel": "ejecutó aquí el juicio anunciado por Elías"
+        },
+        {
+          "id": "elias",
+          "rel": "anunció que los perros lamerían la sangre de Acab en este campo"
         }
       ]
     },
@@ -4485,20 +5361,32 @@
       "term": "Jordán",
       "aliases": [],
       "kind": "lugar",
-      "note": "Río que Israel cruzó; Eliseo lo partió con el manto de Elías.",
+      "note": "Río que baja del Hermón, pasa por el mar de Galilea y el Arabá, y muere en el mar Muerto. Separa la sierra de Canaán de Galaad. Josué lo cruzó con Israel. Elías y Eliseo lo partieron. Naamán se lavó siete veces y quedó limpio.",
       "properName": true,
       "related": [
         {
-          "id": "dan",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "araba",
+          "rel": "corre por esa depresión"
+        },
+        {
+          "id": "galaad",
+          "rel": "la meseta al este"
+        },
+        {
+          "id": "josue",
+          "rel": "Israel lo cruzó bajo su mando"
+        },
+        {
+          "id": "elias",
+          "rel": "lo partió con el manto"
         },
         {
           "id": "eliseo",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "lo partió al volver y mandó a Naamán a lavarse"
         },
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "naaman",
+          "rel": "se bañó siete veces y sanó de la lepra"
         }
       ]
     },
@@ -4666,20 +5554,32 @@
         "Judah"
       ],
       "kind": "lugar",
-      "note": "Tribu y reino del sur, con capital en Jerusalén.",
+      "note": "Reino y sierra del sur: Hebrón, Belén, Jerusalén, la Sefela de Laquis y Libna, y el Néguev hasta Beerseba. Después de la división, la casa de David reinó aquí. Jerusalén es su capital.",
       "properName": true,
       "related": [
         {
-          "id": "israel",
-          "rel": "el reino hermano"
+          "id": "jerusalen",
+          "rel": "su capital y la ciudad del templo"
         },
         {
-          "id": "jerusalen",
-          "rel": "su capital"
+          "id": "israel",
+          "rel": "el reino del norte, separado de Judá"
+        },
+        {
+          "id": "hebron",
+          "rel": "primera capital de David sobre Judá"
+        },
+        {
+          "id": "beerseba",
+          "rel": "su límite sur"
         },
         {
           "id": "david",
-          "rel": "casa de"
+          "rel": "la casa real de Judá"
+        },
+        {
+          "id": "roboam",
+          "rel": "rey de Judá cuando el norte se fue"
         }
       ]
     },
@@ -4688,20 +5588,28 @@
       "term": "Kir",
       "aliases": [],
       "kind": "lugar",
-      "note": "Lugar a donde Tiglat-pileser llevó a la gente de Damasco.",
+      "note": "Lugar lejano al oriente, fuera de Canaán, en la órbita a donde Asiria deportaba pueblos. Tiglat-pileser tomó Damasco, mató a Rezín y llevó a su gente a Kir.",
       "properName": true,
       "related": [
         {
-          "id": "asiria",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "damasco",
+          "rel": "sus habitantes fueron deportados a Kir"
         },
         {
-          "id": "damasco",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "asiria",
+          "rel": "el imperio que los trasladó"
+        },
+        {
+          "id": "tiglat-pileser",
+          "rel": "tomó Damasco y ejecutó la deportación"
         },
         {
           "id": "rezin",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "rey de Damasco, muerto en esa campaña"
+        },
+        {
+          "id": "acaz",
+          "rel": "había pedido a Asiria ayuda contra Rezín"
         }
       ]
     },
@@ -4712,16 +5620,32 @@
         "Lachish"
       ],
       "kind": "lugar",
-      "note": "Ciudad fortificada de Judá; Senaquerib la sitió.",
+      "note": "Ciudad fortificada de la Sefela de Judá, al suroeste de Jerusalén, en el camino hacia Egipto. Senaquerib la sitió en días de Ezequías. Amasías huyó a Laquis y allí lo mataron.",
       "properName": true,
       "related": [
         {
-          "id": "amasias",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "juda",
+          "rel": "en la Sefela"
         },
         {
-          "id": "aquis",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jerusalen",
+          "rel": "al suroeste de la capital"
+        },
+        {
+          "id": "egipto",
+          "rel": "en el camino que baja hacia Egipto"
+        },
+        {
+          "id": "senaquerib",
+          "rel": "la sitió en su campaña contra Judá"
+        },
+        {
+          "id": "ezequias",
+          "rel": "reinaba en Jerusalén durante ese asedio"
+        },
+        {
+          "id": "amasias",
+          "rel": "huyó aquí después de una conjura y lo mataron"
         }
       ]
     },
@@ -4755,20 +5679,32 @@
       "term": "Leví",
       "aliases": [],
       "kind": "lugar",
-      "note": "Tribu sacerdotal de Moisés, Aarón y los levitas.",
+      "note": "Tribu sin un territorio único: sus ciudades estaban repartidas entre las demás. Moisés y Aarón son de Leví. De aquí salen los sacerdotes y los levitas del arca en Silo y del templo en Jerusalén.",
       "properName": true,
       "related": [
         {
-          "id": "jeroboam",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "silo",
+          "rel": "sirvieron el arca en este santuario"
+        },
+        {
+          "id": "jerusalen",
+          "rel": "el templo reunió su servicio"
+        },
+        {
+          "id": "moises",
+          "rel": "de la tribu de Leví"
+        },
+        {
+          "id": "aaron",
+          "rel": "de la casa sacerdotal de Leví"
         },
         {
           "id": "levitas",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "el servicio de la tribu"
         },
         {
-          "id": "roboam",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "samuel",
+          "rel": "servía en Silo delante del arca"
         }
       ]
     },
@@ -4779,16 +5715,24 @@
         "Libnah"
       ],
       "kind": "lugar",
-      "note": "Ciudad de Judá que se rebeló en días de Joram.",
+      "note": "Ciudad de la Sefela de Judá, cerca de Laquis. Se rebeló contra Joram de Judá. En la campaña de Senaquerib se nombra entre las fortalezas de esa llanura.",
       "properName": true,
       "related": [
         {
-          "id": "edom",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "juda",
+          "rel": "en Judá"
         },
         {
-          "id": "juda",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "laquis",
+          "rel": "ciudad vecina de la Sefela"
+        },
+        {
+          "id": "joram",
+          "rel": "Libna se rebeló en su reinado"
+        },
+        {
+          "id": "senaquerib",
+          "rel": "su ejército pasó por estas fortalezas camino de Jerusalén"
         }
       ]
     },
@@ -4824,20 +5768,28 @@
         "Lebanon"
       ],
       "kind": "lugar",
-      "note": "Monte de cedros que Hiram envió a Salomón.",
+      "note": "Cordillera al norte de Galilea, de donde salían los cedros. Hiram de Tiro los cortó y los envió a Salomón para el templo y para su palacio.",
       "properName": true,
       "related": [
         {
-          "id": "joas",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "galilea",
+          "rel": "la tierra de Israel al sur de la cordillera"
         },
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "tiro",
+          "rel": "Hiram controlaba ese comercio"
         },
         {
           "id": "hiram",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "envió cedros y artesanos"
+        },
+        {
+          "id": "salomon",
+          "rel": "los pidió para la casa del Señor"
+        },
+        {
+          "id": "templo",
+          "rel": "se construyó con madera del Líbano"
         }
       ]
     },
@@ -4870,20 +5822,40 @@
       "term": "Mahanaim",
       "aliases": [],
       "kind": "lugar",
-      "note": "Ciudad de Galaad; Is-boset reinó allí y David huyó de Absalón allí.",
+      "note": "Ciudad de Galaad, al este del Jordán, cerca del Jaboc. Abner puso aquí a Is-boset por rey mientras David reinaba en Hebrón. David se refugió en Mahanaim al huir de Absalón, y Barzilai lo sostuvo.",
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "galaad",
+          "rel": "en Galaad"
         },
         {
-          "id": "dan",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jordan",
+          "rel": "al este del río"
+        },
+        {
+          "id": "hebron",
+          "rel": "mientras Is-boset estaba aquí, David reinaba en Hebrón"
+        },
+        {
+          "id": "is-boset",
+          "rel": "reinó en Mahanaim"
+        },
+        {
+          "id": "abner",
+          "rel": "lo puso por rey en esta ciudad"
         },
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "huyó aquí de Absalón"
+        },
+        {
+          "id": "absalon",
+          "rel": "perseguía a David al este del Jordán"
+        },
+        {
+          "id": "barzilai",
+          "rel": "proveyó a David en Mahanaim"
         }
       ]
     },
@@ -5058,20 +6030,36 @@
         "Megiddo"
       ],
       "kind": "lugar",
-      "note": "Ciudad del valle donde murió Josías frente a Necao.",
+      "note": "Ciudad del paso entre la sierra y el valle de Jezreel. Salomón la fortificó. Ocozías de Judá murió aquí huyendo de Jehú. Josías murió en Meguido frente al faraón Necao.",
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jezreel",
+          "rel": "domina la entrada al valle"
         },
         {
-          "id": "gezer",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "ibleam",
+          "rel": "Ocozías venía herido desde esa subida"
         },
         {
-          "id": "hazor",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salomon",
+          "rel": "la fortificó"
+        },
+        {
+          "id": "ocozias",
+          "rel": "llegó herido y murió en Meguido"
+        },
+        {
+          "id": "jehu",
+          "rel": "lo perseguía después de Jezreel"
+        },
+        {
+          "id": "josias",
+          "rel": "murió en este paso"
+        },
+        {
+          "id": "necao",
+          "rel": "el faraón a quien Josías salió a enfrentar"
         }
       ]
     },
@@ -5102,20 +6090,32 @@
         "Michmash"
       ],
       "kind": "lugar",
-      "note": "Paso donde Jonatán atacó a la guarnición filistea.",
+      "note": "Pueblo de Benjamín al norte de Jerusalén, frente a Geba, separado por un paso estrecho. La guarnición filistea estaba en Micmas. Jonatán y su escudero subieron el desfiladero y la derrotaron.",
       "properName": true,
       "related": [
         {
-          "id": "cis",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "geba",
+          "rel": "al otro lado del paso, donde estaba Saúl"
+        },
+        {
+          "id": "benjamin",
+          "rel": "en Benjamín"
+        },
+        {
+          "id": "jerusalen",
+          "rel": "al norte de la ciudad"
+        },
+        {
+          "id": "jonatan",
+          "rel": "atacó la guarnición de Micmas"
+        },
+        {
+          "id": "saul",
+          "rel": "estaba en Geba mientras Jonatán subía"
         },
         {
           "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "su puesto guardaba el paso"
         }
       ]
     },
@@ -5150,20 +6150,28 @@
         "Millo"
       ],
       "kind": "lugar",
-      "note": "Fortificación de Jerusalén que David y Salomón reforzaron.",
+      "note": "Terraza o fortificación dentro de la ciudad de David, en Jerusalén. David la edificó al tomar la ciudad y Salomón la cerró. Los siervos de Joás lo hirieron en la casa de Milo, en el camino de Sila.",
       "properName": true,
       "related": [
         {
-          "id": "amon",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jerusalen",
+          "rel": "dentro de la ciudad de David"
+        },
+        {
+          "id": "sila",
+          "rel": "el lugar vecino donde hirieron a Joás"
         },
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "edificó Milo al fortificar la ciudad"
         },
         {
-          "id": "gezer",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salomon",
+          "rel": "cerró la brecha de la ciudad de David"
+        },
+        {
+          "id": "joas",
+          "rel": "lo asesinaron en la casa de Milo"
         }
       ]
     },
@@ -5200,20 +6208,48 @@
         "Mizpeh"
       ],
       "kind": "lugar",
-      "note": "Lugar de reunión de Samuel; más tarde sede de Gedalías.",
+      "note": "La Mizpa de Samuel está en Benjamín, al norte de Jerusalén: allí reunió a Israel, ayunaron, y el Señor venció a los filisteos. Después del asedio de Jerusalén, Nabucodonosor puso a Gedalías en Mizpa, e Ismael lo asesinó. Otra Mizpa, la de Moab, es donde David dejó a sus padres al huir de Saúl.",
       "properName": true,
       "related": [
         {
+          "id": "benjamin",
+          "rel": "la Mizpa de Samuel está en Benjamín"
+        },
+        {
+          "id": "jerusalen",
+          "rel": "al norte de la ciudad"
+        },
+        {
+          "id": "moab",
+          "rel": "hay otra Mizpa al este del mar Muerto"
+        },
+        {
           "id": "samuel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "reunió aquí al pueblo para volver al Señor"
         },
         {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "filisteos",
+          "rel": "fueron vencidos después de esa asamblea"
         },
         {
-          "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "gedalias",
+          "rel": "gobernó en Mizpa después de la caída de Jerusalén"
+        },
+        {
+          "id": "ismael",
+          "rel": "lo asesinó en Mizpa"
+        },
+        {
+          "id": "nabucodonosor",
+          "rel": "lo había puesto por gobernador"
+        },
+        {
+          "id": "david",
+          "rel": "dejó a sus padres en Mizpa de Moab"
+        },
+        {
+          "id": "saul",
+          "rel": "David huía de él cuando cruzó a Moab"
         }
       ]
     },
@@ -5222,20 +6258,32 @@
       "term": "Moab",
       "aliases": [],
       "kind": "lugar",
-      "note": "Nación al este del mar Muerto; David los sometió; Rut era moabita.",
+      "note": "Nación al este del mar Muerto, al sur de Galaad, más allá del Arnón. David dejó a sus padres en Mizpa de Moab mientras huía de Saúl, y más tarde sometió Moab. Salomón honró a Quemos, el dios de Moab. Rut, moabita, está en la familia de David.",
       "properName": true,
       "related": [
         {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "galaad",
+          "rel": "al norte del Arnón"
         },
         {
-          "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "edom",
+          "rel": "al sur, al otro lado del Arabá"
         },
         {
-          "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "se refugió su familia aquí y luego sometió Moab"
+        },
+        {
+          "id": "saul",
+          "rel": "David huía de él cuando pasó a Moab"
+        },
+        {
+          "id": "salomon",
+          "rel": "edificó un altar a Quemos"
+        },
+        {
+          "id": "quemos",
+          "rel": "dios de Moab"
         }
       ]
     },
@@ -5459,16 +6507,28 @@
         "Naioth"
       ],
       "kind": "lugar",
-      "note": "En Ramá, donde Samuel y David estuvieron y el Espíritu vino sobre Saúl.",
+      "note": "El campamento de los profetas en Ramá, en la sierra, no una ciudad aparte. David se quedó aquí con Samuel. Los mensajeros de Saúl, y después Saúl mismo, profetizaron en Naiot y no pudieron prender a David.",
       "properName": true,
       "related": [
         {
+          "id": "rama",
+          "rel": "Naiot está en Ramá"
+        },
+        {
+          "id": "efrain",
+          "rel": "Ramá de Samuel queda en esta sierra"
+        },
+        {
+          "id": "samuel",
+          "rel": "presidía el grupo de profetas"
+        },
+        {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "huyó aquí y estuvo con Samuel"
         },
         {
           "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "llegó a prenderlo y también profetizó"
         }
       ]
     },
@@ -5525,20 +6585,32 @@
         "Naphtali"
       ],
       "kind": "lugar",
-      "note": "Tribu del norte; Hazor y Kedes en su tierra.",
+      "note": "Tribu del extremo norte, alrededor del mar de Galilea y de Hazor. Salomón fortificó Hazor en esta tierra. Tiglat-pileser se llevó cautiva a Neftalí en días de Peka.",
       "properName": true,
       "related": [
         {
-          "id": "hiram",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "hazor",
+          "rel": "ciudad principal de su territorio"
         },
         {
-          "id": "templo",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "galilea",
+          "rel": "la región del norte"
         },
         {
-          "id": "tiro",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "dan",
+          "rel": "el extremo norte, junto a esta tierra"
+        },
+        {
+          "id": "salomon",
+          "rel": "fortificó Hazor"
+        },
+        {
+          "id": "tiglat-pileser",
+          "rel": "deportó a Neftalí"
+        },
+        {
+          "id": "peka",
+          "rel": "reinaba en Israel cuando Asiria se llevó el norte"
         }
       ]
     },
@@ -5709,20 +6781,40 @@
       "term": "Nob",
       "aliases": [],
       "kind": "lugar",
-      "note": "Ciudad de sacerdotes; David huyó allí; Doeg masacró a los sacerdotes.",
+      "note": "Ciudad de sacerdotes en Benjamín, en la sierra, tan cerca de Jerusalén que se veía desde la ciudad. Ahimelec dio a David el pan sagrado y la espada de Goliat. Doeg lo vio. Saúl mandó matar a los sacerdotes; solo escapó Abiatar, que se unió a David.",
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "benjamin",
+          "rel": "en Benjamín"
         },
         {
-          "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jerusalen",
+          "rel": "a la vista de la ciudad"
+        },
+        {
+          "id": "david",
+          "rel": "huyó aquí hambriento"
         },
         {
           "id": "ahimelec",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "sacerdote que le dio pan y la espada"
+        },
+        {
+          "id": "doeg",
+          "rel": "estaba en Nob, lo vio y lo delató"
+        },
+        {
+          "id": "saul",
+          "rel": "ordenó la matanza de los sacerdotes"
+        },
+        {
+          "id": "abiatar",
+          "rel": "escapó de la matanza y huyó con David"
+        },
+        {
+          "id": "goliat",
+          "rel": "su espada estaba guardada en Nob"
         }
       ]
     },
@@ -5733,12 +6825,28 @@
         "Nineveh"
       ],
       "kind": "lugar",
-      "note": "Capital asiria; Jonás fue enviado a ella.",
+      "note": "Capital de Asiria, a orillas del Tigris, lejos al noreste de Israel. Jonás hijo de Amitai fue enviado a Nínive. Senaquerib reinaba desde Asiria cuando amenazó a Jerusalén.",
       "properName": true,
       "related": [
         {
+          "id": "asiria",
+          "rel": "su capital"
+        },
+        {
+          "id": "jonas",
+          "rel": "el Señor lo envió a Nínive"
+        },
+        {
+          "id": "amitai",
+          "rel": "padre de Jonás"
+        },
+        {
           "id": "senaquerib",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "rey asirio que desafió a Ezequías"
+        },
+        {
+          "id": "ezequias",
+          "rel": "el rey de Judá amenazado desde Asiria"
         }
       ]
     },
@@ -5795,12 +6903,24 @@
         "Ophir"
       ],
       "kind": "lugar",
-      "note": "Tierra del oro que la flota de Salomón traía.",
+      "note": "Tierra lejana del oro, a la que se llegaba por mar desde Ezión-geber, al sur por el mar Rojo. No está en Canaán. La flota de Salomón y de Hiram traía de Ofir oro, maderas y piedras preciosas.",
       "properName": true,
       "related": [
         {
+          "id": "ezion-geber",
+          "rel": "puerto de donde salía la flota"
+        },
+        {
+          "id": "elat",
+          "rel": "la misma costa del mar Rojo"
+        },
+        {
+          "id": "salomon",
+          "rel": "su flota traía el oro de Ofir"
+        },
+        {
           "id": "hiram",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "sus marineros iban en esas naves"
         }
       ]
     },
@@ -5907,16 +7027,32 @@
         "Ephes-dammim"
       ],
       "kind": "lugar",
-      "note": "Campo de batalla donde Eleazar hijo de Dodo peleó.",
+      "note": "Campo de batalla en la Sefela de Judá, en la zona de Efes-damim, entre la sierra y la llanura filistea. Eleazar hijo de Dodo, uno de los tres valientes de David, peleó aquí contra los filisteos. El duelo de David y Goliat fue en ese mismo corredor.",
       "properName": true,
       "related": [
         {
-          "id": "dodo",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "juda",
+          "rel": "en la Sefela de Judá"
+        },
+        {
+          "id": "filisteos",
+          "rel": "el enemigo en ese campo"
         },
         {
           "id": "eleazar",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "peleó aquí hasta que se le cansó la mano"
+        },
+        {
+          "id": "dodo",
+          "rel": "padre de Eleazar"
+        },
+        {
+          "id": "david",
+          "rel": "sus valientes; el campo está en la zona donde venció a Goliat"
+        },
+        {
+          "id": "goliat",
+          "rel": "el duelo fue en Efes-damim, el mismo corredor"
         }
       ]
     },
@@ -5999,16 +7135,36 @@
         "Perez Uzzah"
       ],
       "kind": "lugar",
-      "note": "Lugar donde Uza murió por tocar el arca: «estallido contra Uza».",
+      "note": "Lugar del camino de Quiriat-jearim a Jerusalén, en Judá. Uza murió aquí por tocar el arca. David llamó al sitio «estallido contra Uza» y desvió el arca a casa de Obed-edom.",
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "quiriat-jearim",
+          "rel": "el arca venía de esta ciudad"
+        },
+        {
+          "id": "jerusalen",
+          "rel": "iban hacia la ciudad de David"
+        },
+        {
+          "id": "juda",
+          "rel": "en el camino de la sierra"
         },
         {
           "id": "uza",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "murió por sostener el arca"
+        },
+        {
+          "id": "david",
+          "rel": "se enfadó y tuvo miedo de seguir con el arca"
+        },
+        {
+          "id": "abinadab",
+          "rel": "Uza era de la casa donde el arca había estado"
+        },
+        {
+          "id": "obed-edom",
+          "rel": "el arca se quedó en su casa después de Pérez-uza"
         }
       ]
     },
@@ -6043,16 +7199,20 @@
         "Kerith"
       ],
       "kind": "lugar",
-      "note": "Arroyo donde Elías se escondió y los cuervos lo alimentaron.",
+      "note": "Arroyo al este del Jordán, frente a la tierra de Israel. Elías se escondió aquí de Acab durante la sequía, y los cuervos le llevaban pan y carne.",
       "properName": true,
       "related": [
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jordan",
+          "rel": "al este del río"
         },
         {
           "id": "elias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "se escondió y fue sustentado en el Querit"
+        },
+        {
+          "id": "acab",
+          "rel": "la sequía anunciada a Acab lo sacó de Israel"
         }
       ]
     },
@@ -6080,20 +7240,40 @@
         "Kiriath Jearim"
       ],
       "kind": "lugar",
-      "note": "Ciudad de Judá donde el arca estuvo en casa de Abinadab.",
+      "note": "Ciudad de Judá, en la frontera con Benjamín, al oeste de Jerusalén. También se llama Baala. El arca estuvo aquí unos veinte años, en casa de Abinadab, y su hijo Eleazar la cuidaba, hasta que David quiso subirla.",
       "properName": true,
       "related": [
         {
-          "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "juda",
+          "rel": "en Judá"
         },
         {
-          "id": "ela",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "baala",
+          "rel": "otro nombre del mismo sitio"
         },
         {
-          "id": "filisteos",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "benjamin",
+          "rel": "en la frontera con Benjamín"
+        },
+        {
+          "id": "jerusalen",
+          "rel": "al oeste de la ciudad"
+        },
+        {
+          "id": "abinadab",
+          "rel": "el arca estaba en su casa"
+        },
+        {
+          "id": "eleazar",
+          "rel": "la cuidó"
+        },
+        {
+          "id": "david",
+          "rel": "vino a buscarla para Jerusalén"
+        },
+        {
+          "id": "uza",
+          "rel": "murió al salir el arca de esta casa"
         }
       ]
     },
@@ -6129,20 +7309,44 @@
         "Ramot de Galaad"
       ],
       "kind": "lugar",
-      "note": "Ramot de Galaad, ciudad de refugio; Acab murió peleando allí.",
+      "note": "Ramot de Galaad, al este del Jordán, en la frontera de Galaad con Aram. Acab murió peleando aquí contra los sirios; Josafat iba con él y Miqueas había anunciado la derrota. Eliseo mandó ungir aquí a Jehú.",
       "properName": true,
       "related": [
         {
           "id": "galaad",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en Galaad"
         },
         {
-          "id": "juda",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "aram",
+          "rel": "en la frontera con Siria"
+        },
+        {
+          "id": "jordan",
+          "rel": "al este del río"
         },
         {
           "id": "acab",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "murió en la batalla de Ramot"
+        },
+        {
+          "id": "josafat",
+          "rel": "fue con Acab a esa guerra"
+        },
+        {
+          "id": "miqueas",
+          "rel": "profetizó que Israel quedaría sin pastor"
+        },
+        {
+          "id": "imla",
+          "rel": "padre de Miqueas"
+        },
+        {
+          "id": "jehu",
+          "rel": "lo ungieron rey en Ramot de Galaad"
+        },
+        {
+          "id": "eliseo",
+          "rel": "envió al discípulo a ungirlo"
         }
       ]
     },
@@ -6153,20 +7357,52 @@
         "Ramah"
       ],
       "kind": "lugar",
-      "note": "Pueblo de Samuel (Ramá de Zuf); también frontera que Baasa fortificó.",
+      "note": "Hay dos. Ramá de Zuf, en la sierra de Efraín, es el pueblo de Elcaná y de Samuel; Naiot estaba aquí, y Saúl profetizó al venir a buscar a David. Otra Ramá, en Benjamín, al norte de Jerusalén, es la que Baasa fortificó contra Asa; Asa la desmanteló.",
       "properName": true,
       "related": [
         {
+          "id": "efrain",
+          "rel": "la Ramá de Samuel está en su sierra"
+        },
+        {
+          "id": "benjamin",
+          "rel": "la Ramá fronteriza de Baasa está en Benjamín"
+        },
+        {
+          "id": "naiot",
+          "rel": "el campamento de profetas dentro de Ramá"
+        },
+        {
+          "id": "zuf",
+          "rel": "la región de la sierra de donde era Elcaná"
+        },
+        {
+          "id": "elcana",
+          "rel": "era de Ramá"
+        },
+        {
           "id": "samuel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "nació de esa casa y juzgó desde Ramá"
+        },
+        {
+          "id": "ana",
+          "rel": "de Ramá; subía con Elcaná a Silo"
         },
         {
           "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "fue a Ramá a buscar a David y profetizó"
         },
         {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "se refugió con Samuel en Ramá"
+        },
+        {
+          "id": "baasa",
+          "rel": "fortificó la Ramá de Benjamín contra Judá"
+        },
+        {
+          "id": "asa",
+          "rel": "desmanteló esa fortaleza"
         }
       ]
     },
@@ -6340,20 +7576,28 @@
         "Riblah"
       ],
       "kind": "lugar",
-      "note": "En Hamat; allí Nabucodonosor juzgó a Sedequías.",
+      "note": "Ciudad en tierra de Hamat, al norte, en el valle del Orontes, donde acampaban los reyes que venían del Éufrates. Necao encadenó aquí a Joacaz. Nabucodonosor juzgó aquí a Sedequías, degolló a sus hijos y lo cegó.",
       "properName": true,
       "related": [
         {
-          "id": "babilonia",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "hamat",
+          "rel": "en tierra de Hamat"
         },
         {
-          "id": "ela",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "necao",
+          "rel": "encadenó a Joacaz en Ribla"
         },
         {
-          "id": "acaz",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "joacaz",
+          "rel": "fue depuesto y atado aquí"
+        },
+        {
+          "id": "nabucodonosor",
+          "rel": "tenía en Ribla su tribunal"
+        },
+        {
+          "id": "sedequias",
+          "rel": "fue juzgado, vio morir a sus hijos y quedó ciego"
         }
       ]
     },
@@ -6364,20 +7608,24 @@
         "Rimmon"
       ],
       "kind": "lugar",
-      "note": "Dios de Damasco (casa de Rimón) que Naamán menciona; o un pueblo.",
+      "note": "En este glosario es el dios de Damasco, en Siria, no una ciudad de Israel. Naamán pidió a Eliseo perdón por tener que inclinarse en el templo de Rimón cuando su rey se apoyara en su brazo.",
       "properName": true,
       "related": [
         {
+          "id": "damasco",
+          "rel": "su templo está en la capital de Siria"
+        },
+        {
+          "id": "siria",
+          "rel": "dios de ese país"
+        },
+        {
           "id": "naaman",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "pidió esa concesión al volver sanado"
         },
         {
-          "id": "templo",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "eliseo",
+          "rel": "le dijo que fuera en paz"
         }
       ]
     },
@@ -6436,20 +7684,24 @@
         "Reuben"
       ],
       "kind": "lugar",
-      "note": "Tribu al este del Jordán.",
+      "note": "Tribu al este del Jordán, en la meseta al norte de Moab y al sur de Gad. No es una ciudad. Su tierra mira al mar Muerto desde el oriente y queda al sur de Galaad.",
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jordan",
+          "rel": "al este del río"
         },
         {
-          "id": "dan",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "moab",
+          "rel": "al sur de Rubén"
+        },
+        {
+          "id": "galaad",
+          "rel": "la meseta vecina, más al norte"
         },
         {
           "id": "gad",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "la tribu vecina; el mismo nombre es también el del profeta de David"
         }
       ]
     },
@@ -6460,16 +7712,20 @@
         "Sheba"
       ],
       "kind": "lugar",
-      "note": "Reino de la reina que visitó a Salomón (Sabá / Sheba).",
+      "note": "Reino lejano del sur, en el comercio de especias y oro, fuera de Israel. Su reina viajó hasta Jerusalén para probar la sabiduría de Salomón.",
       "properName": true,
       "related": [
         {
+          "id": "jerusalen",
+          "rel": "el destino de la visita"
+        },
+        {
           "id": "reina-de-saba",
-          "rel": "su reina"
+          "rel": "vino de este reino"
         },
         {
           "id": "salomon",
-          "rel": "comercio y visita"
+          "rel": "la recibió y respondió sus preguntas"
         }
       ]
     },
@@ -6636,20 +7892,48 @@
       "term": "Samaria",
       "aliases": [],
       "kind": "lugar",
-      "note": "Capital del reino del norte, fundada por Omri.",
+      "note": "Ciudad y monte en la sierra de Efraín, al noroeste de Siquem. Capital del reino del norte. Omri compró el monte a Semer y fundó Samaria. Acab y Jezabel tuvieron aquí su corte y el templo de Baal. Salmanasar la sitió en días de Oseas y Asiria se llevó cautivo el norte.",
       "properName": true,
       "related": [
         {
+          "id": "efrain",
+          "rel": "en su sierra"
+        },
+        {
+          "id": "siquem",
+          "rel": "al noroeste de Siquem"
+        },
+        {
+          "id": "israel",
+          "rel": "capital del reino del norte"
+        },
+        {
           "id": "omri",
-          "rel": "la fundó"
+          "rel": "compró el monte y fundó la ciudad"
+        },
+        {
+          "id": "semer",
+          "rel": "dueño del monte que Omri compró"
         },
         {
           "id": "acab",
-          "rel": "capital de"
+          "rel": "reinó desde Samaria"
+        },
+        {
+          "id": "jezabel",
+          "rel": "su corte y el culto de Baal estaban aquí"
+        },
+        {
+          "id": "oseas",
+          "rel": "último rey; cayó con la ciudad"
+        },
+        {
+          "id": "salmanasar",
+          "rel": "la sitió"
         },
         {
           "id": "asiria",
-          "rel": "la tomó"
+          "rel": "se llevó cautivo al norte"
         }
       ]
     },
@@ -6690,12 +7974,24 @@
         "Zarephath"
       ],
       "kind": "lugar",
-      "note": "Pueblo de Sidón; Elías habitó con la viuda.",
+      "note": "Pueblo de la costa fenicia, entre Tiro y Sidón, fuera de Israel. Elías habitó aquí con una viuda durante la sequía anunciada a Acab: la harina y el aceite no faltaron, y el hijo de la viuda volvió a vivir.",
       "properName": true,
       "related": [
         {
           "id": "sidon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "Sarepta pertenece a Sidón"
+        },
+        {
+          "id": "tiro",
+          "rel": "entre Tiro y Sidón, en la costa"
+        },
+        {
+          "id": "elias",
+          "rel": "habitó con la viuda"
+        },
+        {
+          "id": "acab",
+          "rel": "la sequía que Elías anunció a Acab lo llevó fuera de Israel"
         }
       ]
     },
@@ -6852,20 +8148,32 @@
         "Sepharvaim"
       ],
       "kind": "lugar",
-      "note": "Ciudad cuyos dioses Adramelec y Anamelec se honraron en Samaria.",
+      "note": "Ciudad de Mesopotamia, no de Canaán. Asiria trajo colonos de Sefarvaim a Samaria. Adoraban a Adramelec y a Anamelec, y pusieron esos cultos en el norte.",
       "properName": true,
       "related": [
         {
           "id": "asiria",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "los deportó hacia la tierra conquistada"
+        },
+        {
+          "id": "samaria",
+          "rel": "se asentaron en sus ciudades"
         },
         {
           "id": "ava",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "otro grupo de colonos del mismo traslado"
         },
         {
-          "id": "babilonia",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "adramelec",
+          "rel": "uno de sus dioses"
+        },
+        {
+          "id": "anamelec",
+          "rel": "el otro dios de Sefarvaim"
+        },
+        {
+          "id": "salmanasar",
+          "rel": "su conquista abrió Samaria a la gente de Sefarvaim"
         }
       ]
     },
@@ -6898,16 +8206,20 @@
         "Petra"
       ],
       "kind": "lugar",
-      "note": "Ciudad de Edom que Amasías tomó (el Peñasco).",
+      "note": "Ciudad de Edom, el Peñasco, al sur del mar Muerto, en la serranía de Seir. Amasías de Judá la tomó y la llamó Jocteel.",
       "properName": true,
       "related": [
         {
           "id": "edom",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en Edom"
         },
         {
-          "id": "ela",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "juda",
+          "rel": "Amasías salió desde Judá"
+        },
+        {
+          "id": "amasias",
+          "rel": "conquistó Sela"
         }
       ]
     },
@@ -7008,20 +8320,36 @@
       "term": "Sidón",
       "aliases": [],
       "kind": "lugar",
-      "note": "Ciudad fenicia; Etbaal y Jezabel; Elías a Sarepta de Sidón.",
+      "note": "Ciudad fenicia de la costa del Líbano, al norte de Tiro. Etbaal era rey de Sidón; su hija Jezabel se casó con Acab. Elías fue enviado a Sarepta, que pertenece a Sidón.",
       "properName": true,
       "related": [
         {
-          "id": "acab",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "tiro",
+          "rel": "ciudad fenicia vecina, al sur"
         },
         {
-          "id": "baal",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "sarepta",
+          "rel": "pueblo de su territorio, donde vivió Elías"
+        },
+        {
+          "id": "libano",
+          "rel": "en esa costa"
         },
         {
           "id": "etbaal",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "rey de Sidón"
+        },
+        {
+          "id": "jezabel",
+          "rel": "su hija"
+        },
+        {
+          "id": "acab",
+          "rel": "yerno de Etbaal"
+        },
+        {
+          "id": "elias",
+          "rel": "fue a Sarepta de Sidón durante la sequía"
         }
       ]
     },
@@ -7032,20 +8360,20 @@
         "Silla"
       ],
       "kind": "lugar",
-      "note": "Lugar cerca de Milo donde Joás de Judá fue herido.",
+      "note": "Lugar junto a Milo, dentro de Jerusalén, en la ciudad de David. Allí hirieron a Joás de Judá sus propios siervos.",
       "properName": true,
       "related": [
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "milo",
+          "rel": "la fortificación junto a la que cae Sila"
         },
         {
-          "id": "arca",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jerusalen",
+          "rel": "en la ciudad de David"
         },
         {
-          "id": "eliseo",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "joas",
+          "rel": "lo asesinaron en la casa de Milo, camino de Sila"
         }
       ]
     },
@@ -7056,20 +8384,44 @@
         "Shiloh"
       ],
       "kind": "lugar",
-      "note": "Santuario donde estaba el arca con Elí y Samuel.",
+      "note": "Santuario en la sierra de Efraín, al norte de Betel. El arca estaba aquí con Elí. Ana oró en Silo y entregó a Samuel. Ofni y Finees servían el altar. El arca salió de Silo hacia la batalla, fue capturada, y no volvió.",
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "efrain",
+          "rel": "en la sierra de Efraín"
+        },
+        {
+          "id": "betel",
+          "rel": "Betel queda al sur, en la misma sierra"
         },
         {
           "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "sacerdote de Silo"
         },
         {
-          "id": "ela",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "samuel",
+          "rel": "creció sirviendo delante del Señor"
+        },
+        {
+          "id": "ana",
+          "rel": "oró aquí y trajo al niño"
+        },
+        {
+          "id": "elcana",
+          "rel": "subía cada año a adorar"
+        },
+        {
+          "id": "ofni",
+          "rel": "hijo de Elí; corrompía el culto"
+        },
+        {
+          "id": "finees",
+          "rel": "hijo de Elí; murió cuando el arca fue tomada"
+        },
+        {
+          "id": "arca",
+          "rel": "salió de Silo y los filisteos la capturaron"
         }
       ]
     },
@@ -7104,20 +8456,32 @@
         "Shechem"
       ],
       "kind": "lugar",
-      "note": "Ciudad de Efraín donde Israel hizo rey a Roboam y se dividió el reino.",
+      "note": "Ciudad de Efraín, entre el Ebal y el Gerizim, en la sierra central, al norte de Betel. Roboam vino aquí a ser rey de todo Israel. El pueblo lo rechazó, el reino se dividió y Jeroboam fortificó Siquem.",
       "properName": true,
       "related": [
         {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "efrain",
+          "rel": "en Efraín"
         },
         {
-          "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "betel",
+          "rel": "al sur, en la misma sierra"
         },
         {
           "id": "roboam",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "aquí se le dividió el reino"
+        },
+        {
+          "id": "jeroboam",
+          "rel": "lo hicieron rey del norte y fortificó Siquem"
+        },
+        {
+          "id": "salomon",
+          "rel": "su hijo perdió el norte en esta asamblea"
+        },
+        {
+          "id": "israel",
+          "rel": "las tribus del norte rechazaron a Roboam"
         }
       ]
     },
@@ -7129,20 +8493,48 @@
         "Aram"
       ],
       "kind": "lugar",
-      "note": "Aram; Damasco; enemigos y a veces aliados de Israel.",
+      "note": "El mismo país que Aram, al noreste de Israel, con capital en Damasco. David venció a sus reyes. Ben-adad y Hazael pelearon contra Israel. Naamán, general sirio, fue sanado por Eliseo. Rezín se alió con Peka contra Acaz.",
       "properName": true,
       "related": [
         {
-          "id": "asiria",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "aram",
+          "rel": "otro nombre del mismo país"
+        },
+        {
+          "id": "damasco",
+          "rel": "su capital"
         },
         {
           "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "vecino del suroeste"
         },
         {
-          "id": "jacob",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "venció a Hadad-ezer y a los sirios que ayudaban a Amón"
+        },
+        {
+          "id": "ben-adad",
+          "rel": "rey de Siria en guerra con Acab"
+        },
+        {
+          "id": "hazael",
+          "rel": "rey que oprimió a Israel"
+        },
+        {
+          "id": "naaman",
+          "rel": "general sirio sanado en el Jordán"
+        },
+        {
+          "id": "eliseo",
+          "rel": "lo sanó y anunció el reinado de Hazael"
+        },
+        {
+          "id": "rezin",
+          "rel": "rey de Siria aliado de Peka"
+        },
+        {
+          "id": "acaz",
+          "rel": "pidió ayuda a Asiria contra Rezín"
         }
       ]
     },
@@ -7177,20 +8569,28 @@
         "Succoth"
       ],
       "kind": "lugar",
-      "note": "Pueblo cerca del Jordán, en el relato de fundición del bronce.",
+      "note": "Pueblo del valle del Jordán, al este del río, cerca de Zaretán, en el borde de Galaad. Entre Sucot y Zaretán fundieron el bronce de los utensilios del templo de Salomón.",
       "properName": true,
       "related": [
         {
-          "id": "adramelec",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "jordan",
+          "rel": "en el valle del río"
         },
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "zaretan",
+          "rel": "el otro punto de la fundición"
         },
         {
-          "id": "anamelec",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "galaad",
+          "rel": "en el borde de esa meseta"
+        },
+        {
+          "id": "salomon",
+          "rel": "el bronce era para su templo"
+        },
+        {
+          "id": "templo",
+          "rel": "aquí se fundieron sus enseres de bronce"
         }
       ]
     },
@@ -7272,16 +8672,28 @@
       "term": "Tabor",
       "aliases": [],
       "kind": "lugar",
-      "note": "Monte; en el relato de Saúl y las ofrendas.",
+      "note": "En el relato de Saúl es la encina de Tabor, en el camino de Ramá hacia Betel, no el monte del valle de Jezreel. Samuel le dijo que junto a esa encina encontraría tres hombres que subían a adorar, con pan y vino. El monte Tabor, aparte, se alza al noreste de Jezreel, en la frontera de Isacar.",
       "properName": true,
       "related": [
         {
+          "id": "rama",
+          "rel": "Saúl venía de dejar a Samuel"
+        },
+        {
           "id": "betel",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "los tres hombres subían a Betel"
+        },
+        {
+          "id": "jezreel",
+          "rel": "el monte Tabor, distinto de la encina, mira a ese valle"
+        },
+        {
+          "id": "samuel",
+          "rel": "dio a Saúl la señal de la encina"
         },
         {
           "id": "saul",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "recibió esa señal camino de Gabaa"
         }
       ]
     },
@@ -7336,9 +8748,26 @@
         "Tarshish"
       ],
       "kind": "lugar",
-      "note": "Destino lejano de las naves de Salomón y Josafat.",
+      "note": "Destino lejano de las naves, por el Mediterráneo, al oeste. No es una ciudad de Canaán: da nombre a las naves de altura. Salomón tenía naves de Tarsis con Hiram. Las que Josafat quiso enviar se rompieron en Ezión-geber.",
       "properName": true,
-      "related": []
+      "related": [
+        {
+          "id": "ezion-geber",
+          "rel": "donde naufragó el proyecto de Josafat"
+        },
+        {
+          "id": "salomon",
+          "rel": "tenía naves de Tarsis en el mar"
+        },
+        {
+          "id": "hiram",
+          "rel": "se asoció con Salomón en ese comercio"
+        },
+        {
+          "id": "josafat",
+          "rel": "quiso repetirlo y las naves se rompieron"
+        }
+      ]
     },
     {
       "id": "tartac",
@@ -7372,20 +8801,28 @@
         "Tekoa"
       ],
       "kind": "lugar",
-      "note": "Pueblo de Judá; la mujer sabia que Joab envió a David.",
+      "note": "Pueblo de la sierra de Judá, al sur de Belén, camino del desierto. Joab trajo de Tecoa a una mujer sabia para que contara a David una parábola y pidiera el regreso de Absalón.",
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "juda",
+          "rel": "en la sierra de Judá"
+        },
+        {
+          "id": "belen",
+          "rel": "al sur de Belén"
         },
         {
           "id": "joab",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "envió a la mujer sabia"
         },
         {
-          "id": "cuta",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "escuchó la parábola y mandó traer a Absalón"
+        },
+        {
+          "id": "absalon",
+          "rel": "el relato buscaba su regreso desde Gesur"
         }
       ]
     },
@@ -7435,16 +8872,24 @@
         "Tiphsah"
       ],
       "kind": "lugar",
-      "note": "Ciudad junto al Éufrates que Salomón dominó.",
+      "note": "Ciudad junto al Éufrates, límite noreste del dominio de Salomón, de Tifsa hasta Gaza. En Reyes, Manahem atacó una Tifsa con crueldad; puede ser esta plaza del río u otra del norte de Israel.",
       "properName": true,
       "related": [
         {
-          "id": "ana",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "eufrates",
+          "rel": "junto al gran río, en el límite del este"
+        },
+        {
+          "id": "israel",
+          "rel": "marca hasta dónde llegaba el dominio de Salomón"
+        },
+        {
+          "id": "salomon",
+          "rel": "dominaba desde Tifsa"
         },
         {
           "id": "manahem",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "atacó Tifsa y no le abrían las puertas"
         }
       ]
     },
@@ -7480,20 +8925,32 @@
         "Tyre"
       ],
       "kind": "lugar",
-      "note": "Ciudad de Hiram, aliada de David y Salomón.",
+      "note": "Ciudad fenicia de la costa del Líbano, al sur de Sidón y al norte de Israel. Hiram, su rey, fue aliado de David y de Salomón: envió cedros, artesanos y marineros para la flota de Ofir.",
       "properName": true,
       "related": [
         {
+          "id": "sidon",
+          "rel": "ciudad fenicia al norte"
+        },
+        {
+          "id": "libano",
+          "rel": "los cedros de su interior"
+        },
+        {
+          "id": "ofir",
+          "rel": "la flota conjunta salía hacia esa tierra"
+        },
+        {
           "id": "hiram",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "rey de Tiro"
         },
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "Hiram le envió madera para su palacio"
         },
         {
-          "id": "neftali",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salomon",
+          "rel": "aliado para el templo y para el mar"
         }
       ]
     },
@@ -7504,20 +8961,44 @@
         "Tirzah"
       ],
       "kind": "lugar",
-      "note": "Primera capital de Jeroboam y Baasa antes de Samaria.",
+      "note": "Ciudad de la sierra de Efraín, al norte de Siquem. Fue capital de Jeroboam, de Baasa y de Ela antes de Samaria. Zimri mató a Ela en casa de Arsa, en Tirsa, reinó siete días y quemó el palacio cuando Omri la sitió.",
       "properName": true,
       "related": [
         {
-          "id": "asa",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "efrain",
+          "rel": "en la sierra de Efraín"
+        },
+        {
+          "id": "siquem",
+          "rel": "al norte de Siquem"
+        },
+        {
+          "id": "samaria",
+          "rel": "la capital que Omri fundó después"
+        },
+        {
+          "id": "jeroboam",
+          "rel": "reinó desde Tirsa"
         },
         {
           "id": "baasa",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "también tuvo aquí su capital"
+        },
+        {
+          "id": "ela",
+          "rel": "Zimri lo mató en Tirsa"
+        },
+        {
+          "id": "zimri",
+          "rel": "reinó siete días y quemó la casa del rey"
         },
         {
           "id": "arsa",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "mayordomo; Ela estaba bebiendo en su casa"
+        },
+        {
+          "id": "omri",
+          "rel": "sitió Tirsa y luego mudó la capital"
         }
       ]
     },
@@ -7526,20 +9007,28 @@
       "term": "Tob",
       "aliases": [],
       "kind": "lugar",
-      "note": "Tierra de donde tomaron mercenarios contra David.",
+      "note": "Tierra al noreste, fuera del núcleo de Israel, en la órbita de Aram y de Galaad. Los amonitas contrataron mercenarios de Tob contra David. En ese mismo relato se nombra a la gente de Maaca, región aramea vecina, distinta de Maaca esposa de David.",
       "properName": true,
       "related": [
         {
+          "id": "aram",
+          "rel": "región de esa guerra"
+        },
+        {
+          "id": "galaad",
+          "rel": "al noreste de la meseta"
+        },
+        {
           "id": "amon",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "contrataron la tropa de Tob"
         },
         {
-          "id": "bet-rehob",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "david",
+          "rel": "era el rey contra quien marcharon"
         },
         {
-          "id": "maaca",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "joab",
+          "rel": "mandó el ejército de David"
         }
       ]
     },
@@ -7695,20 +9184,28 @@
         "Zarethan"
       ],
       "kind": "lugar",
-      "note": "Lugar cerca del Jordán, en la fundición del bronce.",
+      "note": "Lugar en el valle del Jordán, cerca de Sucot. Entre Sucot y Zaretán fundieron el bronce del templo de Salomón. En el cruce de Josué, las aguas se amontonaron junto a Adam, ciudad de junto a Zaretán.",
       "properName": true,
       "related": [
         {
-          "id": "dan",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "sucot",
+          "rel": "el otro extremo de la fundición"
         },
         {
           "id": "jordan",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "en su llanura"
         },
         {
-          "id": "sucot",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salomon",
+          "rel": "el bronce era para el templo"
+        },
+        {
+          "id": "templo",
+          "rel": "sus enseres se fundieron en esta llanura"
+        },
+        {
+          "id": "josue",
+          "rel": "las aguas del cruce se detuvieron junto a esta zona"
         }
       ]
     },
@@ -7719,20 +9216,32 @@
         "Zeredah"
       ],
       "kind": "lugar",
-      "note": "Pueblo de Jeroboam hijo de Nabat.",
+      "note": "Pueblo de la sierra de Efraín. Jeroboam hijo de Nabat era efrateo de Zereda. Ahías de Silo le anunció que reinaría sobre diez tribus.",
       "properName": true,
       "related": [
         {
+          "id": "efrain",
+          "rel": "en Efraín"
+        },
+        {
+          "id": "silo",
+          "rel": "Ahías, que lo encontró en el camino, era de Silo"
+        },
+        {
+          "id": "jeroboam",
+          "rel": "era de Zereda"
+        },
+        {
+          "id": "nabat",
+          "rel": "su padre"
+        },
+        {
           "id": "ahias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "profetizó que Dios le daría el norte"
         },
         {
-          "id": "eli",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "israel",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "salomon",
+          "rel": "Jeroboam servía en sus obras cuando recibió la profecía"
         }
       ]
     },
@@ -7787,20 +9296,36 @@
         "Zobah"
       ],
       "kind": "lugar",
-      "note": "Reino arameo de Hadad-ezer, vencido por David.",
+      "note": "Reino arameo al norte de Damasco, hacia Hamat. Hadad-ezer era su rey. Acudió en ayuda de Amón y David lo venció; Joab peleó en esa guerra.",
       "properName": true,
       "related": [
         {
+          "id": "aram",
+          "rel": "reino arameo"
+        },
+        {
+          "id": "damasco",
+          "rel": "Zoba queda al norte de Damasco"
+        },
+        {
+          "id": "hamat",
+          "rel": "hacia el norte"
+        },
+        {
+          "id": "hadad-ezer",
+          "rel": "rey de Zoba"
+        },
+        {
+          "id": "david",
+          "rel": "lo derrotó"
+        },
+        {
+          "id": "joab",
+          "rel": "mandó la batalla contra Amón y sus aliados"
+        },
+        {
           "id": "amon",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "bet-rehob",
-          "rel": "aparece en las mismas tarjetas"
-        },
-        {
-          "id": "maaca",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "Zoba acudió en su ayuda"
         }
       ]
     },
@@ -7811,20 +9336,32 @@
         "Zoheleth"
       ],
       "kind": "lugar",
-      "note": "Piedra junto a En-rogel, en el banquete de Adonías.",
+      "note": "Piedra junto a la fuente de En-rogel, al sur de Jerusalén. Adonías sacrificó junto a Zohélet y convidó a sus hermanos para proclamarse rey, sin David y sin Salomón.",
       "properName": true,
       "related": [
         {
+          "id": "en-rogel",
+          "rel": "la fuente junto a la piedra"
+        },
+        {
+          "id": "jerusalen",
+          "rel": "al sur de la ciudad"
+        },
+        {
           "id": "adonias",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "hizo aquí el banquete"
         },
         {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "aún reinaba y no lo había autorizado"
+        },
+        {
+          "id": "salomon",
+          "rel": "no fue invitado; lo ungieron en Gihón"
         },
         {
           "id": "natan",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "denunció el banquete a Betsabé y a David"
         }
       ]
     },
@@ -7859,20 +9396,32 @@
         "Euphrates"
       ],
       "kind": "lugar",
-      "note": "Gran río, límite nordeste del dominio de David y Salomón.",
+      "note": "El gran río de Mesopotamia, al noreste de Israel. El dominio de David y de Salomón se cuenta desde el Éufrates hasta la tierra de los filisteos. Tifsa está junto al río. Babilonia ocupa su llanura sur. Hadad-ezer de Zoba fue vencido camino de este río.",
       "properName": true,
       "related": [
         {
-          "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "tifsa",
+          "rel": "ciudad de ese límite"
         },
         {
-          "id": "hadad",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "babilonia",
+          "rel": "en la llanura sur del río"
+        },
+        {
+          "id": "david",
+          "rel": "su frontera llegó hasta el Éufrates"
+        },
+        {
+          "id": "salomon",
+          "rel": "dominó desde el río hasta Gaza"
         },
         {
           "id": "hadad-ezer",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "David lo venció cuando iba a restaurar su poder junto al río"
+        },
+        {
+          "id": "filisteos",
+          "rel": "el otro extremo del territorio, al oeste"
         }
       ]
     },
@@ -7881,20 +9430,28 @@
       "term": "Ézel",
       "aliases": [],
       "kind": "lugar",
-      "note": "Piedra donde David se escondió de Saúl, según lo acordado con Jonatán.",
+      "note": "Piedra en las afueras de Gabaa, en Benjamín, donde David se escondió. Jonatán disparó las flechas más allá de la piedra: era la señal de que Saúl quería matar a David. Allí se despidieron.",
       "properName": true,
       "related": [
         {
+          "id": "gabaa",
+          "rel": "en las afueras del pueblo de Saúl"
+        },
+        {
+          "id": "benjamin",
+          "rel": "en Benjamín"
+        },
+        {
           "id": "david",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "se escondió detrás de la piedra"
         },
         {
           "id": "jonatan",
-          "rel": "aparece en las mismas tarjetas"
+          "rel": "la señal de las flechas y la despedida"
         },
         {
-          "id": "natan",
-          "rel": "aparece en las mismas tarjetas"
+          "id": "saul",
+          "rel": "la señal avisaba de que había decidido matar a David"
         }
       ]
     }
