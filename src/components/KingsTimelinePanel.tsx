@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   ChevronLeft,
   ChevronRight,
@@ -44,6 +44,11 @@ type KingsTimelinePanelProps = {
   onToggle: () => void
 }
 
+/** Pixels per year so short reigns stay wide enough to read the name. */
+const PX_PER_YEAR = 36
+const TIMELINE_TRACK_PX =
+  (TIMELINE_START_BC - TIMELINE_END_BC) * PX_PER_YEAR
+
 const STAND_LEGEND: { stand: LordStand; hint: string }[] = [
   { stand: 'righteous', hint: 'Hizo lo recto ante los ojos del Señor' },
   { stand: 'evil', hint: 'Hizo lo malo ante los ojos del Señor' },
@@ -55,6 +60,35 @@ export function KingsTimelinePanel({ open, onToggle }: KingsTimelinePanelProps) 
   const [visible, setVisible] = useState<KingdomId[]>(DEFAULT_VISIBLE_KINGDOMS)
   const [selectedId, setSelectedId] = useState<string | null>('solomon')
   const [query, setQuery] = useState('')
+  const scrollerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!open) return
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return
+      const target = event.target
+      if (
+        target instanceof HTMLElement &&
+        target.closest(
+          'input, textarea, select, [contenteditable="true"], [role="menu"], [role="listbox"]',
+        )
+      ) {
+        return
+      }
+      const scroller = scrollerRef.current
+      if (!scroller || scroller.getClientRects().length === 0) return
+      const distance = event.shiftKey
+        ? scroller.clientWidth * 0.85
+        : Math.max(220, scroller.clientWidth * 0.4)
+      scroller.scrollBy({
+        left: event.key === 'ArrowRight' ? distance : -distance,
+        behavior: 'smooth',
+      })
+      event.preventDefault()
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [open])
 
   const chronological = useMemo(() => kingsChronological(), [])
   const selected = useMemo(
@@ -204,11 +238,16 @@ export function KingsTimelinePanel({ open, onToggle }: KingsTimelinePanelProps) 
             </div>
 
             <div className="flex flex-col gap-4">
-              <div className="w-full rounded-xl border bg-background/60 p-2 shadow-inner sm:p-3">
+              <div
+                ref={scrollerRef}
+                tabIndex={0}
+                className="w-full overflow-x-auto rounded-xl border bg-background/60 p-2 shadow-inner focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:p-3"
+                aria-label="Línea de tiempo de los reyes. Flecha izquierda o derecha para desplazarla."
+              >
                 <p className="mb-2 text-[11px] text-muted-foreground">
-                  Años en a. C.
+                  Años en a. C. Flechas ← → desplazan la línea. Mayús avanza más.
                 </p>
-                <div className="w-full">
+                <div style={{ width: TIMELINE_TRACK_PX }} className="min-w-full">
                   <div className="relative mb-2 h-7 border-b border-dashed border-border/80 text-[10px] text-muted-foreground sm:text-xs">
                     {axisTickYears().map((year) => {
                       const left =
@@ -230,7 +269,7 @@ export function KingsTimelinePanel({ open, onToggle }: KingsTimelinePanelProps) 
                   <ul className="space-y-3">
                     {rows.map((row) => (
                       <li key={row.id}>
-                        <div className="mb-1 flex items-center gap-2 text-xs font-medium">
+                        <div className="sticky left-0 z-20 mb-1 inline-flex items-center gap-2 rounded-md bg-background/85 px-1 text-xs font-medium backdrop-blur-sm">
                           <span
                             className="size-2 rounded-full"
                             style={{ backgroundColor: row.color }}
@@ -255,18 +294,19 @@ export function KingsTimelinePanel({ open, onToggle }: KingsTimelinePanelProps) 
                                 title={`${king.name} · ${formatReignSpan(king)}`}
                                 onClick={() => selectKing(king.id)}
                                 className={cn(
-                                  'absolute top-1.5 flex h-8 min-w-[2px] max-w-[92%] items-center gap-1 overflow-hidden rounded-md px-1.5 text-[10px] font-semibold text-white shadow-md transition hover:scale-[1.02] hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:text-[11px]',
-                                  isSelected && 'z-10 scale-[1.03] shadow-lg',
+                                  'absolute top-1.5 flex h-8 items-center gap-1 overflow-visible rounded-md px-1.5 text-[11px] font-semibold whitespace-nowrap text-white shadow-md transition hover:z-30 hover:brightness-110 focus-visible:z-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                                  isSelected && 'z-20 shadow-lg ring-2 ring-white',
                                   stand?.barClass,
                                 )}
                                 style={{
                                   left: `${bar.left}%`,
                                   width: `${bar.width}%`,
+                                  minWidth: `${Math.ceil(king.name.length * 7.4 + 18)}px`,
                                   backgroundColor: row.color,
                                 }}
                               >
                                 <StandDot stand={king.lordStand} className="shrink-0" />
-                                <span className="truncate">{king.name}</span>
+                                <span>{king.name}</span>
                               </button>
                             )
                           })}
