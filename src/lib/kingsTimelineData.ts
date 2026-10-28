@@ -53,11 +53,24 @@ export type KingRecord = {
   passages: string[]
 }
 
-/** Ventana narrativa principal de 1–2 Reyes (a. C.). */
-export const TIMELINE_START_BC = 993
+/** Desde Is-boset (2 Samuel), antes de Salomón, hasta la caída de Judá. */
+export const TIMELINE_START_BC = 1020
 export const TIMELINE_END_BC = 580
 
 const KINGS_BASE: KingRecord[] = [
+  {
+    id: 'is-boset',
+    name: 'Is-boset',
+    kingdom: 'israel',
+    startBc: 1010,
+    endBc: 1008,
+    father: 'Saúl',
+    predecessor: 'Saúl',
+    ages: { accessionAge: 40, reignYears: 2, deathAge: 42 },
+    events:
+      'Hijo de Saúl y rival de David. Abner lo proclamó rey sobre Israel en Mahanaim; reinó dos años mientras David reinaba en Hebrón sobre Judá. Recab y Baaná lo asesinaron.',
+    passages: ['2 Samuel 2:8-10', '2 Samuel 4:5-8'],
+  },
   {
     id: 'solomon',
     name: 'Salomón',
