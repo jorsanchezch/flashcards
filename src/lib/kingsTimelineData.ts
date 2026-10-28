@@ -17,13 +17,14 @@ export type KingdomMeta = {
   color: string
 }
 
+/** Each color keeps white text at 4.5:1 or better. */
 export const KINGDOMS: KingdomMeta[] = [
   { id: 'united', label: 'Monarquía unida', shortLabel: 'Unida', color: 'hsl(262 55% 48%)' },
   { id: 'judah', label: 'Reino de Judá', shortLabel: 'Judá', color: 'hsl(221 70% 48%)' },
-  { id: 'israel', label: 'Reino de Israel (norte)', shortLabel: 'Israel', color: 'hsl(152 45% 38%)' },
-  { id: 'aram', label: 'Aram (Siria)', shortLabel: 'Aram', color: 'hsl(32 75% 44%)' },
+  { id: 'israel', label: 'Reino de Israel (norte)', shortLabel: 'Israel', color: 'hsl(152 48% 34%)' },
+  { id: 'aram', label: 'Aram (Siria)', shortLabel: 'Aram', color: 'hsl(22 75% 39%)' },
   { id: 'assyria', label: 'Asiria', shortLabel: 'Asiria', color: 'hsl(0 62% 45%)' },
-  { id: 'egypt', label: 'Egipto', shortLabel: 'Egipto', color: 'hsl(45 80% 42%)' },
+  { id: 'egypt', label: 'Egipto', shortLabel: 'Egipto', color: 'hsl(42 80% 31%)' },
 ]
 
 export type KingAges = {

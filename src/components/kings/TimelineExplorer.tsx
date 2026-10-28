@@ -367,7 +367,8 @@ function HorizontalTimeline({
                               'group-hover:brightness-110 group-focus-visible:ring-2 group-focus-visible:ring-ring',
                               isSelected && 'ring-2 ring-foreground ring-offset-1 ring-offset-background',
                               isRelated && !isSelected && 'ring-2 ring-gold',
-                              selectedId && !isSelected && !isRelated && 'opacity-70',
+                              // Desaturate rather than fade, so names on other bars stay readable.
+                            selectedId && !isSelected && !isRelated && 'saturate-[.55]',
                             )}
                             style={{
                               width: p.width,
