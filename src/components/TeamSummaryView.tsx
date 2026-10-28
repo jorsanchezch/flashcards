@@ -1,7 +1,8 @@
 import { useMemo, useState } from 'react'
 import { matchesNameSearch } from '@/lib/nameSearch'
 import { NameSearchField } from '@/components/NameSearchField'
-import { Download, Loader2, RefreshCw, Users } from 'lucide-react'
+import { Crown, Download, Loader2, RefreshCw, Users } from 'lucide-react'
+import { ProgressRing } from '@/components/ProgressRing'
 import { useTeamProgress } from '@/hooks/useTeamProgress'
 import { isGuestDocument, type UserDocument } from '@/lib/userData'
 import {
@@ -20,7 +21,8 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { Progress } from '@/components/ui/progress'
+import { initials } from '@/lib/initials'
+import { cn } from '@/lib/utils'
 
 type TeamSummaryViewProps = {
   roster: RosterUser[]
@@ -63,12 +65,16 @@ export function TeamSummaryView({
     return filteredRows.reduce(
       (acc, row) => {
         acc.known += row.stats.known
+        acc.reviewed += row.stats.reviewed
         acc.unknown += row.stats.unknown
         return acc
       },
-      { known: 0, unknown: 0 },
+      { known: 0, reviewed: 0, unknown: 0 },
     )
   }, [filteredRows])
+
+  const progressList = filteredRows.map((row) => row.stats.known + row.stats.reviewed)
+  const allTied = progressList.every((p) => p === progressList[0])
 
   const groupStats = groupDoc
     ? computeStatsFromUserDoc(groupDoc, totalCards)
@@ -130,9 +136,11 @@ export function TeamSummaryView({
     <div className="mx-auto w-full max-w-3xl px-4 py-8 sm:py-10">
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <div className="mb-2 flex items-center gap-2">
-            <Users className="size-5 text-primary" />
-            <h2 className="text-xl font-semibold tracking-tight">
+          <div className="mb-2 flex items-center gap-2.5">
+            <span className="flex size-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              <Users className="size-5" />
+            </span>
+            <h2 className="font-display text-2xl font-semibold tracking-tight">
               Resumen del equipo
             </h2>
           </div>
@@ -189,56 +197,46 @@ export function TeamSummaryView({
               personas identificadas conservan su propio avance.
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-2 text-sm">
-            <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
-              <span>
-                Conocidas:{' '}
-                <strong className="text-foreground">{groupStats.known}</strong>
-              </span>
-              <span>
-                Repasar:{' '}
-                <strong className="text-foreground">{groupStats.unknown}</strong>
-              </span>
-              <span>
-                Revisadas:{' '}
-                <strong className="text-foreground">{groupStats.reviewed}</strong>
-              </span>
-              <span>
-                Sin marcar:{' '}
-                <strong className="text-foreground">{groupStats.unseen}</strong>
-              </span>
-            </div>
-            <Progress
-              value={percent(groupStats.known, groupStats.total)}
-              className="h-2"
-            />
+          <CardContent className="space-y-3 text-sm">
+            <StackedBar stats={groupStats} />
+            <StatChips stats={groupStats} />
           </CardContent>
         </Card>
       )}
 
-      <Card className="mb-8">
-        <CardHeader className="pb-2">
-          <CardTitle className="text-sm">Totales del equipo</CardTitle>
-          <CardDescription className="text-xs">
-            Lista ordenada por avance (La sé + Revisada, de más a menos). Cada
-            persona sobre {totalCards} tarjetas.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="flex flex-wrap gap-4 text-sm">
-          <span>
-            <strong className="text-known">
-              {teamTotals.known}
-            </strong>{' '}
-            conocidas (suma)
-          </span>
-          <span>
-            <strong className="text-review-again">
-              {teamTotals.unknown}
-            </strong>{' '}
-            para repasar (suma)
-          </span>
-        </CardContent>
-      </Card>
+      <section className="mb-8" aria-labelledby="team-totals-title">
+        <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+          <h3 id="team-totals-title" className="text-sm font-semibold">
+            Totales del equipo
+          </h3>
+          <p className="text-xs text-muted-foreground">
+            Ordenado por avance (La sé + Revisada) · {totalCards} tarjetas por persona
+          </p>
+        </div>
+        <dl className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+          {[
+            { label: 'Conocidas', value: teamTotals.known, color: 'var(--known)' },
+            { label: 'Revisadas', value: teamTotals.reviewed, color: 'var(--reviewed)' },
+            { label: 'Para repasar', value: teamTotals.unknown, color: 'var(--review-again)' },
+            { label: 'Integrantes', value: filteredRows.length, color: 'var(--primary)' },
+          ].map((tile) => (
+            <div
+              key={tile.label}
+              className="relative overflow-hidden rounded-2xl border bg-card px-4 py-3 shadow-card"
+            >
+              <span
+                className="absolute inset-x-0 top-0 h-1"
+                style={{ backgroundColor: tile.color }}
+                aria-hidden
+              />
+              <dd className="font-display text-2xl font-semibold tabular-nums" style={{ color: tile.color }}>
+                {tile.value}
+              </dd>
+              <dt className="text-xs text-muted-foreground">{tile.label}</dt>
+            </div>
+          ))}
+        </dl>
+      </section>
 
       <div className="mb-6">
         <NameSearchField
@@ -260,81 +258,134 @@ export function TeamSummaryView({
           </CardHeader>
         </Card>
       ) : (
-      <ul className="flex flex-col gap-4">
+      <ol className="flex flex-col gap-3">
         {filteredRows.map((row) => {
-          const pct = percent(row.stats.known, row.stats.total)
+          const progress = row.stats.known + row.stats.reviewed
+          const pct = percent(progress, row.stats.total)
+          const isYou = userDoc?.userId === row.userId
+          // Ties share a place; crowns only when someone is actually ahead.
+          const rank = progressList.filter((p) => p > progress).length
+          const medal = progress > 0 && !allTied ? MEDALS[rank] : undefined
           return (
             <li key={row.userId}>
-              <Card>
-                <CardHeader className="pb-2">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <CardTitle className="text-base">{row.displayName}</CardTitle>
-                    <div className="flex flex-wrap gap-1">
-                      {row.isLive && (
-                        <Badge variant="secondary" className="text-[10px]">
-                          En vivo
-                        </Badge>
+              <article
+                className={cn(
+                  'flex items-center gap-4 rounded-2xl border bg-card p-4 shadow-card transition-shadow hover:shadow-raised',
+                  isYou && 'border-primary/40 ring-1 ring-primary/20',
+                )}
+              >
+                <div className="relative shrink-0">
+                  <ProgressRing value={pct / 100} size={60} stroke={5} label={`Avance de ${row.displayName}: ${pct}%`}>
+                    <span
+                      className={cn(
+                        'flex size-11 items-center justify-center rounded-full text-sm font-bold',
+                        isYou
+                          ? 'bg-gradient-to-br from-primary to-[color-mix(in_oklch,var(--primary)_60%,var(--gold))] text-primary-foreground'
+                          : 'bg-muted text-foreground',
                       )}
-                      {userDoc?.userId === row.userId && (
-                        <Badge variant="outline" className="text-[10px]">
-                          Tú
-                        </Badge>
-                      )}
-                    </div>
-                  </div>
-                  {row.updatedAt && (
-                    <CardDescription className="text-xs">
-                      Actualizado:{' '}
-                      {new Date(row.updatedAt).toLocaleString('es', {
-                        dateStyle: 'medium',
-                        timeStyle: 'short',
-                      })}
-                    </CardDescription>
+                      aria-hidden
+                    >
+                      {initials(row.displayName)}
+                    </span>
+                  </ProgressRing>
+                  {medal && (
+                    <span
+                      className="absolute -top-1.5 -right-1.5 flex size-6 items-center justify-center rounded-full border-2 border-card shadow-card"
+                      style={{ backgroundColor: medal.color }}
+                      title={medal.label}
+                    >
+                      <Crown className="size-3.5 text-white" aria-label={medal.label} />
+                    </span>
                   )}
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">
-                      {pct}% conocidas
+                </div>
+                <div className="min-w-0 flex-1 space-y-2">
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                    <span className="text-xs font-semibold text-muted-foreground tabular-nums">
+                      {rank + 1}º
                     </span>
-                    <span className="font-medium tabular-nums">
-                      {row.stats.known}/{row.stats.total}
-                    </span>
-                  </div>
-                  <Progress value={pct} className="h-2" />
-                  <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
-                    <span>
-                      Conocidas:{' '}
-                      <strong className="text-foreground">
-                        {row.stats.known}
-                      </strong>
-                    </span>
-                    <span>
-                      Repasar:{' '}
-                      <strong className="text-foreground">
-                        {row.stats.unknown}
-                      </strong>
-                    </span>
-                    <span>
-                      Sin marcar:{' '}
-                      <strong className="text-foreground">
-                        {row.stats.unseen}
-                      </strong>
-                    </span>
-                    <span>
-                      Revisadas:{' '}
-                      <strong className="text-foreground">
-                        {row.stats.reviewed}
-                      </strong>
+                    <h3 className="truncate font-semibold">{row.displayName}</h3>
+                    {isYou && (
+                      <Badge variant="outline" className="text-[10px]">
+                        Tú
+                      </Badge>
+                    )}
+                    {row.isLive && (
+                      <Badge variant="secondary" className="text-[10px]">
+                        En vivo
+                      </Badge>
+                    )}
+                    <span className="ml-auto font-display text-lg font-semibold tabular-nums">
+                      {pct}%
                     </span>
                   </div>
-                </CardContent>
-              </Card>
+                  <StackedBar stats={row.stats} />
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <StatChips stats={row.stats} />
+                    {row.updatedAt && (
+                      <span className="text-[11px] text-muted-foreground">
+                        {new Date(row.updatedAt).toLocaleString('es', {
+                          dateStyle: 'medium',
+                          timeStyle: 'short',
+                        })}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </article>
             </li>
           )
         })}
-      </ul>
+      </ol>
       )}
     </div>
+  )
+}
+
+const MEDALS = [
+  { label: 'Primer lugar', color: 'var(--gold)' },
+  { label: 'Segundo lugar', color: 'oklch(0.7 0.02 260)' },
+  { label: 'Tercer lugar', color: 'oklch(0.6 0.09 55)' },
+]
+
+type Stats = { known: number; reviewed: number; unknown: number; unseen: number; total: number }
+
+/** The four marks, always in this order. */
+const SEGMENTS: { key: keyof Omit<Stats, 'total'>; label: string; color: string }[] = [
+  { key: 'known', label: 'Conocidas', color: 'var(--known)' },
+  { key: 'reviewed', label: 'Revisadas', color: 'var(--reviewed)' },
+  { key: 'unknown', label: 'Repasar', color: 'var(--review-again)' },
+  { key: 'unseen', label: 'Sin marcar', color: 'var(--muted)' },
+]
+
+function StackedBar({ stats }: { stats: Stats }) {
+  const total = Math.max(stats.total, 1)
+  return (
+    <div className="flex h-2.5 w-full overflow-hidden rounded-full bg-muted" aria-hidden>
+      {SEGMENTS.slice(0, 3).map((seg) => (
+        <span
+          key={seg.key}
+          className="h-full transition-[width] duration-500"
+          style={{ width: `${(stats[seg.key] / total) * 100}%`, backgroundColor: seg.color }}
+        />
+      ))}
+    </div>
+  )
+}
+
+function StatChips({ stats }: { stats: Stats }) {
+  return (
+    <ul className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-foreground">
+      {SEGMENTS.map((seg) => (
+        <li key={seg.key} className="inline-flex items-center gap-1.5">
+          <span
+            className={cn('size-2 rounded-full', seg.key === 'unseen' && 'ring-1 ring-border')}
+            style={{ backgroundColor: seg.color }}
+            aria-hidden
+          />
+          {seg.label}
+          <strong className="text-foreground tabular-nums">{stats[seg.key]}</strong>
+        </li>
+      ))}
+    </ul>
   )
 }

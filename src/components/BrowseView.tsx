@@ -24,6 +24,7 @@ import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
 import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { cn } from '@/lib/utils'
 import {
   Card,
   CardDescription,
@@ -277,7 +278,7 @@ export function BrowseView({
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-8 sm:py-10">
       <div className="mb-6">
-        <h2 className="text-xl font-semibold tracking-tight">
+        <h2 className="font-display text-2xl font-semibold tracking-tight">
           Lista de tarjetas
         </h2>
         <p className="text-sm text-muted-foreground">
@@ -339,7 +340,14 @@ export function BrowseView({
       </div>
 
       {selectionMode && selectedIds.size > 0 && (
-        <div className="mb-6 flex flex-wrap gap-2 rounded-xl border bg-muted/30 p-3">
+        <div
+          className="animate-pop-in fixed inset-x-3 bottom-[5.5rem] z-30 mx-auto flex max-w-xl flex-wrap items-center gap-2 rounded-2xl border bg-card/95 p-2.5 pl-4 shadow-raised backdrop-blur-md sm:bottom-6"
+          role="region"
+          aria-label="Acciones de la selección"
+        >
+          <span className="mr-auto text-sm font-semibold tabular-nums">
+            {selectedIds.size === 1 ? '1 elegida' : `${selectedIds.size} elegidas`}
+          </span>
           <Button type="button" size="sm" onClick={markSelectionReviewed}>
             Marcar {selectedIds.size} como revisadas
           </Button>
@@ -372,7 +380,7 @@ export function BrowseView({
             className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground"
           />
           <Input
-            className="pl-9"
+            className="h-11 pl-9"
             placeholder="Buscar pregunta, respuesta, libro o capítulo…"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -392,22 +400,33 @@ export function BrowseView({
           </CardHeader>
         </Card>
       ) : (
-        <div className="flex flex-col gap-10">
+        <div className={cn('flex flex-col gap-10', selectionMode && selectedIds.size > 0 && 'pb-24')}>
           {grouped.map((book) => (
             <section key={book.bookId}>
-              <h3 className="mb-5 flex items-baseline justify-between gap-3 border-b pb-2 text-lg font-semibold tracking-tight">
-                <span>{book.bookLabel}</span>
+              {/* Sits just under the sticky app header (h-16). */}
+              <h3 className="sticky top-16 z-20 -mx-4 flex h-14 items-center justify-between gap-3 border-b bg-background/90 px-4 font-display text-lg font-semibold tracking-tight backdrop-blur-md">
+                <span className="flex items-center gap-2">
+                  <span
+                    className="size-2.5 rounded-full"
+                    style={{ backgroundColor: `var(--book-${book.bookId}, var(--primary))` }}
+                    aria-hidden
+                  />
+                  {book.bookLabel}
+                </span>
                 <span className="shrink-0 text-sm font-normal tabular-nums text-muted-foreground">
                   {book.cardCount === 1
                     ? '1 tarjeta'
                     : `${book.cardCount} tarjetas`}
                 </span>
               </h3>
-              <div className="flex flex-col gap-8">
+              <div className="mt-2 flex flex-col gap-6">
                 {book.chapters.map((ch) => (
                   <div key={`${book.bookId}-${ch.chapter}`}>
-                    <h4 className="mb-3 text-sm font-medium text-muted-foreground">
-                      Capítulo {ch.chapter}
+                    {/* Stacks right under the book header: 4rem app header + 3.5rem book header. */}
+                    <h4 className="sticky top-30 z-10 -mx-4 mb-2 flex h-10 items-center bg-background/90 px-4 backdrop-blur-md">
+                      <span className="rounded-full border bg-card px-3 py-0.5 text-xs font-semibold text-muted-foreground shadow-xs">
+                        Capítulo {ch.chapter}
+                      </span>
                     </h4>
                     <ul className="flex flex-col gap-3">
                       {ch.cards.map((card) => {
@@ -419,7 +438,13 @@ export function BrowseView({
                           : []
                         return (
                           <li key={card.id}>
-                            <div className="flex gap-3 rounded-xl border bg-card p-3">
+                            <div
+                              className={cn(
+                                'flex gap-3 rounded-xl border border-l-4 bg-card p-3 shadow-card transition-shadow hover:shadow-raised',
+                                selectionMode && selectedIds.has(card.id) && 'ring-2 ring-primary/60',
+                              )}
+                              style={{ borderLeftColor: statusStripe(st, reviews.length) }}
+                            >
                               {selectionMode && (
                                 <button
                                   type="button"
@@ -683,4 +708,12 @@ export function BrowseView({
       )}
     </div>
   )
+}
+
+/** Left-edge color for a card: its strongest mark, or plain border when unmarked. */
+function statusStripe(status: string | undefined, reviewCount: number): string {
+  if (status === 'known') return 'var(--known)'
+  if (status === 'unknown') return 'var(--review-again)'
+  if (status === 'reviewed' || reviewCount > 0) return 'var(--reviewed)'
+  return 'var(--border)'
 }
