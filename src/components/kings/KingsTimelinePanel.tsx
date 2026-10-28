@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, useSyncExternalStore } from 'react'
 import { Crown, GraduationCap, Rows3, Search, Waypoints } from 'lucide-react'
 import { MaterialRow } from '@/components/MaterialRow'
 import { Input } from '@/components/ui/input'
+import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet'
 import {
   DEFAULT_VISIBLE_KINGDOMS,
   KINGDOMS,
@@ -317,25 +318,15 @@ export function KingsTimelinePanel({
         </section>
       )}
 
-      {open && !isDesktop && sheetOpen && detail && mode !== 'practice' && (
-        <div
-          className="fixed inset-0 z-50 flex items-end bg-black/40 sm:items-stretch sm:justify-end"
-          role="dialog"
-          aria-modal="true"
-          aria-label={`Detalle de ${selected?.name}`}
-          onClick={() => setSheetOpen(false)}
-        >
-          <div
-            className="animate-sheet-up scrollbar-thin max-h-[82svh] w-full overflow-y-auto rounded-t-2xl pb-[env(safe-area-inset-bottom)] sm:animate-drawer-in sm:max-h-none sm:w-[400px] sm:rounded-none sm:bg-background sm:p-3"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="sticky top-0 z-10 flex justify-center bg-card pt-2 sm:hidden">
-              <span className="h-1 w-10 rounded-full bg-border" aria-hidden />
-            </div>
-            {detail}
-          </div>
-        </div>
-      )}
+      <Sheet
+        open={open && !isDesktop && sheetOpen && !!detail && mode !== 'practice'}
+        onOpenChange={setSheetOpen}
+      >
+        <SheetContent side="responsive" className="sm:p-3">
+          <SheetTitle className="sr-only">Detalle de {selected?.name}</SheetTitle>
+          {detail}
+        </SheetContent>
+      </Sheet>
     </li>
   )
 }

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { CitationLinks } from '@/components/CitedText'
 import { BIBLE_BOOKS } from '@/lib/biblical'
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
+import { NativeSelect } from '@/components/ui/select'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -97,20 +99,11 @@ export function CardEditorDialog({
   }
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-4 sm:items-center"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="card-editor-title"
-      onClick={requestClose}
-    >
-      <div
-        className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-xl border bg-card p-5 shadow-lg"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <h3 id="card-editor-title" className="text-lg font-semibold">
+    <Dialog open onOpenChange={(open) => !open && requestClose()}>
+      <DialogContent size="lg">
+        <DialogTitle className="text-lg font-semibold">
           {title}
-        </h3>
+        </DialogTitle>
         <p className="mt-1 text-sm text-muted-foreground">
           {mode === 'add'
             ? 'Se añadirá solo a tu mazo personal.'
@@ -126,7 +119,15 @@ export function CardEditorDialog({
             <p className="mt-1 text-xs text-muted-foreground">
               Lo que escribiste en esta ventana no se guardará.
             </p>
-            <div className="mt-3 flex flex-wrap gap-2">
+            <div className="mt-3 flex flex-wrap justify-end gap-2">
+              <Button
+                type="button"
+                size="sm"
+                variant="outline"
+                onClick={() => setDiscardConfirm(false)}
+              >
+                Seguir editando
+              </Button>
               <Button
                 type="button"
                 size="sm"
@@ -137,14 +138,6 @@ export function CardEditorDialog({
                 }}
               >
                 Sí, descartar
-              </Button>
-              <Button
-                type="button"
-                size="sm"
-                variant="outline"
-                onClick={() => setDiscardConfirm(false)}
-              >
-                Seguir editando
               </Button>
             </div>
           </div>
@@ -164,15 +157,7 @@ export function CardEditorDialog({
                 «{originalQuestion}»
               </p>
             )}
-            <div className="mt-3 flex flex-wrap gap-2">
-              <Button
-                type="button"
-                size="sm"
-                variant="destructive"
-                onClick={confirmRevert}
-              >
-                Sí, restaurar
-              </Button>
+            <div className="mt-3 flex flex-wrap justify-end gap-2">
               <Button
                 type="button"
                 size="sm"
@@ -180,6 +165,14 @@ export function CardEditorDialog({
                 onClick={() => setRevertConfirm(false)}
               >
                 Cancelar
+              </Button>
+              <Button
+                type="button"
+                size="sm"
+                variant="destructive"
+                onClick={confirmRevert}
+              >
+                Sí, restaurar
               </Button>
             </div>
           </div>
@@ -211,9 +204,9 @@ export function CardEditorDialog({
             <>
               <div>
                 <Label htmlFor="card-book">Libro</Label>
-                <select
+                <NativeSelect
                   id="card-book"
-                  className="mt-1 flex h-9 w-full rounded-md border border-input bg-transparent px-3 text-sm shadow-xs outline-none focus-visible:border-ring"
+                  wrapperClassName="mt-1"
                   value={bookId}
                   onChange={(e) => setBookId(e.target.value)}
                 >
@@ -222,7 +215,7 @@ export function CardEditorDialog({
                       {book.label}
                     </option>
                   ))}
-                </select>
+                </NativeSelect>
               </div>
               <div>
                 <Label htmlFor="card-ch">Capítulo</Label>
@@ -259,7 +252,7 @@ export function CardEditorDialog({
             </Button>
           </div>
         </div>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   )
 }

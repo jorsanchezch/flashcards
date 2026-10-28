@@ -1,9 +1,7 @@
 import { Label } from '@/components/ui/label'
+import { NativeSelect } from '@/components/ui/select'
 import { usePreferences } from '@/context/PreferencesContext'
 import { UI_LOCALES } from '@/lib/i18n'
-
-const selectClass =
-  'flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-xs outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50'
 
 export function LanguagePreferences({ className }: { className?: string }) {
   const {
@@ -21,9 +19,9 @@ export function LanguagePreferences({ className }: { className?: string }) {
       <div className="flex flex-col gap-3">
         <div className="space-y-1.5">
           <Label htmlFor="ui-locale">{t.language}</Label>
-          <select
+          <NativeSelect
             id="ui-locale"
-            className={selectClass}
+            wrapperClassName="mt-1"
             value={uiLocale}
             onChange={(e) => setUiLocale(e.target.value as 'es' | 'en')}
           >
@@ -32,13 +30,13 @@ export function LanguagePreferences({ className }: { className?: string }) {
                 {locale.label}
               </option>
             ))}
-          </select>
+          </NativeSelect>
         </div>
         <div className="space-y-1.5">
           <Label htmlFor="bible-version">{t.bibleVersion}</Label>
-          <select
+          <NativeSelect
             id="bible-version"
-            className={selectClass}
+            wrapperClassName="mt-1"
             value={bibleVersionId}
             onChange={(e) => setBibleVersionId(e.target.value)}
           >
@@ -48,7 +46,7 @@ export function LanguagePreferences({ className }: { className?: string }) {
                 {version.gatewayParam})
               </option>
             ))}
-          </select>
+          </NativeSelect>
           <p className="text-xs text-muted-foreground">{t.bibleVersionHint}</p>
         </div>
       </div>

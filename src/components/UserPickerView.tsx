@@ -149,7 +149,8 @@ export function UserPickerView({
                 <Button
                   type="button"
                   variant={isSuggested ? 'default' : 'outline'}
-                  className="h-auto w-full justify-start px-4 py-3 text-left text-base"
+                  size="multiline"
+                  className="text-base"
                   onClick={() => void pick(user)}
                 >
                   <span className="font-medium">{user.displayName}</span>

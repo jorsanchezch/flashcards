@@ -20,6 +20,8 @@ import { CardEditorDialog } from '@/components/CardEditorDialog'
 import { CitationLinks, CitedText } from '@/components/CitedText'
 import { DeckFilterBar } from '@/components/DeckFilterBar'
 import { Badge } from '@/components/ui/badge'
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
+import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import {
@@ -472,19 +474,19 @@ export function BrowseView({
                                       </Badge>
                                     )}
                                   {st === 'known' && (
-                                    <Badge className="bg-sky-600 text-white text-[10px]">
+                                    <Badge variant="known" className="text-[10px]">
                                       La sé
                                     </Badge>
                                   )}
                                   {(st === 'reviewed' || reviews.length > 0) && (
-                                    <Badge className="bg-emerald-600 text-white text-[10px]">
+                                    <Badge variant="reviewed" className="text-[10px]">
                                       Revisada
                                       {reviews.length > 0 && ` · ${reviews.length}`}
                                     </Badge>
                                   )}
                                   {st === 'unknown' && (
                                     <Badge
-                                      variant="destructive"
+                                      variant="review-again"
                                       className="text-[10px]"
                                     >
                                       Repasar
@@ -594,8 +596,16 @@ export function BrowseView({
         }}
       />
 
-      {showIdentifyPicker && (
-        <div className="fixed inset-0 z-50 overflow-y-auto bg-background">
+      <Sheet
+        open={showIdentifyPicker}
+        onOpenChange={(open) => {
+          if (open) return
+          setShowIdentifyPicker(false)
+          setPendingAction(null)
+        }}
+      >
+        <SheetContent side="bottom" className="inset-0 max-h-none rounded-none border-0 [&>[aria-hidden]]:hidden">
+          <SheetTitle className="sr-only">Identifícate</SheetTitle>
           <UserPickerView
             users={roster}
             suggestedUserId={suggestedUserId}
@@ -615,23 +625,15 @@ export function BrowseView({
               Cancelar
             </Button>
           </div>
-        </div>
-      )}
+        </SheetContent>
+      </Sheet>
 
       {bulkConfirm && (
-        <div
-          className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-4 sm:items-center"
-          role="alertdialog"
-          aria-labelledby="bulk-review-title"
-          onClick={() => setBulkConfirm(null)}
-        >
-          <div
-            className="w-full max-w-md rounded-xl border bg-card p-5 shadow-lg"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <p id="bulk-review-title" className="font-medium">
+        <Dialog open onOpenChange={(open) => !open && setBulkConfirm(null)}>
+          <DialogContent size="md">
+            <DialogTitle className="font-medium">
               {bulkConfirm.title}
-            </p>
+            </DialogTitle>
             <p className="mt-2 text-sm text-muted-foreground">
               {bulkConfirm.detail}
             </p>
@@ -647,24 +649,16 @@ export function BrowseView({
                 Sí, marcar
               </Button>
             </div>
-          </div>
-        </div>
+          </DialogContent>
+        </Dialog>
       )}
 
       {deleteTarget && (
-        <div
-          className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-4 sm:items-center"
-          role="alertdialog"
-          aria-labelledby="delete-card-title"
-          onClick={() => setDeleteTarget(null)}
-        >
-          <div
-            className="w-full max-w-md rounded-xl border bg-card p-5 shadow-lg"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <p id="delete-card-title" className="font-medium">
+        <Dialog open onOpenChange={(open) => !open && setDeleteTarget(null)}>
+          <DialogContent size="md">
+            <DialogTitle className="font-medium">
               ¿Quitar esta tarjeta de tu mazo?
-            </p>
+            </DialogTitle>
             <p className="mt-2 text-sm text-muted-foreground line-clamp-3">
               {deleteTarget.question}
             </p>
@@ -684,8 +678,8 @@ export function BrowseView({
                 Sí, quitar
               </Button>
             </div>
-          </div>
-        </div>
+          </DialogContent>
+        </Dialog>
       )}
     </div>
   )

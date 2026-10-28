@@ -385,16 +385,16 @@ export function StudyView({
       <div className="flex flex-wrap justify-center gap-2">
         <Badge variant="secondary">{current.chapterTitle}</Badge>
         {status === 'known' && (
-          <Badge className="bg-sky-600 text-white">La sé</Badge>
+          <Badge variant="known">La sé</Badge>
         )}
         {(status === 'reviewed' || reviewHistory.length > 0) && (
-          <Badge className="bg-emerald-600 text-white">
+          <Badge variant="reviewed">
             Revisada
             {reviewHistory.length > 0 && ` · ${reviewHistory.length}`}
           </Badge>
         )}
         {status === 'unknown' && (
-          <Badge variant="destructive">Repasar</Badge>
+          <Badge variant="review-again">Repasar</Badge>
         )}
       </div>
 

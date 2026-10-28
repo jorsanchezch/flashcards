@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useUser } from '@/context/UserContext'
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 
 export function PendingChangesDialog({ onClose }: { onClose: () => void }) {
@@ -8,20 +9,11 @@ export function PendingChangesDialog({ onClose }: { onClose: () => void }) {
   const rows = useMemo(() => listPendingChanges(), [listPendingChanges, tick])
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-4 sm:items-center"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="pending-title"
-      onClick={onClose}
-    >
-      <div
-        className="max-h-[92vh] w-full max-w-md overflow-y-auto rounded-xl border bg-card p-5 shadow-lg"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <p id="pending-title" className="font-medium">
+    <Dialog open onOpenChange={(open) => !open && onClose()}>
+      <DialogContent size="md">
+        <DialogTitle className="font-medium">
           Cambios pendientes
-        </p>
+        </DialogTitle>
         <p className="mt-1 text-sm text-muted-foreground">
           Ediciones de otras personas en este dispositivo. Al aceptarlas, pasan
           al mazo del curso para todos.
@@ -62,7 +54,7 @@ export function PendingChangesDialog({ onClose }: { onClose: () => void }) {
             Cerrar
           </Button>
         </div>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   )
 }

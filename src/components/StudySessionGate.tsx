@@ -62,7 +62,8 @@ export function StudySessionGate({
         <Button
           type="button"
           variant="outline"
-          className="h-auto flex-col items-start gap-0.5 px-4 py-3 text-left"
+          size="multiline"
+          className="flex-col items-start gap-0.5"
           onClick={onContinueAsGuest}
         >
           <span className="flex items-center gap-2 text-base font-semibold">
@@ -77,7 +78,8 @@ export function StudySessionGate({
 
         <Button
           type="button"
-          className="h-auto flex-col items-start gap-0.5 px-4 py-3 text-left"
+          size="multiline"
+          className="flex-col items-start gap-0.5"
           onClick={() => setStep('identify')}
         >
           <span className="flex items-center gap-2 text-base font-semibold">

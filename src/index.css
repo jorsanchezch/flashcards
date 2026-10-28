@@ -35,6 +35,65 @@
   --color-stand-evil: var(--stand-evil);
   --color-stand-mixed: var(--stand-mixed);
   --color-stand-foreign: var(--stand-foreign);
+  --color-known: var(--known);
+  --color-known-foreground: var(--known-foreground);
+  --color-reviewed: var(--reviewed);
+  --color-reviewed-foreground: var(--reviewed-foreground);
+  --color-review-again: var(--review-again);
+  --color-review-again-foreground: var(--review-again-foreground);
+  --color-celebrate: var(--gold);
+  --color-scrim: var(--scrim);
+  --color-book-1-samuel: var(--book-1-samuel);
+  --color-book-2-samuel: var(--book-2-samuel);
+  --color-book-1-reyes: var(--book-1-reyes);
+  --color-book-2-reyes: var(--book-2-reyes);
+
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out-soft: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --animate-sheet-up: sheet-up 0.24s var(--ease-out-soft);
+  --animate-drawer-in: drawer-in 0.24s var(--ease-out-soft);
+  --animate-pop-in: pop-in 0.2s var(--ease-out-soft);
+  --animate-overlay-in: overlay-in 0.18s ease-out;
+  --animate-fade-in: fade-in 0.18s ease-out;
+  --animate-bounce-in: bounce-in 0.42s var(--ease-spring);
+
+  @keyframes sheet-up {
+    from {
+      transform: translateY(100%);
+    }
+  }
+  @keyframes drawer-in {
+    from {
+      transform: translateX(100%);
+    }
+  }
+  @keyframes pop-in {
+    from {
+      opacity: 0;
+      scale: 0.96;
+    }
+  }
+  @keyframes overlay-in {
+    from {
+      opacity: 0;
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+  }
+  @keyframes bounce-in {
+    0% {
+      opacity: 0;
+      scale: 0.6;
+    }
+    100% {
+      opacity: 1;
+      scale: 1;
+    }
+  }
 }
 
 :root {
@@ -63,6 +122,17 @@
   --stand-evil: oklch(0.56 0.19 22);
   --stand-mixed: oklch(0.7 0.14 70);
   --stand-foreign: oklch(0.6 0.02 275);
+  --known: oklch(0.6 0.14 238);
+  --known-foreground: oklch(0.99 0.005 238);
+  --reviewed: oklch(0.6 0.13 158);
+  --reviewed-foreground: oklch(0.99 0.005 158);
+  --review-again: oklch(0.64 0.17 38);
+  --review-again-foreground: oklch(0.99 0.005 38);
+  --book-1-samuel: oklch(0.6 0.14 200);
+  --book-2-samuel: oklch(0.56 0.15 300);
+  --book-1-reyes: oklch(0.62 0.15 55);
+  --book-2-reyes: oklch(0.55 0.17 15);
+  --scrim: oklch(0.15 0.03 275 / 0.5);
   --card-shadow: 0 1px 2px oklch(0.3 0.03 275 / 0.05), 0 2px 8px -2px oklch(0.3 0.03 275 / 0.06);
   --raised-shadow: 0 2px 4px oklch(0.3 0.03 275 / 0.06), 0 12px 32px -8px oklch(0.3 0.03 275 / 0.16);
 }
@@ -92,6 +162,17 @@
   --stand-evil: oklch(0.7 0.17 22);
   --stand-mixed: oklch(0.8 0.13 75);
   --stand-foreign: oklch(0.66 0.02 275);
+  --known: oklch(0.72 0.13 238);
+  --known-foreground: oklch(0.18 0.03 238);
+  --reviewed: oklch(0.72 0.13 158);
+  --reviewed-foreground: oklch(0.18 0.03 158);
+  --review-again: oklch(0.74 0.15 40);
+  --review-again-foreground: oklch(0.2 0.04 40);
+  --book-1-samuel: oklch(0.72 0.12 200);
+  --book-2-samuel: oklch(0.72 0.13 300);
+  --book-1-reyes: oklch(0.76 0.13 60);
+  --book-2-reyes: oklch(0.7 0.15 18);
+  --scrim: oklch(0 0 0 / 0.6);
   --card-shadow: 0 1px 2px oklch(0 0 0 / 0.3);
   --raised-shadow: 0 2px 4px oklch(0 0 0 / 0.3), 0 16px 40px -8px oklch(0 0 0 / 0.5);
 }
@@ -118,53 +199,12 @@
   }
 }
 
-@keyframes sheet-up {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-.animate-sheet-up {
-  animation: sheet-up 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.animate-fade-in {
-  animation: fade-in 0.18s ease-out;
-}
-
-@keyframes drawer-in {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-@media (min-width: 640px) {
-  .sm\:animate-drawer-in {
-    animation: drawer-in 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .animate-sheet-up,
-  .animate-fade-in,
-  .sm\:animate-drawer-in {
-    animation: none;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

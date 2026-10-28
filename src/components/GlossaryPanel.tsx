@@ -5,6 +5,7 @@ import { CitedText } from '@/components/CitedText'
 import { DeckSessionPrompt } from '@/components/DeckSessionPrompt'
 import { UserPickerView } from '@/components/UserPickerView'
 import { Badge } from '@/components/ui/badge'
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -498,22 +499,13 @@ function GlossaryDetailsModal({
   const extraHrefs = cardBible.hrefs.slice(1)
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-4 sm:items-center"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="glossary-details-title"
-      onClick={onClose}
-    >
-      <div
-        className="max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-xl border bg-card p-5 shadow-lg"
-        onClick={(e) => e.stopPropagation()}
-      >
+    <Dialog open onOpenChange={(open) => !open && onClose()}>
+      <DialogContent size="lg">
         <div className="flex flex-wrap items-start justify-between gap-2">
           <div>
-            <p id="glossary-details-title" className="text-xl font-semibold">
+            <DialogTitle className="text-xl font-semibold">
               {entry.term}
-            </p>
+            </DialogTitle>
             <p className="mt-1 text-sm text-muted-foreground">
               {glossaryKindLabel(entry.kind)}
               {entry.properName ? ' · Nombre propio' : ''}
@@ -645,8 +637,8 @@ function GlossaryDetailsModal({
             </ul>
           )}
         </div>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   )
 }
 
@@ -664,22 +656,13 @@ function GlossaryEditor({
   subject: string
 }) {
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-4 sm:items-center"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="glossary-edit-title"
-      onClick={onCancel}
-    >
-      <div
-        className="max-h-[92vh] w-full max-w-md overflow-y-auto rounded-xl border bg-card p-5 shadow-lg"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <p id="glossary-edit-title" className="font-medium">
+    <Dialog open onOpenChange={(open) => !open && onCancel()}>
+      <DialogContent size="md">
+        <DialogTitle className="font-medium">
           {isCustomGlossaryId(editor.id) && !editor.term
             ? 'Nueva palabra'
             : 'Editar palabra'}
-        </p>
+        </DialogTitle>
         <p className="mt-1 text-xs text-muted-foreground">
           Se guarda en {subject}.
         </p>
@@ -769,8 +752,8 @@ function GlossaryEditor({
             Guardar
           </Button>
         </div>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   )
 }
 
@@ -787,19 +770,11 @@ function DeleteConfirm({
 }) {
   if (!target) return null
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-4 sm:items-center"
-      role="alertdialog"
-      aria-labelledby="glossary-delete-title"
-      onClick={onCancel}
-    >
-      <div
-        className="w-full max-w-md rounded-xl border bg-card p-5 shadow-lg"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <p id="glossary-delete-title" className="font-medium">
+    <Dialog open onOpenChange={(open) => !open && onCancel()}>
+      <DialogContent size="md">
+        <DialogTitle className="font-medium">
           ¿Eliminar «{target.term}» del glosario?
-        </p>
+        </DialogTitle>
         <p className="mt-2 text-sm text-muted-foreground">
           Se quita de {subject}. Las tarjetas no cambian.
         </p>
@@ -811,8 +786,8 @@ function DeleteConfirm({
             Sí, eliminar
           </Button>
         </div>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   )
 }
 

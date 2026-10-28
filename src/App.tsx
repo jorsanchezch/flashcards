@@ -7,6 +7,7 @@ import { StudyMaterialsView, type MaterialRow } from '@/components/StudyMaterial
 import { TeamSummaryView } from '@/components/TeamSummaryView'
 import { UserMenu } from '@/components/UserMenu'
 import { Button } from '@/components/ui/button'
+import { NativeSelect } from '@/components/ui/select'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { GlossaryProvider } from '@/context/GlossaryContext'
 import {
@@ -93,9 +94,9 @@ function FlashcardsApp() {
               <label className="sr-only" htmlFor="header-ui-locale">
                 {t.language}
               </label>
-              <select
+              <NativeSelect
                 id="header-ui-locale"
-                className="h-9 rounded-md border border-input bg-background px-2 text-xs"
+                density="sm"
                 value={uiLocale}
                 onChange={(e) => setUiLocale(e.target.value as 'es' | 'en')}
                 aria-label={t.language}
@@ -105,13 +106,14 @@ function FlashcardsApp() {
                     {locale.label}
                   </option>
                 ))}
-              </select>
+              </NativeSelect>
               <label className="sr-only" htmlFor="header-bible-version">
                 {t.bibleVersion}
               </label>
-              <select
+              <NativeSelect
                 id="header-bible-version"
-                className="h-9 min-w-[7.5rem] rounded-md border border-input bg-background px-2 text-xs"
+                density="sm"
+                className="min-w-[7.5rem]"
                 value={bibleVersionId}
                 onChange={(e) => setBibleVersionId(e.target.value)}
                 aria-label={t.bibleVersion}
@@ -121,7 +123,7 @@ function FlashcardsApp() {
                     {version.gatewayParam} · {version.language === 'es' ? 'ES' : 'EN'}
                   </option>
                 ))}
-              </select>
+              </NativeSelect>
             </div>
             {hasSession && <UserMenu />}
           </div>

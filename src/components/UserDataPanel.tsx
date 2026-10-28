@@ -149,10 +149,7 @@ export function UserDataPanel() {
             <p className="mt-1 text-xs text-muted-foreground">
               {pendingCopy.body}
             </p>
-            <div className="mt-3 flex flex-wrap gap-2">
-              <Button type="button" size="sm" variant="destructive" onClick={confirm}>
-                Sí, borrar
-              </Button>
+            <div className="mt-3 flex flex-wrap justify-end gap-2">
               <Button
                 type="button"
                 size="sm"
@@ -160,6 +157,9 @@ export function UserDataPanel() {
                 onClick={() => setPending(null)}
               >
                 Cancelar
+              </Button>
+              <Button type="button" size="sm" variant="destructive" onClick={confirm}>
+                Sí, borrar
               </Button>
             </div>
           </div>

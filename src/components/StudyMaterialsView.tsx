@@ -10,6 +10,7 @@ import {
 } from '@/components/GlossaryPanel'
 import type { Flashcard } from '@/lib/parseFlashcard'
 import { Button } from '@/components/ui/button'
+import { Sheet, SheetClose, SheetContent, SheetTitle } from '@/components/ui/sheet'
 import {
   Card,
   CardContent,
@@ -192,30 +193,26 @@ export function StudyMaterialsView({
         />
       </ul>
 
-      {mapOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-3"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Mapa ampliado del viaje del arca"
+      <Sheet open={mapOpen} onOpenChange={setMapOpen}>
+        <SheetContent
+          side="bottom"
+          className="inset-0 flex max-h-none items-center justify-center rounded-none border-0 bg-transparent p-3 shadow-none [&>[aria-hidden]]:hidden"
           onClick={() => setMapOpen(false)}
         >
+          <SheetTitle className="sr-only">Mapa ampliado del viaje del arca</SheetTitle>
           <img
             src={ARK_MAP_SRC}
             alt="Mapa ampliado del viaje del arca"
-            className="max-h-[96vh] max-w-full rounded-md object-contain"
+            className="max-h-[96svh] max-w-full rounded-lg object-contain shadow-raised"
             onClick={(e) => e.stopPropagation()}
           />
-          <Button
-            type="button"
-            variant="secondary"
-            className="absolute top-4 right-4 min-h-11"
-            onClick={() => setMapOpen(false)}
-          >
-            Cerrar
-          </Button>
-        </div>
-      )}
+          <SheetClose asChild>
+            <Button type="button" variant="secondary" className="absolute top-4 right-4">
+              Cerrar
+            </Button>
+          </SheetClose>
+        </SheetContent>
+      </Sheet>
     </div>
   )
 }

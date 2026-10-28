@@ -226,13 +226,13 @@ export function TeamSummaryView({
         </CardHeader>
         <CardContent className="flex flex-wrap gap-4 text-sm">
           <span>
-            <strong className="text-emerald-700 dark:text-emerald-400">
+            <strong className="text-known">
               {teamTotals.known}
             </strong>{' '}
             conocidas (suma)
           </span>
           <span>
-            <strong className="text-amber-700 dark:text-amber-400">
+            <strong className="text-review-again">
               {teamTotals.unknown}
             </strong>{' '}
             para repasar (suma)

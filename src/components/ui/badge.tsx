@@ -22,6 +22,9 @@ const badgeVariants = cva(
         evil: "border-stand-evil/35 bg-stand-evil/12 text-foreground",
         mixed: "border-stand-mixed/40 bg-stand-mixed/15 text-foreground",
         foreign: "border-border bg-muted text-muted-foreground",
+        known: "bg-known text-known-foreground",
+        reviewed: "bg-reviewed text-reviewed-foreground",
+        "review-again": "bg-review-again text-review-again-foreground",
       },
     },
     defaultVariants: {

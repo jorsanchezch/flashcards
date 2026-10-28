@@ -1,5 +1,6 @@
 import { User, UserCircle2 } from 'lucide-react'
 import type { RosterUser } from '@/lib/userData'
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 
 type DeckSessionPromptProps = {
@@ -18,20 +19,11 @@ export function DeckSessionPrompt({
   if (!open) return null
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-4 sm:items-center"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="deck-session-title"
-      onClick={onClose}
-    >
-      <div
-        className="w-full max-w-md rounded-xl border bg-card p-5 shadow-lg"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <h3 id="deck-session-title" className="text-lg font-semibold">
+    <Dialog open onOpenChange={(open) => !open && onClose()}>
+      <DialogContent size="md">
+        <DialogTitle className="text-lg font-semibold">
           ¿Cómo quieres guardar los cambios?
-        </h3>
+        </DialogTitle>
         <p className="mt-2 text-sm text-muted-foreground">
           Para editar tarjetas necesitas una sesión personal. El resto del equipo
           no verá tus cambios.
@@ -40,7 +32,7 @@ export function DeckSessionPrompt({
           <Button
             type="button"
             variant="outline"
-            className="h-auto justify-start gap-2 px-4 py-3 text-left"
+            size="multiline"
             onClick={onContinueAsGuest}
           >
             <UserCircle2 className="size-5 shrink-0" />
@@ -53,7 +45,7 @@ export function DeckSessionPrompt({
           </Button>
           <Button
             type="button"
-            className="h-auto justify-start gap-2 px-4 py-3 text-left"
+            size="multiline"
             onClick={onIdentify}
           >
             <User className="size-5 shrink-0" />
@@ -70,8 +62,8 @@ export function DeckSessionPrompt({
             Cancelar
           </Button>
         </div>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   )
 }
 
