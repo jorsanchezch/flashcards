@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { Crown } from 'lucide-react'
 import {
   DYNASTY_STARTS,
@@ -78,6 +78,19 @@ type SuccessionViewProps = {
 
 export function SuccessionView({ visible, selectedId, onSelect }: SuccessionViewProps) {
   const rows = useMemo(() => buildRows(visible), [visible])
+  const rootRef = useRef<HTMLDivElement>(null)
+  const firstRender = useRef(true)
+
+  // Keep the selected king in view as the stepper or arrow keys move through the list.
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false
+      return
+    }
+    rootRef.current
+      ?.querySelector(`[data-king="${selectedId}"]`)
+      ?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
+  }, [selectedId])
   const numbers = useMemo(() => {
     const map = new Map<string, number>()
     for (const c of ['judah', 'israel'] as Column[]) {
@@ -91,7 +104,7 @@ export function SuccessionView({ visible, selectedId, onSelect }: SuccessionView
   const solomon = KINGS.find((k) => k.kingdom === 'united')
 
   return (
-    <div className="space-y-3">
+    <div ref={rootRef} className="mx-auto max-w-5xl space-y-3">
       {solomon && visible.includes('united') && (
         <div className="mx-auto max-w-xs">
           <SuccessionCard
@@ -263,17 +276,18 @@ function SuccessionCard({
   return (
     <button
       type="button"
+      data-king={king.id}
       onClick={() => onSelect(king.id)}
       aria-pressed={selected}
       className={cn(
-        'flex w-full min-h-14 items-center gap-2.5 rounded-xl border bg-card px-2.5 py-2 text-left shadow-card transition-all',
+        'flex w-full min-h-14 scroll-my-24 items-center gap-1.5 rounded-xl border bg-card px-2 py-2 text-left shadow-card transition-all sm:gap-2.5 sm:px-2.5',
         'hover:-translate-y-px hover:border-primary/30 focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none',
         selected && 'border-foreground ring-1 ring-foreground',
       )}
       style={{ borderLeftWidth: 4, borderLeftColor: meta.color }}
     >
       <span
-        className="flex size-8 shrink-0 items-center justify-center rounded-lg text-xs font-bold tabular-nums"
+        className="flex size-6 shrink-0 items-center justify-center rounded-md text-[10px] font-bold tabular-nums sm:size-8 sm:rounded-lg sm:text-xs"
         style={{
           backgroundColor: `color-mix(in oklch, ${meta.color} 14%, transparent)`,
           color: meta.color,
@@ -282,15 +296,15 @@ function SuccessionCard({
         {number != null ? `${number}º` : <Crown className="size-4" aria-hidden />}
       </span>
       <span className="min-w-0 flex-1">
-        <span className="flex items-center gap-1.5">
-          <span className="truncate font-semibold">{king.name}</span>
+        <span className="flex items-start gap-1.5">
+          <span className="text-sm leading-tight font-semibold sm:text-base">{king.name}</span>
           <StandGlyph stand={king.lordStand} />
         </span>
-        <span className="block truncate text-[11px] text-muted-foreground tabular-nums">
+        <span className="block text-[11px] leading-snug text-muted-foreground tabular-nums">
           {label ? `${label} · ` : ''}
           {king.startBc}
-          {king.endBc !== king.startBc ? `–${king.endBc}` : ''} ·{' '}
-          {years ? `${years} años` : 'breve'}
+          {king.endBc !== king.startBc ? `–${king.endBc}` : ''}
+          <span className="whitespace-nowrap"> · {years ? `${years} años` : 'breve'}</span>
         </span>
       </span>
     </button>

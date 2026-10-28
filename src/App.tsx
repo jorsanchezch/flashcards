@@ -71,17 +71,16 @@ function FlashcardsApp() {
   const suggestedUserId = isGuestSessionId(lastId) ? null : lastId
 
   const sessionKey = userDoc?.userId ?? 'none'
+  // The kings material needs room for the chart and its detail side by side.
+  const shellWidth =
+    tab === 'material' && materialRow === 'kings' ? 'max-w-[min(100%,1600px)]' : 'max-w-3xl'
 
   return (
     <GlossaryProvider onOpenTerm={openGlossaryTerm}>
     <div className="min-h-svh bg-background">
       <header className="border-b bg-card/60 backdrop-blur">
         <div
-          className={`mx-auto flex w-full flex-col gap-3 px-4 py-4 sm:flex-row sm:items-start sm:justify-between ${
-            tab === 'material' && materialRow === 'kings'
-              ? 'max-w-[max(48rem,80vw)]'
-              : 'max-w-3xl'
-          }`}
+          className={`mx-auto flex w-full flex-col gap-3 px-4 py-4 sm:flex-row sm:items-start sm:justify-between ${shellWidth}`}
         >
           <div className="flex items-center gap-3 text-left">
             <div className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
@@ -152,11 +151,7 @@ function FlashcardsApp() {
               if (next !== 'material') setReturnToGlossary(false)
               setTab(next)
             }}
-            className={`mx-auto w-full ${
-              tab === 'material' && materialRow === 'kings'
-                ? 'max-w-[max(48rem,80vw)]'
-                : 'max-w-3xl'
-            }`}
+            className={`mx-auto w-full ${shellWidth}`}
           >
             <div className="px-4 pt-4">
               <TabsList className="grid h-auto w-full grid-cols-2 gap-1 sm:grid-cols-4">

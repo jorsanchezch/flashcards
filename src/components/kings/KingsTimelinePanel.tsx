@@ -15,6 +15,7 @@ import {
 import type { Flashcard } from '@/lib/parseFlashcard'
 import { cn } from '@/lib/utils'
 import { KingDetail } from './KingDetail'
+import { KingStepper } from './KingStepper'
 import { KingsPractice } from './KingsPractice'
 import { StandGlyph } from './StandGlyph'
 import { SuccessionView } from './SuccessionView'
@@ -70,20 +71,22 @@ export function KingsTimelinePanel({
     return KINGS.filter((k) => k.name.toLocaleLowerCase('es').includes(q)).slice(0, 8)
   }, [query])
 
-  const selectKing = (id: string) => {
+  /** Taps open the detail sheet on small screens; stepping through kings does not. */
+  const selectKing = (id: string, { openSheet = true } = {}) => {
     setSelectedId(id)
     setQuery('')
-    setSheetOpen(true)
+    if (openSheet) setSheetOpen(true)
     const king = kingById(id)
     if (king && !visible.includes(king.kingdom)) {
       setVisible((cur) => [...cur, king.kingdom])
     }
   }
 
-  const stepKing = (dir: -1 | 1) => {
-    const idx = chronological.findIndex((k) => k.id === selectedId)
-    const next = chronological[idx + dir]
-    if (next) selectKing(next.id)
+  const selectedIndex = chronological.findIndex((k) => k.id === selectedId)
+
+  const stepKing = (dir: -1 | 1, openSheet = false) => {
+    const next = chronological[selectedIndex + dir]
+    if (next) selectKing(next.id, { openSheet })
   }
 
   // ←/→ walk the chronology; the timeline follows the selected reign.
@@ -115,8 +118,8 @@ export function KingsTimelinePanel({
       king={selected}
       cards={cards}
       onSelect={selectKing}
-      onPrev={() => stepKing(-1)}
-      onNext={() => stepKing(1)}
+      onPrev={() => stepKing(-1, true)}
+      onNext={() => stepKing(1, true)}
       onOpenCardInStudy={onOpenCardInStudy}
       onClose={isDesktop ? undefined : () => setSheetOpen(false)}
     />
@@ -246,15 +249,26 @@ export function KingsTimelinePanel({
             )}
 
             {mode !== 'practice' && (
-              <ul className="flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-muted-foreground">
-                {LORD_STANDS.map((s) => (
-                  <li key={s} className="inline-flex items-center gap-1">
-                    <StandGlyph stand={s} className="size-3.5 text-[9px]" />
-                    {lordStandMeta(s)!.shortLabel}
-                  </li>
-                ))}
-                <li className="hidden sm:inline">· Evaluación según la fórmula del relato</li>
-              </ul>
+              <div className="flex flex-col-reverse gap-2 sm:flex-row sm:items-center sm:justify-between">
+                <ul className="flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-muted-foreground">
+                  {LORD_STANDS.map((s) => (
+                    <li key={s} className="inline-flex items-center gap-1">
+                      <StandGlyph stand={s} className="size-3.5 text-[9px]" />
+                      {lordStandMeta(s)!.shortLabel}
+                    </li>
+                  ))}
+                  <li className="hidden sm:inline">· Evaluación según la fórmula del relato</li>
+                </ul>
+                <KingStepper
+                  king={selected}
+                  canPrev={selectedIndex > 0}
+                  canNext={selectedIndex >= 0 && selectedIndex < chronological.length - 1}
+                  onPrev={() => stepKing(-1)}
+                  onNext={() => stepKing(1)}
+                  onOpen={isDesktop ? undefined : () => setSheetOpen(true)}
+                  className="w-full sm:w-72"
+                />
+              </div>
             )}
           </header>
 
@@ -267,7 +281,7 @@ export function KingsTimelinePanel({
                 }}
               />
             ) : (
-              <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_360px]">
+              <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_minmax(360px,400px)]">
                 <div className="min-w-0">
                   {mode === 'explore' ? (
                     <TimelineExplorer
