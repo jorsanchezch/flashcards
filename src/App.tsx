@@ -1,13 +1,24 @@
 import { useState } from 'react'
-import { BookOpen, Loader2, RefreshCw } from 'lucide-react'
+import {
+  Crown,
+  GraduationCap,
+  Library,
+  List,
+  Loader2,
+  RefreshCw,
+  Settings2,
+  Users,
+  type LucideIcon,
+} from 'lucide-react'
 import { BrowseView } from '@/components/BrowseView'
 import { StudyView } from '@/components/StudyView'
 import { StudySessionGate } from '@/components/StudySessionGate'
 import { StudyMaterialsView, type MaterialRow } from '@/components/StudyMaterialsView'
 import { TeamSummaryView } from '@/components/TeamSummaryView'
+import { LanguagePreferences } from '@/components/LanguagePreferences'
 import { UserMenu } from '@/components/UserMenu'
 import { Button } from '@/components/ui/button'
-import { NativeSelect } from '@/components/ui/select'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { GlossaryProvider } from '@/context/GlossaryContext'
 import {
@@ -19,21 +30,21 @@ import { UserProvider, useUser } from '@/context/UserContext'
 import { useFlashcards } from '@/hooks/useFlashcards'
 import { useEffectiveFlashcards } from '@/hooks/useEffectiveFlashcards'
 import { useUsersRoster } from '@/hooks/useUsersRoster'
-import { UI_LOCALES } from '@/lib/i18n'
 import { isGuestSessionId, loadLastUserId } from '@/lib/userData'
+import { cn } from '@/lib/utils'
 
 type Tab = 'study' | 'browse' | 'team' | 'material'
 
+const NAV_TABS: { id: Tab; icon: LucideIcon }[] = [
+  { id: 'study', icon: GraduationCap },
+  { id: 'browse', icon: List },
+  { id: 'team', icon: Users },
+  { id: 'material', icon: Library },
+]
+
 function FlashcardsApp() {
   const { state, reload } = useFlashcards()
-  const {
-    t,
-    uiLocale,
-    setUiLocale,
-    bibleVersionId,
-    setBibleVersionId,
-    bibleVersions,
-  } = usePreferences()
+  const { t } = usePreferences()
   const {
     roster,
     userDoc,
@@ -79,58 +90,39 @@ function FlashcardsApp() {
   return (
     <GlossaryProvider onOpenTerm={openGlossaryTerm}>
     <div className="min-h-svh bg-background">
-      <header className="border-b bg-card/60 backdrop-blur">
-        <div
-          className={`mx-auto flex w-full flex-col gap-3 px-4 py-4 sm:flex-row sm:items-start sm:justify-between ${shellWidth}`}
-        >
-          <div className="flex items-center gap-3 text-left">
-            <div className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-              <BookOpen className="size-5" />
-            </div>
-            <h1 className="text-lg font-semibold leading-tight">{t.appTitle}</h1>
+      <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur-md">
+        <div className={`mx-auto flex h-16 w-full items-center justify-between gap-3 px-4 ${shellWidth}`}>
+          <div className="flex min-w-0 items-center gap-2.5">
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-[color-mix(in_oklch,var(--primary)_55%,var(--gold))] text-primary-foreground shadow-card">
+              <Crown className="size-5" aria-hidden />
+            </span>
+            <h1 className="truncate font-display text-lg leading-tight font-semibold tracking-tight sm:text-xl">
+              {t.appTitle}
+            </h1>
           </div>
-          <div className="flex w-full flex-col items-stretch gap-2 sm:w-auto sm:items-end">
-            <div className="flex flex-wrap items-center justify-end gap-2">
-              <label className="sr-only" htmlFor="header-ui-locale">
-                {t.language}
-              </label>
-              <NativeSelect
-                id="header-ui-locale"
-                density="sm"
-                value={uiLocale}
-                onChange={(e) => setUiLocale(e.target.value as 'es' | 'en')}
-                aria-label={t.language}
-              >
-                {UI_LOCALES.map((locale) => (
-                  <option key={locale.id} value={locale.id}>
-                    {locale.label}
-                  </option>
-                ))}
-              </NativeSelect>
-              <label className="sr-only" htmlFor="header-bible-version">
-                {t.bibleVersion}
-              </label>
-              <NativeSelect
-                id="header-bible-version"
-                density="sm"
-                className="min-w-[7.5rem]"
-                value={bibleVersionId}
-                onChange={(e) => setBibleVersionId(e.target.value)}
-                aria-label={t.bibleVersion}
-              >
-                {bibleVersions.map((version) => (
-                  <option key={version.id} value={version.id}>
-                    {version.gatewayParam} · {version.language === 'es' ? 'ES' : 'EN'}
-                  </option>
-                ))}
-              </NativeSelect>
-            </div>
+          <div className="flex shrink-0 items-center gap-2">
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="icon"
+                  className="rounded-full data-[state=open]:bg-accent"
+                  aria-label={t.settings}
+                >
+                  <Settings2 className="size-5" />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-80">
+                <LanguagePreferences />
+              </PopoverContent>
+            </Popover>
             {hasSession && <UserMenu />}
           </div>
         </div>
       </header>
 
-      <main>
+      <main className="pb-28 sm:pb-0">
         {state.status === 'error' && (
           <div className="mx-auto max-w-md px-4 py-16 text-center">
             <p className="mb-2 font-medium text-destructive">{t.cardsLoadError}</p>
@@ -155,12 +147,37 @@ function FlashcardsApp() {
             }}
             className={`mx-auto w-full ${shellWidth}`}
           >
-            <div className="px-4 pt-4">
-              <TabsList className="grid h-auto w-full grid-cols-2 gap-1 sm:grid-cols-4">
-                <TabsTrigger value="study">{t.tabs.study}</TabsTrigger>
-                <TabsTrigger value="browse">{t.tabs.browse}</TabsTrigger>
-                <TabsTrigger value="team">{t.tabs.team}</TabsTrigger>
-                <TabsTrigger value="material">{t.tabs.material}</TabsTrigger>
+            <div className="sm:px-4 sm:pt-4">
+              <TabsList
+                aria-label="Secciones"
+                className={cn(
+                  // Phones: a fixed bottom bar. Wider screens: a segmented control at the top.
+                  'fixed inset-x-0 bottom-0 z-40 grid h-auto w-full grid-cols-4 gap-0 rounded-none border-t bg-card/95 p-1 pb-[max(0.25rem,env(safe-area-inset-bottom))] backdrop-blur-md',
+                  'sm:static sm:gap-1 sm:rounded-xl sm:border-0 sm:bg-muted sm:p-1 sm:backdrop-blur-none',
+                )}
+              >
+                {NAV_TABS.map(({ id, icon: Icon }) => (
+                  <TabsTrigger
+                    key={id}
+                    value={id}
+                    className={cn(
+                      'group/nav min-h-14 flex-col gap-0.5 rounded-xl border-0 text-[11px] after:hidden',
+                      'data-[state=active]:bg-transparent data-[state=active]:text-primary group-data-[variant=default]/tabs-list:data-[state=active]:shadow-none dark:data-[state=active]:border-transparent dark:data-[state=active]:bg-transparent dark:data-[state=active]:text-primary',
+                      'sm:min-h-10 sm:flex-row sm:gap-2 sm:rounded-lg sm:text-sm sm:data-[state=active]:bg-card sm:data-[state=active]:text-foreground sm:group-data-[variant=default]/tabs-list:data-[state=active]:shadow-card sm:dark:data-[state=active]:bg-card sm:dark:data-[state=active]:text-foreground',
+                    )}
+                  >
+                    <span
+                      className={cn(
+                        'flex h-8 w-14 items-center justify-center rounded-full transition-colors',
+                        'group-data-[state=active]/nav:animate-bounce-in group-data-[state=active]/nav:bg-primary/12',
+                        'sm:h-auto sm:w-auto sm:bg-transparent sm:group-data-[state=active]/nav:animate-none sm:group-data-[state=active]/nav:bg-transparent',
+                      )}
+                    >
+                      <Icon className="size-5 sm:size-4" aria-hidden />
+                    </span>
+                    {t.tabs[id]}
+                  </TabsTrigger>
+                ))}
               </TabsList>
             </div>
 

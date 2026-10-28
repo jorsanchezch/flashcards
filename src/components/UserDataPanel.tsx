@@ -1,16 +1,9 @@
 import { useState } from 'react'
-import { Eraser, Settings2, Trash2 } from 'lucide-react'
-import { LanguagePreferences } from '@/components/LanguagePreferences'
+import { Eraser, Settings2, Trash2, UserRound } from 'lucide-react'
+import { SheetTitle } from '@/components/ui/sheet'
 import { usePreferences } from '@/context/PreferencesContext'
 import { useUser } from '@/context/UserContext'
 import { Button } from '@/components/ui/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
 
 type PendingAction = 'progress' | 'config' | 'deck' | 'all' | null
 
@@ -67,23 +60,31 @@ export function UserDataPanel() {
             : null
 
   return (
-    <Card className="mt-3 w-full max-w-md border-dashed">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-sm">{t.myData}</CardTitle>
-        <CardDescription className="text-xs">
-          {isGuest
-            ? 'Sesión sin ID: las marcas La sé, Repasar y Revisada son del equipo y se ven en Equipo.'
-            : 'Solo puedes borrar o restablecer tu propio avance.'}
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="flex flex-col gap-2">
-        <LanguagePreferences className="mb-2 rounded-lg border p-3" />
+    <div className="flex flex-col gap-5 p-5">
+      <header className="flex items-center gap-3 pr-10">
+        <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+          <UserRound className="size-5" />
+        </span>
+        <div className="min-w-0">
+          <SheetTitle className="font-display text-xl font-semibold tracking-tight">
+            {t.myData}
+          </SheetTitle>
+          <p className="truncate text-sm text-muted-foreground">
+            {isGuest ? `${t.mode} ${userDoc.displayName}` : userDoc.displayName}
+          </p>
+        </div>
+      </header>
+      <p className="rounded-xl bg-muted/60 p-3 text-sm text-muted-foreground">
+        {isGuest
+          ? 'Sesión sin ID: las marcas La sé, Repasar y Revisada son del equipo y se ven en Equipo.'
+          : 'Solo puedes borrar o restablecer tu propio avance.'}
+      </p>
+      <div className="flex flex-col gap-2">
         {!pending && (
           <>
             <Button
               type="button"
               variant="outline"
-              size="sm"
               className="justify-start"
               onClick={() => {
                 setDoneMessage(null)
@@ -96,7 +97,6 @@ export function UserDataPanel() {
             <Button
               type="button"
               variant="outline"
-              size="sm"
               className="justify-start"
               onClick={() => {
                 setDoneMessage(null)
@@ -110,7 +110,6 @@ export function UserDataPanel() {
             <Button
               type="button"
               variant="outline"
-              size="sm"
               className="justify-start"
               onClick={() => {
                 setDoneMessage(null)
@@ -124,7 +123,6 @@ export function UserDataPanel() {
             <Button
               type="button"
               variant="destructive"
-              size="sm"
               className="justify-start"
               onClick={() => {
                 setDoneMessage(null)
@@ -166,9 +164,11 @@ export function UserDataPanel() {
         )}
 
         {doneMessage && !pending && (
-          <p className="text-xs text-muted-foreground">{doneMessage}</p>
+          <p className="text-sm text-muted-foreground" role="status">
+            {doneMessage}
+          </p>
         )}
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   )
 }

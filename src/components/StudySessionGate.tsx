@@ -93,8 +93,8 @@ export function StudySessionGate({
       </div>
 
       <p className="text-center text-xs text-muted-foreground">
-        Puedes cambiar más tarde con <strong className="font-medium">Cambiar</strong>{' '}
-        en la cabecera.
+        Puedes cambiar más tarde: toca tu nombre arriba a la derecha y elige{' '}
+        <strong className="font-medium">Cambiar</strong>.
       </p>
     </div>
   )

@@ -68,6 +68,7 @@ type MessageTree = {
   mode: string
   myData: string
   changeUser: string
+  settings: string
   preferences: string
 }
 
@@ -95,6 +96,7 @@ const es: MessageTree = {
   mode: 'Modo',
   myData: 'Mis datos',
   changeUser: 'Cambiar',
+  settings: 'Ajustes',
   preferences: 'Preferencias de idioma',
 }
 
@@ -122,6 +124,7 @@ const en: MessageTree = {
   mode: 'Mode',
   myData: 'My data',
   changeUser: 'Switch',
+  settings: 'Settings',
   preferences: 'Language preferences',
 }
 

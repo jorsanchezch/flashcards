@@ -21,7 +21,6 @@ export function LanguagePreferences({ className }: { className?: string }) {
           <Label htmlFor="ui-locale">{t.language}</Label>
           <NativeSelect
             id="ui-locale"
-            wrapperClassName="mt-1"
             value={uiLocale}
             onChange={(e) => setUiLocale(e.target.value as 'es' | 'en')}
           >
@@ -36,7 +35,6 @@ export function LanguagePreferences({ className }: { className?: string }) {
           <Label htmlFor="bible-version">{t.bibleVersion}</Label>
           <NativeSelect
             id="bible-version"
-            wrapperClassName="mt-1"
             value={bibleVersionId}
             onChange={(e) => setBibleVersionId(e.target.value)}
           >
