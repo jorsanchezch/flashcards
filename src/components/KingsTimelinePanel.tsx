@@ -32,7 +32,7 @@ import {
   kingsChronological,
   lordStandMeta,
   passageToNtvUrl,
-  reignBarPercent,
+  placeKingdomReigns,
   type KingRecord,
   type KingdomId,
   type LordStand,
@@ -44,8 +44,8 @@ type KingsTimelinePanelProps = {
   onToggle: () => void
 }
 
-/** Pixels per year so short reigns stay wide enough to read the name. */
-const PX_PER_YEAR = 36
+/** Enough to read a normal reign without stretching the chart across the screen. */
+const PX_PER_YEAR = 8
 const TIMELINE_TRACK_PX =
   (TIMELINE_START_BC - TIMELINE_END_BC) * PX_PER_YEAR
 
@@ -277,40 +277,13 @@ export function KingsTimelinePanel({ open, onToggle }: KingsTimelinePanelProps) 
                           />
                           {row.label}
                         </div>
-                        <div
-                          className="relative h-11 rounded-lg bg-muted/50"
-                          role="list"
-                          aria-label={`Reinados de ${row.label}`}
-                        >
-                          {kingsByKingdom(row.id).map((king) => {
-                            const bar = reignBarPercent(king)
-                            const isSelected = king.id === selectedId
-                            const stand = lordStandMeta(king.lordStand)
-                            return (
-                              <button
-                                key={king.id}
-                                type="button"
-                                role="listitem"
-                                title={`${king.name} · ${formatReignSpan(king)}`}
-                                onClick={() => selectKing(king.id)}
-                                className={cn(
-                                  'absolute top-1.5 flex h-8 items-center gap-1 overflow-visible rounded-md px-1.5 text-[11px] font-semibold whitespace-nowrap text-white shadow-md transition hover:z-30 hover:brightness-110 focus-visible:z-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-                                  isSelected && 'z-20 shadow-lg ring-2 ring-white',
-                                  stand?.barClass,
-                                )}
-                                style={{
-                                  left: `${bar.left}%`,
-                                  width: `${bar.width}%`,
-                                  minWidth: `${Math.ceil(king.name.length * 7.4 + 18)}px`,
-                                  backgroundColor: row.color,
-                                }}
-                              >
-                                <StandDot stand={king.lordStand} className="shrink-0" />
-                                <span>{king.name}</span>
-                              </button>
-                            )
-                          })}
-                        </div>
+                        <KingdomTrack
+                          kingdomId={row.id}
+                          color={row.color}
+                          label={row.label}
+                          selectedId={selectedId}
+                          onSelect={selectKing}
+                        />
                       </li>
                     ))}
                   </ul>
@@ -335,6 +308,73 @@ export function KingsTimelinePanel({ open, onToggle }: KingsTimelinePanelProps) 
         </Card>
       )}
     </li>
+  )
+}
+
+function KingdomTrack({
+  kingdomId,
+  color,
+  label,
+  selectedId,
+  onSelect,
+}: {
+  kingdomId: KingdomId
+  color: string
+  label: string
+  selectedId: string | null
+  onSelect: (id: string) => void
+}) {
+  const placed = placeKingdomReigns(kingsByKingdom(kingdomId), TIMELINE_TRACK_PX)
+  return (
+    <div
+      className="relative rounded-lg bg-muted/50"
+      style={{ height: placed.laneCount * 36 + 8 }}
+      role="list"
+      aria-label={`Reinados de ${label}`}
+    >
+      {placed.items.map((item) => {
+        const isSelected = item.king.id === selectedId
+        const stand = lordStandMeta(item.king.lordStand)
+        return (
+          <button
+            key={item.king.id}
+            type="button"
+            role="listitem"
+            title={`${item.king.name} · ${formatReignSpan(item.king)}`}
+            onClick={() => onSelect(item.king.id)}
+            className={cn(
+              'absolute flex h-8 items-center focus-visible:z-30 focus-visible:outline-none',
+              isSelected && 'z-20',
+            )}
+            style={{ left: item.leftPx, top: item.lane * 36 + 4 }}
+          >
+            <span
+              className={cn(
+                'flex h-7 shrink-0 items-center overflow-hidden rounded-md px-1 text-[11px] font-semibold whitespace-nowrap text-white shadow-sm',
+                isSelected && 'ring-2 ring-white',
+                stand?.barClass,
+              )}
+              style={{ width: item.barPx, backgroundColor: color }}
+            >
+              <StandDot stand={item.king.lordStand} className="shrink-0" />
+              {!item.nameOutside && (
+                <span className="truncate px-0.5">{item.king.name}</span>
+              )}
+            </span>
+            {item.nameOutside && (
+              <span
+                className={cn(
+                  'ml-1 text-[11px] font-semibold whitespace-nowrap text-foreground',
+                  isSelected && 'underline decoration-primary',
+                )}
+              >
+                {item.king.name}
+              </span>
+            )}
+          </button>
+        )
+      })}
+    </div>
   )
 }
 

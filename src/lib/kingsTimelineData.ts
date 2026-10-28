@@ -501,7 +501,7 @@ const KINGS_BASE: KingRecord[] = [
   },
   {
     id: 'jehoiachin',
-    name: 'Joacín',
+    name: 'Joaquín',
     kingdom: 'judah',
     startBc: 598,
     endBc: 598,

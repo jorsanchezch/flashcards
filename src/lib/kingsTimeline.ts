@@ -126,14 +126,60 @@ export function reignBarPercent(king: KingRecord): { left: number; width: number
   const reignStart = Math.min(king.startBc, TIMELINE_START_BC)
   const reignEnd = Math.max(king.endBc, TIMELINE_END_BC)
   const left = ((TIMELINE_START_BC - reignStart) / SPAN_BC) * 100
-  const width = Math.max(
-    ((reignStart - reignEnd) / SPAN_BC) * 100,
-    king.startBc === king.endBc ? 1.2 : 0.8,
-  )
+  const width = Math.max(((reignStart - reignEnd) / SPAN_BC) * 100, 0)
   return {
     left: Math.min(100, Math.max(0, left)),
-    width: Math.min(100 - left, Math.max(width, 0.8)),
+    width: Math.min(100 - left, Math.max(width, 0)),
   }
+}
+
+export type ReignPlacement = {
+  king: KingRecord
+  leftPx: number
+  barPx: number
+  lane: number
+  nameOutside: boolean
+}
+
+const LANE_GAP_PX = 8
+
+function labelPx(name: string) {
+  return Math.ceil(name.length * 7.2 + 16)
+}
+
+/** True reign length, with the name beside the bar when it does not fit inside. Overlaps get their own lane. */
+export function placeKingdomReigns(
+  kings: KingRecord[],
+  trackPx: number,
+): { laneCount: number; items: ReignPlacement[] } {
+  const metrics = kings.map((king) => {
+    const bar = reignBarPercent(king)
+    const leftPx = (bar.left / 100) * trackPx
+    const barPx = Math.max((bar.width / 100) * trackPx, 6)
+    const nameOutside = barPx < labelPx(king.name)
+    const endPx = nameOutside ? leftPx + barPx + 4 + labelPx(king.name) : leftPx + barPx
+    return { king, leftPx, barPx, nameOutside, endPx }
+  })
+  metrics.sort((a, b) => a.leftPx - b.leftPx || b.barPx - a.barPx)
+
+  const laneEnds: number[] = []
+  const items: ReignPlacement[] = metrics.map((item) => {
+    let lane = laneEnds.findIndex((end) => item.leftPx >= end + LANE_GAP_PX)
+    if (lane < 0) {
+      lane = laneEnds.length
+      laneEnds.push(item.endPx)
+    } else {
+      laneEnds[lane] = item.endPx
+    }
+    return {
+      king: item.king,
+      leftPx: item.leftPx,
+      barPx: item.barPx,
+      lane,
+      nameOutside: item.nameOutside,
+    }
+  })
+  return { laneCount: Math.max(laneEnds.length, 1), items }
 }
 
 export function axisTickYears(): number[] {
