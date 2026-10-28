@@ -15,12 +15,17 @@ type ReviewedMarkButtonProps = {
   timestamps: string[]
   onMark: () => void
   shortcutHint?: string
+  className?: string
+  /** Replaces the default check icon, e.g. to animate it on each mark. */
+  icon?: React.ReactNode
 }
 
 export function ReviewedMarkButton({
   timestamps,
   onMark,
   shortcutHint = 'R',
+  className,
+  icon,
 }: ReviewedMarkButtonProps) {
   const [open, setOpen] = useState(false)
   const longPressRef = useRef<number | null>(null)
@@ -45,7 +50,7 @@ export function ReviewedMarkButton({
   return (
     <DropdownMenu open={open} onOpenChange={setOpen} modal={false}>
       <div
-        className="inline-flex"
+        className="flex"
         onMouseEnter={() => {
           if (history.length > 0) setOpen(true)
         }}
@@ -55,6 +60,7 @@ export function ReviewedMarkButton({
           <Button
             variant="secondary"
             type="button"
+            className={className}
             onClick={(e) => {
               e.preventDefault()
               handleMark()
@@ -74,15 +80,15 @@ export function ReviewedMarkButton({
             aria-haspopup={history.length > 0 ? 'menu' : undefined}
             aria-expanded={open}
           >
-            <CheckCircle2 className="size-4" />
+            {icon ?? <CheckCircle2 className="size-4" />}
             Revisada
             {history.length > 0 && (
               <span className="text-xs opacity-80">({history.length})</span>
             )}
             {shortcutHint && (
-              <span className="hidden text-xs opacity-70 sm:inline">
-                ({shortcutHint})
-              </span>
+              <kbd className="hidden rounded border border-current/25 px-1 font-sans text-[10px] font-medium opacity-70 sm:inline">
+                {shortcutHint}
+              </kbd>
             )}
           </Button>
         </DropdownMenuTrigger>

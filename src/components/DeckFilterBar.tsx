@@ -1,9 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Search, Shuffle, X } from 'lucide-react'
+import { Search, Shuffle, SlidersHorizontal, X } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { useGlossary } from '@/context/GlossaryContext'
 import {
   applyDeckGroupings,
@@ -45,6 +47,8 @@ export function DeckFilterBar({ cards, config, onPatch }: DeckFilterBarProps) {
   const [glossaryQuery, setGlossaryQuery] = useState('')
   const [glossaryOpen, setGlossaryOpen] = useState(false)
   const glossaryBox = useRef<HTMLDivElement>(null)
+  const wide = useMediaQuery('(min-width: 640px)')
+  const [sheetOpen, setSheetOpen] = useState(false)
 
   const books = useMemo(() => {
     const map = new Map<string, { label: string; canonIndex: number; chapters: number[] }>()
@@ -132,70 +136,61 @@ export function DeckFilterBar({ cards, config, onPatch }: DeckFilterBarProps) {
   }
 
   const filtersOn = hasActiveFilters(config.groupings) || config.shuffle
+  const activeCount =
+    (bookRange ? 1 : 0) + glossaryIds.length + (cardGroup ? 1 : 0)
 
-  return (
-    <div className="rounded-xl border bg-card/50 p-4 [overflow-anchor:none]">
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <p className="text-sm font-medium">Filtros</p>
-        <div className="flex flex-wrap items-center gap-2">
-          <ShuffleControl
-            shuffle={config.shuffle}
-            disabled={filtered.length <= 1}
-            onStart={shuffleNow}
-            onStop={stopShuffle}
-            onReshuffle={shuffleNow}
-          />
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            className="min-h-11"
-            disabled={!filtersOn}
-            onMouseDown={keepPageScroll}
-            onClick={() => onPatch(groupingsPatch(config, []))}
-          >
-            Limpiar filtros
-          </Button>
-        </div>
-      </div>
+  const shuffleControl = (
+    <ShuffleControl
+      shuffle={config.shuffle}
+      disabled={filtered.length <= 1}
+      onStart={shuffleNow}
+      onStop={stopShuffle}
+      onReshuffle={shuffleNow}
+    />
+  )
+  const clearButton = (
+    <Button
+      type="button"
+      variant="ghost"
+      size="sm"
+      className="min-h-11"
+      disabled={!filtersOn}
+      onMouseDown={keepPageScroll}
+      onClick={() => onPatch(groupingsPatch(config, []))}
+    >
+      Limpiar filtros
+    </Button>
+  )
 
-      <p className="mt-1 text-xs text-muted-foreground">
-        {filtered.length} tarjetas con estos filtros
-      </p>
-
-      {cardGroup && (
-        <div className="mt-3 flex flex-wrap items-center justify-between gap-2 rounded-lg border border-primary/30 bg-primary/5 px-3 py-2 text-sm">
-          <span>
-            Grupo:{' '}
-            <strong>{cardGroup.label ?? `${cardGroup.ids.length} tarjetas`}</strong>
-          </span>
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            onMouseDown={keepPageScroll}
-            onClick={() =>
-              patchGroupings(
-                config.groupings.filter((g) => g.kind !== 'card-ids'),
-              )
-            }
-          >
-            Quitar grupo
-          </Button>
-        </div>
-      )}
-
-      <div className="mt-4">
-        <p className="mb-2 text-xs font-medium text-muted-foreground">Libro</p>
-        <div className="flex flex-wrap gap-2">
-          <Badge
-            asChild
-            variant={!bookRange ? 'default' : 'outline'}
-            className="cursor-pointer"
-          >
-            <button
+  const body = (
+    <FilterBody filteredCount={filtered.length}>
+        {cardGroup && (
+          <div className="mt-3 flex flex-wrap items-center justify-between gap-2 rounded-lg border border-primary/30 bg-primary/5 px-3 py-2 text-sm">
+            <span>
+              Grupo:{' '}
+              <strong>{cardGroup.label ?? `${cardGroup.ids.length} tarjetas`}</strong>
+            </span>
+            <Button
               type="button"
+              variant="outline"
+              size="sm"
               onMouseDown={keepPageScroll}
+              onClick={() =>
+                patchGroupings(
+                  config.groupings.filter((g) => g.kind !== 'card-ids'),
+                )
+              }
+            >
+              Quitar grupo
+            </Button>
+          </div>
+        )}
+
+        <div className="mt-4">
+          <p className="mb-2 text-xs font-medium text-muted-foreground">Libro</p>
+          <div className="flex flex-wrap gap-2">
+            <FilterPill
+              active={!bookRange}
               onClick={() =>
                 patchGroupings(
                   setBookRangeGrouping(config.groupings, null, null, null),
@@ -203,18 +198,11 @@ export function DeckFilterBar({ cards, config, onPatch }: DeckFilterBarProps) {
               }
             >
               Todos
-            </button>
-          </Badge>
-          {books.map((book) => (
-            <Badge
-              key={book.id}
-              asChild
-              variant={bookRange?.bookId === book.id ? 'default' : 'outline'}
-              className="cursor-pointer"
-            >
-              <button
-                type="button"
-                onMouseDown={keepPageScroll}
+            </FilterPill>
+            {books.map((book) => (
+              <FilterPill
+                key={book.id}
+                active={bookRange?.bookId === book.id}
                 onClick={() =>
                   patchGroupings(
                     setBookRangeGrouping(
@@ -226,196 +214,280 @@ export function DeckFilterBar({ cards, config, onPatch }: DeckFilterBarProps) {
                   )
                 }
               >
+                <span
+                  className="size-2 rounded-full"
+                  style={{ backgroundColor: `var(--book-${book.id}, var(--primary))` }}
+                  aria-hidden
+                />
                 {book.label}
-              </button>
-            </Badge>
-          ))}
-        </div>
-      </div>
-
-      {selectedBook && (
-        <div className="mt-4 flex flex-wrap items-end gap-3">
-          <div>
-            <Label htmlFor="filter-from" className="text-xs">
-              Desde capítulo
-            </Label>
-            <Input
-              id="filter-from"
-              type="number"
-              min={chapters[0] ?? 1}
-              max={chapters.at(-1)}
-              className="mt-1 h-11 w-24"
-              placeholder={String(chapters[0] ?? 1)}
-              value={bookRange?.from ?? ''}
-              onChange={(e) =>
-                patchGroupings(
-                  setBookRangeGrouping(
-                    config.groupings,
-                    selectedBook.id,
-                    parseChapter(e.target.value),
-                    bookRange?.to ?? null,
-                  ),
-                )
-              }
-            />
-          </div>
-          <div>
-            <Label htmlFor="filter-to" className="text-xs">
-              Hasta capítulo
-            </Label>
-            <Input
-              id="filter-to"
-              type="number"
-              min={chapters[0] ?? 1}
-              max={chapters.at(-1)}
-              className="mt-1 h-11 w-24"
-              placeholder={String(chapters.at(-1) ?? '')}
-              value={bookRange?.to ?? ''}
-              onChange={(e) =>
-                patchGroupings(
-                  setBookRangeGrouping(
-                    config.groupings,
-                    selectedBook.id,
-                    bookRange?.from ?? null,
-                    parseChapter(e.target.value),
-                  ),
-                )
-              }
-            />
+              </FilterPill>
+            ))}
           </div>
         </div>
-      )}
 
-      <div className="mt-4">
-        <p className="mb-2 text-xs font-medium text-muted-foreground">
-          Palabras del glosario
-        </p>
-        {glossarySelected.length > 0 && (
-          <>
-            <div className="mb-2 flex flex-wrap gap-2">
-              {glossarySelected.map((entry) => (
-                <Badge key={entry.id} variant="default" className="gap-1 pr-1">
-                  {entry.term}
-                  <button
-                    type="button"
-                    className="rounded-full p-0.5 hover:bg-primary-foreground/20"
-                    aria-label={`Quitar ${entry.term}`}
-                    onMouseDown={keepPageScroll}
-                    onClick={() =>
-                      patchGroupings(
-                        toggleGlossaryTerm(config.groupings, entry.id),
-                      )
-                    }
-                  >
-                    <X className="size-3" />
-                  </button>
-                </Badge>
-              ))}
-            </div>
-            <div className="mb-3 flex flex-wrap items-center gap-2">
-              <span className="text-xs text-muted-foreground">Buscar en</span>
-              <button
-                type="button"
-                onMouseDown={keepPageScroll}
-                onClick={() =>
+        {selectedBook && (
+          <div className="mt-4 flex flex-wrap items-end gap-3">
+            <div>
+              <Label htmlFor="filter-from" className="text-xs">
+                Desde capítulo
+              </Label>
+              <Input
+                id="filter-from"
+                type="number"
+                min={chapters[0] ?? 1}
+                max={chapters.at(-1)}
+                className="mt-1 h-11 w-24"
+                placeholder={String(chapters[0] ?? 1)}
+                value={bookRange?.from ?? ''}
+                onChange={(e) =>
                   patchGroupings(
-                    setGlossarySides(config.groupings, {
-                      question: !glossarySides.question,
-                      answer: glossarySides.answer,
-                    }),
+                    setBookRangeGrouping(
+                      config.groupings,
+                      selectedBook.id,
+                      parseChapter(e.target.value),
+                      bookRange?.to ?? null,
+                    ),
                   )
                 }
-                className={cn(
-                  'min-h-11 rounded-full border px-3 text-sm',
-                  glossarySides.question
-                    ? 'border-primary bg-primary text-primary-foreground'
-                    : 'bg-background',
-                )}
-                aria-pressed={glossarySides.question}
-              >
-                Pregunta
-              </button>
-              <button
-                type="button"
-                onMouseDown={keepPageScroll}
-                onClick={() =>
+              />
+            </div>
+            <div>
+              <Label htmlFor="filter-to" className="text-xs">
+                Hasta capítulo
+              </Label>
+              <Input
+                id="filter-to"
+                type="number"
+                min={chapters[0] ?? 1}
+                max={chapters.at(-1)}
+                className="mt-1 h-11 w-24"
+                placeholder={String(chapters.at(-1) ?? '')}
+                value={bookRange?.to ?? ''}
+                onChange={(e) =>
                   patchGroupings(
-                    setGlossarySides(config.groupings, {
-                      question: glossarySides.question,
-                      answer: !glossarySides.answer,
-                    }),
+                    setBookRangeGrouping(
+                      config.groupings,
+                      selectedBook.id,
+                      bookRange?.from ?? null,
+                      parseChapter(e.target.value),
+                    ),
                   )
                 }
-                className={cn(
-                  'min-h-11 rounded-full border px-3 text-sm',
-                  glossarySides.answer
-                    ? 'border-primary bg-primary text-primary-foreground'
-                    : 'bg-background',
-                )}
-                aria-pressed={glossarySides.answer}
-              >
-                Respuesta
-              </button>
-              <span className="text-xs text-muted-foreground">
-                {glossarySides.question && glossarySides.answer
-                  ? 'En pregunta o respuesta'
-                  : glossarySides.question
-                    ? 'Solo en la pregunta'
-                    : 'Solo en la respuesta'}
-              </span>
+              />
             </div>
-          </>
+          </div>
         )}
-        <div className="relative" ref={glossaryBox}>
-          <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
-          <Input
-            value={glossaryQuery}
-            onChange={(e) => {
-              setGlossaryQuery(e.target.value)
-              setGlossaryOpen(true)
-            }}
-            onFocus={() => setGlossaryOpen(true)}
-            placeholder="Buscar y añadir una palabra…"
-            className="h-11 pl-9"
-            aria-label="Buscar palabra del glosario"
-            aria-expanded={glossaryOpen}
-            aria-controls="glossary-filter-list"
-          />
-          {glossaryOpen && (
-            <ul
-              id="glossary-filter-list"
-              className="absolute z-30 mt-1 max-h-56 w-full overflow-y-auto rounded-lg border bg-popover p-1 shadow-md"
-            >
-              {glossaryChoices.length === 0 ? (
-                <li className="px-3 py-2 text-sm text-muted-foreground">
-                  {q
-                    ? 'Ninguna palabra coincide.'
-                    : 'Todas las palabras ya están en el filtro.'}
-                </li>
-              ) : (
-                glossaryChoices.slice(0, 40).map((entry) => (
-                  <li key={entry.id}>
+
+        <div className="mt-4">
+          <p className="mb-2 text-xs font-medium text-muted-foreground">
+            Palabras del glosario
+          </p>
+          {glossarySelected.length > 0 && (
+            <>
+              <div className="mb-2 flex flex-wrap gap-2">
+                {glossarySelected.map((entry) => (
+                  <Badge key={entry.id} variant="default" className="gap-1 pr-1">
+                    {entry.term}
                     <button
                       type="button"
-                      className="flex min-h-11 w-full items-center justify-between rounded-md px-3 text-left text-sm hover:bg-accent/50"
+                      className="rounded-full p-0.5 hover:bg-primary-foreground/20"
+                      aria-label={`Quitar ${entry.term}`}
                       onMouseDown={keepPageScroll}
-                      onClick={() => addGlossaryTerm(entry.id)}
+                      onClick={() =>
+                        patchGroupings(
+                          toggleGlossaryTerm(config.groupings, entry.id),
+                        )
+                      }
                     >
-                      <span>{entry.term}</span>
-                      <span className="text-xs text-muted-foreground">
-                        Añadir
-                      </span>
+                      <X className="size-3" />
                     </button>
-                  </li>
-                ))
-              )}
-            </ul>
+                  </Badge>
+                ))}
+              </div>
+              <div className="mb-3 flex flex-wrap items-center gap-2">
+                <span className="text-xs text-muted-foreground">Buscar en</span>
+                <FilterPill
+                  active={glossarySides.question}
+                  onClick={() =>
+                    patchGroupings(
+                      setGlossarySides(config.groupings, {
+                        question: !glossarySides.question,
+                        answer: glossarySides.answer,
+                      }),
+                    )
+                  }
+                >
+                  Pregunta
+                </FilterPill>
+                <FilterPill
+                  active={glossarySides.answer}
+                  onClick={() =>
+                    patchGroupings(
+                      setGlossarySides(config.groupings, {
+                        question: glossarySides.question,
+                        answer: !glossarySides.answer,
+                      }),
+                    )
+                  }
+                >
+                  Respuesta
+                </FilterPill>
+                <span className="text-xs text-muted-foreground">
+                  {glossarySides.question && glossarySides.answer
+                    ? 'En pregunta o respuesta'
+                    : glossarySides.question
+                      ? 'Solo en la pregunta'
+                      : 'Solo en la respuesta'}
+                </span>
+              </div>
+            </>
           )}
+          <div className="relative" ref={glossaryBox}>
+            <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              value={glossaryQuery}
+              onChange={(e) => {
+                setGlossaryQuery(e.target.value)
+                setGlossaryOpen(true)
+              }}
+              onFocus={() => setGlossaryOpen(true)}
+              placeholder="Buscar y añadir una palabra…"
+              className="h-11 pl-9"
+              aria-label="Buscar palabra del glosario"
+              aria-expanded={glossaryOpen}
+              aria-controls="glossary-filter-list"
+            />
+            {glossaryOpen && (
+              <ul
+                id="glossary-filter-list"
+                className="absolute z-30 mt-1 max-h-56 w-full overflow-y-auto rounded-lg border bg-popover p-1 shadow-md"
+              >
+                {glossaryChoices.length === 0 ? (
+                  <li className="px-3 py-2 text-sm text-muted-foreground">
+                    {q
+                      ? 'Ninguna palabra coincide.'
+                      : 'Todas las palabras ya están en el filtro.'}
+                  </li>
+                ) : (
+                  glossaryChoices.slice(0, 40).map((entry) => (
+                    <li key={entry.id}>
+                      <button
+                        type="button"
+                        className="flex min-h-11 w-full items-center justify-between rounded-md px-3 text-left text-sm hover:bg-accent/50"
+                        onMouseDown={keepPageScroll}
+                        onClick={() => addGlossaryTerm(entry.id)}
+                      >
+                        <span>{entry.term}</span>
+                        <span className="text-xs text-muted-foreground">
+                          Añadir
+                        </span>
+                      </button>
+                    </li>
+                  ))
+                )}
+              </ul>
+            )}
+          </div>
+        </div>
+    </FilterBody>
+  )
+
+  // Phones get a compact row; the full filters open in a sheet.
+  if (!wide) {
+    return (
+      <div className="flex items-center gap-2 [overflow-anchor:none]">
+        <Button
+          type="button"
+          variant="outline"
+          className="min-w-0 flex-1 justify-start"
+          onClick={() => setSheetOpen(true)}
+          aria-haspopup="dialog"
+        >
+          <SlidersHorizontal className="size-4" />
+          Filtros
+          {activeCount > 0 && (
+            <Badge className="h-5 min-w-5 rounded-full px-1.5 tabular-nums">{activeCount}</Badge>
+          )}
+          <span className="ml-auto truncate text-xs font-normal text-muted-foreground">
+            {filtered.length} tarjetas
+          </span>
+        </Button>
+        {shuffleControl}
+        <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
+          <SheetContent side="bottom">
+            <div className="px-5 pt-2 pb-5">
+              <div className="flex items-center justify-between gap-2">
+                <SheetTitle className="font-display text-xl font-semibold">Filtros</SheetTitle>
+                {clearButton}
+              </div>
+              {body}
+              <Button type="button" className="mt-6 w-full" onClick={() => setSheetOpen(false)}>
+                Ver {filtered.length} tarjetas
+              </Button>
+            </div>
+          </SheetContent>
+        </Sheet>
+      </div>
+    )
+  }
+
+  return (
+    <div className="rounded-2xl border bg-card/60 p-5 shadow-card [overflow-anchor:none]">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <p className="flex items-center gap-2 text-sm font-semibold">
+          <SlidersHorizontal className="size-4 text-primary" aria-hidden />
+          Filtros
+        </p>
+        <div className="flex flex-wrap items-center gap-2">
+          {shuffleControl}
+          {clearButton}
         </div>
       </div>
+      {body}
     </div>
   )
 }
+
+function FilterBody(props: {
+  filteredCount: number
+  children: React.ReactNode
+}) {
+  return (
+    <>
+      <p className="mt-1 text-xs text-muted-foreground">
+        {props.filteredCount} tarjetas con estos filtros
+      </p>
+      {props.children}
+    </>
+  )
+}
+
+export function FilterPill({
+  active,
+  children,
+  className,
+  ...props
+}: React.ComponentProps<'button'> & { active: boolean }) {
+  return (
+    <button
+      type="button"
+      aria-pressed={active}
+      onMouseDown={keepPageScroll}
+      className={cn(
+        'inline-flex min-h-10 items-center gap-1.5 rounded-full border px-3.5 text-sm font-medium transition-all',
+        'focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none active:scale-95',
+        active
+          ? 'border-primary bg-primary text-primary-foreground shadow-xs'
+          : 'bg-card text-foreground hover:border-primary/40 hover:bg-accent/30',
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </button>
+  )
+}
+
 
 export function ShuffleControl({
   shuffle,

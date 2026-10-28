@@ -199,6 +199,25 @@
   }
 }
 
+@keyframes confetti-fall {
+  from {
+    opacity: 1;
+    transform: translate3d(0, -5vh, 0) rotate(0deg);
+  }
+  85% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(var(--drift), 105vh, 0) rotate(var(--spin));
+  }
+}
+
+.confetti-piece {
+  opacity: 0;
+  animation: confetti-fall var(--dur) var(--delay) cubic-bezier(0.25, 0.6, 0.45, 1) forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
