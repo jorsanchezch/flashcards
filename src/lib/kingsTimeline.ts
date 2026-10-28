@@ -131,14 +131,27 @@ export function kingById(id: string | null | undefined): KingRecord | null {
   return KINGS.find((k) => k.id === id) ?? null
 }
 
+/** The kingdom splits after Salomón (1 Reyes 12). */
+export const DIVISION_BC = 931
+
+/** A rival king before the division, such as Is-boset, outside the lines of Judá and Israel. */
+export function isBeforeDivision(king: KingRecord): boolean {
+  return (king.kingdom === 'judah' || king.kingdom === 'israel') && king.startBc > DIVISION_BC
+}
+
+/** Judá's or Israel's kings from the division on, oldest first. */
+export function dividedLine(kingdom: KingdomId): KingRecord[] {
+  return kingsByKingdom(kingdom).filter((k) => k.startBc <= DIVISION_BC)
+}
+
 /** The line of kings a king belongs to; Judá and Israel both begin after Salomón. */
 export function lineOf(king: KingRecord): KingRecord[] {
-  if (king.kingdom === 'united') return [king]
-  return kingsByKingdom(king.kingdom)
+  if (king.kingdom === 'united' || isBeforeDivision(king)) return [king]
+  return dividedLine(king.kingdom)
 }
 
 export function predecessorsOf(king: KingRecord): KingRecord[] {
-  if (king.kingdom === 'united') return []
+  if (king.kingdom === 'united' || isBeforeDivision(king)) return []
   const line = lineOf(king)
   const idx = line.findIndex((k) => k.id === king.id)
   if (idx > 0) return [line[idx - 1]]
@@ -150,8 +163,9 @@ export function predecessorsOf(king: KingRecord): KingRecord[] {
 
 export function successorsOf(king: KingRecord): KingRecord[] {
   if (king.kingdom === 'united') {
-    return [kingsByKingdom('judah')[0], kingsByKingdom('israel')[0]].filter(Boolean)
+    return [dividedLine('judah')[0], dividedLine('israel')[0]].filter(Boolean)
   }
+  if (isBeforeDivision(king)) return []
   const line = lineOf(king)
   const idx = line.findIndex((k) => k.id === king.id)
   return idx >= 0 && line[idx + 1] ? [line[idx + 1]] : []
@@ -317,8 +331,8 @@ export function axisTickYears(): number[] {
   return ticks
 }
 
-/** Visible span of the explorer: from Salomón to the fall of Jerusalén. */
-export const EXPLORER_START_BC = 975
+/** Visible span of the explorer: from Is-boset (2 Samuel) to the fall of Jerusalén. */
+export const EXPLORER_START_BC = 1015
 export const EXPLORER_END_BC = 580
 
 export function axisTicks(stepYears: number): number[] {

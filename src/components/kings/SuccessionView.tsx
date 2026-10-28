@@ -5,7 +5,8 @@ import {
   KEY_EVENTS,
   KINGS,
   kingdomMeta,
-  kingsByKingdom,
+  dividedLine,
+  isBeforeDivision,
   reignYears,
   type KingRecord,
   type KingdomId,
@@ -27,7 +28,7 @@ const SAME_ROW_YEARS = 3
 function buildRows(visible: KingdomId[]): Row[] {
   const columns = (['judah', 'israel'] as Column[]).filter((c) => visible.includes(c))
   const israelites = columns
-    .flatMap((c) => kingsByKingdom(c))
+    .flatMap((c) => dividedLine(c))
     .sort((a, b) => b.startBc - a.startBc || b.endBc - a.endBc)
   const neighbors = KINGS.filter(
     (k) => FOREIGN.includes(k.kingdom) && visible.includes(k.kingdom),
@@ -94,7 +95,7 @@ export function SuccessionView({ visible, selectedId, onSelect }: SuccessionView
   const numbers = useMemo(() => {
     const map = new Map<string, number>()
     for (const c of ['judah', 'israel'] as Column[]) {
-      kingsByKingdom(c).forEach((k, i) => map.set(k.id, i + 1))
+      dividedLine(c).forEach((k, i) => map.set(k.id, i + 1))
     }
     return map
   }, [])
@@ -102,9 +103,27 @@ export function SuccessionView({ visible, selectedId, onSelect }: SuccessionView
   const showIsrael = visible.includes('israel')
   const twoCols = showJudah && showIsrael
   const solomon = KINGS.find((k) => k.kingdom === 'united')
+  // Rivals before the division (Is-boset) sit above Salomón, not in the lines below.
+  const early = KINGS.filter((k) => isBeforeDivision(k) && visible.includes(k.kingdom)).sort(
+    (a, b) => b.startBc - a.startBc,
+  )
 
   return (
     <div ref={rootRef} className="mx-auto max-w-5xl space-y-3">
+      {early.length > 0 && (
+        <div className="mx-auto flex max-w-xl flex-wrap justify-center gap-3">
+          {early.map((king) => (
+            <div key={king.id} className="w-full max-w-xs">
+              <SuccessionCard
+                king={king}
+                label="Antes de la división"
+                selected={selectedId === king.id}
+                onSelect={onSelect}
+              />
+            </div>
+          ))}
+        </div>
+      )}
       {solomon && visible.includes('united') && (
         <div className="mx-auto max-w-xs">
           <SuccessionCard
