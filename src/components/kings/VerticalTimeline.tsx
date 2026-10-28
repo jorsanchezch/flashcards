@@ -247,6 +247,7 @@ export function VerticalTimeline({ visible, selectedId, onSelect, toolbarStart }
                 strokeWidth={3}
                 strokeDasharray="4 3"
                 opacity={0.7}
+                className="dark:brightness-160"
               />
             )}
             {/* Leader lines for names pushed below their station. */}
@@ -271,9 +272,10 @@ export function VerticalTimeline({ visible, selectedId, onSelect, toolbarStart }
 
           {columns.map((col, ci) => (
             <div key={col.id} className="absolute top-0 bottom-0" style={{ left: colLeft(ci), width: colWidth }}>
-              {/* The line itself, faint between reigns */}
+              {/* The line itself, faint between reigns. Kingdom colors are dark enough
+                  for white text, so dark mode lifts them to stay visible on the background. */}
               <span
-                className="absolute w-0.5 rounded-full opacity-25"
+                className="absolute w-0.5 rounded-full opacity-25 dark:opacity-40 dark:brightness-160"
                 style={{
                   left: TRACK_PX - 1,
                   top: col.marks[0]?.top ?? 0,
@@ -294,7 +296,7 @@ export function VerticalTimeline({ visible, selectedId, onSelect, toolbarStart }
                   <div key={m.king.id}>
                     <span
                       className={cn(
-                        'absolute rounded-full transition-all',
+                        'absolute rounded-full transition-all dark:brightness-160',
                         isSelected ? 'w-2.5 shadow-[0_0_0_3px_var(--background),0_0_0_5px_var(--foreground)]' : 'w-1.5',
                         selectedId && !isSelected && !isRelated && 'opacity-60',
                       )}
