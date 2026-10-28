@@ -127,8 +127,8 @@ export function TeamSummaryView({
   }
 
   return (
-    <div className="mx-auto w-full max-w-3xl px-4 py-6">
-      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+    <div className="mx-auto w-full max-w-3xl px-4 py-8 sm:py-10">
+      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <div className="mb-2 flex items-center gap-2">
             <Users className="size-5 text-primary" />
@@ -165,7 +165,7 @@ export function TeamSummaryView({
       </div>
 
       {exportHint && (
-        <Card className="mb-6 border-dashed">
+        <Card className="mb-8 border-dashed">
           <CardHeader className="pb-2">
             <CardTitle className="text-sm">Siguiente paso</CardTitle>
             <CardDescription className="text-xs">{exportHint}</CardDescription>
@@ -174,7 +174,7 @@ export function TeamSummaryView({
       )}
 
       {groupStats && (
-        <Card className="mb-6 border-primary/30">
+        <Card className="mb-8 border-primary/30">
           <CardHeader className="pb-2">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <CardTitle className="text-base">Equipo (sin ID)</CardTitle>
@@ -216,7 +216,7 @@ export function TeamSummaryView({
         </Card>
       )}
 
-      <Card className="mb-6">
+      <Card className="mb-8">
         <CardHeader className="pb-2">
           <CardTitle className="text-sm">Totales del equipo</CardTitle>
           <CardDescription className="text-xs">
@@ -240,7 +240,7 @@ export function TeamSummaryView({
         </CardContent>
       </Card>
 
-      <div className="mb-4">
+      <div className="mb-6">
         <NameSearchField
           value={nameQuery}
           onChange={setNameQuery}
@@ -260,7 +260,7 @@ export function TeamSummaryView({
           </CardHeader>
         </Card>
       ) : (
-      <ul className="flex flex-col gap-3">
+      <ul className="flex flex-col gap-4">
         {filteredRows.map((row) => {
           const pct = percent(row.stats.known, row.stats.total)
           return (

@@ -275,7 +275,7 @@ export function BrowseView({
   const hasStudyGroup = Boolean(userDoc?.config.studyGroupCardIds?.length)
 
   return (
-    <div className="mx-auto w-full max-w-3xl px-4 py-6">
+    <div className="mx-auto w-full max-w-3xl px-4 py-8 sm:py-10">
       <div className="mb-6">
         <h2 className="text-xl font-semibold tracking-tight">
           Lista de tarjetas
@@ -291,7 +291,7 @@ export function BrowseView({
         </p>
       </div>
 
-      <div className="mb-4">
+      <div className="mb-6">
         <DeckFilterBar
           cards={cards}
           config={filterConfig}
@@ -299,7 +299,7 @@ export function BrowseView({
         />
       </div>
 
-      <div className="mb-4 flex flex-wrap gap-2">
+      <div className="mb-6 flex flex-wrap gap-2">
         <Button type="button" size="sm" onClick={openAdd}>
           <Plus className="size-4" />
           Añadir tarjeta
@@ -339,7 +339,7 @@ export function BrowseView({
       </div>
 
       {selectionMode && selectedIds.size > 0 && (
-        <div className="mb-4 flex flex-wrap gap-2 rounded-xl border bg-muted/30 p-3">
+        <div className="mb-6 flex flex-wrap gap-2 rounded-xl border bg-muted/30 p-3">
           <Button type="button" size="sm" onClick={markSelectionReviewed}>
             Marcar {selectedIds.size} como revisadas
           </Button>
@@ -350,7 +350,7 @@ export function BrowseView({
       )}
 
       {hasStudyGroup && userDoc?.config.studyGroupLabel && (
-        <div className="mb-4 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-primary/30 bg-primary/5 px-4 py-3 text-sm">
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-primary/30 bg-primary/5 px-4 py-3 text-sm">
           <span>
             Grupo activo en Estudiar:{' '}
             <strong>{userDoc.config.studyGroupLabel}</strong>
@@ -366,7 +366,7 @@ export function BrowseView({
         </div>
       )}
 
-      <div className="mb-4 flex flex-col gap-3 sm:flex-row">
+      <div className="mb-6 flex flex-col gap-3 sm:flex-row">
         <div className="relative flex-1">
           <Search
             className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground"
@@ -392,10 +392,10 @@ export function BrowseView({
           </CardHeader>
         </Card>
       ) : (
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-10">
           {grouped.map((book) => (
             <section key={book.bookId}>
-              <h3 className="mb-4 flex items-baseline justify-between gap-3 border-b pb-2 text-lg font-semibold tracking-tight">
+              <h3 className="mb-5 flex items-baseline justify-between gap-3 border-b pb-2 text-lg font-semibold tracking-tight">
                 <span>{book.bookLabel}</span>
                 <span className="shrink-0 text-sm font-normal tabular-nums text-muted-foreground">
                   {book.cardCount === 1
@@ -403,13 +403,13 @@ export function BrowseView({
                     : `${book.cardCount} tarjetas`}
                 </span>
               </h3>
-              <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-8">
                 {book.chapters.map((ch) => (
                   <div key={`${book.bookId}-${ch.chapter}`}>
-                    <h4 className="mb-2 text-sm font-medium text-muted-foreground">
+                    <h4 className="mb-3 text-sm font-medium text-muted-foreground">
                       Capítulo {ch.chapter}
                     </h4>
-                    <ul className="flex flex-col gap-2">
+                    <ul className="flex flex-col gap-3">
                       {ch.cards.map((card) => {
                         const st = userDoc
                           ? getCardStatus(userDoc, card.id)
@@ -419,7 +419,7 @@ export function BrowseView({
                           : []
                         return (
                           <li key={card.id}>
-                            <div className="flex gap-2 rounded-xl border bg-card p-2">
+                            <div className="flex gap-3 rounded-xl border bg-card p-3">
                               {selectionMode && (
                                 <button
                                   type="button"

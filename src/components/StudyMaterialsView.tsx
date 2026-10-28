@@ -68,7 +68,7 @@ export function StudyMaterialsView({
 
   return (
     <div
-      className={`mx-auto w-full px-4 py-6 ${
+      className={`mx-auto w-full px-4 py-8 sm:py-10 ${
         openRow === 'kings' ? 'max-w-none' : 'max-w-3xl'
       }`}
     >
@@ -79,7 +79,7 @@ export function StudyMaterialsView({
         Documentos, mapa, línea de reyes, glosario y ritmo del curso para 1–2 Samuel y 1–2 Reyes.
       </p>
 
-      <ul className="mt-6 flex flex-col gap-3">
+      <ul className="mt-8 flex flex-col gap-4">
         <li>
           <GlossaryMaterialRow
             open={openRow === 'glossary'}

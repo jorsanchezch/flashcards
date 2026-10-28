@@ -149,7 +149,7 @@ function FlashcardsApp() {
             }}
             className={`mx-auto w-full ${shellWidth}`}
           >
-            <div className="sm:px-4 sm:pt-4">
+            <div className="sm:px-4 sm:pt-6">
               <TabsList
                 aria-label="Secciones"
                 className={cn(

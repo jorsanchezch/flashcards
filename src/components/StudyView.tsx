@@ -313,7 +313,7 @@ export function StudyView({
     order.length > 0 ? Math.round(((index + 1) / order.length) * 100) : 0
 
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 py-6">
+    <div className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-4 py-8 sm:py-10">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h2 className="text-xl font-semibold tracking-tight">Modo estudio</h2>

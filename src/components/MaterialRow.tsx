@@ -27,7 +27,7 @@ export function MaterialRow({
       onClick={onToggle}
       aria-expanded={open}
       className={cn(
-        'group relative flex w-full min-h-14 items-center justify-between gap-3 overflow-hidden rounded-xl border bg-card px-4 py-3 text-left shadow-card transition-all',
+        'group relative flex w-full min-h-16 items-center justify-between gap-3 overflow-hidden rounded-xl border bg-card px-4 py-4 text-left shadow-card transition-all',
         'hover:border-primary/30 hover:bg-accent/30 focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none',
         open && 'border-primary/30 bg-accent/20',
       )}
