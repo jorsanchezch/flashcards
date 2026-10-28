@@ -89,10 +89,9 @@ function initialOrientation(): Orientation {
     const saved = localStorage.getItem(ORIENTATION_KEY)
     if (saved === 'horizontal' || saved === 'vertical') return saved
   } catch {
-    // Storage may be blocked; fall back to the screen size.
+    // Storage may be blocked; fall back to the vertical view.
   }
-  // Phones read top to bottom; wide screens get the classic chart.
-  return window.matchMedia('(max-width: 639px)').matches ? 'vertical' : 'horizontal'
+  return 'vertical'
 }
 
 /** The timeline in either direction, remembering the viewer's choice. */
@@ -125,8 +124,8 @@ function OrientationToggle({
     <div className="inline-flex items-center gap-0.5 rounded-lg bg-muted p-0.5" role="group" aria-label="Orientación de la línea de tiempo">
       {(
         [
-          { id: 'horizontal', label: 'Horizontal', icon: GanttChart },
           { id: 'vertical', label: 'Vertical', icon: ListTree },
+          { id: 'horizontal', label: 'Horizontal', icon: GanttChart },
         ] as const
       ).map((o) => (
         <button
