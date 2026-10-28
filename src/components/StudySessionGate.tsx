@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { ChevronLeft, User, UserCircle2 } from 'lucide-react'
+import { User, UserCircle2 } from 'lucide-react'
 import type { RosterUser } from '@/lib/userData'
+import { ChoiceCard } from '@/components/ChoiceCard'
 import { UserPickerView } from '@/components/UserPickerView'
-import { Button } from '@/components/ui/button'
+import { WelcomeEmblem } from '@/components/WelcomeEmblem'
 
 type StudySessionGateProps = {
   users: RosterUser[]
@@ -21,75 +22,43 @@ export function StudySessionGate({
 
   if (step === 'identify') {
     return (
-      <div className="relative">
-        <div className="absolute top-4 left-4 z-10">
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            onClick={() => setStep('choose')}
-          >
-            <ChevronLeft className="size-4" />
-            Volver
-          </Button>
-        </div>
-        <UserPickerView
-          users={users}
-          suggestedUserId={suggestedUserId}
-          onSelect={onSelectUser}
-          title="Identifícate"
-          description="Elige tu nombre en la lista del equipo."
-        />
-      </div>
+      <UserPickerView
+        users={users}
+        suggestedUserId={suggestedUserId}
+        onSelect={onSelectUser}
+        onBack={() => setStep('choose')}
+        title="Identifícate"
+        description="Elige tu nombre en la lista del equipo."
+      />
     )
   }
 
   return (
-    <div className="mx-auto flex max-w-lg flex-col gap-6 px-4 py-12">
-      <div className="text-center">
-        <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-          <User className="size-7" />
-        </div>
-        <h2 className="text-2xl font-semibold tracking-tight">
+    <div className="mx-auto flex max-w-2xl flex-col gap-8 px-4 py-10 sm:py-14">
+      <div className="animate-fade-in text-center">
+        <WelcomeEmblem className="mb-6" />
+        <h2 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
           ¿Quién estudia hoy?
         </h2>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <p className="mt-2 text-muted-foreground">
           Elige cómo quieres entrar al modo estudio.
         </p>
       </div>
 
-      <div className="flex flex-col gap-3">
-        <Button
-          type="button"
-          variant="outline"
-          size="multiline"
-          className="flex-col items-start gap-0.5"
+      <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
+        <ChoiceCard
+          icon={UserCircle2}
+          title="Continuar sin ID"
+          description="Practica sin nombre. Las marcas La sé, Repasar y Revisada son del equipo y se ven en Equipo."
           onClick={onContinueAsGuest}
-        >
-          <span className="flex items-center gap-2 text-base font-semibold">
-            <UserCircle2 className="size-5 shrink-0" />
-            Continuar sin ID
-          </span>
-          <span className="text-sm font-normal text-muted-foreground">
-            Practica sin nombre. Las marcas La sé, Repasar y Revisada son del
-            equipo y se ven en Equipo.
-          </span>
-        </Button>
-
-        <Button
-          type="button"
-          size="multiline"
-          className="flex-col items-start gap-0.5"
+        />
+        <ChoiceCard
+          icon={User}
+          title="Identifícate"
+          description="Elige tu nombre y guarda tu progreso en el equipo."
           onClick={() => setStep('identify')}
-        >
-          <span className="flex items-center gap-2 text-base font-semibold">
-            <User className="size-5 shrink-0" />
-            Identifícate
-          </span>
-          <span className="text-sm font-normal opacity-90">
-            Elige tu nombre y guarda tu progreso en el equipo.
-          </span>
-        </Button>
+          primary
+        />
       </div>
 
       <p className="text-center text-xs text-muted-foreground">

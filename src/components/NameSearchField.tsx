@@ -21,7 +21,7 @@ export function NameSearchField({
         aria-hidden
       />
       <Input
-        className="pl-9"
+        className="h-11 pl-9"
         type="search"
         value={value}
         onChange={(e) => onChange(e.target.value)}
