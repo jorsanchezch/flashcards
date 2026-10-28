@@ -1,5 +1,5 @@
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
-import { ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react'
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react'
+import { ChevronLeft, ChevronRight, GanttChart, ListTree, ZoomIn } from 'lucide-react'
 import {
   EXPLORER_END_BC,
   EXPLORER_START_BC,
@@ -17,6 +17,7 @@ import {
 } from '@/lib/kingsTimeline'
 import { cn } from '@/lib/utils'
 import { StandGlyph } from './StandGlyph'
+import { VerticalTimeline } from './VerticalTimeline'
 
 type Zoom = 'fit' | 'century' | 'decades'
 
@@ -79,7 +80,79 @@ type TimelineExplorerProps = {
   onSelect: (id: string) => void
 }
 
-export function TimelineExplorer({ visible, selectedId, onSelect }: TimelineExplorerProps) {
+type Orientation = 'horizontal' | 'vertical'
+
+const ORIENTATION_KEY = 'kings-timeline-orientation'
+
+function initialOrientation(): Orientation {
+  try {
+    const saved = localStorage.getItem(ORIENTATION_KEY)
+    if (saved === 'horizontal' || saved === 'vertical') return saved
+  } catch {
+    // Storage may be blocked; fall back to the screen size.
+  }
+  // Phones read top to bottom; wide screens get the classic chart.
+  return window.matchMedia('(max-width: 639px)').matches ? 'vertical' : 'horizontal'
+}
+
+/** The timeline in either direction, remembering the viewer's choice. */
+export function TimelineExplorer(props: TimelineExplorerProps) {
+  const [orientation, setOrientation] = useState<Orientation>(initialOrientation)
+  const choose = (next: Orientation) => {
+    setOrientation(next)
+    try {
+      localStorage.setItem(ORIENTATION_KEY, next)
+    } catch {
+      // Ignore: the choice just won't be remembered.
+    }
+  }
+  const toggle = <OrientationToggle value={orientation} onChange={choose} />
+  return orientation === 'vertical' ? (
+    <VerticalTimeline {...props} toolbarStart={toggle} />
+  ) : (
+    <HorizontalTimeline {...props} toolbarStart={toggle} />
+  )
+}
+
+function OrientationToggle({
+  value,
+  onChange,
+}: {
+  value: Orientation
+  onChange: (next: Orientation) => void
+}) {
+  return (
+    <div className="inline-flex items-center gap-0.5 rounded-lg bg-muted p-0.5" role="group" aria-label="Orientación de la línea de tiempo">
+      {(
+        [
+          { id: 'horizontal', label: 'Horizontal', icon: GanttChart },
+          { id: 'vertical', label: 'Vertical', icon: ListTree },
+        ] as const
+      ).map((o) => (
+        <button
+          key={o.id}
+          type="button"
+          onClick={() => onChange(o.id)}
+          aria-pressed={value === o.id}
+          className={cn(
+            'inline-flex min-h-8 items-center gap-1.5 rounded-md px-2.5 text-xs font-medium transition-all',
+            value === o.id ? 'bg-card text-foreground shadow-card' : 'text-muted-foreground hover:text-foreground',
+          )}
+        >
+          <o.icon className="size-3.5" aria-hidden />
+          {o.label}
+        </button>
+      ))}
+    </div>
+  )
+}
+
+function HorizontalTimeline({
+  visible,
+  selectedId,
+  onSelect,
+  toolbarStart,
+}: TimelineExplorerProps & { toolbarStart?: ReactNode }) {
   const scrollerRef = useRef<HTMLDivElement>(null)
   const [zoom, setZoom] = useState<Zoom>('century')
   const [viewportPx, setViewportPx] = useState(720)
@@ -171,28 +244,31 @@ export function TimelineExplorer({ visible, selectedId, onSelect }: TimelineExpl
   return (
     <div className="space-y-2">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <div
-          className="inline-flex items-center gap-0.5 rounded-lg bg-muted p-0.5"
-          role="group"
-          aria-label="Zoom de la línea de tiempo"
-        >
-          <ZoomIn className="mx-1.5 size-3.5 text-muted-foreground" aria-hidden />
-          {ZOOMS.map((z) => (
-            <button
-              key={z.id}
-              type="button"
-              onClick={() => setZoom(z.id)}
-              aria-pressed={zoom === z.id}
-              className={cn(
-                'min-h-8 rounded-md px-2.5 text-xs font-medium transition-all',
-                zoom === z.id
-                  ? 'bg-card text-foreground shadow-card'
-                  : 'text-muted-foreground hover:text-foreground',
-              )}
-            >
-              {z.label}
-            </button>
-          ))}
+        <div className="flex flex-wrap items-center gap-2">
+          {toolbarStart}
+          <div
+            className="inline-flex items-center gap-0.5 rounded-lg bg-muted p-0.5"
+            role="group"
+            aria-label="Zoom de la línea de tiempo"
+          >
+            <ZoomIn className="mx-1.5 size-3.5 text-muted-foreground" aria-hidden />
+            {ZOOMS.map((z) => (
+              <button
+                key={z.id}
+                type="button"
+                onClick={() => setZoom(z.id)}
+                aria-pressed={zoom === z.id}
+                className={cn(
+                  'min-h-8 rounded-md px-2.5 text-xs font-medium transition-all',
+                  zoom === z.id
+                    ? 'bg-card text-foreground shadow-card'
+                    : 'text-muted-foreground hover:text-foreground',
+                )}
+              >
+                {z.label}
+              </button>
+            ))}
+          </div>
         </div>
         <p className="hidden text-[11px] text-muted-foreground sm:block">
           <kbd className="rounded border bg-muted px-1 font-sans">←</kbd>{' '}

@@ -299,7 +299,7 @@ export function KingsTimelinePanel({
                   )}
                 </div>
                 {isDesktop && (
-                  <aside className="sticky top-4 max-h-[calc(100svh-2rem)] self-start overflow-y-auto scrollbar-thin">
+                  <aside className="sticky top-20 max-h-[calc(100svh-6rem)] self-start overflow-y-auto scrollbar-thin">
                     {detail ?? (
                       <p className="rounded-2xl border border-dashed p-6 text-center text-sm text-muted-foreground">
                         Elige un reinado para ver su historia.
