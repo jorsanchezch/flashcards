@@ -90,6 +90,31 @@ export function KingsTimelinePanel({ open, onToggle }: KingsTimelinePanelProps) 
     return () => window.removeEventListener('keydown', onKey)
   }, [open])
 
+  useEffect(() => {
+    const scroller = scrollerRef.current
+    if (!open || !scroller) return
+    const root = document.documentElement
+    const previous = root.style.overscrollBehaviorX
+    root.style.overscrollBehaviorX = 'none'
+
+    const onWheel = (event: WheelEvent) => {
+      if (Math.abs(event.deltaX) <= Math.abs(event.deltaY)) return
+      event.preventDefault()
+      const scale =
+        event.deltaMode === WheelEvent.DOM_DELTA_LINE
+          ? 16
+          : event.deltaMode === WheelEvent.DOM_DELTA_PAGE
+            ? scroller.clientWidth
+            : 1
+      scroller.scrollLeft += event.deltaX * scale
+    }
+    scroller.addEventListener('wheel', onWheel, { passive: false })
+    return () => {
+      root.style.overscrollBehaviorX = previous
+      scroller.removeEventListener('wheel', onWheel)
+    }
+  }, [open])
+
   const chronological = useMemo(() => kingsChronological(), [])
   const selected = useMemo(
     () => KINGS.find((k) => k.id === selectedId) ?? null,
@@ -241,7 +266,7 @@ export function KingsTimelinePanel({ open, onToggle }: KingsTimelinePanelProps) 
               <div
                 ref={scrollerRef}
                 tabIndex={0}
-                className="w-full overflow-x-auto rounded-xl border bg-background/60 p-2 shadow-inner focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:p-3"
+                className="w-full touch-pan-x overflow-x-auto overscroll-x-none rounded-xl border bg-background/60 p-2 shadow-inner focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:p-3"
                 aria-label="Línea de tiempo de los reyes. Flecha izquierda o derecha para desplazarla."
               >
                 <p className="mb-2 text-[11px] text-muted-foreground">
