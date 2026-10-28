@@ -24,6 +24,7 @@ import {
   saveUiLocale,
   type UiLocale,
 } from '@/lib/i18n'
+import { loadTheme, saveTheme, watchTheme, type ThemePreference } from '@/lib/theme'
 
 type PreferencesContextValue = {
   uiLocale: UiLocale
@@ -32,6 +33,8 @@ type PreferencesContextValue = {
   bibleVersion: BibleVersionMeta
   setBibleVersionId: (id: string) => void
   bibleVersions: BibleVersionMeta[]
+  theme: ThemePreference
+  setTheme: (theme: ThemePreference) => void
   t: ReturnType<typeof messages>
   format: (template: string, vars: Record<string, string>) => string
 }
@@ -44,6 +47,14 @@ export function PreferencesProvider({ children }: { children: ReactNode }) {
   const [guestBibleId, setGuestBibleId] = useState(() =>
     loadGuestBibleVersionId(DEFAULT_BIBLE_VERSION_ID),
   )
+  const [theme, setThemeState] = useState<ThemePreference>(() => loadTheme())
+
+  useEffect(() => watchTheme(theme), [theme])
+
+  const setTheme = useCallback((next: ThemePreference) => {
+    saveTheme(next)
+    setThemeState(next)
+  }, [])
 
   useEffect(() => {
     if (isUiLocale(userDoc?.config.uiLocale)) {
@@ -103,10 +114,12 @@ export function PreferencesProvider({ children }: { children: ReactNode }) {
       bibleVersion,
       setBibleVersionId,
       bibleVersions: BIBLE_VERSIONS,
+      theme,
+      setTheme,
       t: messages(uiLocale),
       format: formatMessage,
     }),
-    [uiLocale, setUiLocale, bibleVersionId, bibleVersion, setBibleVersionId],
+    [uiLocale, setUiLocale, bibleVersionId, bibleVersion, setBibleVersionId, theme, setTheme],
   )
 
   return (
@@ -139,6 +152,8 @@ export function useOptionalPreferences(): PreferencesContextValue {
     bibleVersion,
     setBibleVersionId: saveGuestBibleVersionId,
     bibleVersions: BIBLE_VERSIONS,
+    theme: loadTheme(),
+    setTheme: saveTheme,
     t: messages(uiLocale),
     format: formatMessage,
   }

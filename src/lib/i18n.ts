@@ -69,6 +69,7 @@ type MessageTree = {
   myData: string
   changeUser: string
   settings: string
+  theme: { label: string; system: string; light: string; dark: string }
   preferences: string
 }
 
@@ -97,6 +98,7 @@ const es: MessageTree = {
   myData: 'Mis datos',
   changeUser: 'Cambiar',
   settings: 'Ajustes',
+  theme: { label: 'Tema', system: 'Sistema', light: 'Claro', dark: 'Oscuro' },
   preferences: 'Preferencias de idioma',
 }
 
@@ -125,6 +127,7 @@ const en: MessageTree = {
   myData: 'My data',
   changeUser: 'Switch',
   settings: 'Settings',
+  theme: { label: 'Theme', system: 'System', light: 'Light', dark: 'Dark' },
   preferences: 'Language preferences',
 }
 

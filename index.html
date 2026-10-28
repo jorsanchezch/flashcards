@@ -10,6 +10,21 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap"
       rel="stylesheet"
     />
+    <script>
+      // Apply the saved theme before React mounts so the page never flashes light.
+      // Same key and rules as src/lib/theme.ts.
+      ;(function () {
+        var theme = 'system'
+        try {
+          theme = localStorage.getItem('flashcards-theme') || 'system'
+        } catch (e) {}
+        var dark =
+          theme === 'dark' ||
+          (theme !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        document.documentElement.classList.toggle('dark', dark)
+        document.documentElement.style.colorScheme = dark ? 'dark' : 'light'
+      })()
+    </script>
     <title>Flashcards — Samuel y Reyes</title>
   </head>
   <body>

@@ -16,6 +16,7 @@ import { StudySessionGate } from '@/components/StudySessionGate'
 import { StudyMaterialsView, type MaterialRow } from '@/components/StudyMaterialsView'
 import { TeamSummaryView } from '@/components/TeamSummaryView'
 import { LanguagePreferences } from '@/components/LanguagePreferences'
+import { ThemeSwitcher } from '@/components/ThemeSwitcher'
 import { UserMenu } from '@/components/UserMenu'
 import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
@@ -113,7 +114,8 @@ function FlashcardsApp() {
                   <Settings2 className="size-5" />
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-80">
+              <PopoverContent className="w-80 space-y-4">
+                <ThemeSwitcher />
                 <LanguagePreferences />
               </PopoverContent>
             </Popover>
