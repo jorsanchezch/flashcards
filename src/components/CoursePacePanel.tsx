@@ -1,3 +1,4 @@
+import { MaterialRow } from '@/components/MaterialRow'
 import { useMemo, useState } from 'react'
 import { CalendarDays } from 'lucide-react'
 import { useUser } from '@/context/UserContext'
@@ -129,22 +130,13 @@ export function CoursePacePanel({ cards, open, onToggle }: CoursePacePanelProps)
 
   return (
     <li>
-      <button
-        type="button"
-        onClick={onToggle}
-        className="flex w-full min-h-11 items-center justify-between gap-3 rounded-xl border bg-card px-4 py-3 text-left transition-colors hover:bg-accent/40"
-      >
-        <span className="flex items-center gap-3">
-          <CalendarDays className="size-5 shrink-0 text-primary" />
-          <span>
-            <span className="block font-medium">Ritmo del curso</span>
-            <span className="block text-xs text-muted-foreground">
-              {weekdaySummary(settings.weekdays)} · {settings.start} a {settings.end}
-            </span>
-          </span>
-        </span>
-        <span className="text-xs text-muted-foreground">{open ? 'Cerrar' : 'Abrir'}</span>
-      </button>
+      <MaterialRow
+        icon={CalendarDays}
+        title="Ritmo del curso"
+        subtitle={`${weekdaySummary(settings.weekdays)} · ${settings.start} a ${settings.end}`}
+        open={open}
+        onToggle={onToggle}
+      />
       {open && (
         <Card className="mt-2">
           <CardHeader className="pb-2">

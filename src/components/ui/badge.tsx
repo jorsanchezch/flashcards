@@ -17,6 +17,11 @@ const badgeVariants = cva(
           "border-border text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
         ghost: "[a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
         link: "text-primary underline-offset-4 [a&]:hover:underline",
+        righteous:
+          "border-stand-righteous/35 bg-stand-righteous/12 text-foreground",
+        evil: "border-stand-evil/35 bg-stand-evil/12 text-foreground",
+        mixed: "border-stand-mixed/40 bg-stand-mixed/15 text-foreground",
+        foreign: "border-border bg-muted text-muted-foreground",
       },
     },
     defaultVariants: {

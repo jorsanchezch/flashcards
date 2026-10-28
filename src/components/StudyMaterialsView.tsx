@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { ExternalLink, FileText, Map } from 'lucide-react'
 import { CitationLinks } from '@/components/CitedText'
 import { CoursePacePanel } from '@/components/CoursePacePanel'
-import { KingsTimelinePanel } from '@/components/KingsTimelinePanel'
+import { KingsTimelinePanel } from '@/components/kings'
+import { MaterialRow } from '@/components/MaterialRow'
 import {
   GlossaryMaterialRow,
   GlossaryPanel,
@@ -67,10 +68,10 @@ export function StudyMaterialsView({
   return (
     <div
       className={`mx-auto w-full px-4 py-6 ${
-        openRow === 'kings' ? 'max-w-none' : 'max-w-3xl'
+        openRow === 'kings' ? 'max-w-6xl' : 'max-w-3xl'
       }`}
     >
-      <h2 className="text-xl font-semibold tracking-tight">
+      <h2 className="font-display text-2xl font-semibold tracking-tight">
         Material de estudio
       </h2>
       <p className="mt-1 text-sm text-muted-foreground">
@@ -104,24 +105,13 @@ export function StudyMaterialsView({
         </li>
 
         <li>
-          <button
-            type="button"
-            onClick={() => toggle('doc')}
-            className="flex w-full min-h-11 items-center justify-between gap-3 rounded-xl border bg-card px-4 py-3 text-left transition-colors hover:bg-accent/40"
-          >
-            <span className="flex items-center gap-3">
-              <FileText className="size-5 shrink-0 text-primary" />
-              <span>
-                <span className="block font-medium">Inventario del grupo</span>
-                <span className="block text-xs text-muted-foreground">
-                  Documento compartido del equipo
-                </span>
-              </span>
-            </span>
-            <span className="text-xs text-muted-foreground">
-              {openRow === 'doc' ? 'Cerrar' : 'Abrir'}
-            </span>
-          </button>
+          <MaterialRow
+            icon={FileText}
+            title="Inventario del grupo"
+            subtitle="Documento compartido del equipo"
+            open={openRow === 'doc'}
+            onToggle={() => toggle('doc')}
+          />
           {openRow === 'doc' && (
             <Card className="mt-2">
               <CardHeader className="pb-2">
@@ -149,24 +139,13 @@ export function StudyMaterialsView({
         </li>
 
         <li>
-          <button
-            type="button"
-            onClick={() => toggle('ark')}
-            className="flex w-full min-h-11 items-center justify-between gap-3 rounded-xl border bg-card px-4 py-3 text-left transition-colors hover:bg-accent/40"
-          >
-            <span className="flex items-center gap-3">
-              <Map className="size-5 shrink-0 text-primary" />
-              <span>
-                <span className="block font-medium">Viaje del arca</span>
-                <span className="block text-xs text-muted-foreground">
-                  De las ciudades filisteas hasta Quiriat-jearim
-                </span>
-              </span>
-            </span>
-            <span className="text-xs text-muted-foreground">
-              {openRow === 'ark' ? 'Cerrar' : 'Abrir'}
-            </span>
-          </button>
+          <MaterialRow
+            icon={Map}
+            title="Viaje del arca"
+            subtitle="De las ciudades filisteas hasta Quiriat-jearim"
+            open={openRow === 'ark'}
+            onToggle={() => toggle('ark')}
+          />
           {openRow === 'ark' && (
             <Card className="mt-2">
               <CardHeader className="pb-2">
@@ -200,8 +179,10 @@ export function StudyMaterialsView({
         </li>
 
         <KingsTimelinePanel
+          cards={cards}
           open={openRow === 'kings'}
           onToggle={() => toggle('kings')}
+          onOpenCardInStudy={onOpenCardInStudy}
         />
 
         <CoursePacePanel

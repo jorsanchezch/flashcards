@@ -23,36 +23,46 @@ export {
 export type LordStandMeta = {
   label: string
   shortLabel: string
-  barClass: string
-  badgeClass: string
+  /** Shape that carries the verdict without relying on color. */
+  glyph: string
+  /** Badge variant from `ui/badge`. */
+  badge: 'righteous' | 'evil' | 'mixed' | 'foreign'
+  /** CSS color from the theme tokens. */
+  color: string
 }
 
 const LORD_STAND_META: Record<LordStand, LordStandMeta> = {
   righteous: {
     label: 'Recto ante el Señor',
     shortLabel: 'Recto',
-    barClass: 'ring-2 ring-emerald-400/80',
-    badgeClass: 'border-emerald-500/40 bg-emerald-500/15 text-emerald-900 dark:text-emerald-100',
+    glyph: '✓',
+    badge: 'righteous',
+    color: 'var(--stand-righteous)',
   },
   evil: {
     label: 'Malo ante el Señor',
     shortLabel: 'Malo',
-    barClass: 'ring-2 ring-rose-400/80',
-    badgeClass: 'border-rose-500/40 bg-rose-500/15 text-rose-900 dark:text-rose-100',
+    glyph: '✕',
+    badge: 'evil',
+    color: 'var(--stand-evil)',
   },
   mixed: {
     label: 'Recto y malo (según el relato)',
     shortLabel: 'Mixto',
-    barClass: 'ring-2 ring-amber-400/80',
-    badgeClass: 'border-amber-500/40 bg-amber-500/15 text-amber-950 dark:text-amber-100',
+    glyph: '½',
+    badge: 'mixed',
+    color: 'var(--stand-mixed)',
   },
   not_applicable: {
     label: 'Sin fórmula de evaluación',
     shortLabel: 'Extranjero',
-    barClass: 'ring-1 ring-border',
-    badgeClass: 'border-border bg-muted text-muted-foreground',
+    glyph: '–',
+    badge: 'foreign',
+    color: 'var(--stand-foreign)',
   },
 }
+
+export const LORD_STANDS: LordStand[] = ['righteous', 'evil', 'mixed', 'not_applicable']
 
 export function lordStandMeta(stand?: LordStand): LordStandMeta | null {
   if (!stand) return null
@@ -78,7 +88,7 @@ export function formatKingAges(ages?: KingRecord['ages']): string | null {
 }
 
 export function kingsChronological(): KingRecord[] {
-  return [...KINGS].sort((a, b) => b.startBc - a.startBc)
+  return [...KINGS].sort((a, b) => b.startBc - a.startBc || b.endBc - a.endBc)
 }
 
 const REYES_TO_GATEWAY: Record<string, string> = {
@@ -112,8 +122,121 @@ export function passageToNtvUrl(passage: string): string {
 
 export function kingsByKingdom(kingdom: KingdomId): KingRecord[] {
   return KINGS.filter((k) => k.kingdom === kingdom).sort(
-    (a, b) => b.startBc - a.startBc,
+    (a, b) => b.startBc - a.startBc || b.endBc - a.endBc,
   )
+}
+
+export function kingById(id: string | null | undefined): KingRecord | null {
+  if (!id) return null
+  return KINGS.find((k) => k.id === id) ?? null
+}
+
+/** The line of kings a king belongs to; Judá and Israel both begin after Salomón. */
+export function lineOf(king: KingRecord): KingRecord[] {
+  if (king.kingdom === 'united') return [king]
+  return kingsByKingdom(king.kingdom)
+}
+
+export function predecessorsOf(king: KingRecord): KingRecord[] {
+  if (king.kingdom === 'united') return []
+  const line = lineOf(king)
+  const idx = line.findIndex((k) => k.id === king.id)
+  if (idx > 0) return [line[idx - 1]]
+  if (king.kingdom === 'judah' || king.kingdom === 'israel') {
+    return KINGS.filter((k) => k.kingdom === 'united')
+  }
+  return []
+}
+
+export function successorsOf(king: KingRecord): KingRecord[] {
+  if (king.kingdom === 'united') {
+    return [kingsByKingdom('judah')[0], kingsByKingdom('israel')[0]].filter(Boolean)
+  }
+  const line = lineOf(king)
+  const idx = line.findIndex((k) => k.id === king.id)
+  return idx >= 0 && line[idx + 1] ? [line[idx + 1]] : []
+}
+
+/** Where a new ruling house (or a usurper) takes the throne. */
+export const DYNASTY_STARTS: Record<string, string> = {
+  rehoboam: 'Casa de David',
+  athaliah: 'Atalía usurpa el trono',
+  'joash-judah': 'Vuelve la casa de David',
+  'jeroboam-i': 'Casa de Jeroboam',
+  baasha: 'Casa de Baasa',
+  zimri: 'Zimri (golpe de 7 días)',
+  omri: 'Casa de Omri',
+  jehu: 'Casa de Jehú',
+  shallum: 'Salum (golpe)',
+  menahem: 'Casa de Menahem',
+  pekah: 'Peka (golpe)',
+  hoshea: 'Oseas (último rey)',
+}
+
+export type KeyEvent = { year: number; label: string; short: string }
+
+export const KEY_EVENTS: KeyEvent[] = [
+  { year: 931, label: 'División del reino', short: 'División' },
+  { year: 722, label: 'Caída de Samaria (Asiria)', short: 'Samaria cae' },
+  { year: 586, label: 'Caída de Jerusalén (Babilonia)', short: 'Jerusalén cae' },
+]
+
+export function reignYears(king: KingRecord): number {
+  return king.ages?.reignYears ?? Math.max(king.startBc - king.endBc, 0)
+}
+
+type PassageRange = { bookId: string; chapterStart: number; chapterEnd: number }
+
+const PASSAGE_BOOK_IDS: Record<string, string> = {
+  '1 Reyes': '1-reyes',
+  '2 Reyes': '2-reyes',
+}
+
+/** "1 Reyes 12:25-33" → 1-reyes, 12–12; "2 Reyes 8:25–9:29" → 2-reyes, 8–9. Chronicles are skipped. */
+export function parsePassage(passage: string): PassageRange | null {
+  const match = passage
+    .trim()
+    .match(/^([12] Reyes)\s+(\d+)(?::[\d]+)?(?:\s*[-–]\s*(\d+)(?::(\d+))?)?/)
+  if (!match) return null
+  const bookId = PASSAGE_BOOK_IDS[match[1]]
+  const chapterStart = Number(match[2])
+  // A range "a:b-c" stays in chapter a; "a:b-c:d" ends in chapter c.
+  const chapterEnd = match[4] ? Number(match[3]) : chapterStart
+  return { bookId, chapterStart, chapterEnd: Math.max(chapterEnd, chapterStart) }
+}
+
+/** Chapters of 1–2 Reyes that tell this king's story, filling gaps between cited chapters. */
+export function kingChapters(king: KingRecord): { bookId: string; chapter: number }[] {
+  const byBook = new Map<string, { min: number; max: number }>()
+  for (const p of king.passages) {
+    const range = parsePassage(p)
+    if (!range) continue
+    const cur = byBook.get(range.bookId)
+    byBook.set(range.bookId, {
+      min: Math.min(cur?.min ?? Infinity, range.chapterStart),
+      max: Math.max(cur?.max ?? -Infinity, range.chapterEnd),
+    })
+  }
+  const out: { bookId: string; chapter: number }[] = []
+  for (const [bookId, { min, max }] of byBook) {
+    for (let chapter = min; chapter <= max; chapter++) out.push({ bookId, chapter })
+  }
+  return out
+}
+
+export function cardsForKing<T extends { bookId: string; chapter: number; originalNumber: number }>(
+  king: KingRecord,
+  cards: T[],
+): T[] {
+  const wanted = new Set(kingChapters(king).map((c) => `${c.bookId}:${c.chapter}`))
+  return cards
+    .filter((c) => wanted.has(`${c.bookId}:${c.chapter}`))
+    .sort(
+      (a, b) =>
+        a.bookId.localeCompare(b.bookId) ||
+        a.chapter - b.chapter ||
+        a.originalNumber - b.originalNumber,
+    )
 }
 
 export function kingdomMeta(id: KingdomId) {
@@ -191,6 +314,17 @@ export function axisTickYears(): number[] {
   if (ticks[ticks.length - 1] !== TIMELINE_END_BC) {
     ticks.push(TIMELINE_END_BC)
   }
+  return ticks
+}
+
+/** Visible span of the explorer: from Salomón to the fall of Jerusalén. */
+export const EXPLORER_START_BC = 975
+export const EXPLORER_END_BC = 580
+
+export function axisTicks(stepYears: number): number[] {
+  const ticks: number[] = []
+  const first = Math.floor(EXPLORER_START_BC / stepYears) * stepYears
+  for (let y = first; y >= EXPLORER_END_BC; y -= stepYears) ticks.push(y)
   return ticks
 }
 

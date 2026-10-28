@@ -1,3 +1,4 @@
+import { MaterialRow } from '@/components/MaterialRow'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { ArrowLeft, ArrowRight, BookOpen, ExternalLink, Pencil, Plus, Search, Trash2 } from 'lucide-react'
 import { CitedText } from '@/components/CitedText'
@@ -830,23 +831,13 @@ export function GlossaryMaterialRow({
         ? 'Cargando…'
         : 'No se pudo cargar'
   return (
-    <button
-      type="button"
-      onClick={onToggle}
-      className="flex w-full min-h-11 items-center justify-between gap-3 rounded-xl border bg-card px-4 py-3 text-left transition-colors hover:bg-accent/40"
-    >
-      <span className="flex items-center gap-3">
-        <BookOpen className="size-5 shrink-0 text-primary" />
-        <span>
-          <span className="block font-medium">Glosario</span>
-          <span className="block text-xs text-muted-foreground">
-            Nombres, lugares y conceptos de las tarjetas
-          </span>
-        </span>
-      </span>
-      <span className="text-xs text-muted-foreground">
-        {open ? 'Cerrar' : countLabel}
-      </span>
-    </button>
+    <MaterialRow
+      icon={BookOpen}
+      title="Glosario"
+      subtitle="Nombres, lugares y conceptos de las tarjetas"
+      meta={countLabel}
+      open={open}
+      onToggle={onToggle}
+    />
   )
 }
