@@ -3,6 +3,7 @@ import { cn } from '@/lib/utils'
 
 /** Decorative crown with the four book colors orbiting it. */
 const DOTS = [
+  { color: 'var(--book-josue)', className: 'top-0 -left-2 size-2.5' },
   { color: 'var(--book-1-samuel)', className: '-top-1 left-2 size-3' },
   { color: 'var(--book-2-samuel)', className: 'top-3 -right-3 size-2.5' },
   { color: 'var(--book-1-reyes)', className: '-bottom-2 right-3 size-3.5' },

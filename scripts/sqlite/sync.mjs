@@ -36,6 +36,7 @@ const publicData = path.join(root, 'public', 'data')
 const DEFAULT_VERSION = 'ntv'
 
 const BOOK_PREFIXES = [
+  { id: 'josue', label: 'Josué', prefix: 'josue', canon: 5 },
   { id: '1-samuel', label: '1 Samuel', prefix: '1-samuel', canon: 8 },
   { id: '2-samuel', label: '2 Samuel', prefix: '2-samuel', canon: 9 },
   { id: '1-reyes', label: '1 Reyes', prefix: '1-reyes', canon: 10 },
@@ -126,7 +127,7 @@ function parseMarkdownCard(raw, filePath) {
 
 function inferLocation(answer, chapterSlug, footerLabel) {
   const cite = answer.match(
-    /\(\s*(1\s*Samuel|2\s*Samuel|1\s*Reyes|2\s*Reyes)[^\d]*(\d+)\s*:/i,
+    /\(\s*(Josu[eé]|1\s*Samuel|2\s*Samuel|1\s*Reyes|2\s*Reyes)[^\d]*(\d+)\s*:/i,
   )
   const text = cite?.[1] ?? footerLabel ?? chapterSlug
   const chapter = cite ? Number(cite[2]) : Number((chapterSlug.match(/(\d+)/g) || [])[1] ?? 0)

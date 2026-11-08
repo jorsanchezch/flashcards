@@ -41,6 +41,7 @@ const SHARED_PACE_KEY = 'flashcards-shared-pace-v1'
 const LOCAL_PACE_KEY = 'flashcards-course-pace-v1'
 
 const FALLBACK_BOOKS: CourseBookRange[] = [
+  { bookId: 'josue', bookLabel: 'Josué', from: 1, to: 24 },
   { bookId: '1-samuel', bookLabel: '1 Samuel', from: 1, to: 31 },
   { bookId: '2-samuel', bookLabel: '2 Samuel', from: 1, to: 24 },
   { bookId: '1-reyes', bookLabel: '1 Reyes', from: 1, to: 22 },
@@ -78,7 +79,7 @@ export function courseBooksFromCards(
       cur.maxChapter = card.chapter
     }
   }
-  const order = ['1-samuel', '2-samuel', '1-reyes', '2-reyes']
+  const order = ['josue', '1-samuel', '2-samuel', '1-reyes', '2-reyes']
   return [...map.values()].sort((a, b) => {
     const ia = order.indexOf(a.id)
     const ib = order.indexOf(b.id)
