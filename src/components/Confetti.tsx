@@ -6,6 +6,7 @@ const COLORS = [
   'var(--known)',
   'var(--reviewed)',
   'var(--review-again)',
+  'var(--book-josue)',
   'var(--book-1-samuel)',
   'var(--book-2-samuel)',
 ]

@@ -74,7 +74,7 @@ type MessageTree = {
 }
 
 const es: MessageTree = {
-  appTitle: 'Flashcards — Samuel y Reyes',
+  appTitle: 'Flashcards — Josué, Samuel y Reyes',
   tabs: {
     study: 'Estudiar',
     browse: 'Lista',

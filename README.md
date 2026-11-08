@@ -1,6 +1,6 @@
-# Flashcards — Samuel y Reyes (GitHub Pages)
+# Flashcards — Josué, Samuel y Reyes (GitHub Pages)
 
-Aplicación web estática para estudiar **974 tarjetas** en Markdown sobre **1 Samuel, 2 Samuel, 1 Reyes y 2 Reyes** (NTV). Los archivos `.md` en el repositorio son la fuente de verdad; la app solo los lee y parsea en el navegador.
+Aplicación web estática para estudiar tarjetas en Markdown sobre **Josué, 1 Samuel, 2 Samuel, 1 Reyes y 2 Reyes** (NTV). Los archivos `.md` en el repositorio son la fuente de verdad; la app solo los lee y parsea en el navegador.
 
 ## Contenido (Markdown)
 

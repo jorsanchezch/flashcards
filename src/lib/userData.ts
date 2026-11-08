@@ -400,6 +400,7 @@ function migrateLegacyGroupings(raw: Partial<UserConfig>): DeckGrouping[] {
 function bookIdFromLegacyLabel(label: string | null): string | null {
   if (!label) return null
   const map: Record<string, string> = {
+    Josué: 'josue',
     '1 Samuel': '1-samuel',
     '2 Samuel': '2-samuel',
     '1 Reyes': '1-reyes',

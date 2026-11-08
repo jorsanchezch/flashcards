@@ -1,6 +1,20 @@
 {
   "versions": [
     {
+      "id": "kjv",
+      "label": "King James Version",
+      "gatewayParam": "KJV",
+      "isDefault": 0,
+      "language": "en"
+    },
+    {
+      "id": "asv",
+      "label": "American Standard Version",
+      "gatewayParam": "ASV",
+      "isDefault": 0,
+      "language": "en"
+    },
+    {
       "id": "ntv",
       "label": "Nueva Traducción Viviente",
       "gatewayParam": "NTV",

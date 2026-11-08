@@ -43,6 +43,7 @@
   --color-review-again-foreground: var(--review-again-foreground);
   --color-celebrate: var(--gold);
   --color-scrim: var(--scrim);
+  --color-book-josue: var(--book-josue);
   --color-book-1-samuel: var(--book-1-samuel);
   --color-book-2-samuel: var(--book-2-samuel);
   --color-book-1-reyes: var(--book-1-reyes);
@@ -128,6 +129,7 @@
   --reviewed-foreground: oklch(0.99 0.005 158);
   --review-again: oklch(0.53 0.17 35);
   --review-again-foreground: oklch(0.99 0.005 38);
+  --book-josue: oklch(0.58 0.13 145);
   --book-1-samuel: oklch(0.6 0.14 200);
   --book-2-samuel: oklch(0.56 0.15 300);
   --book-1-reyes: oklch(0.62 0.15 55);
@@ -168,6 +170,7 @@
   --reviewed-foreground: oklch(0.18 0.03 158);
   --review-again: oklch(0.74 0.15 40);
   --review-again-foreground: oklch(0.2 0.04 40);
+  --book-josue: oklch(0.72 0.12 145);
   --book-1-samuel: oklch(0.72 0.12 200);
   --book-2-samuel: oklch(0.72 0.13 300);
   --book-1-reyes: oklch(0.76 0.13 60);
